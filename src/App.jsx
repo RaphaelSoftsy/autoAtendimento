@@ -1,9 +1,8 @@
+import RoutesApp from "./routes/router"
 
 function App() {
   return (
-    <div>
-      <h1>Teste 2</h1>
-    </div>
+    <RoutesApp />
   )
 }
 
