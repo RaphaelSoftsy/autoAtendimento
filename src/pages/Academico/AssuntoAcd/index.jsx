@@ -1,10 +1,10 @@
-import HeaderAcd from "../../../components/Header"
+import Header from "../../../components/Header"
 import './assuntoAcd.css'
 
 const AssuntoAcd = () => {
     return(
         <div>
-            <HeaderAcd />
+            <Header txt="Acadêmico"/>
         </div>
     )
 }
