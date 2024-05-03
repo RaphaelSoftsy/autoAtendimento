@@ -1,0 +1,20 @@
+.header-acd{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+    padding: 0px 64px;
+    background-color: #fff;
+}
+
+.icon{
+    display: flex;
+    background-color: var(--light-blue);
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.header-acd svg{
+    color: #fff;
+    font-size: 1rem;
+}

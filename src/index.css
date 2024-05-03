@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:root{
+  --light-blue: #019ED3;
+}
+
 html,
 body,
 #root {
