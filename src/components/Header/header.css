@@ -7,6 +7,12 @@
     background-color: #fff;
 }
 
+.header-acd h1 {
+    color: #000;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
 .icon{
     display: flex;
     background-color: var(--light-blue);
@@ -14,7 +20,7 @@
     border-radius: 6px;
 }
 
-.header-acd svg{
+.icon svg{
     color: #fff;
     font-size: 1rem;
 }
