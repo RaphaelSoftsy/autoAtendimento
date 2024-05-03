@@ -19,6 +19,7 @@
     background-color: var(--light-blue);
     padding: 8px;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .icon svg{
