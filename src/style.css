@@ -1,0 +1,8 @@
+body {
+    font-size: 14px !important;
+    line-height: 15px !important;
+    font-family: 'Quicksand', sans-serif;
+    background-image: url(./assets/back.jpg);
+    text-align: center;
+    color: #fff;
+}
