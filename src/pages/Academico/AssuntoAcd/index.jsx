@@ -1,4 +1,4 @@
-import HeaderAcd from "../../../components/HeaderAcd"
+import HeaderAcd from "../../../components/Header"
 import './assuntoAcd.css'
 
 const AssuntoAcd = () => {
