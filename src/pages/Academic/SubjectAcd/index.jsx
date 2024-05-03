@@ -1,4 +1,3 @@
-import Header from "../../../components/Header"
 import './subjectAcd.css'
 
 const SubjectAcd = () => {
