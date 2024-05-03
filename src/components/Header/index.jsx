@@ -2,13 +2,13 @@ import { RiArrowGoBackLine } from 'react-icons/ri'
 import './header.css'
 import { FaBars } from 'react-icons/fa'
 
-const HeaderAcd = () => {
+const Header = (props) => {
     return (
-        <header className='header-acd'>
+        <header className='header'>
             <span className="icon">
                 <RiArrowGoBackLine className='icon-header' />
             </span>
-            <h1>Acadêmico</h1>
+            <h1> {props.txt} </h1>
             <span className="icon">
                 <FaBars className='icon-header' />
             </span>
@@ -16,4 +16,4 @@ const HeaderAcd = () => {
     )
 }
 
-export default HeaderAcd
+export default Header

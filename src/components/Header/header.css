@@ -1,16 +1,17 @@
-.header-acd{
+.header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 8vh;
-    padding: 0px 64px;
+    height: 7vh;
+    padding: 0px 32px;
     background-color: #fff;
 }
 
-.header-acd h1 {
+.header h1 {
     color: #000;
-    font-weight: 300;
+    font-weight: 600;
     font-size: 1rem;
+    font-family: "Quicksand", sans-serif;
 }
 
 .icon{
