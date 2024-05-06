@@ -6,22 +6,22 @@ const SubjectFinance = () => {
         {
             id: 1,
             name: 'Realizar Pagamento',
-            route: '/financeiro/pagamento'
+            route: '/financeiro/realizar-pagamento'
         },
         {
             id: 2,
             name: 'Realizar Acordo',
-            route: '/financeiro/acordo'
+            route: '/financeiro/realizar-acordo'
         },
         {
             id: 3,
             name: 'Solicitar Documentos',
-            route: '/financeiro/documentos'
+            route: '/financeiro/solicitar-documentos'
         },
         {
             id: 4,
             name: 'Acrescentar ou Trocar Meios de Pagamento',
-            route: '/financeiro/pagamento'
+            route: '/financeiro/acrescentar-ou-trocar-meios-de-pagamento'
         },
         {
             id: 5,

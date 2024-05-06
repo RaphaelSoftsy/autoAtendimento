@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import SubjectAcd from "../pages/Academic/SubjectAcd";
 import SubjectFinance from "../pages/Finance/SubjectFinance";
 import SubjectAva from "../pages/Ava/SubjectAva";
+import RequestDocument from "../pages/Finance/RequestDocument";
 
 const RoutesApp = () => {
     return (
@@ -36,6 +37,7 @@ const FinanceiroRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<SubjectFinance />} />
+            <Route path="/" element={<RequestDocument />} />
         </Routes>
     )
 }
