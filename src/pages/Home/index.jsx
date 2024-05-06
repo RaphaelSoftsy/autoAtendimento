@@ -20,10 +20,10 @@ const Home = () => {
                 </figure>
                 <h1>Sobre qual assunto deseja falar?</h1>
                 <div className='lista-assuntos'>
-                    <ButtonHome name="Financeiro" img= {financas} />
-                    <ButtonHome name="Acadêmico" img= {cap} />
-                    <ButtonHome name="AVA" img= {notebook} />
-                    <ButtonHome name="Problemas na matrícula" img= {notebook} />
+                    <ButtonHome name="Financeiro" img= {financas} rota={"/financeiro"} />
+                    <ButtonHome name="Acadêmico" img= {cap} rota={"/academico"} />
+                    <ButtonHome name="AVA" img= {notebook} rota={"/ava"} />
+                    <ButtonHome name="Problemas na matrícula" img= {notebook} rota={"/"} />
                 </div>
                
             </main>

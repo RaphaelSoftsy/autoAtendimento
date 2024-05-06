@@ -10,7 +10,7 @@ body{
     align-items: start;
 }
 
-.academic{
+.finance{
     padding: 10vh 16px;
     width: 100%;
     height: 100%;
@@ -27,6 +27,7 @@ body{
 .subjects{
     background-color: #fff;
     width: 80vw;
-    height: 350px;
+    height: 950px;
     border-radius: 16px;
 }
+
