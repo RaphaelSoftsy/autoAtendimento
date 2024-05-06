@@ -1,16 +1,24 @@
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Home from "../pages/Home";
-import SubjectAcd from "../pages/Academic/SubjectAcd";
 import Header from "../components/Header";
+import SubjectAcd from "../pages/Academic/SubjectAcd";
+import SubjectFinance from "../pages/Finance/SubjectFinance";
+import SubjectAva from "../pages/Ava/SubjectAva";
 
 const RoutesApp = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/financeiro" element={<FinanceiroRoute>
+                    <FinanceiroRoutes />
+                </FinanceiroRoute>} />
                 <Route path="/academico" element={<AcademicRoute>
                     <AcademicRoutes />
                 </AcademicRoute>} />
+                <Route path="/ava" element={<AvaRoute>
+                    <AvaRoutes />
+                </AvaRoute>} />
             </Routes>
         </BrowserRouter>
     )
@@ -24,10 +32,44 @@ const AcademicRoutes = () => {
     )
 }
 
+const FinanceiroRoutes = () => {
+    return (
+        <Routes>
+            <Route path="/" element={<SubjectFinance />} />
+        </Routes>
+    )
+}
+
+const AvaRoutes = () => {
+    return (
+        <Routes>
+            <Route path="/" element={<SubjectAva />} />
+        </Routes>
+    )
+}
+
 const AcademicRoute = ({ children }) => {
     return (
         <>
-            <Header txt="teste" route="/" />
+            <Header txt="Academico" route="/" />
+            {children}
+        </>
+    )
+}
+
+const FinanceiroRoute = ({ children }) => {
+    return (
+        <>
+            <Header txt="Financeiro" route="/" />
+            {children}
+        </>
+    )
+}
+
+const AvaRoute = ({ children }) => {
+    return (
+        <>
+            <Header txt="Ava" route="/" />
             {children}
         </>
     )
