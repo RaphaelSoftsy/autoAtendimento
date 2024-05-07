@@ -3,7 +3,6 @@ import { Link, useRoutes } from 'react-router-dom';
 import { FaChevronRight } from "react-icons/fa";
 
 const Subject = (props) => {
-    console.log(props);
     return (
         <Link key={props.id} to={props.route} className='topics'>
             <span>{props.name}</span>
