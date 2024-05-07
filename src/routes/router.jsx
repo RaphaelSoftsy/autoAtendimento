@@ -3,8 +3,9 @@ import Home from "../pages/Home";
 import Header from "../components/Header";
 import SubjectAcd from "../pages/Academic/SubjectAcd";
 import ReviewsNotes from "../pages/Academic/ReviewsNotes";
-import SubjectFinance from "../pages/Finance/SubjectFinance";
+import AcademicRequests from "../pages/Academic/AcademicRequests";
 import SubjectAva from "../pages/Ava/SubjectAva";
+import SubjectFinance from "../pages/Finance/SubjectFinance";
 import RequestDocument from "../pages/Finance/RequestDocument";
 import OutherSubjects from "../pages/Finance/OutherSubjects";
 import MonthlyPayment from "../pages/Finance/MonthlyPayment";
@@ -57,6 +58,8 @@ const AcademicRoutes = () => {
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
                 <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
+                <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
+                <Route path="/expedicao-de-documentos" element={<ReviewsNotes />} />
             </Routes>
         </>
     );
