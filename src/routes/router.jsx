@@ -6,6 +6,7 @@ import ReviewsNotes from "../pages/Academic/ReviewsNotes";
 import AcademicRequests from "../pages/Academic/AcademicRequests";
 import Expedition from "../pages/Academic/Expedition";
 import SubjectAva from "../pages/Ava/SubjectAva";
+import ProblemsReviews from "../pages/Ava/ProblemsReviews";
 import SubjectFinance from "../pages/Finance/SubjectFinance";
 import RequestDocument from "../pages/Finance/RequestDocument";
 import OutherSubjects from "../pages/Finance/OutherSubjects";
@@ -74,6 +75,7 @@ const AvaRoutes = () => {
             <Header txt={txtHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectAva />} />
+                <Route path="/problemas-nas-avaliacoes" element={<ProblemsReviews />} />
             </Routes>
         </>
     );
