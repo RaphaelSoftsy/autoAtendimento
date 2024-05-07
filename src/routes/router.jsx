@@ -9,6 +9,7 @@ import OutherSubjects from "../pages/Finance/OutherSubjects";
 import MonthlyPayment from "../pages/Finance/MonthlyPayment";
 import FiesSumare from "../pages/Finance/FiesSumare";
 import CashBack from "../pages/Finance/CashBack";
+import Charges from "../pages/Finance/Charges";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
 import { useContext } from "react";
 
@@ -40,7 +41,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
-                <Route path="/outros-assuntos/cobrança-indevida" element={<FiesSumare />} />
+                <Route path="/outros-assuntos/cobrança-indevida" element={<Charges />} />
             </Routes>
         </>
     );
