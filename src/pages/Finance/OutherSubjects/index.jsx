@@ -6,17 +6,17 @@ const OutherSubjects = () => {
         {
             id: 1,
             name: 'Bolsa',
-            route: '/financeiro/outros-assuntos'
+            route: '/financeiro/outros-assuntos/bolsa'
         },
         {
             id: 2,
             name: 'Reembolso',
-            route: '/financeiro/outros-assuntos'
+            route: '/financeiro/outros-assuntos/reembolso'
         },
         {
             id: 3,
             name: 'Mensalidades, serviços ou acordos com valores divergentes',
-            route: '/financeiro/outros-assuntos'
+            route: '/financeiro/outros-assuntos/mensalidades-servicos'
         },
         {
             id: 4,

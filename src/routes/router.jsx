@@ -6,6 +6,7 @@ import SubjectFinance from "../pages/Finance/SubjectFinance";
 import SubjectAva from "../pages/Ava/SubjectAva";
 import RequestDocument from "../pages/Finance/RequestDocument";
 import OutherSubjects from "../pages/Finance/OutherSubjects";
+import MonthlyPayment from "../pages/Finance/MonthlyPayment";
 
 const RoutesApp = () => {
     return (
@@ -28,6 +29,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/" element={<SubjectFinance />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />
+                <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
             </Routes>
         </>
     );
