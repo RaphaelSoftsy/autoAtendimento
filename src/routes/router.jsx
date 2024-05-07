@@ -2,13 +2,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Header from "../components/Header";
 import SubjectAcd from "../pages/Academic/SubjectAcd";
-import SubjectFinance from "../pages/Finance/SubjectFinance";
+import ReviewsNotes from "../pages/Academic/ReviewsNotes";
+import AcademicRequests from "../pages/Academic/AcademicRequests";
+import Expedition from "../pages/Academic/Expedition";
 import SubjectAva from "../pages/Ava/SubjectAva";
+import SubjectFinance from "../pages/Finance/SubjectFinance";
 import RequestDocument from "../pages/Finance/RequestDocument";
 import OutherSubjects from "../pages/Finance/OutherSubjects";
 import MonthlyPayment from "../pages/Finance/MonthlyPayment";
 import FiesSumare from "../pages/Finance/FiesSumare";
 import CashBack from "../pages/Finance/CashBack";
+import Charges from "../pages/Finance/Charges";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
 import { useContext } from "react";
 
@@ -40,7 +44,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
-                <Route path="/outros-assuntos/cobrança-indevida" element={<FiesSumare />} />
+                <Route path="/outros-assuntos/cobrança-indevida" element={<Charges />} />
             </Routes>
         </>
     );
@@ -54,6 +58,9 @@ const AcademicRoutes = () => {
             <Header txt={txtHeader} route="/" />
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
+                <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
+                <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
+                <Route path="/expedicao-de-documentos" element={<Expedition />} />
             </Routes>
         </>
     );
