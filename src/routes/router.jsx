@@ -9,24 +9,30 @@ import OutherSubjects from "../pages/Finance/OutherSubjects";
 import MonthlyPayment from "../pages/Finance/MonthlyPayment";
 import FiesSumare from "../pages/Finance/FiesSumare";
 import CashBack from "../pages/Finance/CashBack";
+import DataProvider, { DataContext } from "../contexts/DataProvider";
+import { useContext } from "react";
 
 const RoutesApp = () => {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/financeiro/*" element={<FinanceiroRoutes />} />
-                <Route path="/academico/*" element={<AcademicRoutes />} />
-                <Route path="/ava/*" element={<AvaRoutes />} />
-            </Routes>
+            <DataProvider>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/financeiro/*" element={<FinanceiroRoutes />} />
+                    <Route path="/academico/*" element={<AcademicRoutes />} />
+                    <Route path="/ava/*" element={<AvaRoutes />} />
+                </Routes>
+            </DataProvider>
         </BrowserRouter>
     );
 };
 
 const FinanceiroRoutes = () => {
+    const { txtHeader} = useContext(DataContext)
+
     return (
         <>
-            <Header txt="Financeiro" route="/" />
+            <Header txt={txtHeader} route="/" />
             <Routes>
                 <Route path="/" element={<SubjectFinance />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
@@ -41,9 +47,11 @@ const FinanceiroRoutes = () => {
 };
 
 const AcademicRoutes = () => {
+    const { txtHeader} = useContext(DataContext)
+
     return (
         <>
-            <Header txt="Acadêmico" route="/" />
+            <Header txt={txtHeader} route="/" />
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
             </Routes>
@@ -52,9 +60,11 @@ const AcademicRoutes = () => {
 };
 
 const AvaRoutes = () => {
+    const { txtHeader} = useContext(DataContext)
+
     return (
         <>
-            <Header txt="AVA" route="/" />
+            <Header txt={txtHeader} route="/" />
             <Routes>
                 <Route path="/" element={<SubjectAva />} />
             </Routes>
