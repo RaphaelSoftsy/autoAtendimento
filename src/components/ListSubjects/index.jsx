@@ -1,14 +1,42 @@
 import './listSubjects.css'
-import { Link, useRoutes } from 'react-router-dom';
+import { Link, useLocation, useRoutes } from 'react-router-dom';
 import { FaChevronRight } from "react-icons/fa";
 import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataProvider';
 
 const Subject = (props) => {
-    const {setTxtHeader} = useContext(DataContext)
+    const { setTxtHeader } = useContext(DataContext)
+    const { setRouteHeader } = useContext(DataContext)
+    const location = useLocation()
+
+    function oldLocation() {
+        const nowPath = location.pathname
+        let arrayPath = nowPath.split('/')
+
+        let lengthPath = (arrayPath.length - 1)
+        arrayPath.splice(lengthPath, 1)
+
+
+        let arrayOldPath = []
+        arrayPath.forEach((path, index) => {
+            if (path.length > 0) {
+                arrayOldPath.push('/')
+                arrayOldPath.push(path)
+            }
+        })
+        
+        const oldPath = arrayOldPath.filter((item, index) => item !== ';').join('')
+        return oldPath
+    }
 
     return (
-        <Link key={props.id} to={props.route} className='topics' onClick={() => setTxtHeader(props.name)}>
+        <Link key={props.id} to={props.route} className='topics' onClick={() => {
+            localStorage.setItem('txtHeader', props.name)
+            setTxtHeader(props.name)
+
+            localStorage.setItem('routeHeader', oldLocation())
+            setRouteHeader(oldLocation())
+        }}>
             <span>{props.name}</span>
             <FaChevronRight />
         </Link>
@@ -16,11 +44,11 @@ const Subject = (props) => {
 }
 
 const ListSubjects = (props) => {
-    return(
+    return (
         <ul className='list'>
-            {props.itens.map( subject => (
+            {props.itens.map(subject => (
                 <Subject key={subject.id} route={subject.route} name={subject.name} />
-            ))}	
+            ))}
         </ul>
     )
 }
