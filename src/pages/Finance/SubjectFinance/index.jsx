@@ -26,7 +26,7 @@ const SubjectFinance = () => {
         {
             id: 5,
             name: 'Outros Assuntos',
-            route: '/financeiro/outros'
+            route: '/financeiro/outros-assuntos'
         }
     ]
 
