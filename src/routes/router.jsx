@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import SubjectAcd from "../pages/Academic/SubjectAcd";
 import ReviewsNotes from "../pages/Academic/ReviewsNotes";
 import AcademicRequests from "../pages/Academic/AcademicRequests";
+import Expedition from "../pages/Academic/Expedition";
 import SubjectAva from "../pages/Ava/SubjectAva";
 import SubjectFinance from "../pages/Finance/SubjectFinance";
 import RequestDocument from "../pages/Finance/RequestDocument";
@@ -59,7 +60,7 @@ const AcademicRoutes = () => {
                 <Route path="/" element={<SubjectAcd />} />
                 <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
-                <Route path="/expedicao-de-documentos" element={<ReviewsNotes />} />
+                <Route path="/expedicao-de-documentos" element={<Expedition />} />
             </Routes>
         </>
     );
