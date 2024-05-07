@@ -21,17 +21,17 @@ const OutherSubjects = () => {
         {
             id: 4,
             name: 'Fies/Super Sumaré',
-            route: '/financeiro/outros-assuntos'
+            route: '/financeiro/outros-assuntos/fies-sumare'
         },
         {
             id: 5,
             name: 'CashBack',
-            route: '/financeiro/outros-assuntos'
+            route: '/financeiro/outros-assuntos/cashback'
         },
         {
             id: 6,
             name: 'Cobrança Indevida',
-            route: '/financeiro/outros-assuntos'
+            route: '/financeiro/outros-assuntos/cobrança-indevida'
         },
         {
             id: 7,
