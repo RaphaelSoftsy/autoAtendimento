@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Header from "../components/Header";
 import SubjectAcd from "../pages/Academic/SubjectAcd";
+import ReviewsNotes from "../pages/Academic/ReviewsNotes";
 import SubjectFinance from "../pages/Finance/SubjectFinance";
 import SubjectAva from "../pages/Ava/SubjectAva";
 import RequestDocument from "../pages/Finance/RequestDocument";
@@ -55,6 +56,7 @@ const AcademicRoutes = () => {
             <Header txt={txtHeader} route="/" />
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
+                <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
             </Routes>
         </>
     );
