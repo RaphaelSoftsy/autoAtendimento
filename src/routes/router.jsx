@@ -32,11 +32,11 @@ const RoutesApp = () => {
 };
 
 const FinanceiroRoutes = () => {
-    const { txtHeader} = useContext(DataContext)
+    const { txtHeader, routeHeader} = useContext(DataContext)
 
     return (
         <>
-            <Header txt={txtHeader} route="/" />
+            <Header txt={txtHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectFinance />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
@@ -51,11 +51,11 @@ const FinanceiroRoutes = () => {
 };
 
 const AcademicRoutes = () => {
-    const { txtHeader} = useContext(DataContext)
+    const { txtHeader, routeHeader} = useContext(DataContext)
 
     return (
         <>
-            <Header txt={txtHeader} route="/" />
+            <Header txt={txtHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
                 <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
@@ -67,11 +67,11 @@ const AcademicRoutes = () => {
 };
 
 const AvaRoutes = () => {
-    const { txtHeader} = useContext(DataContext)
+    const { txtHeader, routeHeader} = useContext(DataContext)
 
     return (
         <>
-            <Header txt={txtHeader} route="/" />
+            <Header txt={txtHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectAva />} />
             </Routes>

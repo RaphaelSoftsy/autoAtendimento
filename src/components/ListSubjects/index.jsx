@@ -5,8 +5,7 @@ import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataProvider';
 
 const Subject = (props) => {
-    const { setTxtHeader } = useContext(DataContext)
-    const { setRouteHeader } = useContext(DataContext)
+    const { txtHeader, setTxtHeader, setRouteHeader, setOldTextHeader } = useContext(DataContext)
     const location = useLocation()
 
     function oldLocation() {
@@ -31,6 +30,8 @@ const Subject = (props) => {
 
     return (
         <Link key={props.id} to={props.route} className='topics' onClick={() => {
+            //setOldTextHeader(txtHeader)
+
             localStorage.setItem('txtHeader', props.name)
             setTxtHeader(props.name)
 
