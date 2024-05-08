@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const ListSubjectsCheck = ({ itens, selectedSubject, onSelect }) => {
 
-    const handleClick = (id) => {
-        onSelect(id);
-    };
+    // const handleClick = (id) => {
+    //     onSelect(id);
+    // };
 
     return (
         <ul className='list'>
