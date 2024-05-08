@@ -1,33 +1,27 @@
 import './listSubjectsCheck.css'
-import { Link } from 'react-router-dom';
 
-const ListSubjectsCheck = ({ itens, selectedSubject, onSelect }) => {
-
-    // const handleClick = (id) => {
-    //     onSelect(id);
-    // };
+const ListSubjectsCheck = ({ items, selectedSubjects, onSelect }) => {
+    const handleClick = (id) => {
+        onSelect(id);
+    };
 
     return (
         <ul className='list'>
-            {itens.map(subject => (
-                <Link
-                    key={subject.id}
-                    to={subject.route}
-                    className='topics'
-                    onClick={() => handleClick(subject.id)}
-                >
+            {items.map(subject => (
+                <li key={subject.id} className='topics'>
                     <input
                         type="checkbox"
-                        id={`subject-${subject.id}`}
-                        name={`subject-${subject.id}`}
-                        checked={selectedSubject === subject.id}
+                        checked={selectedSubjects.includes(subject.id)}
                         onChange={() => handleClick(subject.id)}
                     />
-                    <label htmlFor={`subject-${subject.id}`}>{subject.name}</label>
-                </Link>
+                    <label>
+                        {subject.name}
+                    </label>
+                </li>
             ))}
         </ul>
     );
 };
+
 
 export default ListSubjectsCheck

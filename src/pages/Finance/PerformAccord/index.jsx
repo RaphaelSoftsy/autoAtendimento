@@ -3,44 +3,48 @@ import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
 import { useState } from 'react';
 
 const PerformAccord = () => {
+    const [selectedSubjects, setSelectedSubjects] = useState([]);
 
-    const [selectedSubject, setSelectedSubject] = useState(null);
-
-    //não esquecer de colocar o e de volta em rout
     const list = [
         {
             id: 1,
             name: 'Mensalidade 1/3',
-            rout: '/financeiro/realizar-pagamento'
+            route: '/financeiro/realizar-pagamento'
         },
         {
             id: 2,
             name: 'Mensalidade 2/3',
-            rout: '/financeiro/realizar-acordo'
+            route: '/financeiro/realizar-acordo'
         },
         {
             id: 3,
             name: 'Mensalidade 3/3',
-            rout: '/financeiro/solicitar-documentos'
+            route: '/financeiro/solicitar-documentos'
         }
-    ]
+    ];
 
     const handleSubjectSelect = (id) => {
-        setSelectedSubject(id);
+        setSelectedSubjects(prevSelected => {
+            if (prevSelected.includes(id)) {
+                return prevSelected.filter(subjectId => subjectId !== id);
+            } else {
+                return [...prevSelected, id];
+            }
+        });
     };
 
     return (
         <div className="perform-accord">
             <div className='list-subjects'>
-                <h1 className='title'>Sobre qual assunto deseja falar?</h1>
+                <h1 className='title'>Sobre quais assuntos deseja falar?</h1>
                 <ListSubjectsCheck
-                    itens={list}
-                    selectedSubject={selectedSubject} 
+                    items={list}
+                    selectedSubjects={selectedSubjects}
                     onSelect={handleSubjectSelect}
                 />
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default PerformAccord
