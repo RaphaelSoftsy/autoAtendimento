@@ -5,6 +5,7 @@ import SubjectAcd from "../pages/Academic/SubjectAcd";
 import ReviewsNotes from "../pages/Academic/ReviewsNotes";
 import AcademicRequests from "../pages/Academic/AcademicRequests";
 import Expedition from "../pages/Academic/Expedition";
+import UtilizationStudies from "../pages/Academic/UtilizationStudies";
 import SubjectAva from "../pages/Ava/SubjectAva";
 import ProblemsReviews from "../pages/Ava/ProblemsReviews";
 import SubjectFinance from "../pages/Finance/SubjectFinance";
@@ -62,6 +63,7 @@ const AcademicRoutes = () => {
                 <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
+                <Route path="/expedicao-de-documentos/aproveitamento-de-estudos" element={<UtilizationStudies />} />
             </Routes>
         </>
     );
