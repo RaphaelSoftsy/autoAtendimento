@@ -11,12 +11,12 @@ const SubjectAcd = () => {
         },
         {
             id: 2,
-            name: 'Matricula em Reprovação/Adaptação',
+            name: 'Matrícula em Reprovação/Adaptação',
             route: '/academico/matricula-em-reprovacao-adaptacao'
         },
         {
             id: 3,
-            name: 'Solicitações Academicas',
+            name: 'Solicitações Acadêmicas',
             route: '/academico/solicitacoes-academicas'
         },
         {
