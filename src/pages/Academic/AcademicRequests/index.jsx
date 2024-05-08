@@ -11,7 +11,7 @@ const AcademicRequests = () => {
         {
             id: 2,
             name: 'Solicitação de Prova',
-            route: '/academico/expedicao-de-documentos/solicitação-de-prova'
+            route: '/academico/expedicao-de-documentos/solicitacao-de-prova'
         },
         {
             id: 3,
