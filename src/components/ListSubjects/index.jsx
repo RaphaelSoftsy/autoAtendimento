@@ -29,7 +29,7 @@ const Subject = (props) => {
     }
 
     return (
-        <Link key={props.id} to={props.route} className='topics' onClick={() => {
+        <Link key={props.id} to={props.route} className='topic' onClick={() => {
             //setOldTextHeader(txtHeader)
 
             localStorage.setItem('txtHeader', props.name)

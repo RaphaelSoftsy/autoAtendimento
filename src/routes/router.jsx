@@ -11,6 +11,7 @@ import Internship from "../pages/Academic/Internship";
 import SubjectAva from "../pages/Ava/SubjectAva";
 import ProblemsReviews from "../pages/Ava/ProblemsReviews";
 import SubjectFinance from "../pages/Finance/SubjectFinance";
+import PerformAccord from "../pages/Finance/PerformAccord";
 import RequestDocument from "../pages/Finance/RequestDocument";
 import OutherSubjects from "../pages/Finance/OutherSubjects";
 import MonthlyPayment from "../pages/Finance/MonthlyPayment";
@@ -43,6 +44,7 @@ const FinanceiroRoutes = () => {
             <Header txt={txtHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectFinance />} />
+                <Route path="/realizar-acordo" element={<PerformAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
