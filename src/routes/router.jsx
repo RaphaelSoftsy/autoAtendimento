@@ -7,6 +7,7 @@ import AcademicRequests from "../pages/Academic/AcademicRequests";
 import Expedition from "../pages/Academic/Expedition";
 import UtilizationStudies from "../pages/Academic/UtilizationStudies";
 import ProofRequest from "../pages/Academic/ProofRequest";
+import Internship from "../pages/Academic/Internship";
 import SubjectAva from "../pages/Ava/SubjectAva";
 import ProblemsReviews from "../pages/Ava/ProblemsReviews";
 import SubjectFinance from "../pages/Finance/SubjectFinance";
@@ -66,7 +67,7 @@ const AcademicRoutes = () => {
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
                 <Route path="/expedicao-de-documentos/aproveitamento-de-estudos" element={<UtilizationStudies />} />
                 <Route path="/expedicao-de-documentos/solicitacao-de-prova" element={<ProofRequest />} />
-                <Route path="/expedicao-de-documentos/estagio" element={<ProofRequest />} />
+                <Route path="/expedicao-de-documentos/estagio" element={<Internship />} />
             </Routes>
         </>
     );
