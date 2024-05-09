@@ -6,15 +6,13 @@ import { DataContext } from '../../contexts/DataProvider'
 import { useContext } from 'react'
 
 const Header = (props) => {
-    const { setTxtHeader, txtHeader, setRouteHeader } = useContext(DataContext)
+    const {setRouteHeader } = useContext(DataContext)
     const navigate = useNavigate()
     const location = useLocation()
     
     return (
         <header className='header'>
             <span className="icon" onClick={() => {
-                const txt = txtHeader
-                setTxtHeader(txt.splice(0, 1))
                 if(location.pathname == '/financeiro'){
                     navigate('/')
                 }else{

@@ -35,7 +35,7 @@ const PerformAccord = () => {
         <>
             <div className="perform-accord">
                 <div className='list-subjects'>
-                    <h1 className='title'>Sobre quais assuntos deseja falar?</h1>
+                    <h1 className='title'>Selecione as cobranças que você deseja incluir no acordo:</h1>
                     <ListSubjectsCheck
                         items={list}
                         selectedSubjects={selectedSubjects}

@@ -11,16 +11,18 @@ import Internship from "../pages/Academic/Internship";
 import SubjectAva from "../pages/Ava/SubjectAva";
 import ProblemsReviews from "../pages/Ava/ProblemsReviews";
 import SubjectFinance from "../pages/Finance/SubjectFinance";
-import PerformAccord from "../pages/Finance/PerformAccord";
 import RequestDocument from "../pages/Finance/RequestDocument";
 import OutherSubjects from "../pages/Finance/OutherSubjects";
 import MonthlyPayment from "../pages/Finance/MonthlyPayment";
 import FiesSumare from "../pages/Finance/FiesSumare";
 import CashBack from "../pages/Finance/CashBack";
 import Charges from "../pages/Finance/Charges";
+import PerformAccord from "../pages/Finance/PerformAccord";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
 import { useContext, useEffect, useState } from "react";
 import listRoutesFinanceiro from "../hook/routes";
+import AddSwapPayment from "../pages/Finance/AddSwapPayment";
+
 
 const RoutesApp = () => {
     return (
@@ -57,6 +59,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/" element={<SubjectFinance />} />
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
+                <Route path="/acrescentar-ou-trocar-meios-de-pagamento" element={<AddSwapPayment />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />

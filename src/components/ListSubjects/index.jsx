@@ -5,18 +5,13 @@ import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataProvider';
 
 const Subject = (props) => {
-    const { txtHeader, setTxtHeader, setRouteHeader, routeHeader } = useContext(DataContext)
+    const {setRouteHeader, routeHeader } = useContext(DataContext)
     const location = useLocation()
 
     return (
         <Link key={props.id} to={props.route} className='topic' onClick={() => {
             localStorage.setItem('routeHeader', location.pathname)
             setRouteHeader(location.pathname)
-
-            let listTxt = txtHeader
-            listTxt.push(props.name)
-            setTxtHeader(listTxt)
-            localStorage.setItem('txtHeader', JSON.stringify(listTxt))
         }}>
             <span>{props.name}</span>
             <FaChevronRight />
