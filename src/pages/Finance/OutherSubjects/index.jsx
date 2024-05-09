@@ -36,7 +36,7 @@ const OutherSubjects = () => {
         {
             id: 7,
             name: 'Resgate de Cheques',
-            route: '/financeiro/outros-assuntos'
+            route: '/financeiro/outros-assuntos/resgate-cheque'
         }
     ]
 

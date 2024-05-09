@@ -9,14 +9,35 @@ const Header = (props) => {
     const {setRouteHeader } = useContext(DataContext)
     const navigate = useNavigate()
     const location = useLocation()
+
+    function oldLocation() {
+        const nowPath = location.pathname
+        let arrayPath = nowPath.split('/')
+
+        let lengthPath = (arrayPath.length - 1)
+        arrayPath.splice(lengthPath, 1)
+
+
+        let arrayOldPath = []
+        arrayPath.forEach((path, index) => {
+            if (path.length > 0) {
+                arrayOldPath.push('/')
+                arrayOldPath.push(path)
+            }
+        })
+
+        const oldPath = arrayOldPath.filter((item, index) => item !== ';').join('')
+        return oldPath
+    }
     
     return (
         <header className='header'>
             <span className="icon" onClick={() => {
+                console.log(props.route);
                 if(location.pathname == '/financeiro'){
                     navigate('/')
                 }else{
-                    navigate(props.route)
+                    navigate(oldLocation())
                 }
             }}>
                 <RiArrowGoBackLine className='icon-header' />
