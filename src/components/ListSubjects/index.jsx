@@ -9,7 +9,7 @@ const Subject = (props) => {
     const location = useLocation()
 
     return (
-        <Link key={props.id} to={props.route} className='topics' onClick={() => {
+        <Link key={props.id} to={props.route} className='topic' onClick={() => {
             localStorage.setItem('routeHeader', location.pathname)
             setRouteHeader(location.pathname)
 
