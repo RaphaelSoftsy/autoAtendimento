@@ -20,8 +20,8 @@ import Charges from "../pages/Finance/Charges";
 import PerformAccord from "../pages/Finance/PerformAccord";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
 import { useContext, useEffect, useState } from "react";
-import listRoutesFinanceiro from "../hook/routes";
 import AddSwapPayment from "../pages/Finance/AddSwapPayment";
+import {listRoutesAcademic, listRoutesFinanceiro} from "../hook/routes";
 
 
 const RoutesApp = () => {
@@ -47,7 +47,7 @@ const FinanceiroRoutes = () => {
     useEffect(() => {
         listRoutesFinanceiro.find( rt => {
             if(rt.route == location.pathname){
-                setNameHeader(rt.name)
+                setNameHeader(rt.header)
             }
         })
     })
@@ -71,11 +71,21 @@ const FinanceiroRoutes = () => {
 };
 
 const AcademicRoutes = () => {
-    const { txtHeader, routeHeader} = useContext(DataContext)
+    const {routeHeader} = useContext(DataContext)
+    const location = useLocation()
+    const [nameHeader, setNameHeader] = useState('Acadêmico')
+
+    useEffect(() => {
+        listRoutesAcademic.find( rt => {
+            if(rt.route == location.pathname){
+                setNameHeader(rt.header)
+            }
+        })
+    })
 
     return (
         <>
-            <Header txt={txtHeader} route={routeHeader} />
+            <Header txt={nameHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
                 <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
@@ -90,11 +100,21 @@ const AcademicRoutes = () => {
 };
 
 const AvaRoutes = () => {
-    const { txtHeader, routeHeader} = useContext(DataContext)
+    const {routeHeader} = useContext(DataContext)
+    const location = useLocation()
+    const [nameHeader, setNameHeader] = useState('Acadêmico')
+
+    useEffect(() => {
+        listRoutesFinanceiro.find( rt => {
+            if(rt.route == location.pathname){
+                setNameHeader(rt.header)
+            }
+        })
+    })
 
     return (
         <>
-            <Header txt={txtHeader} route={routeHeader} />
+            <Header txt={nameHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectAva />} />
                 <Route path="/problemas-nas-avaliacoes" element={<ProblemsReviews />} />
