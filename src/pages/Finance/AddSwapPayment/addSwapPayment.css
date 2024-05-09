@@ -1,21 +1,37 @@
-main {
+.main {
     width: 100%;
-    height: 93vh;
+    height: auto;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 0px;
 }
 
 .plano-recorrencia-ou-mensal{
-    padding: 5vh 16px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.plano-atual{
+    font-size: 20px;
+    background-color: #019ed3;
+    padding: 10px;
+    border-radius: 10px;
+    width: auto;
+    display: flex;
     gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .meio-pagamento{
-    padding: 5vh 16px;
+    font-size: clamp(1.25rem, 1.125rem + 0.5vw, 1.5rem);
+}
+
+.buttons{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 20px;
 }

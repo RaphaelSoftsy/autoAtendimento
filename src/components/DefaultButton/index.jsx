@@ -8,7 +8,6 @@ const DefaultButton = (props) => {
   const style = {
     backgroundColor: props.backgroundColor,
     color: props.color,
-    transition: 'all 0.5s',
     opacity: isHovered ? 0.8 : 1
   };
 

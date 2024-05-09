@@ -12,9 +12,19 @@
     font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
     font-family: "Quicksand", sans-serif;
     background-color: #fff;
-    color: #000;
+    color: #121212;
     padding: 20px;
-    width: 80%;
-    border-radius: 9px;
-    box-shadow: 0px 5px 14px -7px #2e2e2e;
+    width: 60vw;
+    border-radius: 12px;
+    box-shadow: 0px 7px 11px -1px #0b2442;
+}
+
+.card label {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .card{
+        width: 80vw;
+    }
 }
