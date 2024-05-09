@@ -31,3 +31,10 @@ body{
     border-radius: 16px;
 }
 
+.footer-container{
+    height: 32vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+

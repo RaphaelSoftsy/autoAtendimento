@@ -14,7 +14,7 @@ const ListSubjectsCheck = ({ items, selectedSubjects, onSelect }) => {
                         checked={selectedSubjects.includes(subject.id)}
                         onChange={() => handleClick(subject.id)}
                     />
-                    <label>
+                    <label onClick={() => handleClick(subject.id)}>
                         {subject.name}
                     </label>
                 </li>
