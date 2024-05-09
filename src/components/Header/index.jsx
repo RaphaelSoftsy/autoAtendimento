@@ -34,7 +34,7 @@ const Header = (props) => {
         <header className='header'>
             <span className="icon" onClick={() => {
                 console.log(props.route);
-                if(location.pathname == '/financeiro'){
+                if(location.pathname == '/financeiro' || location.pathname == '/academico' || location.pathname == '/ava'){
                     navigate('/')
                 }else{
                     navigate(oldLocation())

@@ -361,6 +361,12 @@ export const listRoutesAcademic = [
         name: 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)',
         header: 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)',
         route: '/academico/expedicao-de-documentos/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades'
+    },
+    {
+        id: 32,
+        name: 'Acadêmico',
+        header: 'Acadêmico',
+        route: '/academico'
     }  
 ];
 

@@ -22,6 +22,7 @@ import DataProvider, { DataContext } from "../contexts/DataProvider";
 import { useContext, useEffect, useState } from "react";
 import AddSwapPayment from "../pages/Finance/AddSwapPayment";
 import {listRoutesAcademic, listRoutesFinanceiro} from "../hook/routes";
+import Handbag from "../pages/Finance/Handbag";
 
 
 const RoutesApp = () => {
@@ -65,6 +66,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
                 <Route path="/outros-assuntos/cobrança-indevida" element={<Charges />} />
+                <Route path="/outros-assuntos/bolsa" element={<Handbag />} />
             </Routes>
         </>
     );
