@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from "../pages/Home";
 import Header from "../components/Header";
 import SubjectAcd from "../pages/Academic/SubjectAcd";
@@ -19,7 +19,8 @@ import FiesSumare from "../pages/Finance/FiesSumare";
 import CashBack from "../pages/Finance/CashBack";
 import Charges from "../pages/Finance/Charges";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import listRoutesFinanceiro from "../hook/routes";
 
 const RoutesApp = () => {
     return (
@@ -37,11 +38,21 @@ const RoutesApp = () => {
 };
 
 const FinanceiroRoutes = () => {
-    const { txtHeader, routeHeader} = useContext(DataContext)
+    const {routeHeader} = useContext(DataContext)
+    const location = useLocation()
+    const [nameHeader, setNameHeader] = useState('Financeiro')
+
+    useEffect(() => {
+        listRoutesFinanceiro.find( rt => {
+            if(rt.route == location.pathname){
+                setNameHeader(rt.name)
+            }
+        })
+    })
 
     return (
         <>
-            <Header txt={txtHeader} route={routeHeader} />
+            <Header txt={nameHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectFinance />} />
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
