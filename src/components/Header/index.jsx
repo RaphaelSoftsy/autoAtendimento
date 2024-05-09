@@ -1,19 +1,25 @@
 import { RiArrowGoBackLine } from 'react-icons/ri'
 import './header.css'
 import { FaBars } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { DataContext } from '../../contexts/DataProvider'
 import { useContext } from 'react'
 
 const Header = (props) => {
-    const { setTxtHeader, oldTxtHeader } = useContext(DataContext)
+    const { setTxtHeader, txtHeader, setRouteHeader } = useContext(DataContext)
     const navigate = useNavigate()
+    const location = useLocation()
     
-    //console.log(oldTxtHeader);
     return (
         <header className='header'>
             <span className="icon" onClick={() => {
-                navigate(props.route)
+                const txt = txtHeader
+                setTxtHeader(txt.splice(0, 1))
+                if(location.pathname == '/financeiro'){
+                    navigate('/')
+                }else{
+                    navigate(props.route)
+                }
             }}>
                 <RiArrowGoBackLine className='icon-header' />
             </span>
