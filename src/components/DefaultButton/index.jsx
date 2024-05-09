@@ -1,14 +1,28 @@
+import React, { useState } from 'react';
+
 import './defaultButton.css'
 
 const DefaultButton = (props) => {
-    const style = {
-        backgroundColor: props.backgroundColor,
-        color: props.color
-    }
+  const [isHovered, setIsHovered] = useState(false);
 
-    return(
-        <div style={style} onClick={props.onClick} className='default-button'>{props.txt}</div>
-    )
-}
+  const style = {
+    backgroundColor: props.backgroundColor,
+    color: props.color,
+    transition: 'all 0.5s',
+    opacity: isHovered ? 0.8 : 1
+  };
+
+  return (
+    <div
+      style={style}
+      onClick={props.onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className='default-button'
+    >
+      {props.text}
+    </div>
+  );
+};
 
 export default DefaultButton;

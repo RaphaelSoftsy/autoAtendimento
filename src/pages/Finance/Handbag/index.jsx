@@ -1,9 +1,10 @@
 import DefaultButton from "../../../components/DefaultButton"
+import './handbag.css'
 
 const Handbag = () => {
     return (
         <main className="handbag">
-            <DefaultButton txt='Enviar Solicitação' backgroundColor='#019ED3'/>
+            <DefaultButton text='Enviar Solicitação' backgroundColor='#019ED3'/>
         </main>
     )
 }
