@@ -26,6 +26,10 @@
     grid-template-columns: 1em auto;
 }
 
+.topics label {
+    width: 100%;
+    display: flex;
+}
 
 .topics label:hover {
     color: #019ED3;
