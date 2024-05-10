@@ -23,6 +23,7 @@ import { useContext, useEffect, useState } from "react";
 import AddSwapPayment from "../pages/Finance/AddSwapPayment";
 import {listRoutesAcademic, listRoutesFinanceiro} from "../hook/routes";
 import Handbag from "../pages/Finance/Handbag";
+import AddCreditCard from "../pages/Finance/AddCreditCard";
 
 
 const RoutesApp = () => {
@@ -61,6 +62,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/acrescentar-ou-trocar-meios-de-pagamento" element={<AddSwapPayment />} />
+                <Route path="/adicionar-cartao" element={<AddCreditCard />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
