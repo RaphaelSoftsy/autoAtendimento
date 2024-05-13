@@ -17,13 +17,13 @@
     padding: 20px;
     margin-top: 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 250px;
     width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position:  absolute;
-    z-index: 1;
+    position:  relative;
+    margin-bottom: -290px;
+    min-height: 250px;
 }
 
 
@@ -32,13 +32,14 @@
     border-radius: 10px;
     padding: 20px;
     width: 100%;
-    box-sizing: border-box; /* Para incluir padding na largura total */
+    box-sizing: border-box;
   }
 
 .banner-card {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
 }
 
 .card-data{
@@ -104,11 +105,8 @@
     border-radius: 5px;
     box-shadow: none;
     border: 1px solid #ced6e0;
-    transition: all 0.3s ease-in-out;
-    font-size: 18px;
+    font-size: 1.2em;
     padding: 5px 15px;
-    background: none;
-    color: #1a3b5d;
     font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -118,11 +116,8 @@
     border-radius: 5px;
     box-shadow: none;
     border: 1px solid #ced6e0;
-    transition: all 0.3s ease-in-out;
-    font-size: 18px;
+    font-size: 1.2em;
     padding: 5px 15px;
-    background: none;
-    color: #1a3b5d;
     font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -132,67 +127,86 @@
     border-radius: 5px;
     box-shadow: none;
     border: 1px solid #ced6e0;
-    transition: all 0.3s ease-in-out;
-    font-size: 18px;
+    font-size: 1.2em;
     padding: 5px 15px;
-    background: none;
-    color: #1a3b5d;
     font-family: "Source Sans Pro", sans-serif;
 }
 
 select {
     width: 100%;
     padding: 8px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-
-/* .card-preview span {
-    margin-bottom: 10px;
-}
-
-.card-preview .card-number {
     font-size: 1.2em;
-}
-
-.card-preview .card-name {
-    font-size: 0.9em;
-}
-
-.card-preview .card-expiration {
-    font-size: 0.9em;
-}
-
-.card-preview .card-brand {
-    width: 50px;
-    margin-top: 10px;
-}
-
-.input-container {
-    margin-bottom: 15px;
-}
-
-.input-container label {
-    display: block;
-    font-size: 0.8em;
-    margin-bottom: 5px;
-}
-
-.input-container input {
-    width: 100%;
-    padding: 8px;
-    font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 5px;
+    height: 50px;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
-.expiration-cvv {
-    display: flex;
+.cadastro{
+    font-weight: 500;
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+    font-family: "Quicksand", sans-serif;
+    background-color: #103C6B;
+    padding: 20px;
+    width: 100%;
+    border-radius: 9px;
+    box-shadow: 0px 5px 14px -7px #2e2e2e;
 }
 
-.expiration-cvv input {
-    flex: 1;
-    margin-right: 10px;
-} */
+
+@media (max-width: 600px) {
+
+    .number-card span {
+        font-size: 1.5rem;
+    }
+
+    .name-validity-card-value span{
+        font-size: 1rem;
+    }
+
+    .card-form-container {
+        width: 95%;
+        margin-top: 25vh;
+    }
+
+    .card-preview {
+        width: 80%;
+        min-height: 190px;
+    }
+
+    .expiration-cvv {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+    }
+
+    .title-card-form{
+        width: 100%;
+    }
+
+    .title-card-form-validaty input{
+        width: 100%;
+    }
+
+    .title-card-form-cvv{
+        width: 100%;
+        display: flex;
+        align-items: start;
+    }
+
+    .title-card-form-cvv input{
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 400px) {
+    .number-card span {
+        font-size: 1.1rem;
+    }
+    .card-preview {
+        width: 80%;
+        min-height: 170px;
+    }
+}
