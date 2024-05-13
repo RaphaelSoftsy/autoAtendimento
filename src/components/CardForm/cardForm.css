@@ -171,7 +171,7 @@ select {
 
     .card-preview {
         width: 80%;
-        min-height: 190px;
+        min-height: 210px;
     }
 
     .expiration-cvv {
@@ -208,5 +208,21 @@ select {
     .card-preview {
         width: 80%;
         min-height: 170px;
+    }
+    .card-form-container {
+        width: 95%;
+        margin-top: 30vh;
+    }
+}
+
+@media (max-height: 1280px) {
+    .card-form-container{
+        margin-top: 21vh;
+    }
+}
+
+@media (max-height: 1000px) {
+    .card-form-container{
+        margin-top: 33vh;
     }
 }
