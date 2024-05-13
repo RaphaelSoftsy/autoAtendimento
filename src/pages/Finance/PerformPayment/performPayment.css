@@ -1,0 +1,32 @@
+.perform-payment{
+    padding: 10vh 16px;
+    width: 100%;
+    min-height: 61vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-payment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    padding: 10px 32px;
+    background-color: #fff;
+}
+
+.total{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5vw;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    color: #424242;
+}
+
+.total span{
+    font-weight: 800;
+}

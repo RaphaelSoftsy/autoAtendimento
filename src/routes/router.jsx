@@ -18,6 +18,7 @@ import FiesSumare from "../pages/Finance/FiesSumare";
 import CashBack from "../pages/Finance/CashBack";
 import Charges from "../pages/Finance/Charges";
 import PerformAccord from "../pages/Finance/PerformAccord";
+import PerformPayment from "../pages/Finance/PerformPayment";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
 import { useContext, useEffect, useState } from "react";
 import AddSwapPayment from "../pages/Finance/AddSwapPayment";
@@ -59,6 +60,7 @@ const FinanceiroRoutes = () => {
             <Header txt={nameHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectFinance />} />
+                <Route path="/realizar-pagamento" element={<PerformPayment />} />
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/acrescentar-ou-trocar-meios-de-pagamento" element={<AddSwapPayment />} />
