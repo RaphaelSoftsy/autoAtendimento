@@ -29,6 +29,7 @@ import AddSwapPayment from "../pages/Finance/AddSwapPayment";
 import Handbag from "../pages/Finance/Handbag";
 import AddCreditCard from "../pages/Finance/AddCreditCard";
 import FinancialStatement from "../pages/Finance/FinancialStatement";
+import SendDeclarationFinancial from "../pages/Finance/SendDeclarationFinancial";
 
 
 const RoutesApp = () => {
@@ -68,6 +69,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/solicitar-documentos/declaracao-financeira" element={<FinancialStatement />} />
+                <Route path="/solicitar-documentos/declaracao-financeira/emitir-declaracao" element={<SendDeclarationFinancial />} />
                 <Route path="/acrescentar-ou-trocar-meios-de-pagamento" element={<AddSwapPayment />} />
                 <Route path="/adicionar-cartao" element={<AddCreditCard />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />

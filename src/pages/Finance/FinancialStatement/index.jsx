@@ -3,7 +3,8 @@ import './financialStatement.css'
 
 const FinancialStatement = () => {
     return (
-        <>        <main className='financial-statement'>
+        <>        
+        <main className='financial-statement'>
             <div className='list-subjects'>
                 <h1 className='title'>Selecione o Ano e Periodo desejado</h1>
                 <div className='select-year'>
@@ -16,7 +17,7 @@ const FinancialStatement = () => {
             </div>
         </main>
             <div className="footer-container">
-                <Footer text='Emitir Declação' />
+                <Footer text='Emitir Declação' route='/financeiro/solicitar-documentos/declaracao-financeira/emitir-declaracao'/>
             </div>
         </>
     )
