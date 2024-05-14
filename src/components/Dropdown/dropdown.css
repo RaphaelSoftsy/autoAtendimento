@@ -1,0 +1,5 @@
+.opt-drop{
+    &[value="hide"]{
+        display: none;
+    }
+}
