@@ -1,15 +1,21 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import Home from "../pages/Home";
 import Header from "../components/Header";
+import DataProvider, { DataContext } from "../contexts/DataProvider";
+import {listRoutesAcademic, listRoutesFinanceiro} from "../hook/routes";
+
 import SubjectAcd from "../pages/Academic/SubjectAcd";
 import ReviewsNotes from "../pages/Academic/ReviewsNotes";
 import AcademicRequests from "../pages/Academic/AcademicRequests";
 import Expedition from "../pages/Academic/Expedition";
 import UtilizationStudies from "../pages/Academic/UtilizationStudies";
 import ProofRequest from "../pages/Academic/ProofRequest";
+
 import Internship from "../pages/Academic/Internship";
 import SubjectAva from "../pages/Ava/SubjectAva";
 import ProblemsReviews from "../pages/Ava/ProblemsReviews";
+
 import SubjectFinance from "../pages/Finance/SubjectFinance";
 import RequestDocument from "../pages/Finance/RequestDocument";
 import OutherSubjects from "../pages/Finance/OutherSubjects";
@@ -19,12 +25,10 @@ import CashBack from "../pages/Finance/CashBack";
 import Charges from "../pages/Finance/Charges";
 import PerformAccord from "../pages/Finance/PerformAccord";
 import PerformPayment from "../pages/Finance/PerformPayment";
-import DataProvider, { DataContext } from "../contexts/DataProvider";
-import { useContext, useEffect, useState } from "react";
 import AddSwapPayment from "../pages/Finance/AddSwapPayment";
-import {listRoutesAcademic, listRoutesFinanceiro} from "../hook/routes";
 import Handbag from "../pages/Finance/Handbag";
 import AddCreditCard from "../pages/Finance/AddCreditCard";
+import FinancialStatement from "../pages/Finance/FinancialStatement";
 
 
 const RoutesApp = () => {
@@ -63,6 +67,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/realizar-pagamento" element={<PerformPayment />} />
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
+                <Route path="/solicitar-documentos/declaracao-financeira" element={<FinancialStatement />} />
                 <Route path="/acrescentar-ou-trocar-meios-de-pagamento" element={<AddSwapPayment />} />
                 <Route path="/adicionar-cartao" element={<AddCreditCard />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />
