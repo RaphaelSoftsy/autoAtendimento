@@ -18,11 +18,13 @@ import FiesSumare from "../pages/Finance/FiesSumare";
 import CashBack from "../pages/Finance/CashBack";
 import Charges from "../pages/Finance/Charges";
 import PerformAccord from "../pages/Finance/PerformAccord";
+import PerformPayment from "../pages/Finance/PerformPayment";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
 import { useContext, useEffect, useState } from "react";
 import AddSwapPayment from "../pages/Finance/AddSwapPayment";
 import {listRoutesAcademic, listRoutesFinanceiro} from "../hook/routes";
 import Handbag from "../pages/Finance/Handbag";
+import AddCreditCard from "../pages/Finance/AddCreditCard";
 
 
 const RoutesApp = () => {
@@ -58,9 +60,11 @@ const FinanceiroRoutes = () => {
             <Header txt={nameHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectFinance />} />
+                <Route path="/realizar-pagamento" element={<PerformPayment />} />
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/acrescentar-ou-trocar-meios-de-pagamento" element={<AddSwapPayment />} />
+                <Route path="/adicionar-cartao" element={<AddCreditCard />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
