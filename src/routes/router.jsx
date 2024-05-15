@@ -35,6 +35,9 @@ import DischargeDeclaration from "../pages/Finance/DischargeDeclaration";
 import TuitionMonthlyService from "../pages/Finance/MonthlyPayment/Tuition";
 import ServiceMonthlyService from "../pages/Finance/MonthlyPayment/Service";
 import AccordMonthlyService from "../pages/Finance/MonthlyPayment/Accord";
+import TuitionCashBack from "../pages/Finance/CashBack/Tuition";
+import ServiceCashBack from "../pages/Finance/CashBack/Service";
+import EveryCashBack from "../pages/Finance/CashBack/Every";
 
 
 const RoutesApp = () => {
@@ -87,6 +90,9 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/mensalidades-servicos/acordo" element={<AccordMonthlyService />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
+                <Route path="/outros-assuntos/cashback/mensalidades" element={<TuitionCashBack />} />
+                <Route path="/outros-assuntos/cashback/servicos" element={<ServiceCashBack />} />
+                <Route path="/outros-assuntos/cashback/todos" element={<EveryCashBack />} />
                 <Route path="/outros-assuntos/cobrança-indevida" element={<Charges />} />
                 <Route path="/outros-assuntos/bolsa" element={<Handbag />} />
             </Routes>
