@@ -10,6 +10,12 @@ body{
     align-items: start;
 }
 
+.main-perform-accord{
+    display: grid;
+    grid-template-rows: auto 32vh;
+    min-height: 93vh;
+}
+
 .perform-accord{
     padding: 10vh 16px;
     width: 100%;

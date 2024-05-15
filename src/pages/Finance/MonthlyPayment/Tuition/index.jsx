@@ -1,23 +1,18 @@
-import './performAccord.css'
-import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
-import Footer from '../../../components/Footer';
+import ListSubjectsCheck from '../../../../components/ListSubjectsCheck';
+import Footer from '../../../../components/Footer';
 import { useState } from 'react';
 
-const PerformAccord = () => {
+const TuitionMonthlyService = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     const list = [
         {
             id: 1,
-            name: 'Mensalidade Jan/23'
+            name: 'Mensalidade Janeiro 2023'
         },
         {
             id: 2,
-            name: 'Mensalidade Fev/23'
-        },
-        {
-            id: 3,
-            name: 'Mensalidade Mar/23'
+            name: 'Mensalidade Fevereiro 2023'
         }
     ];
 
@@ -30,12 +25,12 @@ const PerformAccord = () => {
             }
         });
     };
-    // console.log(selectedSubjects);
+    
     return (
         <main className='main-perform-accord'>
             <div className="perform-accord">
                 <div className='list-subjects'>
-                    <h1 className='title'>Selecione as cobranças que você deseja incluir no acordo:</h1>
+                    <h1 className='title'>Selecione qual as opções que deseja:</h1>
                     <ListSubjectsCheck
                         items={list}
                         selectedSubjects={selectedSubjects}
@@ -51,4 +46,4 @@ const PerformAccord = () => {
 
 };
 
-export default PerformAccord
+export default Tuition;
