@@ -32,6 +32,9 @@ import FinancialStatement from "../pages/Finance/FinancialStatement";
 import SendDeclarationFinancial from "../pages/Finance/SendDeclarationFinancial";
 import ConsentLetter from "../pages/Finance/ConsentLetter";
 import DischargeDeclaration from "../pages/Finance/DischargeDeclaration";
+import TuitionMonthlyService from "../pages/Finance/MonthlyPayment/Tuition";
+import ServiceMonthlyService from "../pages/Finance/MonthlyPayment/Service";
+import AccordMonthlyService from "../pages/Finance/MonthlyPayment/Accord";
 
 
 const RoutesApp = () => {
@@ -79,6 +82,9 @@ const FinanceiroRoutes = () => {
                 <Route path="/adicionar-cartao" element={<AddCreditCard />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
+                <Route path="/outros-assuntos/mensalidades-servicos/mensalidade" element={<TuitionMonthlyService />} />
+                <Route path="/outros-assuntos/mensalidades-servicos/servicos" element={<ServiceMonthlyService />} />
+                <Route path="/outros-assuntos/mensalidades-servicos/acordo" element={<AccordMonthlyService />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
                 <Route path="/outros-assuntos/cobrança-indevida" element={<Charges />} />
