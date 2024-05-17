@@ -5,7 +5,7 @@ const Charges = () => {
     const list = [
         {
             id: 1,
-            name: 'Mensalidade',
+            name: 'Mensalidades',
             route: '/financeiro/outros-assuntos/cobrança-indevida/mensalidades'
         },
         {
