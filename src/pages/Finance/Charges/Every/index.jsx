@@ -2,7 +2,7 @@ import ListSubjectsCheck from '../../../../components/ListSubjectsCheck';
 import Footer from '../../../../components/Footer';
 import { useState } from 'react';
 
-const TuitionMonthlyService = () => {
+const EveryCharges = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     const list = [
@@ -13,6 +13,22 @@ const TuitionMonthlyService = () => {
         {
             id: 2,
             name: 'Mensalidade Fevereiro 2023'
+        },
+        {
+            id: 3,
+            name: 'Serviço 155684 (Desc. Teste)'
+        },
+        {
+            id: 4,
+            name: 'Serviço 155684 (Desc. brev)'
+        },
+        {
+            id: 5,
+            name: 'Acordo 213123 (1/2) Janeiro'
+        },
+        {
+            id: 6,
+            name: 'Acordo 213123 (2/2) Fevereiro'
         }
     ];
 
@@ -25,7 +41,7 @@ const TuitionMonthlyService = () => {
             }
         });
     };
-    
+
     return (
         <main className='main-perform-accord'>
             <div className="perform-accord">
@@ -38,7 +54,7 @@ const TuitionMonthlyService = () => {
                 </div>
             </div>
             <div className='footer-container'>
-                <Footer text="Avançar" route="/financeiro/realizar-acordo/teste"/>
+                <Footer text="Avançar" route="/financeiro/realizar-acordo/teste" />
             </div>
         </main>
 
@@ -46,4 +62,4 @@ const TuitionMonthlyService = () => {
 
 };
 
-export default TuitionMonthlyService;
+export default EveryCharges;

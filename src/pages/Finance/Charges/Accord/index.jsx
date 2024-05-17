@@ -2,17 +2,17 @@ import ListSubjectsCheck from '../../../../components/ListSubjectsCheck';
 import Footer from '../../../../components/Footer';
 import { useState } from 'react';
 
-const TuitionMonthlyService = () => {
+const AccordCharges = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     const list = [
         {
             id: 1,
-            name: 'Mensalidade Janeiro 2023'
+            name: 'Acordo 213123 (1/2) Janeiro'
         },
         {
             id: 2,
-            name: 'Mensalidade Fevereiro 2023'
+            name: 'Acordo 213123 (2/2) Fevereiro'
         }
     ];
 
@@ -46,4 +46,4 @@ const TuitionMonthlyService = () => {
 
 };
 
-export default TuitionMonthlyService;
+export default AccordCharges;

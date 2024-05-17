@@ -2,17 +2,17 @@ import ListSubjectsCheck from '../../../../components/ListSubjectsCheck';
 import Footer from '../../../../components/Footer';
 import { useState } from 'react';
 
-const TuitionMonthlyService = () => {
+const ServiceCashBack = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     const list = [
         {
             id: 1,
-            name: 'Mensalidade Janeiro 2023'
+            name: 'Serviço 213123 (Dec.Finan)'
         },
         {
             id: 2,
-            name: 'Mensalidade Fevereiro 2023'
+            name: 'Serviço 90192 (Desc. brev)'
         }
     ];
 
@@ -46,4 +46,4 @@ const TuitionMonthlyService = () => {
 
 };
 
-export default TuitionMonthlyService;
+export default ServiceCashBack;

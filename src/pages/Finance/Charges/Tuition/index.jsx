@@ -2,7 +2,7 @@ import ListSubjectsCheck from '../../../../components/ListSubjectsCheck';
 import Footer from '../../../../components/Footer';
 import { useState } from 'react';
 
-const TuitionMonthlyService = () => {
+const TuitionCharges = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     const list = [
@@ -46,4 +46,4 @@ const TuitionMonthlyService = () => {
 
 };
 
-export default TuitionMonthlyService;
+export default TuitionCharges;
