@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import './cardCheckout.css';
+import './cardRequest.css';
 import DefaultButton from '../DefaultButton';
 
 const CardCheckout = () => {
@@ -19,9 +18,6 @@ const CardCheckout = () => {
                 </div>
             </div>
         </>
-
-
-
     );
 }
 
