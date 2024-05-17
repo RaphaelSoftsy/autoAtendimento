@@ -42,6 +42,7 @@ import TuitionCharges from "../pages/Finance/Charges/Tuition";
 import ServiceCharges from "../pages/Finance/Charges/Service";
 import AccordCharges from "../pages/Finance/Charges/Accord";
 import EveryCharges from "../pages/Finance/Charges/Every";
+import RescueChecks from "../pages/Finance/RescueChecks";
 
 
 const RoutesApp = () => {
@@ -103,6 +104,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/cobrança-indevida/acordo" element={<AccordCharges />} />
                 <Route path="/outros-assuntos/cobrança-indevida/todos" element={<EveryCharges />} />
                 <Route path="/outros-assuntos/bolsa" element={<Handbag />} />
+                <Route path="/outros-assuntos/resgate-cheque" element={<RescueChecks />} />
             </Routes>
         </>
     );
