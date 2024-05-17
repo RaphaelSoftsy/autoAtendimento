@@ -1,4 +1,4 @@
-import './cardRequest.css';
+import './cardCheckout.css';
 import DefaultButton from '../DefaultButton';
 
 const CardCheckout = () => {

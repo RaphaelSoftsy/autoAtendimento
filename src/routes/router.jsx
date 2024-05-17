@@ -44,6 +44,8 @@ import AccordCharges from "../pages/Finance/Charges/Accord";
 import EveryCharges from "../pages/Finance/Charges/Every";
 import RescueChecks from "../pages/Finance/RescueChecks";
 import Repayment from "../pages/Finance/Repayment";
+import Fies from "../pages/Finance/FiesSumare/Fies";
+import Sumare from "../pages/Finance/FiesSumare/Sumare";
 
 
 const RoutesApp = () => {
@@ -97,6 +99,8 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/mensalidades-servicos/servicos" element={<ServiceMonthlyService />} />
                 <Route path="/outros-assuntos/mensalidades-servicos/acordo" element={<AccordMonthlyService />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
+                <Route path="/outros-assuntos/fies-sumare/fies" element={<Fies />} />
+                <Route path="/outros-assuntos/fies-sumare/sumare" element={<Sumare />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
                 <Route path="/outros-assuntos/cashback/mensalidades" element={<TuitionCashBack />} />
                 <Route path="/outros-assuntos/cashback/servicos" element={<ServiceCashBack />} />

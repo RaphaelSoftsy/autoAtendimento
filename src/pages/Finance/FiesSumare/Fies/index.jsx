@@ -1,9 +1,7 @@
-import CardRequest from "../../../components/CardRequest";
-import DefaultButton from "../../../components/DefaultButton";
-import "./repayment.css"
+import CardRequest from "../../../../components/CardRequest";
+import DefaultButton from "../../../../components/DefaultButton";
 
-
-const Repayment = () => {
+const Fies = () => {
 
     return (
         <main className="repayment">
@@ -21,4 +19,4 @@ const Repayment = () => {
     
 }
 
-export default Repayment;
+export default Fies;
