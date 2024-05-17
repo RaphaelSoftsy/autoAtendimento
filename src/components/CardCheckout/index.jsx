@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './cardCheckout.css';
 import DefaultButton from '../DefaultButton';
 
@@ -19,9 +18,6 @@ const CardCheckout = () => {
                 </div>
             </div>
         </>
-
-
-
     );
 }
 

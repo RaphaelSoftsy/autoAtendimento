@@ -43,6 +43,9 @@ import ServiceCharges from "../pages/Finance/Charges/Service";
 import AccordCharges from "../pages/Finance/Charges/Accord";
 import EveryCharges from "../pages/Finance/Charges/Every";
 import RescueChecks from "../pages/Finance/RescueChecks";
+import Repayment from "../pages/Finance/Repayment";
+import Fies from "../pages/Finance/FiesSumare/Fies";
+import Sumare from "../pages/Finance/FiesSumare/Sumare";
 
 
 const RoutesApp = () => {
@@ -89,11 +92,15 @@ const FinanceiroRoutes = () => {
                 <Route path="/acrescentar-ou-trocar-meios-de-pagamento" element={<AddSwapPayment />} />
                 <Route path="/adicionar-cartao" element={<AddCreditCard />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />
+                <Route path="/outros-assuntos/bolsa" element={<Handbag />} />
+                <Route path="/outros-assuntos/reembolso" element={<Repayment />} />
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
                 <Route path="/outros-assuntos/mensalidades-servicos/mensalidade" element={<TuitionMonthlyService />} />
                 <Route path="/outros-assuntos/mensalidades-servicos/servicos" element={<ServiceMonthlyService />} />
                 <Route path="/outros-assuntos/mensalidades-servicos/acordo" element={<AccordMonthlyService />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
+                <Route path="/outros-assuntos/fies-sumare/fies" element={<Fies />} />
+                <Route path="/outros-assuntos/fies-sumare/sumare" element={<Sumare />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
                 <Route path="/outros-assuntos/cashback/mensalidades" element={<TuitionCashBack />} />
                 <Route path="/outros-assuntos/cashback/servicos" element={<ServiceCashBack />} />
@@ -103,7 +110,6 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/cobrança-indevida/servicos" element={<ServiceCharges />} />
                 <Route path="/outros-assuntos/cobrança-indevida/acordo" element={<AccordCharges />} />
                 <Route path="/outros-assuntos/cobrança-indevida/todos" element={<EveryCharges />} />
-                <Route path="/outros-assuntos/bolsa" element={<Handbag />} />
                 <Route path="/outros-assuntos/resgate-cheque" element={<RescueChecks />} />
             </Routes>
         </>
