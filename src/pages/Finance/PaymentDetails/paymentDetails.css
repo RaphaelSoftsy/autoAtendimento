@@ -1,0 +1,90 @@
+.payment-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-payment {
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    padding: 40px 30px;
+}
+
+.overall{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.total-value{
+    height: auto;
+    font-size: 3rem;
+    font-weight: 700;
+    border-bottom: 1px solid #00000025;
+    padding-bottom: 30px;
+    font-family: system-ui;
+}
+
+.cards-pix-boleto-cartao{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card-pix{
+    width: 200px;
+    height: auto;
+    border-radius: 14px;
+    padding:  11px 0;
+    background-color: #1ebb6b;
+    color: #fff;
+    cursor: pointer;
+}
+.card-pix svg{
+    width: 40px;
+    height: 40px;
+}
+
+.card-boleto{
+    width: 200px;
+    height: auto;
+    border-radius: 14px;
+    padding:  11px 0;
+    background-color: #FF7F50;
+    color: #fff;
+    cursor: pointer;
+}
+.card-boleto svg{
+    width: 40px;
+    height: 40px;
+}
+
+.card-cartao{
+    width: 200px;
+    height: auto;
+    border-radius: 14px;
+    padding:  11px 0;
+    background-color: #019ed3;
+    color: #fff;
+    cursor: pointer;
+}
+.card-cartao svg{
+    width: 40px;
+    height: 40px;
+}
+
+.container-payment-details{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.container-payment-details h2{
+    text-align: start;
+}
