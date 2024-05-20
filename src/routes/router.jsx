@@ -46,6 +46,7 @@ import RescueChecks from "../pages/Finance/RescueChecks";
 import Repayment from "../pages/Finance/Repayment";
 import Fies from "../pages/Finance/FiesSumare/Fies";
 import Sumare from "../pages/Finance/FiesSumare/Sumare";
+import PaymentDetails from "../pages/Finance/PaymentDetails";
 
 
 const RoutesApp = () => {
@@ -82,6 +83,7 @@ const FinanceiroRoutes = () => {
             <Routes>
                 <Route path="/" element={<SubjectFinance />} />
                 <Route path="/realizar-pagamento" element={<PerformPayment />} />
+                <Route path="/realizar-pagamento/detalhes-pagamento" element={<PaymentDetails />} />
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/solicitar-documentos/declaracao-financeira" element={<FinancialStatement />} />

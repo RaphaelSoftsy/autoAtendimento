@@ -1,33 +1,34 @@
 import './performPayment.css'
 import ItemsPayment from '../../../components/ItemsPayment';
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 
 const PerformPayment = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const navigate = useNavigate();
 
     const list = [
         {
             id: 1,
-            name: 'Mensalidade Jan/23',
+            name: 'Mensalidade Jan/234',
             valor: '79.90',
             status: 'Acordo'
         },
         {
             id: 2,
-            name: 'Mensalidade Jan/23',
+            name: 'Mensalidade Jan/235',
             valor: '139.90',
             status: 'Serviço'
         },
         {
             id: 3,
-            name: 'Mensalidade Jan/23',
+            name: 'Mensalidade Jan/236',
             valor: '138.90',
             status: 'Mensalidade'
         },
         {
             id: 4,
-            name: 'Mensalidade Jan/23',
+            name: 'Mensalidade Jan/237',
             valor: '155.90',
             status: 'Outros'
         }
@@ -50,6 +51,13 @@ const PerformPayment = () => {
         return acc;
     }, 0);
 
+    const handleNext = () => {
+        const selectedItems = list.filter(item => selectedSubjects.includes(item.id));
+        navigate('/financeiro/realizar-pagamento/detalhes-pagamento', {
+            state: { selectedItems, total }
+        });
+    };
+
     return (
         <>
             <div className="perform-payment">
@@ -67,7 +75,7 @@ const PerformPayment = () => {
                         <span>Total:</span>
                         <span>R$ {total.toFixed(2)}</span>
                     </div>
-                    <Link to='' className='title-footer' > Próximo </Link>
+                    <button onClick={handleNext} className='title-footer' > Próximo </button>
                 </footer>
             </div>
         </>
