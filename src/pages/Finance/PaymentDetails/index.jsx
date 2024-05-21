@@ -1,60 +1,35 @@
 import './paymentDetails.css'
 import CardPaymentDetails from '../../../components/CardPaymentDetails';
-import { FaQrcode, FaCreditCard, FaBarcode, FaGraduationCap, FaHandsHelping, FaFileAlt } from 'react-icons/fa';
-import { useLocation } from 'react-router-dom';
+import { FaQrcode, FaCreditCard, FaBarcode } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom';
 
 const PaymentDetails = () => {
 
     const location = useLocation();
-    const { selectedItems, total } = location.state || { selectedItems: [], total: 0 };
+    const { selectedItems } = location.state || { selectedItems: [] };
 
-    console.log(selectedItems, total);
-    
-
-    // const list = [
-    //     {
-    //         id: 1,
-    //         icon: <FaFileAlt />,
-    //         text: 'Segunda via de Diploma de Segunda Graduação',
-    //         value: '79.90',
-    //         status: 'Acordo'
-    //     },
-    //     {
-    //         id: 2,
-    //         icon: <FaGraduationCap />,
-    //         text: 'Mensalidade Jan/23',
-    //         value: '139.90',
-    //         status: 'Serviço'
-    //     },
-    //     {
-    //         id: 3,
-    //         icon: <FaHandsHelping />,
-    //         text: 'Acordo Parcela 08/12',
-    //         value: '138.90',
-    //         status: 'Mensalidade'
-    //     }
-    // ];
+    const total = localStorage.getItem("total");
 
     return (
         <main className='payment-details'>
             <div className='container-payment'>
                 <div className="overall">
                     <h2>Total</h2>
-                    <span className='total-value'>R$ {total.toFixed(2)}</span>
+                    <span className='total-value'>R$ {total}</span>
                 </div>
                 <div className='cards-pix-boleto-cartao'>
-                    <div className="card-pix">
+                    <Link className="card-pix" to="/financeiro/realizar-pagamento/detalhes-pagamento/pix">
                         <FaQrcode />
                         <h3>Pix</h3>
-                    </div>
-                    <div className="card-boleto">
+                    </Link>
+                    <Link className="card-boleto" to="/financeiro/realizar-pagamento/detalhes-pagamento/boleto">
                         <FaBarcode />
                         <h3>Boleto</h3>
-                    </div>
-                    <div className="card-cartao">
+                    </Link>
+                    <Link className="card-cartao" to="/financeiro/realizar-pagamento/detalhes-pagamento/cartao">
                         <FaCreditCard />
                         <h3>Cartão</h3>
-                    </div>
+                    </Link>
                 </div>
             </div>
             <div className='container-payment-details'>
