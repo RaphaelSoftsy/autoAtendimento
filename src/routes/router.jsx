@@ -47,6 +47,8 @@ import Repayment from "../pages/Finance/Repayment";
 import Fies from "../pages/Finance/FiesSumare/Fies";
 import Sumare from "../pages/Finance/FiesSumare/Sumare";
 import PaymentDetails from "../pages/Finance/PaymentDetails";
+import Pix from "../pages/Finance/Pix";
+import Boleto from "../pages/Finance/Boleto";
 
 
 const RoutesApp = () => {
@@ -84,6 +86,9 @@ const FinanceiroRoutes = () => {
                 <Route path="/" element={<SubjectFinance />} />
                 <Route path="/realizar-pagamento" element={<PerformPayment />} />
                 <Route path="/realizar-pagamento/detalhes-pagamento" element={<PaymentDetails />} />
+                <Route path="/realizar-pagamento/detalhes-pagamento/pix" element={<Pix />} />
+                <Route path="/realizar-pagamento/detalhes-pagamento/boleto" element={<Boleto />} />
+                <Route path="/realizar-pagamento/detalhes-pagamento/cartao" element={<PaymentDetails />} />
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/solicitar-documentos/declaracao-financeira" element={<FinancialStatement />} />

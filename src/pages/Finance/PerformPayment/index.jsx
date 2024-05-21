@@ -54,13 +54,19 @@ const PerformPayment = () => {
     const handleNext = () => {
         const selectedItems = list.filter(item => selectedSubjects.includes(item.id));
         navigate('/financeiro/realizar-pagamento/detalhes-pagamento', {
-            state: { selectedItems, total }
+            state: { selectedItems }
         });
+
+        const formatValue = (value) => {
+            return value.toFixed(2).replace('.', ',');
+          };
+
+        localStorage.setItem("total", formatValue(total));
     };
 
     return (
         <>
-            <div className="perform-payment">
+            <main className="perform-payment">
                 <div className='list-subjects'>
                     <h1 className='title'>Escolha os itens para pagamento</h1>
                     <ItemsPayment
@@ -68,16 +74,16 @@ const PerformPayment = () => {
                         selectedSubjects={selectedSubjects}
                         onSelect={handleSubjectSelect} />
                 </div>
-            </div>
-            <div className='footer-container'>
-                <footer className='footer-payment'>
+            </main>
+            <footer className='footer-container'>
+                <div className='footer-payment'>
                     <div className='total'>
                         <span>Total:</span>
                         <span>R$ {total.toFixed(2)}</span>
                     </div>
                     <button onClick={handleNext} className='title-footer' > Próximo </button>
-                </footer>
-            </div>
+                </div>
+            </footer>
         </>
 
     );
