@@ -53,6 +53,8 @@ import Cartao from "../pages/Finance/Cartao";
 import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
 
+import ProblemsAccessingDiscipline from "../pages/Ava/ProblemsAccessingDiscipline";
+
 
 const RoutesApp = () => {
     return (
@@ -175,6 +177,8 @@ const AvaRoutes = () => {
             <Header txt={nameHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectAva />} />
+                <Route path="/problemas-com-acesso-ao-ava" element={<SubjectAva />} />
+                <Route path="/problemas-com-acesso-as-disciplinas" element={<ProblemsAccessingDiscipline />} />
                 <Route path="/problemas-nas-avaliacoes" element={<ProblemsReviews />} />
             </Routes>
         </>
