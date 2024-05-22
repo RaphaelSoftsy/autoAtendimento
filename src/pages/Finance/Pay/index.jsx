@@ -3,8 +3,12 @@ import Lottie from 'react-lottie';
 import './pay.css';
 import animationData from '../../../animation/done.json';
 import DefaultButton from '../../../components/DefaultButton';
+import { useNavigate } from 'react-router-dom';
 
 const Pay = () => {
+
+    const navegation = useNavigate()
+
     const [animationState, setAnimationState] = useState({
         isStopped: true,
         isPaused: false,
@@ -39,12 +43,12 @@ const Pay = () => {
                     <DefaultButton
                         text="Ir para Inicio"
                         backgroundColor="#019ED3"
-                        onClick={() => navegation("/financeiro")}
+                        onClick={() => navegation("/")}
                     />
                     <DefaultButton
                         text="Finalizar Sessão"
                         backgroundColor="#DC143C"
-                        onClick={() => navegation("/")}
+                        onClick={() => navegation("/financeiro")}
                     />
                 </div>
             </div>

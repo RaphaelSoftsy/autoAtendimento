@@ -1,11 +1,11 @@
 import './cardRequest.css';
 import DefaultButton from '../DefaultButton';
 
-const CardRequest = () => {
+const CardRequest = (props) => {
     return (
         <>
             <div className="card-request">
-                <h2 className='explain-problem'>Descreva o por que da sua solicitação:</h2>
+                <h2 className='explain-problem'>{props.text}</h2>
                 <textarea name="request" id="request"></textarea>
                 <DefaultButton
                     text="Uploud do PDF"

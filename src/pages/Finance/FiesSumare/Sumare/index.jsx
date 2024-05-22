@@ -6,7 +6,7 @@ const Sumare = () => {
     return (
         <main className="repayment">
             <div className='repayment-card'>
-                <CardRequest />
+                <CardRequest text="Descreva o por que da sua solicitação:" />
                 <DefaultButton
                     text="Enviar Solicitação"
                     backgroundColor="#019ED3"

@@ -1,0 +1,16 @@
+.problems-accessing-ava {
+    padding: 6vh 16px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.problems-accessing-ava-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
