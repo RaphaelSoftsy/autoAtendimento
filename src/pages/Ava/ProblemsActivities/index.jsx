@@ -1,9 +1,9 @@
-import './problemsAccessingDiscipline.css'
+import './problemsActivities.css'
 import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
 import Footer from '../../../components/Footer';
 import { useState } from 'react';
 
-const ProblemsAccessingDiscipline = () => {
+const ProblemsActivities = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     const list = [
@@ -14,10 +14,6 @@ const ProblemsAccessingDiscipline = () => {
         {
             id: 2,
             name: 'Disciplina 2'
-        },
-        {
-            id: 3,
-            name: 'Disciplina 3'
         }
     ];
 
@@ -32,8 +28,8 @@ const ProblemsAccessingDiscipline = () => {
     };
 
     return (
-        <main className='main-problems-reviews'>
-            <div className="problems-reviews">
+        <main className='main-problems-activities'>
+            <div className="problems-activities">
                 <div className='list-subjects'>
                     <h1 className='title'>Em qual disciplina você está com problemas?</h1>
                     <ListSubjectsCheck
@@ -51,4 +47,4 @@ const ProblemsAccessingDiscipline = () => {
 
 };
 
-export default ProblemsAccessingDiscipline
+export default ProblemsActivities

@@ -1,3 +1,9 @@
+.main-problems-reviews {
+    display: grid;
+    grid-template-rows: auto 32vh;
+    min-height: 93vh;
+}
+
 .problems-accessing{
     padding: 10vh 16px;
     width: 100%;
@@ -7,3 +13,4 @@
     align-items: center;
     justify-content: center;
 }
+
