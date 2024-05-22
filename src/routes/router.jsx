@@ -55,6 +55,7 @@ import Pay from "../pages/Finance/Pay";
 
 import ProblemsAccessingDiscipline from "../pages/Ava/ProblemsAccessingDiscipline";
 import ProblemsActivities from "../pages/Ava/ProblemsActivities";
+import ProblemsAccessingAVA from "../pages/Ava/ProblemsAccessingAVA";
 
 
 const RoutesApp = () => {
@@ -178,7 +179,7 @@ const AvaRoutes = () => {
             <Header txt={nameHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectAva />} />
-                <Route path="/problemas-com-acesso-ao-ava" element={<SubjectAva />} />
+                <Route path="/problemas-com-acesso-ao-ava" element={<ProblemsAccessingAVA />} />
                 <Route path="/problemas-com-acesso-as-disciplinas" element={<ProblemsAccessingDiscipline />} />
                 <Route path="/problemas-na-atividade" element={<ProblemsActivities />} />
                 <Route path="/problemas-nas-avaliacoes" element={<ProblemsReviews />} />
