@@ -78,13 +78,13 @@ const Boleto = () => {
     // console.log(sendEmail);
 
     return (
-        <main className='pix'>
+        <main className='boleto'>
             <div className='container-pix'>
                 <div className="amount-payable">
                     <span>Valor a Pagar</span>
-                    <span className='total-pix'>R$ {total}</span>
+                    <span className='total-boleto'>R$ {total}</span>
                 </div>
-                <div className="icon-pix">
+                <div className="icon-boleto">
                     <FaBarcode />
                 </div>
             </div>
