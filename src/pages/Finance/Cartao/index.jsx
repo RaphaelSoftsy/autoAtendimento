@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import './cartao.css'
-
 
 const Cartao = () => {
 
@@ -14,7 +14,7 @@ const Cartao = () => {
                     <span>R$ 89,00 - Mensalidade Jan/23</span>
                     <span>R$ 89,00 - Mensalidade Fev/23</span>
                 </div>
-<br />
+                <br />
                 <div class="vista-parcela">
                     <p>Selecione o Parcelamento:</p>
                     <span>R$ {total} - 2° via de Diploma em pele</span>
@@ -30,7 +30,7 @@ const Cartao = () => {
                         <span>Total:</span>
                         <span>R$ {total}</span>
                     </div>
-                    <button className='title-footer' > Próximo </button>
+                    <Link to='/financeiro/realizar-pagamento/detalhes-pagamento/cartao/escolha' className='title-footer' > Próximo </Link>
                 </div>
             </footer>
         </>

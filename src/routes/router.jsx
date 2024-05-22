@@ -50,6 +50,8 @@ import PaymentDetails from "../pages/Finance/PaymentDetails";
 import Pix from "../pages/Finance/Pix";
 import Boleto from "../pages/Finance/Boleto";
 import Cartao from "../pages/Finance/Cartao";
+import CardChoice from "../pages/Finance/CardChoice";
+import Pay from "../pages/Finance/Pay";
 
 
 const RoutesApp = () => {
@@ -90,6 +92,8 @@ const FinanceiroRoutes = () => {
                 <Route path="/realizar-pagamento/detalhes-pagamento/pix" element={<Pix />} />
                 <Route path="/realizar-pagamento/detalhes-pagamento/boleto" element={<Boleto />} />
                 <Route path="/realizar-pagamento/detalhes-pagamento/cartao" element={<Cartao />} />
+                <Route path="/realizar-pagamento/detalhes-pagamento/cartao/escolha" element={<CardChoice />} />
+                <Route path="/realizar-pagamento/pago" element={<Pay />} />
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/solicitar-documentos/declaracao-financeira" element={<FinancialStatement />} />
