@@ -43,7 +43,7 @@ const ProblemsAccessingDiscipline = () => {
                 </div>
             </div>
             <div className='footer-container'>
-                <Footer text="Avançar" route="/ava/teste"/>
+                <Footer text="Avançar" route="/ava/problemas-com-acesso-as-disciplinas/descreva-solicitacao"/>
             </div>
         </main>
 

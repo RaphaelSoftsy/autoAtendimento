@@ -1,9 +1,10 @@
-import './problemsActivities.css'
-import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
-import Footer from '../../../components/Footer';
-import { useState } from 'react';
+import { useState } from "react";
+import ListSubjectsCheck from "../../../../components/ListSubjectsCheck";
+import Footer from "../../../../components/Footer";
 
-const ProblemsActivities = () => {
+
+const Substitute = () => {
+
     const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     const list = [
@@ -39,12 +40,11 @@ const ProblemsActivities = () => {
                 </div>
             </div>
             <div className='footer-container'>
-                <Footer text="Avançar" route="/ava/problemas-na-atividade/explique-problema"/>
+                <Footer text="Avançar" route="/"/>
             </div>
         </main>
-
     );
+    
+}
 
-};
-
-export default ProblemsActivities
+export default Substitute;
