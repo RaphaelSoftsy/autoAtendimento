@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import Home from "../pages/Home";
 import Header from "../components/Header";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
-import {listRoutesAcademic, listRoutesFinanceiro} from "../hook/routes";
+import {listRoutesAcademic, listRoutesAva, listRoutesFinanceiro} from "../hook/routes";
 
 import SubjectAcd from "../pages/Academic/SubjectAcd";
 import ReviewsNotes from "../pages/Academic/ReviewsNotes";
@@ -168,10 +168,10 @@ const AcademicRoutes = () => {
 const AvaRoutes = () => {
     const {routeHeader} = useContext(DataContext)
     const location = useLocation()
-    const [nameHeader, setNameHeader] = useState('Acadêmico')
+    const [nameHeader, setNameHeader] = useState('Ava')
 
     useEffect(() => {
-        listRoutesFinanceiro.find( rt => {
+        listRoutesAva.find( rt => {
             if(rt.route == location.pathname){
                 setNameHeader(rt.header)
             }

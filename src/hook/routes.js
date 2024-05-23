@@ -1,179 +1,222 @@
 export const listRoutesFinanceiro = [
     {
-        id: 1,
-        name: 'Realizar Pagamento',
-        header: 'Realizar Pagamento',
-        route: '/financeiro/realizar-pagamento'
+        "id": 1,
+        "name": "Financeiro",
+        "header": "Financeiro",
+        "route": "/financeiro"
     },
     {
-        id: 2,
-        name: 'Realizar Acordo',
-        header: 'Realizar Acordo',
-        route: '/financeiro/realizar-acordo'
+        "id": 2,
+        "name": "Realizar Pagamento",
+        "header": "Realizar Pagamento",
+        "route": "/financeiro/realizar-pagamento"
     },
     {
-        id: 3,
-        name: 'Solicitar Documentos',
-        header: 'Solicitar Documentos',
-        route: '/financeiro/solicitar-documentos'
+        "id": 3,
+        "name": "Detalhes Pagamento",
+        "header": "Detalhes Pagamento",
+        "route": "/financeiro/realizar-pagamento/detalhes-pagamento"
     },
     {
-        id: 4,
-        name: 'Acrescentar ou Trocar Meios de Pagamento',
-        header: 'Acrescentar ou Trocar Meios de Pagamento',
-        route: '/financeiro/acrescentar-ou-trocar-meios-de-pagamento'
+        "id": 4,
+        "name": "PIX",
+        "header": "PIX",
+        "route": "/financeiro/realizar-pagamento/detalhes-pagamento/pix"
     },
     {
-        id: 5,
-        name: 'Outros Assuntos',
-        header: 'Outros Assuntos',
-        route: '/financeiro/outros-assuntos'
+        "id": 5,
+        "name": "Boleto",
+        "header": "Boleto",
+        "route": "/financeiro/realizar-pagamento/detalhes-pagamento/boleto"
     },
     {
-        id: 6,
-        name: 'Financeiro',
-        header: 'Financeiro',
-        route: '/financeiro'
+        "id": 6,
+        "name": "Cartão",
+        "header": "Cartão",
+        "route": "/financeiro/realizar-pagamento/detalhes-pagamento/cartao"
     },
     {
-        id: 7,
-        name: 'Bolsa',
-        header: 'Bolsa',
-        route: '/financeiro/outros-assuntos/bolsa'
+        "id": 7,
+        "name": "Escolha do Cartão",
+        "header": "Escolha do Cartão",
+        "route": "/financeiro/realizar-pagamento/detalhes-pagamento/cartao/escolha"
     },
     {
-        id: 8,
-        name: 'Reembolso',
-        header: 'Reembolso',
-        route: '/financeiro/outros-assuntos/reembolso'
+        "id": 8,
+        "name": "Pago",
+        "header": "Pago",
+        "route": "/financeiro/realizar-pagamento/pago"
     },
     {
-        id: 9,
-        name: 'Mensalidades, serviços ou acordos com valores divergentes',
-        header: 'Mensalidades, serviços ou acordos com valores divergentes',
-        route: '/financeiro/outros-assuntos/mensalidades-servicos'
+        "id": 9,
+        "name": "Realizar Acordo",
+        "header": "Realizar Acordo",
+        "route": "/financeiro/realizar-acordo"
     },
     {
-        id: 10,
-        name: 'Fies/Super Sumaré',
-        header: 'Fies-Super Sumaré',
-        route: '/financeiro/outros-assuntos/fies-sumare'
+        "id": 10,
+        "name": "Solicitar Documentos",
+        "header": "Solicitar Documentos",
+        "route": "/financeiro/solicitar-documentos"
     },
     {
-        id: 11,
-        name: 'CashBack',
-        header: 'CashBack',
-        route: '/financeiro/outros-assuntos/cashback'
+        "id": 11,
+        "name": "Declaração Financeira",
+        "header": "Declaração Financeira",
+        "route": "/financeiro/solicitar-documentos/declaracao-financeira"
     },
     {
-        id: 12,
-        name: 'Cobrança Indevida',
-        header: 'Cobrança Indevida',
-        route: '/financeiro/outros-assuntos/cobrança-indevida'
+        "id": 12,
+        "name": "Emitir Declaração",
+        "header": "Emitir Declaração",
+        "route": "/financeiro/solicitar-documentos/declaracao-financeira/emitir-declaracao"
     },
     {
-        id: 13,
-        name: 'Resgate de Cheques',
-        header: 'Resgate de Cheques',
-        route: '/financeiro/outros-assuntos/resgate-cheque'
+        "id": 13,
+        "name": "Carta de Anuência",
+        "header": "Carta de Anuência",
+        "route": "/financeiro/solicitar-documentos/carta-de-anuencia"
     },
     {
-        id: 14,
-        name: 'Mensalidade',
-        header: 'Mensalidade',
-        route: '/financeiro/outros-assuntos/mensalidades-servicos/mensalidade'
+        "id": 14,
+        "name": "Declaração de Quitação",
+        "header": "Declaração de Quitação",
+        "route": "/financeiro/solicitar-documentos/declaracao-de-quitacao"
     },
     {
-        id: 15,
-        name: 'Serviços',
-        header: 'Serviços',
-        route: '/financeiro/outros-assuntos/mensalidades-servicos/servicos'
+        "id": 15,
+        "name": "Declaração Específica Financeira",
+        "header": "Declaração Específica Financeira",
+        "route": "/financeiro/solicitar-documentos/declaracao-especifica-financeira"
     },
     {
-        id: 16,
-        name: 'Acordo',
-        header: 'Acordo',
-        route: '/financeiro/outros-assuntos/mensalidades-servicos/acordo'
+        "id": 16,
+        "name": "Acrescentar ou Trocar Meios de Pagamento",
+        "header": "Acrescentar ou Trocar Meios de Pagamento",
+        "route": "/financeiro/acrescentar-ou-trocar-meios-de-pagamento"
     },
     {
-        id: 17,
-        name: 'Mensalidade',
-        header: 'Mensalidade',
-        route: '/financeiro/outros-assuntos/cashback/mensalidades'
+        "id": 17,
+        "name": "Outros Assuntos",
+        "header": "Outros Assuntos",
+        "route": "/financeiro/outros-assuntos"
     },
     {
-        id: 18,
-        name: 'Serviços',
-        header: 'Serviços',
-        route: '/financeiro/outros-assuntos/cashback/servicos'
+        "id": 18,
+        "name": "Bolsa",
+        "header": "Bolsa",
+        "route": "/financeiro/outros-assuntos/bolsa"
     },
     {
-        id: 19,
-        name: 'Todos',
-        header: 'Todos',
-        route: '/financeiro/outros-assuntos/cashback/todos'
+        "id": 19,
+        "name": "Reembolso",
+        "header": "Reembolso",
+        "route": "/financeiro/outros-assuntos/reembolso"
     },
     {
-        id: 20,
-        name: 'Mensalidade',
-        header: 'Mensalidade',
-        route: '/financeiro/outros-assuntos/cobrança-indevida/mensalidades'
+        "id": 20,
+        "name": "Mensalidades, serviços ou acordos com valores divergentes",
+        "header": "Mensalidades, serviços ou acordos com valores divergentes",
+        "route": "/financeiro/outros-assuntos/mensalidades-servicos"
     },
     {
-        id: 21,
-        name: 'Serviços',
-        header: 'Serviços',
-        route: '/financeiro/outros-assuntos/cobrança-indevida/servicos'
+        "id": 21,
+        "name": "Mensalidade",
+        "header": "Mensalidade",
+        "route": "/financeiro/outros-assuntos/mensalidades-servicos/mensalidade"
     },
     {
-        id: 22,
-        name: 'Acordo',
-        header: 'Acordo',
-        route: '/financeiro/outros-assuntos/cobrança-indevida/acordo'
+        "id": 22,
+        "name": "Serviços",
+        "header": "Serviços",
+        "route": "/financeiro/outros-assuntos/mensalidades-servicos/servicos"
     },
     {
-        id: 23,
-        name: 'Todos',
-        header: 'Todos',
-        route: '/financeiro/outros-assuntos/cobrança-indevida/todos'
+        "id": 23,
+        "name": "Acordo",
+        "header": "Acordo",
+        "route": "/financeiro/outros-assuntos/mensalidades-servicos/acordo"
     },
     {
-        id: 24,
-        name: 'Fies',
-        header: 'Fies',
-        route: '/financeiro/outros-assuntos/fies-sumare/fies'
+        "id": 24,
+        "name": "Fies/Super Sumaré",
+        "header": "Fies/Super Sumaré",
+        "route": "/financeiro/outros-assuntos/fies-sumare"
     },
     {
-        id: 25,
-        name: 'Serviços',
-        header: 'Serviços',
-        route: '/financeiro/outros-assuntos/fies-sumare/sumare'
+        "id": 25,
+        "name": "Fies",
+        "header": "Fies",
+        "route": "/financeiro/outros-assuntos/fies-sumare/fies"
     },
     {
-        id: 26,
-        name: 'Declaração Financeira',
-        header: 'Declaração Financeira',
-        route: '/financeiro/solicitar-documentos/declaracao-financeira'
+        "id": 26,
+        "name": "Super Sumaré",
+        "header": "Super Sumaré",
+        "route": "/financeiro/outros-assuntos/fies-sumare/sumare"
     },
     {
-        id: 27,
-        name: 'Carta de Anuencia',
-        header: 'Carta de Anuencia',
-        route: '/financeiro/solicitar-documentos/carta-de-anuencia'
+        "id": 27,
+        "name": "CashBack",
+        "header": "CashBack",
+        "route": "/financeiro/outros-assuntos/cashback"
     },
     {
-        id: 28,
-        name: 'Declaração de Quitação',
-        header: 'Declaração de Quitação',
-        route: '/financeiro/solicitar-documentos/declaracao-de-quitacao'
+        "id": 28,
+        "name": "Mensalidade",
+        "header": "Mensalidade",
+        "route": "/financeiro/outros-assuntos/cashback/mensalidades"
     },
     {
-        id: 29,
-        name: 'Declaração Especifica Financeira',
-        header: 'Declaração Especifica Financeira',
-        route: '/financeiro/solicitar-documentos/declaracao-especifica-financeira'
+        "id": 29,
+        "name": "Serviços",
+        "header": "Serviços",
+        "route": "/financeiro/outros-assuntos/cashback/servicos"
+    },
+    {
+        "id": 30,
+        "name": "Todos",
+        "header": "Todos",
+        "route": "/financeiro/outros-assuntos/cashback/todos"
+    },
+    {
+        "id": 31,
+        "name": "Cobrança Indevida",
+        "header": "Cobrança Indevida",
+        "route": "/financeiro/outros-assuntos/cobrança-indevida"
+    },
+    {
+        "id": 32,
+        "name": "Mensalidade",
+        "header": "Mensalidade",
+        "route": "/financeiro/outros-assuntos/cobrança-indevida/mensalidades"
+    },
+    {
+        "id": 33,
+        "name": "Serviços",
+        "header": "Serviços",
+        "route": "/financeiro/outros-assuntos/cobrança-indevida/servicos"
+    },
+    {
+        "id": 34,
+        "name": "Acordo",
+        "header": "Acordo",
+        "route": "/financeiro/outros-assuntos/cobrança-indevida/acordo"
+    },
+    {
+        "id": 35,
+        "name": "Todos",
+        "header": "Todos",
+        "route": "/financeiro/outros-assuntos/cobrança-indevida/todos"
+    },
+    {
+        "id": 36,
+        "name": "Resgate de Cheques",
+        "header": "Resgate de Cheques",
+        "route": "/financeiro/outros-assuntos/resgate-cheque"
     }
 ]
+
 
 export const listRoutesAcademic = [
     {
@@ -371,52 +414,71 @@ export const listRoutesAcademic = [
 ];
 
 export const listRoutesAva = [
+
     {
         id: 1,
+        name: 'Ava',
+        header: 'Ava',
+        route: '/ava'
+    },
+    {
+        id: 2,
         name: 'Problemas com Acesso ao AVA',
         header: 'Problemas com Acesso ao AVA',
         route: '/ava/problemas-com-acesso-ao-ava'
     },
     {
-        id: 2,
+        id: 3,
         name: 'Problemas com Acesso as disciplinas',
         header: 'Problemas com Acesso as disciplinas',
         route: '/ava/problemas-com-acesso-as-disciplinas'
     },
     {
-        id: 3,
+        id: 4,
+        name: 'Descreva sua Solicitação',
+        header: 'Descreva sua Solicitação',
+        route: '/ava/problemas-com-acesso-as-disciplinas/descreva-solicitacao'
+    },
+    {
+        id: 5,
         name: 'Problemas na Atividade',
         header: 'Problemas na Atividade',
         route: '/ava/problemas-na-atividade'
     },
     {
-        id: 4,
+        id: 6,
+        name: 'Explique seu problema',
+        header: 'Explique seu problema',
+        route: '/ava/problemas-na-atividade/explique-problema'
+    },
+    {
+        id: 7,
         name: 'Problemas nas avaliações',
         header: 'Problemas nas avaliações',
         route: '/ava/problemas-nas-avaliacoes'
     },
     {
-        id: 5,
-        name: 'Tutoria',
-        header: 'Tutoria',
-        route: '/ava/tutoria'
-    },
-    {
-        id: 6,
+        id: 8,
         name: 'Avaliação',
         header: 'Avaliação',
         route: '/ava/problemas-nas-avaliacoes/avaliacao'
     },
     {
-        id: 7,
+        id: 9,
         name: 'Substitutiva',
         header: 'Substitutiva',
         route: '/ava/problemas-nas-avaliacoes/substitutiva'
     },
     {
-        id: 8,
+        id: 10,
         name: 'Recuperação',
         header: 'Recuperação',
         route: '/ava/problemas-nas-avaliacoes/recuperacao'
-    }
+    },
+    {
+        id: 11,
+        name: 'Tutoria',
+        header: 'Tutoria',
+        route: '/ava/tutoria'
+    }  
 ]
