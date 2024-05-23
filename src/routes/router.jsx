@@ -23,6 +23,7 @@ import ExplainProblem from "../pages/Ava/ExplainProblem";
 import Assessment from "../pages/Ava/ProblemsReviews/Assessment";
 import Substitute from "../pages/Ava/ProblemsReviews/Substitute";
 import Recovery from "../pages/Ava/ProblemsReviews/Recovery";
+import OpenDemand from "../pages/Ava/OpenDemand";
 
 import SubjectFinance from "../pages/Finance/SubjectFinance";
 import RequestDocument from "../pages/Finance/RequestDocument";
@@ -60,6 +61,7 @@ import Boleto from "../pages/Finance/Boleto";
 import Cartao from "../pages/Finance/Cartao";
 import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
+
 
 
 const RoutesApp = () => {
@@ -192,6 +194,7 @@ const AvaRoutes = () => {
                 <Route path="/problemas-nas-avaliacoes/avaliacao" element={<Assessment />} />
                 <Route path="/problemas-nas-avaliacoes/substitutiva" element={<Substitute />} />
                 <Route path="/problemas-nas-avaliacoes/recuperacao" element={<Recovery />} />
+                <Route path="/abrir-demanda" element={<OpenDemand />} />
             </Routes>
         </>
     );
