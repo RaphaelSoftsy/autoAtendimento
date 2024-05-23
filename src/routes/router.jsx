@@ -15,6 +15,14 @@ import ProofRequest from "../pages/Academic/ProofRequest";
 import Internship from "../pages/Academic/Internship";
 import SubjectAva from "../pages/Ava/SubjectAva";
 import ProblemsReviews from "../pages/Ava/ProblemsReviews";
+import ProblemsAccessingDiscipline from "../pages/Ava/ProblemsAccessingDiscipline";
+import ProblemsActivities from "../pages/Ava/ProblemsActivities";
+import ProblemsAccessingAVA from "../pages/Ava/ProblemsAccessingAVA";
+import DescribeRequest from "../pages/Ava/DescribeRequest";
+import ExplainProblem from "../pages/Ava/ExplainProblem";
+import Assessment from "../pages/Ava/ProblemsReviews/Assessment";
+import Substitute from "../pages/Ava/ProblemsReviews/Substitute";
+import Recovery from "../pages/Ava/ProblemsReviews/Recovery";
 
 import SubjectFinance from "../pages/Finance/SubjectFinance";
 import RequestDocument from "../pages/Finance/RequestDocument";
@@ -52,10 +60,6 @@ import Boleto from "../pages/Finance/Boleto";
 import Cartao from "../pages/Finance/Cartao";
 import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
-
-import ProblemsAccessingDiscipline from "../pages/Ava/ProblemsAccessingDiscipline";
-import ProblemsActivities from "../pages/Ava/ProblemsActivities";
-import ProblemsAccessingAVA from "../pages/Ava/ProblemsAccessingAVA";
 
 
 const RoutesApp = () => {
@@ -181,8 +185,13 @@ const AvaRoutes = () => {
                 <Route path="/" element={<SubjectAva />} />
                 <Route path="/problemas-com-acesso-ao-ava" element={<ProblemsAccessingAVA />} />
                 <Route path="/problemas-com-acesso-as-disciplinas" element={<ProblemsAccessingDiscipline />} />
+                <Route path="/problemas-com-acesso-as-disciplinas/descreva-solicitacao" element={<DescribeRequest />} />
                 <Route path="/problemas-na-atividade" element={<ProblemsActivities />} />
+                <Route path="/problemas-na-atividade/explique-problema" element={<ExplainProblem />} />
                 <Route path="/problemas-nas-avaliacoes" element={<ProblemsReviews />} />
+                <Route path="/problemas-nas-avaliacoes/avaliacao" element={<Assessment />} />
+                <Route path="/problemas-nas-avaliacoes/substitutiva" element={<Substitute />} />
+                <Route path="/problemas-nas-avaliacoes/recuperacao" element={<Recovery />} />
             </Routes>
         </>
     );
