@@ -63,6 +63,7 @@ import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
 import SubstituteProof from "../pages/Academic/SubstituteProof";
 import RetakeTest from "../pages/Academic/RetakeTest";
+import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
 
 
 
@@ -159,6 +160,7 @@ const AcademicRoutes = () => {
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
                 <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
+                <Route path="/matricula-em-reprovacao-adaptacao" element={<RejectionAdaptation />} />
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
                 <Route path="/expedicao-de-documentos/aproveitamento-de-estudos" element={<UtilizationStudies />} />
