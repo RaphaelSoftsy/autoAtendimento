@@ -30,12 +30,13 @@ const RejectionAdaptation = () => {
     return (
         <>
             <main className="rejection-adaptation">
-                <div className='list-subjects'>
-                    <h3 className='title'>Selecione a Disciplina que deseja realizar a Matricula, lembrando que você pode ter 4 disciplinas simultaneamente</h3>
+                <div className='discipline'>
+                    <h3>Selecione a Disciplina que deseja realizar a Matricula, lembrando que você pode ter 4 disciplinas simultaneamente</h3>
                     <div className='registration'>
                         <span>Nº de Disciplinas já matriculadas 2</span>
                         <span>Nº de Disciplinas que pode solicitar 2</span>
                     </div>
+                    <h4>Selecione a Disciplina</h4>
                     <ListCheckButton
                         items={list}
                         selectedSubjects={selectedSubjects}

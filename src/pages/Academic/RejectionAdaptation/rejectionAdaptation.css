@@ -1,3 +1,10 @@
+.discipline {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+}
+
 .rejection-adaptation{
     padding: 10vh 16px;
     width: 100%;
@@ -13,7 +20,7 @@
     flex-direction: column;
     border: 1px solid #fff;
     width: 80vw;
-    margin-bottom: 5vh;
+    margin-bottom: 2vh;
     padding: 10px;
     text-align: start;
 }
@@ -23,3 +30,4 @@
         padding-right: 30px;
     }
 }
+

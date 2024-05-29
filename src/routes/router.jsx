@@ -64,6 +64,7 @@ import Pay from "../pages/Finance/Pay";
 import SubstituteProof from "../pages/Academic/SubstituteProof";
 import RetakeTest from "../pages/Academic/RetakeTest";
 import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
+import Diplomas from "../pages/Academic/Diplomas";
 
 
 
@@ -167,6 +168,7 @@ const AcademicRoutes = () => {
                 <Route path="/expedicao-de-documentos/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/expedicao-de-documentos/solicitacao-de-prova/prova-substitutiva" element={<SubstituteProof />} />
                 <Route path="/expedicao-de-documentos/solicitacao-de-prova/prova-recuperacao" element={<RetakeTest />} />
+                <Route path="/expedicao-de-documentos/diplomas" element={<Diplomas />} />
                 <Route path="/expedicao-de-documentos/estagio" element={<Internship />} />
             </Routes>
         </>
