@@ -61,6 +61,8 @@ import Boleto from "../pages/Finance/Boleto";
 import Cartao from "../pages/Finance/Cartao";
 import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
+import SubstituteProof from "../pages/Academic/SubstituteProof";
+import RetakeTest from "../pages/Academic/RetakeTest";
 
 
 
@@ -161,6 +163,8 @@ const AcademicRoutes = () => {
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
                 <Route path="/expedicao-de-documentos/aproveitamento-de-estudos" element={<UtilizationStudies />} />
                 <Route path="/expedicao-de-documentos/solicitacao-de-prova" element={<ProofRequest />} />
+                <Route path="/expedicao-de-documentos/solicitacao-de-prova/prova-substitutiva" element={<SubstituteProof />} />
+                <Route path="/expedicao-de-documentos/solicitacao-de-prova/prova-recuperacao" element={<RetakeTest />} />
                 <Route path="/expedicao-de-documentos/estagio" element={<Internship />} />
             </Routes>
         </>
