@@ -28,8 +28,8 @@
     cursor: pointer;
 }
 
-@media(max-width: 999px) {
+/* @media(max-width: 999px) {
     .list{
         width: 100%;
     }
-}
+} */

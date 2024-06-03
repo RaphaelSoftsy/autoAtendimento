@@ -31,11 +31,6 @@ const Diplomas = () => {
                     <ListArrow items={list} />
                 </div>
             </main>
-            <footer className='footer-container'>
-                <div className='footer-payment'>
-                    <button className='title-footer' > Próximo </button>
-                </div>
-            </footer>
         </>
 
     );

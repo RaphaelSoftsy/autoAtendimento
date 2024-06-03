@@ -31,9 +31,9 @@ const ListArrow = ({ items }) => {
                     </div>
 
                     {expandedItemId === subject.id && (
-                        <div className='card-details'>
-                            <div className='details'>
-                                <p>{subject.detalhes}</p>
+                        <div className='card-details-diploma'>
+                            <div className='details-diploma'>
+                                <span>{subject.detalhes}</span>
                             </div>
                             <button className='solicitar'>{subject.text_button}</button>
                         </div>
