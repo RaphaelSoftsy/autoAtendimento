@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import Home from "../pages/Home";
 import Header from "../components/Header";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
-import {listRoutesAcademic, listRoutesFinanceiro} from "../hook/routes";
+import {listRoutesAcademic, listRoutesAva, listRoutesFinanceiro} from "../hook/routes";
 
 import SubjectAcd from "../pages/Academic/SubjectAcd";
 import ReviewsNotes from "../pages/Academic/ReviewsNotes";
@@ -23,6 +23,7 @@ import ExplainProblem from "../pages/Ava/ExplainProblem";
 import Assessment from "../pages/Ava/ProblemsReviews/Assessment";
 import Substitute from "../pages/Ava/ProblemsReviews/Substitute";
 import Recovery from "../pages/Ava/ProblemsReviews/Recovery";
+import OpenDemand from "../pages/Ava/OpenDemand";
 
 import SubjectFinance from "../pages/Finance/SubjectFinance";
 import RequestDocument from "../pages/Finance/RequestDocument";
@@ -60,6 +61,11 @@ import Boleto from "../pages/Finance/Boleto";
 import Cartao from "../pages/Finance/Cartao";
 import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
+import SubstituteProof from "../pages/Academic/SubstituteProof";
+import RetakeTest from "../pages/Academic/RetakeTest";
+import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
+import Diplomas from "../pages/Academic/Diplomas";
+
 
 
 const RoutesApp = () => {
@@ -155,10 +161,14 @@ const AcademicRoutes = () => {
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
                 <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
+                <Route path="/matricula-em-reprovacao-adaptacao" element={<RejectionAdaptation />} />
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
                 <Route path="/expedicao-de-documentos/aproveitamento-de-estudos" element={<UtilizationStudies />} />
                 <Route path="/expedicao-de-documentos/solicitacao-de-prova" element={<ProofRequest />} />
+                <Route path="/expedicao-de-documentos/solicitacao-de-prova/prova-substitutiva" element={<SubstituteProof />} />
+                <Route path="/expedicao-de-documentos/solicitacao-de-prova/prova-recuperacao" element={<RetakeTest />} />
+                <Route path="/expedicao-de-documentos/diplomas" element={<Diplomas />} />
                 <Route path="/expedicao-de-documentos/estagio" element={<Internship />} />
             </Routes>
         </>
@@ -168,10 +178,10 @@ const AcademicRoutes = () => {
 const AvaRoutes = () => {
     const {routeHeader} = useContext(DataContext)
     const location = useLocation()
-    const [nameHeader, setNameHeader] = useState('Acadêmico')
+    const [nameHeader, setNameHeader] = useState('Ava')
 
     useEffect(() => {
-        listRoutesFinanceiro.find( rt => {
+        listRoutesAva.find( rt => {
             if(rt.route == location.pathname){
                 setNameHeader(rt.header)
             }
@@ -192,6 +202,7 @@ const AvaRoutes = () => {
                 <Route path="/problemas-nas-avaliacoes/avaliacao" element={<Assessment />} />
                 <Route path="/problemas-nas-avaliacoes/substitutiva" element={<Substitute />} />
                 <Route path="/problemas-nas-avaliacoes/recuperacao" element={<Recovery />} />
+                <Route path="/abrir-demanda" element={<OpenDemand />} />
             </Routes>
         </>
     );

@@ -1,0 +1,14 @@
+.substitute-proof {
+    padding: 10vh 16px;
+    width: 100%;
+    min-height: 61vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media(max-width:999px) {
+    .substitute-proof{
+        padding-right: 30px;
+    }
+}

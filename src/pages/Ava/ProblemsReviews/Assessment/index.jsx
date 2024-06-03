@@ -39,7 +39,7 @@ const Assessment = () => {
                 </div>
             </div>
             <div className='footer-container'>
-                <Footer text="Avançar" route="/"/>
+                <Footer text="Avançar" route="+"/>
             </div>
         </main>
     );
