@@ -6,47 +6,47 @@ const AcademicRequests = () => {
         {
             id: 1,
             name: 'Aproveitamento de Estudos',
-            route: '/academico/expedicao-de-documentos/aproveitamento-de-estudos'
+            route: '/academico/solicitacoes-academicas/aproveitamento-de-estudos'
         },
         {
             id: 2,
             name: 'Solicitação de Prova',
-            route: '/academico/expedicao-de-documentos/solicitacao-de-prova'
+            route: '/academico/solicitacoes-academicas/solicitacao-de-prova'
         },
         {
             id: 3,
             name: 'Diplomas',
-            route: '/academico/expedicao-de-documentos/diplomas'
+            route: '/academico/solicitacoes-academicas/diplomas'
         },
         {
             id: 4,
             name: 'Tranferência',
-            route: '/academico/expedicao-de-documentos/traferencia'
+            route: '/academico/solicitacoes-academicas/traferencia'
         },
         {
             id: 5,
             name: 'Estágio',
-            route: '/academico/expedicao-de-documentos/estagio'
+            route: '/academico/solicitacoes-academicas/estagio'
         },
         {
             id: 6,
             name: 'Atividades Complementares',
-            route: '/academico/expedicao-de-documentos/atividades-complementares'
+            route: '/academico/solicitacoes-academicas/atividades-complementares'
         },
         {
             id: 7,
             name: 'ENADE',
-            route: '/academico/expedicao-de-documentos/enade'
+            route: '/academico/solicitacoes-academicas/enade'
         },
         {
             id: 8,
             name: 'Rematrícula',
-            route: '/academico/expedicao-de-documentos/rematricula'
+            route: '/academico/solicitacoes-academicas/rematricula'
         },
         {
             id: 9,
             name: 'Transporte Escolar',
-            route: '/academico/expedicao-de-documentos/transporte-escolar'
+            route: '/academico/solicitacoes-academicas/transporte-escolar'
         }
         
     ]

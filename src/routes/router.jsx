@@ -67,6 +67,7 @@ import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
 import Diplomas from "../pages/Academic/Diplomas";
 import AdditionalActivities from "../pages/Academic/AdditionalActivities";
 import SchoolBus from "../pages/Academic/SchoolBus";
+import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
 
 
 
@@ -165,15 +166,16 @@ const AcademicRoutes = () => {
                 <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
                 <Route path="/matricula-em-reprovacao-adaptacao" element={<RejectionAdaptation />} />
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos" element={<UtilizationStudies />} />
+                <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
+                <Route path="/solicitacoes-academicas/solicitacao-de-prova/prova-substitutiva" element={<SubstituteProof />} />
+                <Route path="/solicitacoes-academicas/solicitacao-de-prova/prova-recuperacao" element={<RetakeTest />} />
+                <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
+                <Route path="/solicitacoes-academicas/estagio" element={<Internship />} />
+                <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />
+                <Route path="/solicitacoes-academicas/transporte-escolar" element={<SchoolBus />} />
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
-                <Route path="/expedicao-de-documentos/aproveitamento-de-estudos" element={<UtilizationStudies />} />
-                <Route path="/expedicao-de-documentos/solicitacao-de-prova" element={<ProofRequest />} />
-                <Route path="/expedicao-de-documentos/solicitacao-de-prova/prova-substitutiva" element={<SubstituteProof />} />
-                <Route path="/expedicao-de-documentos/solicitacao-de-prova/prova-recuperacao" element={<RetakeTest />} />
-                <Route path="/expedicao-de-documentos/diplomas" element={<Diplomas />} />
-                <Route path="/expedicao-de-documentos/estagio" element={<Internship />} />
-                <Route path="/expedicao-de-documentos/atividades-complementares" element={<AdditionalActivities />} />
-                <Route path="/expedicao-de-documentos/transporte-escolar" element={<SchoolBus />} />
+                <Route path="/expedicao-de-documentos/declaracao-de-matricula" element={<RegistrationDeclaration />} />
             </Routes>
         </>
     );
