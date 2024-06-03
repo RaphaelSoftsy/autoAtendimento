@@ -66,6 +66,7 @@ import RetakeTest from "../pages/Academic/RetakeTest";
 import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
 import Diplomas from "../pages/Academic/Diplomas";
 import AdditionalActivities from "../pages/Academic/AdditionalActivities";
+import SchoolBus from "../pages/Academic/SchoolBus";
 
 
 
@@ -172,6 +173,7 @@ const AcademicRoutes = () => {
                 <Route path="/expedicao-de-documentos/diplomas" element={<Diplomas />} />
                 <Route path="/expedicao-de-documentos/estagio" element={<Internship />} />
                 <Route path="/expedicao-de-documentos/atividades-complementares" element={<AdditionalActivities />} />
+                <Route path="/expedicao-de-documentos/transporte-escolar" element={<SchoolBus />} />
             </Routes>
         </>
     );
