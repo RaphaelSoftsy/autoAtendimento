@@ -1,3 +1,9 @@
+.section-rejection-adaptation {
+    display: grid;
+    grid-template-rows: auto 32vh;
+    min-height: 93vh;
+}
+
 .discipline {
     display: flex;
     flex-direction: column;
@@ -25,9 +31,22 @@
     text-align: start;
 }
 
+.registration span{
+    font-size: 1rem;
+}
+
 @media(max-width:999px) {
     .rejection-adaptation{
         padding-right: 30px;
+    }
+    .discipline{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .select-diploma{
+        width: 85%;
+        text-align: start;
     }
 }
 
