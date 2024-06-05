@@ -68,6 +68,10 @@ import Diplomas from "../pages/Academic/Diplomas";
 import AdditionalActivities from "../pages/Academic/AdditionalActivities";
 import SchoolBus from "../pages/Academic/SchoolBus";
 import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
+import SchoolRecords from "../pages/Academic/SchoolRecords";
+import StatementConclusion from "../pages/Academic/StatementConclusion";
+import ProgramContent from "../pages/Academic/ProgramContent";
+import AcademicSpecificDeclaration from "../pages/Academic/AcademicSpecificDeclaration";
 
 
 
@@ -176,6 +180,10 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/transporte-escolar" element={<SchoolBus />} />
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-matricula" element={<RegistrationDeclaration />} />
+                <Route path="/expedicao-de-documentos/historico-escolar" element={<SchoolRecords />} />
+                <Route path="/expedicao-de-documentos/declaracao-de-conclusao" element={<StatementConclusion />} />
+                <Route path="/expedicao-de-documentos/declaracao-especifica-academica" element={<AcademicSpecificDeclaration />} />
+                <Route path="/expedicao-de-documentos/conteudo-promatico" element={<ProgramContent />} />
             </Routes>
         </>
     );
