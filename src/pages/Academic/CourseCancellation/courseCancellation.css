@@ -1,0 +1,28 @@
+.course-cancellation{
+    min-height: 93vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-cancellation {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0px 7px 11px -1px #0b2442;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    color: #000;
+}
+
+
+@media (max-width: 600px) {
+    .course-cancellation span {
+        width: 100%;
+        text-align: start;
+    }
+}

@@ -11,6 +11,19 @@ import AcademicRequests from "../pages/Academic/AcademicRequests";
 import Expedition from "../pages/Academic/Expedition";
 import UtilizationStudies from "../pages/Academic/UtilizationStudies";
 import ProofRequest from "../pages/Academic/ProofRequest";
+import SubstituteProof from "../pages/Academic/SubstituteProof";
+import RetakeTest from "../pages/Academic/RetakeTest";
+import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
+import Diplomas from "../pages/Academic/Diplomas";
+import AdditionalActivities from "../pages/Academic/AdditionalActivities";
+import SchoolBus from "../pages/Academic/SchoolBus";
+import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
+import SchoolRecords from "../pages/Academic/SchoolRecords";
+import StatementConclusion from "../pages/Academic/StatementConclusion";
+import ProgramContent from "../pages/Academic/ProgramContent";
+import AcademicSpecificDeclaration from "../pages/Academic/AcademicSpecificDeclaration";
+import CourseCancellation from "../pages/Academic/CourseCancellation";
+import OpenCollection from "../pages/Academic/OpenCollection";
 
 import Internship from "../pages/Academic/Internship";
 import SubjectAva from "../pages/Ava/SubjectAva";
@@ -61,17 +74,7 @@ import Boleto from "../pages/Finance/Boleto";
 import Cartao from "../pages/Finance/Cartao";
 import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
-import SubstituteProof from "../pages/Academic/SubstituteProof";
-import RetakeTest from "../pages/Academic/RetakeTest";
-import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
-import Diplomas from "../pages/Academic/Diplomas";
-import AdditionalActivities from "../pages/Academic/AdditionalActivities";
-import SchoolBus from "../pages/Academic/SchoolBus";
-import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
-import SchoolRecords from "../pages/Academic/SchoolRecords";
-import StatementConclusion from "../pages/Academic/StatementConclusion";
-import ProgramContent from "../pages/Academic/ProgramContent";
-import AcademicSpecificDeclaration from "../pages/Academic/AcademicSpecificDeclaration";
+
 
 
 
@@ -184,6 +187,8 @@ const AcademicRoutes = () => {
                 <Route path="/expedicao-de-documentos/declaracao-de-conclusao" element={<StatementConclusion />} />
                 <Route path="/expedicao-de-documentos/declaracao-especifica-academica" element={<AcademicSpecificDeclaration />} />
                 <Route path="/expedicao-de-documentos/conteudo-promatico" element={<ProgramContent />} />
+                <Route path="/cancelamento-do-curso" element={<CourseCancellation />} />
+                <Route path="/cancelamento-do-curso/cobrancas" element={<OpenCollection />} />
             </Routes>
         </>
     );
