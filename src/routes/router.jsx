@@ -76,6 +76,8 @@ import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
 import ReEnrollment from "../pages/Academic/ReEnrollment";
 import Enade from "../pages/Academic/Enade";
+import InternalDisciplines from "../pages/Academic/InternalDisciplines";
+import ExternalDisciplines from "../pages/Academic/ExternalDisciplines";
 
 
 
@@ -176,6 +178,8 @@ const AcademicRoutes = () => {
                 <Route path="/matricula-em-reprovacao-adaptacao" element={<RejectionAdaptation />} />
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos" element={<UtilizationStudies />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare" element={<InternalDisciplines />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades" element={<ExternalDisciplines />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/prova-substitutiva" element={<SubstituteProof />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/prova-recuperacao" element={<RetakeTest />} />
