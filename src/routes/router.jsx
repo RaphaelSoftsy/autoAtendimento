@@ -74,6 +74,7 @@ import Boleto from "../pages/Finance/Boleto";
 import Cartao from "../pages/Finance/Cartao";
 import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
+import ReEnrollment from "../pages/Academic/ReEnrollment";
 
 
 
@@ -180,6 +181,7 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
                 <Route path="/solicitacoes-academicas/estagio" element={<Internship />} />
                 <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />
+                <Route path="/solicitacoes-academicas/rematricula" element={<ReEnrollment />} />
                 <Route path="/solicitacoes-academicas/transporte-escolar" element={<SchoolBus />} />
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-matricula" element={<RegistrationDeclaration />} />
