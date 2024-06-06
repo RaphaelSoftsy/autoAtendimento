@@ -1,11 +1,12 @@
 import './cardCheckout.css';
 import DefaultButton from '../DefaultButton';
 
-const CardCheckout = () => {
+const CardCheckout = (props) => {
+
     return (
         <>
             <div className="card-checkout">
-                <h2 className='explain-problem'>Por favor, para analise nos explique seu problema</h2>
+                <h2 className='explain-problem'>{props.text}</h2>
                 <DefaultButton
                     text="Uploud do PDF"
                     backgroundColor="#019ED3"

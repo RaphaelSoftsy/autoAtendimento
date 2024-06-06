@@ -1,27 +1,25 @@
 import CardCheckout from "../../../components/CardCheckout";
 import Footer from "../../../components/Footer";
 
-const OpenDemand = () => {
+const SpecialDegreeConferral = () => {
 
     const style = {
-        backgroundColor: "#dc143c"
+        backgroundColor: "#019ED3"
     }
 
     return (
         <main className='main-perform-accord'>
             <div className="rescue-checks">
                 <div className='list-subjects'>
-                    <CardCheckout text="Por favor, para analise nos explique seu problema"/>
+                    <CardCheckout text="Por favos envie os documentos"/>
                 </div>
             </div>
             <div className='footer-container'>
-                <Footer text="Relatar Problema" route="/financeiro/realizar-acordo/teste" style={style} />
+                <Footer text="Relatar Problema" route="" style={style} />
             </div>
         </main>
     );
-
-
-
+    
 }
 
-export default OpenDemand;
+export default SpecialDegreeConferral;

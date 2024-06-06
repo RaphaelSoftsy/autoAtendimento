@@ -78,6 +78,9 @@ import ReEnrollment from "../pages/Academic/ReEnrollment";
 import Enade from "../pages/Academic/Enade";
 import InternalDisciplines from "../pages/Academic/InternalDisciplines";
 import ExternalDisciplines from "../pages/Academic/ExternalDisciplines";
+import PrintedDiploma from "../pages/Academic/PrintedDiploma";
+import SpecialDegreeConferral from "../pages/Academic/SpecialDegreeConferral";
+import DuplicateDiploma from "../pages/Academic/DuplicateDiploma";
 
 
 
@@ -184,6 +187,9 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/prova-substitutiva" element={<SubstituteProof />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/prova-recuperacao" element={<RetakeTest />} />
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
+                <Route path="/solicitacoes-academicas/diplomas/diploma-impreso" element={<PrintedDiploma />} />
+                <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />
+                <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma" element={<DuplicateDiploma />} />
                 <Route path="/solicitacoes-academicas/estagio" element={<Internship />} />
                 <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />
                 <Route path="/solicitacoes-academicas/enade" element={<Enade />} />
