@@ -1,0 +1,42 @@
+import CardPaymentDetails from '../../../components/CardPaymentDetails';
+import { FaQrcode, FaCreditCard, FaBarcode } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
+const PaymentDetailsAccord = () => {
+
+    const selectedItems = JSON.parse(localStorage.getItem("selectedItemsAccord") || "[]");
+    const total = localStorage.getItem("totalAccord");
+
+    return (
+        <main className='payment-details'>
+            <div className='container-payment'>
+                <div className="overall">
+                    <h2>Total</h2>
+                    <span className='total-value'>R$ {total}</span>
+                </div>
+                <div className='cards-pix-boleto-cartao'>
+                    <Link className="card-pix" to="/financeiro/realizar-acordo/detalhes-pagamento/pix">
+                        <FaQrcode />
+                        <h3>Pix</h3>
+                    </Link>
+                    <Link className="card-boleto" to="/financeiro/realizar-acordo/detalhes-pagamento/boleto">
+                        <FaBarcode />
+                        <h3>Boleto</h3>
+                    </Link>
+                    <Link className="card-cartao" to="/financeiro/realizar-acordo/detalhes-pagamento/cartao">
+                        <FaCreditCard />
+                        <h3>Cartão</h3>
+                    </Link>
+                </div>
+            </div>
+            <div className='container-payment-details'>
+                <h2>Detalhes do pagamento</h2>
+                <CardPaymentDetails items={selectedItems} />
+            </div>
+
+        </main>
+    );
+
+}
+
+export default PaymentDetailsAccord;

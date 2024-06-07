@@ -69,9 +69,13 @@ import Repayment from "../pages/Finance/Repayment";
 import Fies from "../pages/Finance/FiesSumare/Fies";
 import Sumare from "../pages/Finance/FiesSumare/Sumare";
 import PaymentDetails from "../pages/Finance/PaymentDetails";
-import Pix from "../pages/Finance/Pix";
-import Boleto from "../pages/Finance/Boleto";
-import Cartao from "../pages/Finance/Cartao";
+import Pix from "../pages/Finance/PaymentDetails/Pix";
+import Boleto from "../pages/Finance/PaymentDetails/Boleto";
+import Cartao from "../pages/Finance/PaymentDetails/Cartao";
+import PaymentDetailsAccord from "../pages/Finance/PaymentDetailsAccord";
+import PixAccord from "../pages/Finance/PaymentDetailsAccord/Pix";
+import BoletoAccord from "../pages/Finance/PaymentDetailsAccord/Boleto";
+import CartaoAccord from "../pages/Finance/PaymentDetailsAccord/Cartao";
 import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
 import ReEnrollment from "../pages/Academic/ReEnrollment";
@@ -81,8 +85,6 @@ import ExternalDisciplines from "../pages/Academic/ExternalDisciplines";
 import PrintedDiploma from "../pages/Academic/PrintedDiploma";
 import SpecialDegreeConferral from "../pages/Academic/SpecialDegreeConferral";
 import DuplicateDiploma from "../pages/Academic/DuplicateDiploma";
-
-
 
 
 const RoutesApp = () => {
@@ -126,6 +128,10 @@ const FinanceiroRoutes = () => {
                 <Route path="/realizar-pagamento/detalhes-pagamento/cartao/escolha" element={<CardChoice />} />
                 <Route path="/realizar-pagamento/pago" element={<Pay />} />
                 <Route path="/realizar-acordo" element={<PerformAccord />} />
+                <Route path="/realizar-acordo/detalhes-pagamento" element={<PaymentDetailsAccord />} />
+                <Route path="/realizar-acordo/detalhes-pagamento/pix" element={<PixAccord />} />
+                <Route path="/realizar-acordo/detalhes-pagamento/boleto" element={<BoletoAccord />} />
+                <Route path="/realizar-acordo/detalhes-pagamento/cartao" element={<CartaoAccord />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/solicitar-documentos/declaracao-financeira" element={<FinancialStatement />} />
                 <Route path="/solicitar-documentos/carta-de-anuencia" element={<ConsentLetter />} />

@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
 const PerformPayment = () => {
-    
+
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const navigate = useNavigate();
 
@@ -41,7 +41,8 @@ const PerformPayment = () => {
 
     const handleSubjectSelect = (id) => {
         setSelectedSubjects(prevSelected => {
-            if (prevSelected.includes(id)) {
+            const index = prevSelected.indexOf(id);
+            if (index !== -1) {
                 return prevSelected.filter(subjectId => subjectId !== id);
             } else {
                 return [...prevSelected, id];
@@ -69,9 +70,9 @@ const PerformPayment = () => {
         } else {
             const selectedItems = list.filter(item => selectedSubjects.includes(item.id));
             localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-    
+
             localStorage.setItem("total", formatValue(total));
-    
+
             navigate('/financeiro/realizar-pagamento/detalhes-pagamento');
         }
     };
@@ -97,9 +98,7 @@ const PerformPayment = () => {
                 </div>
             </footer>
         </>
-
     );
-
 };
 
 export default PerformPayment
