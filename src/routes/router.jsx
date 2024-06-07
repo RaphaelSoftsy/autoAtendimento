@@ -132,8 +132,10 @@ const FinanceiroRoutes = () => {
                 <Route path="/realizar-acordo/detalhes-pagamento/pix" element={<PixAccord />} />
                 <Route path="/realizar-acordo/detalhes-pagamento/boleto" element={<BoletoAccord />} />
                 <Route path="/realizar-acordo/detalhes-pagamento/cartao" element={<CartaoAccord />} />
+                <Route path="/realizar-acordo/detalhes-pagamento/cartao/escolha" element={<CardChoice />} />
                 <Route path="/solicitar-documentos" element={<RequestDocument />} />
                 <Route path="/solicitar-documentos/declaracao-financeira" element={<FinancialStatement />} />
+                <Route path="/solicitar-documentos/declaracao-financeira/emitir-declaracao" element={<SendDeclarationFinancial />} />
                 <Route path="/solicitar-documentos/carta-de-anuencia" element={<ConsentLetter />} />
                 <Route path="/solicitar-documentos/declaracao-de-quitacao" element={<DischargeDeclaration />} />
                 <Route path="/solicitar-documentos/declaracao-especifica-financeira" element={<ConsentLetter />} />
