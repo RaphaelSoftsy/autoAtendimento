@@ -2,10 +2,15 @@ import './performPayment.css'
 import ItemsPayment from '../../../components/ItemsPayment';
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const PerformPayment = () => {
+    
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const navigate = useNavigate();
+
+    const MySwal = withReactContent(Swal);
 
     const list = [
         {
@@ -54,12 +59,21 @@ const PerformPayment = () => {
     };
 
     const handleNext = () => {
-        const selectedItems = list.filter(item => selectedSubjects.includes(item.id));
-        localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-
-        localStorage.setItem("total", formatValue(total));
-
-        navigate('/financeiro/realizar-pagamento/detalhes-pagamento');
+        if (selectedSubjects.length === 0) {
+            MySwal.fire({
+                icon: 'info',
+                title: 'Erro',
+                text: 'Você não selecionou nada',
+                confirmButtonText: 'OK'
+            });
+        } else {
+            const selectedItems = list.filter(item => selectedSubjects.includes(item.id));
+            localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+    
+            localStorage.setItem("total", formatValue(total));
+    
+            navigate('/financeiro/realizar-pagamento/detalhes-pagamento');
+        }
     };
 
     return (
