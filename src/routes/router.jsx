@@ -11,6 +11,19 @@ import AcademicRequests from "../pages/Academic/AcademicRequests";
 import Expedition from "../pages/Academic/Expedition";
 import UtilizationStudies from "../pages/Academic/UtilizationStudies";
 import ProofRequest from "../pages/Academic/ProofRequest";
+import SubstituteProof from "../pages/Academic/SubstituteProof";
+import RetakeTest from "../pages/Academic/RetakeTest";
+import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
+import Diplomas from "../pages/Academic/Diplomas";
+import AdditionalActivities from "../pages/Academic/AdditionalActivities";
+import SchoolBus from "../pages/Academic/SchoolBus";
+import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
+import SchoolRecords from "../pages/Academic/SchoolRecords";
+import StatementConclusion from "../pages/Academic/StatementConclusion";
+import ProgramContent from "../pages/Academic/ProgramContent";
+import AcademicSpecificDeclaration from "../pages/Academic/AcademicSpecificDeclaration";
+import CourseCancellation from "../pages/Academic/CourseCancellation";
+import OpenCollection from "../pages/Academic/OpenCollection";
 
 import Internship from "../pages/Academic/Internship";
 import SubjectAva from "../pages/Ava/SubjectAva";
@@ -61,13 +74,14 @@ import Boleto from "../pages/Finance/Boleto";
 import Cartao from "../pages/Finance/Cartao";
 import CardChoice from "../pages/Finance/CardChoice";
 import Pay from "../pages/Finance/Pay";
-import SubstituteProof from "../pages/Academic/SubstituteProof";
-import RetakeTest from "../pages/Academic/RetakeTest";
-import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
-import Diplomas from "../pages/Academic/Diplomas";
-import AdditionalActivities from "../pages/Academic/AdditionalActivities";
-import SchoolBus from "../pages/Academic/SchoolBus";
-import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
+import ReEnrollment from "../pages/Academic/ReEnrollment";
+import Enade from "../pages/Academic/Enade";
+import InternalDisciplines from "../pages/Academic/InternalDisciplines";
+import ExternalDisciplines from "../pages/Academic/ExternalDisciplines";
+import PrintedDiploma from "../pages/Academic/PrintedDiploma";
+import SpecialDegreeConferral from "../pages/Academic/SpecialDegreeConferral";
+import DuplicateDiploma from "../pages/Academic/DuplicateDiploma";
+
 
 
 
@@ -167,15 +181,28 @@ const AcademicRoutes = () => {
                 <Route path="/matricula-em-reprovacao-adaptacao" element={<RejectionAdaptation />} />
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos" element={<UtilizationStudies />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare" element={<InternalDisciplines />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades" element={<ExternalDisciplines />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/prova-substitutiva" element={<SubstituteProof />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/prova-recuperacao" element={<RetakeTest />} />
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
+                <Route path="/solicitacoes-academicas/diplomas/diploma-impreso" element={<PrintedDiploma />} />
+                <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />
+                <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma" element={<DuplicateDiploma />} />
                 <Route path="/solicitacoes-academicas/estagio" element={<Internship />} />
                 <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />
+                <Route path="/solicitacoes-academicas/enade" element={<Enade />} />
+                <Route path="/solicitacoes-academicas/rematricula" element={<ReEnrollment />} />
                 <Route path="/solicitacoes-academicas/transporte-escolar" element={<SchoolBus />} />
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-matricula" element={<RegistrationDeclaration />} />
+                <Route path="/expedicao-de-documentos/historico-escolar" element={<SchoolRecords />} />
+                <Route path="/expedicao-de-documentos/declaracao-de-conclusao" element={<StatementConclusion />} />
+                <Route path="/expedicao-de-documentos/declaracao-especifica-academica" element={<AcademicSpecificDeclaration />} />
+                <Route path="/expedicao-de-documentos/conteudo-promatico" element={<ProgramContent />} />
+                <Route path="/cancelamento-do-curso" element={<CourseCancellation />} />
+                <Route path="/cancelamento-do-curso/cobrancas" element={<OpenCollection />} />
             </Routes>
         </>
     );

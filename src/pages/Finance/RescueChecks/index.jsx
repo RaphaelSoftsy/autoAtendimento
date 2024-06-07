@@ -13,7 +13,7 @@ const RescueChecks = () => {
         <main className='main-perform-accord'>
             <div className="rescue-checks">
                 <div className='list-subjects'>
-                    <CardCheckout/>
+                    <CardCheckout text="Por favor, para analise nos explique seu problema"/>
                 </div>
             </div>
             <div className='footer-container'>

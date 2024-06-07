@@ -1,7 +1,8 @@
 import CardCheckout from "../../../components/CardCheckout";
 import Footer from "../../../components/Footer";
 
-const OpenDemand = () => {
+
+const ProgramContent = () => {
 
     const style = {
         backgroundColor: "#dc143c"
@@ -15,13 +16,11 @@ const OpenDemand = () => {
                 </div>
             </div>
             <div className='footer-container'>
-                <Footer text="Relatar Problema" route="/financeiro/realizar-acordo/teste" style={style} />
+                <Footer text="Relatar Problema" route="/" style={style} />
             </div>
         </main>
     );
 
-
-
 }
 
-export default OpenDemand;
+export default ProgramContent;

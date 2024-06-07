@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './listArrow.css'
 import { FaChevronDown } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 const ListArrow = ({ items }) => {
@@ -35,7 +36,7 @@ const ListArrow = ({ items }) => {
                             <div className='details-diploma'>
                                 <span>{subject.detalhes}</span>
                             </div>
-                            <button className='solicitar'>{subject.text_button}</button>
+                            <Link key={subject.id} to={subject.route} className='solicitar'> {subject.text_button} </Link>
                         </div>
                     )}
                 </li>

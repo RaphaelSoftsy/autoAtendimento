@@ -6,12 +6,12 @@ const ProofRequest = () => {
         {
             id: 1,
             name: 'Prova Substitutiva',
-            route: '/academico/expedicao-de-documentos/solicitacao-de-prova/prova-substitutiva'
+            route: '/academico/solicitacoes-academicas/solicitacao-de-prova/prova-substitutiva'
         },
         {
             id: 2,
             name: 'Prova de Recuperação(SOMENTE HB)',
-            route: '/academico/expedicao-de-documentos/solicitacao-de-prova/prova-recuperacao'
+            route: '/academico/solicitacoes-academicas/solicitacao-de-prova/prova-recuperacao'
         }
     ]
 

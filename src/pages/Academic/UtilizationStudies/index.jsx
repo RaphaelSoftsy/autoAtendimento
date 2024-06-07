@@ -6,17 +6,17 @@ const UtilizationStudies = () => {
         {
             id: 1,
             name: 'Aproveitar disciplinas cursadas na Sumare',
-            route: '/academico/expedicao-de-documentos/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare'
+            route: '/academico/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare'
         },
         {
             id: 2,
             name: 'Aproveitar disciplinas cursadas em outra(s) faculdade(s) e na Sumaré',
-            route: '/academico/expedicao-de-documentos/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades-e-na-sumare'
+            route: '/academico/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades-e-na-sumare'
         },
         {
             id: 3,
             name: 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)',
-            route: '/academico/expedicao-de-documentos/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades'
+            route: '/academico/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades'
         }    
     ]
 

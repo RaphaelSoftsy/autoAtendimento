@@ -1,0 +1,10 @@
+.footer-double {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 22vh;
+    padding: 0px 32px;
+    background-color: #fff;
+    gap: 10px;
+}
