@@ -7,6 +7,10 @@ const Cartao = () => {
     const selectedItems = JSON.parse(localStorage.getItem("selectedItems") || "[]");
     const total = localStorage.getItem("total");
 
+    const formatValue = (value) => {
+        return value.replace(',', '.');
+    };
+
     const [parcelas, setParcelas] = useState(1);
 
     const handleParcelasChange = (e) => {
@@ -28,9 +32,9 @@ const Cartao = () => {
                     <span>R$ {total} - 2° via de Diploma em pele</span>
                     <select value={parcelas} onChange={handleParcelasChange}>
                         <option value={1}>1 à vista</option>
-                        <option value={2}>2x de R$ {(parseFloat(total) / 2).toFixed(2)}</option>
-                        <option value={3}>3x de R$ {(parseFloat(total) / 3).toFixed(2)}</option>
-                        <option value={4}>4x de R$ {(parseFloat(total) / 4).toFixed(2)}</option>
+                        <option value={2}>2x de R$ {(formatValue(total) / 2).toFixed(2).replace('.', ',')}</option>
+                        <option value={3}>3x de R$ {(formatValue(total) / 3).toFixed(2).replace('.', ',')}</option>
+                        <option value={4}>4x de R$ {(formatValue(total) / 4).toFixed(2).replace('.', ',')}</option>
                     </select>
                 </div>
             </main>
@@ -38,7 +42,7 @@ const Cartao = () => {
                 <div className='footer-payment'>
                     <div className='total'>
                         <span>Total:</span>
-                        <span>R$ {(parseFloat(total) / parcelas).toFixed(2)}</span>
+                        <span>R$ {(formatValue(total) / parcelas).toFixed(2).replace('.', ',')}</span>
                     </div>
                     <Link to='/financeiro/realizar-pagamento/detalhes-pagamento/cartao/escolha' className='title-footer' > Próximo </Link>
                 </div>
