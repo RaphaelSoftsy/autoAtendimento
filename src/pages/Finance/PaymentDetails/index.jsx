@@ -1,13 +1,11 @@
 import './paymentDetails.css'
 import CardPaymentDetails from '../../../components/CardPaymentDetails';
 import { FaQrcode, FaCreditCard, FaBarcode } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PaymentDetails = () => {
 
-    const location = useLocation();
-    const { selectedItems } = location.state || { selectedItems: [] };
-
+    const selectedItems = JSON.parse(localStorage.getItem("selectedItems") || "[]");
     const total = localStorage.getItem("total");
 
     return (

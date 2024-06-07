@@ -4,9 +4,9 @@ import './addCreditCard.css'
 const AddCreditCard = () => {
     return (
         <>
-            <div className='add-card'>
+            <main className='add-card'>
                 <CardForm />
-            </div>
+            </main>
         </>
     );
 
