@@ -1,10 +1,11 @@
 .cartao {
-    padding: 10vh 16px;
+    padding: 8vh 16px;
     width: 100%;
     min-height: 61vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 }
 
 .vista-parcela {
@@ -18,4 +19,8 @@
     border-left: 20px solid #8f8f8f;
     border-radius: 7px;
     color: #000;
+}
+
+.vista-parcela span{
+    text-align: start;
 }

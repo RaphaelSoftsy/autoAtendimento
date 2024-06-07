@@ -2,6 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 93vh;
-    padding: 0px 15px;
+    height: auto;
+    padding: 5vh 15px;
 }

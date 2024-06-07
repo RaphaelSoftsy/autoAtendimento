@@ -1,26 +1,36 @@
 import { Link } from 'react-router-dom';
 import './cartao.css'
+import { useState } from 'react';
 
 const Cartao = () => {
 
+    const selectedItems = JSON.parse(localStorage.getItem("selectedItems") || "[]");
     const total = localStorage.getItem("total");
+
+    const [parcelas, setParcelas] = useState(1);
+
+    const handleParcelasChange = (e) => {
+        setParcelas(parseInt(e.target.value, 10));
+    };
 
     return (
         <>
             <main className='cartao'>
-                <h1 class="title">Parcelamento:</h1>
+                <h1>Parcelamento:</h1>
                 <div class="vista-parcela">
                     <p>A vista:</p>
-                    <span>R$ 89,00 - Mensalidade Jan/23</span>
-                    <span>R$ 89,00 - Mensalidade Fev/23</span>
+                    {selectedItems.map(item => (
+                        <span key={item.id}>R$ {item.valor} - {item.name} </span>
+                    ))}
                 </div>
-                <br />
                 <div class="vista-parcela">
                     <p>Selecione o Parcelamento:</p>
                     <span>R$ {total} - 2° via de Diploma em pele</span>
-                    <select>
-                        <option>1 a vista</option>
-                        <option>2 parcelas</option>
+                    <select value={parcelas} onChange={handleParcelasChange}>
+                        <option value={1}>1 à vista</option>
+                        <option value={2}>2x de R$ {(parseFloat(total) / 2).toFixed(2)}</option>
+                        <option value={3}>3x de R$ {(parseFloat(total) / 3).toFixed(2)}</option>
+                        <option value={4}>4x de R$ {(parseFloat(total) / 4).toFixed(2)}</option>
                     </select>
                 </div>
             </main>
@@ -28,7 +38,7 @@ const Cartao = () => {
                 <div className='footer-payment'>
                     <div className='total'>
                         <span>Total:</span>
-                        <span>R$ {total}</span>
+                        <span>R$ {(parseFloat(total) / parcelas).toFixed(2)}</span>
                     </div>
                     <Link to='/financeiro/realizar-pagamento/detalhes-pagamento/cartao/escolha' className='title-footer' > Próximo </Link>
                 </div>

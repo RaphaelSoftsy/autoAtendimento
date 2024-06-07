@@ -53,15 +53,14 @@ const PerformPayment = () => {
 
     const handleNext = () => {
         const selectedItems = list.filter(item => selectedSubjects.includes(item.id));
-        navigate('/financeiro/realizar-pagamento/detalhes-pagamento', {
-            state: { selectedItems }
-        });
+        localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
 
         const formatValue = (value) => {
             return value.toFixed(2).replace('.', ',');
-          };
-
+        };
         localStorage.setItem("total", formatValue(total));
+
+        navigate('/financeiro/realizar-pagamento/detalhes-pagamento');
     };
 
     return (
