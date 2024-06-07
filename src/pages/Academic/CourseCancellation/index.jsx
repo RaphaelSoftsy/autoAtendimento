@@ -1,31 +1,39 @@
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { useNavigate } from 'react-router-dom';
 import DefaultButton from "../../../components/DefaultButton";
-import "./courseCancellation.css"
-import Modal from 'react-modal';
-import { useState } from "react";
+import "./courseCancellation.css";
+
+const MySwal = withReactContent(Swal);
 
 const CourseCancellation = () => {
-
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [hasPendingFees, setHasPendingFees] = useState(true);
     const navigate = useNavigate();
-
-    const openModal = () => {
-        setModalIsOpen(true);
-    };
-
-    const closeModal = () => {
-        setModalIsOpen(false);
-    };
+    const hasPendingFees = true; // Simulando a verificação de pendências
 
     const handleCancelCourse = () => {
         if (hasPendingFees) {
-            alert("Você possui mensalidades pendentes.");
-            navigate("/academico/cancelamento-do-curso/cobrancas");
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Você possui mensalidades pendentes.',
+                confirmButtonText: 'Realizar Acordo'
+            }).then(() => {
+                navigate("/academico/cancelamento-do-curso/cobrancas");
+            });
         } else {
-            alert("Seguir");
+            MySwal.fire({
+                icon: 'question',
+                title: 'Deseja mesmo cancelar o curso?',
+                showCancelButton: true,
+                confirmButtonText: 'Sim',
+                cancelButtonText: 'Não'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/teste");
+                }
+            });
         }
-        closeModal();
     };
 
     return (
@@ -39,29 +47,11 @@ const CourseCancellation = () => {
                     text="Cancelar Curso"
                     backgroundColor="#DC143C"
                     color='#fff'
-                    onClick={openModal}
+                    onClick={handleCancelCourse}
                 />
-
-                <Modal
-                    isOpen={modalIsOpen}
-                    onRequestClose={closeModal}
-                    contentLabel="Confirmar Cancelamento"
-                    className="modal-cancellation"
-                    overlayClassName="overlay"
-                >
-                    <div className='modal-content'>
-                        <span onClick={closeModal} className='close-modal-button'>&times;</span>
-                        <h2>Deseja mesmo cancelar o curso?</h2>
-                        <div className='modal-actions'>
-                            <button onClick={handleCancelCourse} className='modal-button confirm'>Sim</button>
-                            <button onClick={closeModal} className='modal-button cancel'>Não</button>
-                        </div>
-                    </div>
-                </Modal>
             </div>
         </main>
     );
-
-}
+};
 
 export default CourseCancellation;
