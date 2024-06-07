@@ -1,10 +1,9 @@
 import { FaQrcode } from 'react-icons/fa';
-import './pix.css'
-import DefaultButton from '../../../components/DefaultButton';
+import DefaultButton from '../../../../components/DefaultButton';
 import QRCode from 'qrcode.react';
 import { useEffect, useState } from 'react';
 
-const Pix = () => {
+const PixAccord = () => {
 
     const list = 
         {
@@ -15,7 +14,7 @@ const Pix = () => {
 
     const [qrText, setQrText] = useState('');
 
-    const total = localStorage.getItem("total");
+    const total = localStorage.getItem("totalAccord");
 
     const [buttonText, setButtonText] = useState('Copiar');
 
@@ -59,4 +58,4 @@ const Pix = () => {
 
 }
 
-export default Pix;
+export default PixAccord;

@@ -1,13 +1,12 @@
 import { FaBarcode } from 'react-icons/fa';
-import './boleto.css'
-import DefaultButton from '../../../components/DefaultButton';
-import GeneratorBarCode from '../../../components/GeneratorBarCode';
+import DefaultButton from '../../../../components/DefaultButton';
+import GeneratorBarCode from '../../../../components/GeneratorBarCode';
 import jsPDF from 'jspdf';
 import { useState } from 'react';
 
-const Boleto = () => {
+const BoletoAccord = () => {
 
-    const total = localStorage.getItem("total");
+    const total = localStorage.getItem("totalAccord");
     const codigoBarra = localStorage.getItem("codigo-barra");
 
     const [buttonText, setButtonText] = useState('Copiar Linha Digitável');
@@ -114,4 +113,4 @@ const Boleto = () => {
 
 }
 
-export default Boleto;
+export default BoletoAccord;
