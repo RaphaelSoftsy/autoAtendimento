@@ -1,7 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import CardDeclaration from '../../../components/CardDeclaration'
 import './sendDeclarationFinancial.css'
 
 const SendDeclarationFinancial = () => {
+
+    const navegation = useNavigate();
 
     const buttons = [
         {

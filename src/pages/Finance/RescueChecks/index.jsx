@@ -1,29 +1,30 @@
+import { useNavigate } from "react-router-dom";
 import CardCheckout from "../../../components/CardCheckout";
 import Footer from "../../../components/Footer";
 import "./rescueChecks.css"
 
-
 const RescueChecks = () => {
+
+    const navegation = useNavigate();
 
     const style = {
         backgroundColor: "#dc143c"
     }
 
+    const handleNext = () => {
+        navegation('/');
+    };
+
     return (
         <main className='main-perform-accord'>
             <div className="rescue-checks">
                 <div className='list-subjects'>
-                    <CardCheckout text="Por favor, para analise nos explique seu problema"/>
+                    <CardCheckout text="Por favor, para analise nos explique seu problema" />
                 </div>
             </div>
-            <div className='footer-container'>
-                <Footer text="Relatar Problema" route="/financeiro/realizar-acordo/teste" style={style} />
-            </div>
+            <Footer text="Relatar Problema" onClick={handleNext} style={style} />
         </main>
     );
-
-
-
 }
 
 export default RescueChecks;

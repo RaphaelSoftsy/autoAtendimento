@@ -26,12 +26,12 @@ const RequestDocument = () => {
     ]
 
     return (
-        <div className="requestDocument">
+        <main className="request-document">
             <div className='list-subjects'>
                 <h1 className='title'>Sobre qual assunto deseja falar?</h1>
                 <ListSubjects itens={list} />
             </div>
-        </div>
+        </main>
     )
 }
 

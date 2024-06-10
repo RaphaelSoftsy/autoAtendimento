@@ -16,12 +16,12 @@ const FiesSumare = () => {
     ]
 
     return (
-        <div className="fies-sumare">
+        <main className="fies-sumare">
             <div className='list-subjects'>
                 <h1 className='title'>Sobre qual assunto deseja falar?</h1>
                 <ListSubjects itens={list} />
             </div>
-        </div>
+        </main>
     )
 }
 

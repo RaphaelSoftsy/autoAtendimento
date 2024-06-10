@@ -45,9 +45,7 @@ const FinancialStatement = () => {
                     </div>
                 </div>
             </main>
-            <div className="footer-container">
-                <Footer text='Emitir Declação' onClick={handleNext} />
-            </div>
+            <Footer text='Emitir Declação' onClick={handleNext} />
         </>
     )
 }

@@ -2,8 +2,11 @@ import './cardDrop.css';
 import DefaultButton from '../DefaultButton';
 import Dropdown from '../Dropdown/Dropdown';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CardDrop = () => {
+
+    const navegation = useNavigate();
 
     const [typeScholarship, setTypeScholarship] = useState('')
 
@@ -34,14 +37,14 @@ const CardDrop = () => {
                     onChange={(e) => setTypeScholarship(e.target.value)}
                 />
                 <div className="describe">
-                    <span>Descreva o por que da sua solicitação:</span>
+                    <h3>Descreva o por que da sua solicitação:</h3>
                     <textarea name="describe" id="describe"></textarea>
                 </div>
                 <DefaultButton
                     text="Uploud"
                     backgroundColor="#019ED3"
                     color='#fff'
-                    onClick={() => navegation("/financeiro/tesrte1")}
+                    onClick={() => navegation("/")}
                 />
             </div>
         </>

@@ -21,12 +21,12 @@ const CashBack = () => {
     ]
 
     return (
-        <div className="cashback">
+        <main className="cashback">
             <div className='list-subjects'>
                 <h1 className='title'>Selecione qual as opções que deseja:</h1>
                 <ListSubjects itens={list} />
             </div>
-        </div>
+        </main>
     )
 }
 

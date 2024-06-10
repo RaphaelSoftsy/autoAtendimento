@@ -40,7 +40,7 @@ const AddSwapPayment = () => {
     ]
     return (
         <>
-            <main className='main'>
+            <main className='add-swap-payment'>
                 <div className='plano-recorrencia-ou-mensal'>
                     <div className='plano-atual'>
                         <span>Plano Atual:</span>

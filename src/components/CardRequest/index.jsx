@@ -1,7 +1,11 @@
 import './cardRequest.css';
 import DefaultButton from '../DefaultButton';
+import { useNavigate } from 'react-router-dom';
 
 const CardRequest = (props) => {
+
+    const navegation = useNavigate();
+
     return (
         <>
             <div className="card-request">
@@ -11,7 +15,7 @@ const CardRequest = (props) => {
                     text="Uploud do PDF"
                     backgroundColor="#019ED3"
                     color='#fff'
-                    onClick={() => navegation("/financeiro/tesrte1")}
+                    onClick={() => navegation("/")}
                 />
             </div>
         </>
