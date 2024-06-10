@@ -1,7 +1,10 @@
 import './cardCheckout.css';
 import DefaultButton from '../DefaultButton';
+import { useNavigate } from 'react-router-dom';
 
 const CardCheckout = (props) => {
+
+    const navegation = useNavigate();
 
     return (
         <>
@@ -11,7 +14,7 @@ const CardCheckout = (props) => {
                     text="Uploud do PDF"
                     backgroundColor="#019ED3"
                     color='#fff'
-                    onClick={() => navegation("/financeiro/tesrte1")}
+                    onClick={() => navegation("/")}
                 />
                 <div className="observation">
                     <span>Observação:</span>

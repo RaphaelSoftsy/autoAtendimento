@@ -1,9 +1,18 @@
-.footer{
+.footer-container {
+    height: 32vh;
     display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 20vh;
-    padding: 0px 32px;
+    gap: 10px;
+    height: auto;
+    padding: 20px 32px;
     background-color: #fff;
 }
 
@@ -21,6 +30,6 @@
     color: #fff;
 }
 
-.title-footer:hover{
+.title-footer:hover {
     filter: brightness(75%);
 }

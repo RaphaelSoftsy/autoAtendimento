@@ -1,9 +1,15 @@
 import ListSubjectsCheck from '../../../../components/ListSubjectsCheck';
 import Footer from '../../../../components/Footer';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { useNavigate } from 'react-router-dom';
 
 const EveryCashBack = () => {
+    
     const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const navegation = useNavigate();
+    const MySwal = withReactContent(Swal);
 
     const list = [
         {
@@ -26,12 +32,26 @@ const EveryCashBack = () => {
 
     const handleSubjectSelect = (id) => {
         setSelectedSubjects(prevSelected => {
-            if (prevSelected.includes(id)) {
+            const index = prevSelected.indexOf(id);
+            if (index !== -1) {
                 return prevSelected.filter(subjectId => subjectId !== id);
             } else {
                 return [...prevSelected, id];
             }
         });
+    };
+
+    const handleNext = () => {
+        if (selectedSubjects.length === 0) {
+            MySwal.fire({
+                icon: 'info',
+                title: 'Erro',
+                text: 'Você não selecionou nada',
+                confirmButtonText: 'OK'
+            });
+        } else {
+            navegation('/');
+        }
     };
     
     return (
@@ -45,9 +65,7 @@ const EveryCashBack = () => {
                         onSelect={handleSubjectSelect} />
                 </div>
             </div>
-            <div className='footer-container'>
-                <Footer text="Avançar" route="/financeiro/realizar-acordo/teste"/>
-            </div>
+            <Footer text="Avançar" onClick={handleNext} />
         </main>
 
     );

@@ -21,12 +21,12 @@ const MonthlyPayment = () => {
     ]
 
     return (
-        <div className="monthlyPayment">
+        <main className="monthly-payment">
             <div className='list-subjects'>
                 <h1 className='title'>Sobre qual assunto deseja falar?</h1>
                 <ListSubjects itens={list} />
             </div>
-        </div>
+        </main>
     )
 }
 
