@@ -25,7 +25,7 @@
 }
 
 .icon-boleto {
-    background-color: var(--light-blue);
+    background-color: var(--primary-light-blue);
     padding: 15px;
     border-radius: 50%;
 }
@@ -39,7 +39,7 @@
 .total-boleto {
     font-weight: 700;
     font-family: system-ui;
-    color: var(--light-blue);
+    color: var(--primary-light-blue);
     font-size: clamp(1.875rem, 1.5rem + 1.5vw, 2.625rem);
 }
 
