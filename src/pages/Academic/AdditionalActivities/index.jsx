@@ -3,8 +3,10 @@ import Footer from '../../../components/Footer'
 import ListSubjects from '../../../components/ListSubjects'
 import './additionalActivities.css'
 import { FaRegHourglassHalf } from 'react-icons/fa6'
+import { useNavigate } from 'react-router-dom'
 
 const AdditionalActivities = () => {
+
     const list = [
         {
             id: 1,
@@ -15,6 +17,16 @@ const AdditionalActivities = () => {
             name: 'Histórico Qualifica'
         }
     ]
+
+    const style = {
+        backgroundColor: "var(--secondary-light-red)"
+    }
+
+    const navegation = useNavigate()
+
+    const handleNext = () => {
+        navegation('/');
+    };
 
     return (
         <>
@@ -33,7 +45,7 @@ const AdditionalActivities = () => {
                             <span>50 horas</span>
                             <FaRegHourglassHalf />
                         </div>
-                        
+
                     </div>
                     <div className='access-subjects'>
                         <h3>Acessar Plataformas de atividades</h3>
@@ -41,9 +53,7 @@ const AdditionalActivities = () => {
                     </div>
 
                 </div>
-                <div className='footer-container'>
-                    <Footer text='Abrir Demanda' route='/' />
-                </div>
+                <Footer text='Abrir Demanda' onClick={handleNext} style={style} />
             </main>
         </>
     )

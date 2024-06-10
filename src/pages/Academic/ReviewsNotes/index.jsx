@@ -11,12 +11,12 @@ const ReviewsNotes = () => {
     ]
 
     return (
-        <div className="reviews-notes">
+        <main className="reviews-notes">
             <div className='list-subjects'>
                 <h1 className='title'>Sobre qual assunto deseja falar?</h1>
                 <ListSubjects itens={list} />
             </div>
-        </div>
+        </main>
     )
 }
 

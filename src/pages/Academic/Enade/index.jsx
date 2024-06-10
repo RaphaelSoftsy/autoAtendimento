@@ -6,11 +6,11 @@ const Enade = () => {
     const navegation = useNavigate()
 
     const style1 = {
-        backgroundColor: "#EEAD2D"
+        backgroundColor: "var(--secondary-light-yellow)"
     }
 
     const style2 = {
-        backgroundColor: "#dc143c"
+        backgroundColor: "var(--secondary-light-red)"
     }
 
     return (
@@ -20,9 +20,9 @@ const Enade = () => {
                 <span><b>O seu curso ainda não participa do ENADE (Exame Nacional de Desempenho dos Estudantes)</b></span>
                 <DefaultButton
                     text="Abrir uma Demanada"
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
-                    onClick={() => navegation("")}
+                    onClick={() => navegation("/")}
                 />
             </div>
             </div>

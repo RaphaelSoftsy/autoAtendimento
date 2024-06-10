@@ -4,7 +4,7 @@ import Footer from "../../../components/Footer";
 const SpecialDegreeConferral = () => {
 
     const style = {
-        backgroundColor: "#019ED3"
+        backgroundColor: "var(--primary-light-blue)"
     }
 
     return (

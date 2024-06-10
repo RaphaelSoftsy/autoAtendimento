@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import ListArrow from '../../../components/ListArrow';
 
 const Diplomas = () => {

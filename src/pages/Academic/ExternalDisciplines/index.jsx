@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DefaultButton from "../../../components/DefaultButton";
 
 const ExternalDisciplines = () => {
@@ -7,11 +7,11 @@ const ExternalDisciplines = () => {
 
 
     const style1 = {
-        backgroundColor: "#EEAD2D"
+        backgroundColor: "var(--secondary-light-yellow)"
     }
 
     const style2 = {
-        backgroundColor: "#dc143c"
+        backgroundColor: "var(--secondary-light-red)"
     }
 
     return (
@@ -22,16 +22,16 @@ const ExternalDisciplines = () => {
                     <h4>Caso queira abrir uma solicitação clique abaixo.</h4>
                     <DefaultButton
                         text="Abrir Solicitação"
-                        backgroundColor="#019ED3"
+                        backgroundColor="var(--primary-light-blue)"
                         color='#fff'
-                        onClick={() => navegation("/financeiro/tesrte1")}
+                        onClick={() => navegation("/")}
                     />
                 </div>
             </div>
             <div className='footer-container'>
                 <footer className='footer-double'>
-                    <Link className='title-footer' style={style1} > Voltar para Serviços </Link>
-                    <Link className='title-footer' style={style2} > Finalizar Sessão </Link>
+                    <button className='title-footer' style={style1} > Voltar para Serviços </button>
+                    <button className='title-footer' style={style2} > Finalizar Sessão </button>
                 </footer>
             </div>
         </main>
