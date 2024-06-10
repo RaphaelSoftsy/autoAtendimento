@@ -39,12 +39,12 @@ const CardChoice = () => {
                 <div className='buttons'>
                     <DefaultButton
                         text="Cadastrar Novo Cartão"
-                        backgroundColor="#03bb85"
+                        backgroundColor="var(--success-dark-green)"
                         onClick={() => navegation("/financeiro/adicionar-cartao")}
                     />
                     <DefaultButton
                         text="Pagar"
-                        backgroundColor="#019ED3"
+                        backgroundColor="var(--primary-light-blue)"
                         onClick={() => navegation("/financeiro/realizar-pagamento/pago")}
                     />
                 </div>

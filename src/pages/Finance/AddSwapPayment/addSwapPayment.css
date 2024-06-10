@@ -16,7 +16,7 @@
 }
 .plano-atual{
     font-size: 20px;
-    background-color: #019ed3;
+    background-color: var(--primary-light-blue);
     padding: 10px;
     border-radius: 10px;
     width: auto;

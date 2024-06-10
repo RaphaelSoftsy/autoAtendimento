@@ -1,5 +1,5 @@
 .button-home{
-    background-color: #019ED3;
+    background-color: var(--primary-light-blue);
     width: 80%;
     display: flex;
     justify-content: space-between;
@@ -10,11 +10,11 @@
     box-shadow: 0px 5px 14px -6px #000;
     cursor: pointer;
     border: 0;
-
+    transition: ease 0.5s;
 }
 
 .button-home:hover{
-    background-color: #005d7b;
+    background-color: var(--primary-dark-blue);
 }
 
 img{

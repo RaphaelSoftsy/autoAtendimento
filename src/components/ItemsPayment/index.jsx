@@ -16,10 +16,10 @@ const ItemsPayment = ({ items, selectedSubjects, onSelect }) => {
     };
 
     const statusColors = {
-        'Acordo': '#019ed3',
-        'Serviço': '#ffc107',
-        'Mensalidade': '#00cc00',
-        'Outros': '#ff0000'
+        'Acordo': 'var(--primary-light-blue)',
+        'Serviço': 'var(--secondary-light-yellow)',
+        'Mensalidade': 'var(--success-light-green)',
+        'Outros': 'var(--secondary-dark-red)'
     };
 
     return (
@@ -29,7 +29,7 @@ const ItemsPayment = ({ items, selectedSubjects, onSelect }) => {
                     key={subject.id}
                     className='topics-payment'
                     style={{
-                        borderLeft: `20px solid ${statusColors[subject.status] || '#CCC'}`
+                        borderLeft: `20px solid ${statusColors[subject.status] || 'var(--neutral-light-gray)'}`
                     }}
                 >
                     <div className='payment'>

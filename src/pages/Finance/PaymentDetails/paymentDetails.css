@@ -41,7 +41,7 @@
     height: auto;
     border-radius: 14px;
     padding:  11px 0;
-    background-color: #1ebb6b;
+    background-color: var(--success-dark-green);
     color: #fff;
     cursor: pointer;
 }
@@ -55,7 +55,7 @@
     height: auto;
     border-radius: 14px;
     padding:  11px 0;
-    background-color: #FF7F50;
+    background-color: var(--warning-light-orange);
     color: #fff;
     cursor: pointer;
 }
@@ -69,7 +69,7 @@
     height: auto;
     border-radius: 14px;
     padding:  11px 0;
-    background-color: #019ed3;
+    background-color: var(--primary-light-blue);
     color: #fff;
     cursor: pointer;
 }

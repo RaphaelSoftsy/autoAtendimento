@@ -8,7 +8,7 @@ const RescueChecks = () => {
     const navegation = useNavigate();
 
     const style = {
-        backgroundColor: "#dc143c"
+        backgroundColor: "var(--secondary-light-red)"
     }
 
     const handleNext = () => {

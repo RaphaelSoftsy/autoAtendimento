@@ -16,7 +16,7 @@
     width: 80vw;
     gap: 20px;
     padding: 25px;
-    border-left: 20px solid #8f8f8f;
+    border-left: 20px solid var(--neutral-dark-gray);
     border-radius: 7px;
     color: #000;
 }
