@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import DefaultButton from "../../../components/DefaultButton";
 
 const OpenCollection = () => {
+
+    const navegation = useNavigate();
 
     return (
         <main className="course-cancellation">
@@ -8,21 +11,19 @@ const OpenCollection = () => {
                 <span><b>Você possui cobranças em aberto. Gostaria de realizar um acordo?</b></span>
                 <DefaultButton
                     text="Sim"
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--secondary-light-blue)"
                     color='#fff'
-                    onClick={() => navegation("")}
+                    onClick={() => navegation("/")}
                 />
                 <DefaultButton
                     text="Não"
-                    backgroundColor="#DC143C"
+                    backgroundColor="var(--secondary-light-red)"
                     color='#fff'
-                    onClick={() => navegation("")}
+                    onClick={() => navegation("/")}
                 />
             </div>
-            
         </main>
     );
-
 }
 
 export default OpenCollection;

@@ -1,9 +1,3 @@
-.section-rejection-adaptation {
-    display: grid;
-    grid-template-rows: auto 32vh;
-    min-height: 93vh;
-}
-
 .discipline {
     display: flex;
     flex-direction: column;
@@ -12,7 +6,7 @@
 }
 
 .rejection-adaptation{
-    padding: 10vh 16px;
+    padding: 10vh 3vw;
     width: 100%;
     min-height: 61vh;
     display: flex;
@@ -25,7 +19,7 @@
     gap: 10px;
     flex-direction: column;
     border: 1px solid #fff;
-    width: 80vw;
+    width: 100%;
     margin-bottom: 2vh;
     padding: 10px;
     text-align: start;
@@ -35,17 +29,15 @@
     font-size: 1rem;
 }
 
+.select-diploma{
+    width: 100%;
+}
+
 @media(max-width:999px) {
-    .rejection-adaptation{
-        padding-right: 30px;
-    }
     .discipline{
         width: 100%;
         justify-content: center;
         align-items: center;
-    }
-    .select-diploma{
-        width: 85%;
         text-align: start;
     }
 }

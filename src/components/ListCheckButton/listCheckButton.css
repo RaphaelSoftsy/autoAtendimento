@@ -3,7 +3,7 @@
     justify-content: center;
     width: 100%;
     font-weight: 500;
-    font-size: clamp(0.75rem, 0.5rem + 1vw, 1.25rem);
+    font-size: clamp(1rem, 0.5rem + 1vw, 1.50rem);
     font-family: "Quicksand", sans-serif;
     background-color: var(--secondary-dark-yellow);
     padding: 20px;

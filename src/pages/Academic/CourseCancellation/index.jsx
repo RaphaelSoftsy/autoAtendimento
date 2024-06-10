@@ -45,7 +45,7 @@ const CourseCancellation = () => {
                 <span>Situação Financeira <b>Inadimplente</b></span>
                 <DefaultButton
                     text="Cancelar Curso"
-                    backgroundColor="#DC143C"
+                    backgroundColor="var(--secondary-light-red)"
                     color='#fff'
                     onClick={handleCancelCourse}
                 />

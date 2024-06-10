@@ -4,14 +4,14 @@ import Footer from "../../../components/Footer";
 const PrintedDiploma = () => {
 
     const style = {
-        backgroundColor: "#019ED3"
+        backgroundColor: "var(--primary-light-blue)"
     }
 
     return (
         <main className='main-perform-accord'>
             <div className="rescue-checks">
                 <div className='list-subjects'>
-                    <CardCheckout text="Por favos envie os documentos"/>
+                    <CardCheckout text="Por favor envie os documentos"/>
                 </div>
             </div>
             <div className='footer-container'>

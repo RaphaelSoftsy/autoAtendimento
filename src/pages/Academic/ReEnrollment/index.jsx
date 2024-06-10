@@ -7,7 +7,7 @@ const ReEnrollment = () => {
     const navegation = useNavigate()
 
     const style = {
-        backgroundColor: "#dc143c"
+        backgroundColor: "var(--secondary-light-red)"
     }
 
     return (
@@ -18,9 +18,9 @@ const ReEnrollment = () => {
                 <span>Para tanto basta estar em dia com suas mensalidades.</span>
                 <DefaultButton
                     text="Regularizar Financeiro"
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
-                    onClick={() => navegation("/financeiro/tesrte1")}
+                    onClick={() => navegation("/")}
                 />
             </div>
             </div>

@@ -2,6 +2,9 @@ import { useState } from 'react';
 import ListCheckButton from '../../../components/ListCheckButton'
 import './substituteProof.css'
 import Footer from '../../../components/Footer';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { useNavigate } from 'react-router-dom';
 
 const SubstituteProof = () => {
     const list = [
@@ -16,15 +19,31 @@ const SubstituteProof = () => {
     ]
 
     const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const navegation = useNavigate();
+    const MySwal = withReactContent(Swal);
 
-    const handleSelect = (id) => {
+    const handleSubjectSelect = (id) => {
         setSelectedSubjects(prevSelected => {
-            if (prevSelected.includes(id)) {
+            const index = prevSelected.indexOf(id);
+            if (index !== -1) {
                 return prevSelected.filter(subjectId => subjectId !== id);
             } else {
                 return [...prevSelected, id];
             }
         });
+    };
+
+    const handleNext = () => {
+        if (selectedSubjects.length === 0) {
+            MySwal.fire({
+                icon: 'info',
+                title: 'Erro',
+                text: 'Você não selecionou nada',
+                confirmButtonText: 'OK'
+            });
+        } else {
+            navegation('/');
+        }
     };
 
     return (
@@ -36,12 +55,12 @@ const SubstituteProof = () => {
                     <ListCheckButton
                         items={list}
                         selectedSubjects={selectedSubjects}
-                        onSelect={handleSelect}
+                        onSelect={handleSubjectSelect}
                         text="Não achou a disciplina que está procurando?"
                     />
                 </div>
             </main>
-            <Footer text='Avançar' route='/' />
+            <Footer text='Avançar' onClick={handleNext}  />
         </>
 
     )

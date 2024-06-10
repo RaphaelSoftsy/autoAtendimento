@@ -5,6 +5,10 @@ const InternalDisciplines = () => {
 
     const navegation = useNavigate()
 
+    const handleNext = () => {
+        navegation('/');
+    };
+
     return (
         <main className='main-perform-accord'>
             <div className="rescue-checks">
@@ -14,7 +18,7 @@ const InternalDisciplines = () => {
                 </div>
             </div>
             <div className='footer-container'>
-                <Footer text='Simular Aproveitamento' route='/' />
+                <Footer text='Simular Aproveitamento' onClick={handleNext} />
             </div>
         </main>
     );

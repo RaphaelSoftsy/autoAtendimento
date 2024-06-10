@@ -2,6 +2,7 @@ import './expedition.css'
 import ListSubjects from '../../../components/ListSubjects';
 
 const Expedition = () => {
+    
     const list = [
         {
             id: 1,
@@ -31,12 +32,12 @@ const Expedition = () => {
     ]
 
     return (
-        <div className="expedition">
+        <main className="expedition">
             <div className='list-subjects'>
                 <h1 className='title'>Selecione qual das opções deseja:</h1>
                 <ListSubjects itens={list} />
             </div>
-        </div>
+        </main>
     )
 }
 

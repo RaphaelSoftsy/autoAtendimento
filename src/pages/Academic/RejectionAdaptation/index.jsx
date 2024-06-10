@@ -2,6 +2,9 @@ import { useState } from 'react';
 import ListCheckButton from '../../../components/ListCheckButton'
 import './rejectionAdaptation.css'
 import Footer from '../../../components/Footer';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { useNavigate } from 'react-router-dom';
 
 const RejectionAdaptation = () => {
     const list = [
@@ -15,11 +18,18 @@ const RejectionAdaptation = () => {
         }
     ]
 
-    const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const style = {
+        backgroundColor: "var(--secondary-light-red)"
+    }
 
-    const handleSelect = (id) => {
+    const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const navegation = useNavigate();
+    const MySwal = withReactContent(Swal);
+
+    const handleSubjectSelect = (id) => {
         setSelectedSubjects(prevSelected => {
-            if (prevSelected.includes(id)) {
+            const index = prevSelected.indexOf(id);
+            if (index !== -1) {
                 return prevSelected.filter(subjectId => subjectId !== id);
             } else {
                 return [...prevSelected, id];
@@ -27,31 +37,39 @@ const RejectionAdaptation = () => {
         });
     };
 
+    const handleNext = () => {
+        if (selectedSubjects.length === 0) {
+            MySwal.fire({
+                icon: 'info',
+                title: 'Erro',
+                text: 'Você não selecionou nada',
+                confirmButtonText: 'OK'
+            });
+        } else {
+            navegation('/');
+        }
+    };
+
     return (
         <>
-            <section className='section-rejection-adaptation'>
-                <main className='rejection-adaptation'>
-                    <div className='discipline'>
-                        <h3>Selecione a Disciplina que deseja realizar a Matricula, lembrando que você pode ter 4 disciplinas simultaneamente</h3>
-                        <div className='registration'>
-                            <span>Nº de Disciplinas já matriculadas 2</span>
-                            <span>Nº de Disciplinas que pode solicitar 2</span>
-                        </div>
-                        <h4 className='select-diploma'>Selecione a Disciplina</h4>
-                        <ListCheckButton
-                            items={list}
-                            selectedSubjects={selectedSubjects}
-                            onSelect={handleSelect}
-                            text="Não achou a disciplina que está procurando?"
-                        />
+            <main className='rejection-adaptation'>
+                <div className='discipline'>
+                    <h3>Selecione a Disciplina que deseja realizar a Matricula, lembrando que você pode ter 4 disciplinas simultaneamente</h3>
+                    <div className='registration'>
+                        <span>Nº de Disciplinas já matriculadas 2</span>
+                        <span>Nº de Disciplinas que pode solicitar 2</span>
                     </div>
-                </main>
-                <div className='footer-container'>
-                    <Footer text='Relatar um Problema' route='/' />
+                    <h3 className='select-diploma'>Selecione a Disciplina</h3>
+                    <ListCheckButton
+                        items={list}
+                        selectedSubjects={selectedSubjects}
+                        onSelect={handleSubjectSelect}
+                        text="Solicitar"
+                    />
                 </div>
-            </section>
+            </main>
+            <Footer text='Relatar um Problema' onClick={handleNext} style={style} />
         </>
-
     )
 }
 

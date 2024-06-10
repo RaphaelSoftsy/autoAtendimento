@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import DefaultButton from "../../../components/DefaultButton";
 import "./academicSpecificDeclaration.css"
 
 const AcademicSpecificDeclaration = () => {
+
+    const navegation = useNavigate();
 
     return (
         <main className="academic-specific-declaration">
@@ -11,7 +14,7 @@ const AcademicSpecificDeclaration = () => {
             </div>
             <DefaultButton
                     text="Enviar Solicitação"
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--secondary-light-blue)"
                     color='#fff'
                     onClick={() => navegation("/")}
                 />

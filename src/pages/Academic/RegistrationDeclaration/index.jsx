@@ -1,29 +1,32 @@
+import { useNavigate } from 'react-router-dom';
 import CardDeclaration from '../../../components/CardDeclaration'
 
 const RegistrationDeclaration = () => {
 
+    const navegation = useNavigate();
+
     const buttons = [
         {
             text: "Imprimir Declaração",
-            backgroundColor: "#019ED3",
+            backgroundColor: "var(--primary-light-blue)",
             color: '#fff',
             onClick: () => navegation("/")
         },
         {
             text: "Voltar para Serviços",
-            backgroundColor: "#EEAD2D",
+            backgroundColor: "var(--secondary-light-yellow)",
             color: '#fff',
             onClick: () => navegation("/")
         },
         {
             text: "Abrir Demanda",
-            backgroundColor: "#dc143c",
+            backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
             onClick: () => navegation("/")
         },
         {
             text: "Finalizar Sessão",
-            backgroundColor: "#dc143c",
+            backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
             onClick: () => navegation("/")
         }
@@ -37,6 +40,5 @@ const RegistrationDeclaration = () => {
         </>
     )
 }
-
 
 export default RegistrationDeclaration
