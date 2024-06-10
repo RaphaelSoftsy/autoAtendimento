@@ -46,7 +46,7 @@ const CardSelectPeriod = () => {
             </div>
             <DefaultButton
                 text="Enviar Solicitação"
-                backgroundColor="#019ED3"
+                backgroundColor="var(--primary-light-blue)"
                 color='#fff'
                 onClick={() => navegation("/financeiro/adicionar-cartao")}
             />

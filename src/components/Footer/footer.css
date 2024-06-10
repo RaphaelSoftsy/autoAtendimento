@@ -20,7 +20,7 @@
     font-weight: 500;
     font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
     font-family: "Quicksand", sans-serif;
-    background-color: #103C6B;
+    background-color: var(--primary-dark-blue);
     padding: 20px;
     width: 90%;
     border-radius: 9px;

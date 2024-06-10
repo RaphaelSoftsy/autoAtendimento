@@ -24,7 +24,7 @@
 }
 
 .topic span:hover{
-    color: #019ED3;
+    color: var(--primary-light-blue);
     cursor: pointer;
 }
 

@@ -12,7 +12,7 @@ const CardCheckout = (props) => {
                 <h2 className='explain-problem'>{props.text}</h2>
                 <DefaultButton
                     text="Uploud do PDF"
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
                     onClick={() => navegation("/")}
                 />

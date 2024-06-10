@@ -16,7 +16,7 @@
 
 .icon{
     display: flex;
-    background-color: var(--light-blue);
+    background-color: var(--primary-light-blue);
     padding: 8px;
     border-radius: 6px;
     cursor: pointer;

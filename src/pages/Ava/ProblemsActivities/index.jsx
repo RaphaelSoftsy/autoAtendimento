@@ -2,9 +2,15 @@ import './problemsActivities.css'
 import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
 import Footer from '../../../components/Footer';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { useNavigate } from 'react-router-dom';
 
 const ProblemsActivities = () => {
+    
     const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const navegation = useNavigate();
+    const MySwal = withReactContent(Swal);
 
     const list = [
         {
@@ -19,12 +25,26 @@ const ProblemsActivities = () => {
 
     const handleSubjectSelect = (id) => {
         setSelectedSubjects(prevSelected => {
-            if (prevSelected.includes(id)) {
+            const index = prevSelected.indexOf(id);
+            if (index !== -1) {
                 return prevSelected.filter(subjectId => subjectId !== id);
             } else {
                 return [...prevSelected, id];
             }
         });
+    };
+
+    const handleNext = () => {
+        if (selectedSubjects.length === 0) {
+            MySwal.fire({
+                icon: 'info',
+                title: 'Erro',
+                text: 'Você não selecionou nada',
+                confirmButtonText: 'OK'
+            });
+        } else {
+            navegation('/ava/problemas-na-atividade/explicar-problema');
+        }
     };
 
     return (
@@ -38,9 +58,7 @@ const ProblemsActivities = () => {
                         onSelect={handleSubjectSelect} />
                 </div>
             </div>
-            <div className='footer-container'>
-                <Footer text="Avançar" route="/ava/problemas-na-atividade/explique-problema"/>
-            </div>
+            <Footer text="Avançar" onClick={handleNext} />
         </main>
 
     );

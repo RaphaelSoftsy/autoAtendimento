@@ -62,17 +62,17 @@ const AddSwapPayment = () => {
                         ALTERAR PLANO PARA 
                         ${planoAtual === 'PLANO RECORRÊNCIA' ? 'MENSAL' : 'RECORRÊNCIA'}`
                         }
-                        backgroundColor="#03bb85"
+                        backgroundColor="var(--custom-green)"
                         onClick={togglePlano}
                     />
                     <DefaultButton
                         text="Cadastrar Novo Cartão"
-                        backgroundColor="#03bb85"
+                        backgroundColor="var(--custom-green)"
                         onClick={() => navegation("/financeiro/adicionar-cartao")}
                     />
                     <DefaultButton
                         text="Finalizar Sessão"
-                        backgroundColor="#dc143c"
+                        backgroundColor="var(--secondary-light-red)"
                         onClick={() => navegation("/")}
                     />
                 </div>

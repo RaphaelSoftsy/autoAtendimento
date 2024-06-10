@@ -5,8 +5,23 @@
 }
 
 :root {
-  --light-blue: #019ED3;
+  --primary-light-blue: #019ED3;
+  --primary-dark-blue: #103C6B;
+  --primary-dark-blue-alt: #0B2442;
+  --secondary-light-red: #DC143C;
+  --secondary-dark-red: #FF0000;
+  --secondary-light-yellow: #EEAD2D;
+  --secondary-dark-yellow: #F79F34;
+  --success-light-green: #00CC00;
+  --custom-green: #03BB85;
+  --success-dark-green: #1EBB6B;
+  --success-dark-green-alt: #05A07D;
+  --neutral-light-gray: #CCCCCC;
+  --neutral-dark-gray: #8F8F8F;
+  --neutral-dark-gray-alt: #CED6E0;
+  --warning-light-orange: #FF7F50;
 }
+
 
 html,
 body,
@@ -33,7 +48,7 @@ select {
   width: 100%;
   padding: 8px;
   font-size: 1.2em;
-  border: 1px solid #ccc;
+  border: 1px solid var(--neutral-light-gray);
   border-radius: 5px;
   height: 50px;
   font-family: "Source Sans Pro", sans-serif;

@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import CardRequest from "../../../components/CardRequest";
 import DefaultButton from "../../../components/DefaultButton";
 
 const DescribeRequest = () => {
+
+    const navegation = useNavigate();
 
     return (
         <main className="problems-accessing-ava">
@@ -9,9 +12,9 @@ const DescribeRequest = () => {
                 <CardRequest text="Descreva sua solicitação:"/>
                 <DefaultButton
                     text="Enviar Solicitação"
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
-                    onClick={() => navegation("/ava/teste")}
+                    onClick={() => navegation("/")}
                 />
             </div>
         </main>
