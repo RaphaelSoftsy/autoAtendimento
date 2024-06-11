@@ -215,8 +215,7 @@ export const listRoutesFinanceiro = [
         "header": "Resgate de Cheques",
         "route": "/financeiro/outros-assuntos/resgate-cheque"
     }
-]
-
+];
 
 export const listRoutesAcademic = [
     {
@@ -468,4 +467,4 @@ export const listRoutesAva = [
         header: 'Tutoria',
         route: '/ava/tutoria'
     }
-]
+];
