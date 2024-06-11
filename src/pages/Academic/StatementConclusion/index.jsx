@@ -8,7 +8,7 @@ const StatementConclusion = () => {
     const buttons = [
         {
             text: "Imprimir Declaração",
-            backgroundColor: "var(--secondary-light-blue)",
+            backgroundColor: "var(--primary-light-blue)",
             color: '#fff',
             onClick: () => navegation("/")
         },

@@ -1,15 +1,3 @@
-body{
-    background: url(../../../assets/back.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.list-subjects{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-}
-
 .main-perform-accord{
     display: grid;
     grid-template-rows: auto 32vh;
@@ -24,16 +12,4 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.title{
-    margin-bottom: 5vh;
-    text-align: start;
-}
-
-.subjects{
-    background-color: #fff;
-    width: 80vw;
-    height: 950px;
-    border-radius: 16px;
 }

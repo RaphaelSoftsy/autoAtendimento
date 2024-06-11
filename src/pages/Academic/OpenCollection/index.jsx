@@ -11,7 +11,7 @@ const OpenCollection = () => {
                 <span><b>Você possui cobranças em aberto. Gostaria de realizar um acordo?</b></span>
                 <DefaultButton
                     text="Sim"
-                    backgroundColor="var(--secondary-light-blue)"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
                     onClick={() => navegation("/")}
                 />
