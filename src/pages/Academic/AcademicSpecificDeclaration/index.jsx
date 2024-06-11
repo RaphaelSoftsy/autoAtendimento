@@ -14,7 +14,7 @@ const AcademicSpecificDeclaration = () => {
             </div>
             <DefaultButton
                     text="Enviar Solicitação"
-                    backgroundColor="var(--secondary-light-blue)"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
                     onClick={() => navegation("/")}
                 />
