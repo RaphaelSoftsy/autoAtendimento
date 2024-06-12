@@ -21,6 +21,7 @@
 
 .topic span{
     text-align: start;
+    transition: ease .6s;
 }
 
 .topic span:hover{
