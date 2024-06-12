@@ -7,6 +7,11 @@ import cap from '../../assets/cap.png'
 import ButtonHome from '../../components/ButtonHome';
 
 const Home = () => {
+
+    const aluno = '2470005';
+
+    localStorage.setItem("aluno-ra", aluno);
+
     return (
         <div>
             <header>

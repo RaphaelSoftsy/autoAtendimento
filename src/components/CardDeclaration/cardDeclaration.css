@@ -1,3 +1,18 @@
+.declaration-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 70vw;
+}
+
+.declaration-container table tbody{
+    padding: 20px;
+}
+
+.declaration-container p{
+    text-align: start;
+}
+
 .card-declaration{
     background-color: #fff;
     width: 85vw;
@@ -12,7 +27,22 @@
     gap: 30px;
 }
 
+.declaration-content {
+    width: 80vw;
+    padding: 20px;
+    font-size: 16px;
+    text-align: justify;
+    color: #333;
+    border: 1px solid var(--neutral-light-gray);
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
 .declaracao{
     width: 200px;
     height: auto;
+}
+
+.logo-sumare-azul {
+    width: 250px;
 }
