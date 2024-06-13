@@ -14,7 +14,7 @@ const SchoolRecords = () => {
 
     async function getDeclaration() {
         try {
-            const response = await axios.get(`https://api-academico.sumare.edu.br/api-documento/documentos/historico?aluno=2470005`);
+            const response = await axios.get(`${url_base}/api-documento/documentos/historico?aluno=${aluno}`);
             const data = response.data;
             console.log('Dados da declaração:', data);
             setDeclaration(data);
@@ -60,7 +60,7 @@ const SchoolRecords = () => {
                 <div className='card-declaration'>
                     <img src={logo} alt="logo da sumare" className='logo-sumare-azul' />
                     {declaration ? (
-                        <div className="declaration-container">
+                        <div className="declaration-content-records">
                             <h2>Histórico Escolar</h2>
                             <p>Nome: {declaration.nome}</p>
                             <p>Matrícula: {declaration.aluno}</p>

@@ -24,7 +24,7 @@ const RegistrationDeclaration = () => {
         getDeclaration();
     }, [aluno]);
 
-    const botoes = [
+    const buttons = [
         {
             text: "Imprimir Declaração",
             backgroundColor: "var(--primary-light-blue)",
@@ -53,7 +53,11 @@ const RegistrationDeclaration = () => {
 
     return (
         <main className='send-declaration-financial'>
-            <CardDeclaration buttonProps={botoes} declarationText={declaration} />
+            {declaration ? (
+                <CardDeclaration buttonProps={buttons} declarationText={declaration} />
+            ) : (
+                <p>Carregando...</p>
+            )}
         </main>
     );
 }
