@@ -1,19 +1,23 @@
-.declaration-container{
+.declaration-content-records {
+    width: 80vw;
+    padding: 10px;
+    font-size: clamp(0.75rem, 0.625rem + 0.5vw, 1rem);
+    color: #333;
+    border: 1px solid var(--neutral-light-gray);
+    border-radius: 8px;
+    background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 70vw;
+    overflow-y: hidden;
+    overflow-x: auto;
 }
 
-.declaration-container table tbody{
-    padding: 20px;
-}
-
-.declaration-container p{
+.declaration-content-records p {
     text-align: start;
 }
 
-.card-declaration{
+.card-declaration {
     background-color: #fff;
     width: 85vw;
     height: auto;
@@ -38,7 +42,21 @@
     background-color: #f9f9f9;
 }
 
-.declaracao{
+.declaration-content-conclusion {
+    width: 80vw;
+    padding: 20px;
+    font-size: 16px;
+    text-align: justify;
+    color: #333;
+    border: 1px solid var(--neutral-light-gray);
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.declaracao {
     width: 200px;
     height: auto;
 }
