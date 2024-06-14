@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import CardDeclaration from '../../../components/CardDeclaration'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../../../assets/logo-sumare-azul.png'
@@ -11,10 +10,11 @@ const StatementConclusion = () => {
     const navegation = useNavigate();
     const [declaration, setDeclaration] = useState('');
     const aluno = localStorage.getItem("aluno-ra");
+    // const aluno = "1412454";
 
     async function getDeclaration() {
         try {
-            const response = await axios.get(`${url_base}/api-documento/documentos/conclusao?aluno=1412454`);
+            const response = await axios.get(`${url_base}/api-documento/documentos/conclusao?aluno=${aluno}`);
             const data = response.data;
             console.log('Dados da declaração:', data);
             setDeclaration(data);
@@ -80,6 +80,8 @@ const StatementConclusion = () => {
                                 <p><strong>Data de Conclusão:</strong> {`${item.dia} de ${item.mes} de ${item.ano}`}</p>
                             </div>
                         ))
+                    ) : declaration.length === 0 ? (
+                        <p>Não há Declaração de Conclusão.</p>
                     ) : (
                         <p>Carregando...</p>
                     )}

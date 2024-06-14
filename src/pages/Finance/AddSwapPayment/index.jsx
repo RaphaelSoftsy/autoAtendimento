@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CardList from '../../../components/CardList';
 import './addSwapPayment.css'
 import DefaultButton from '../../../components/DefaultButton';
 import { useNavigate } from 'react-router-dom';
+import url_base from '../../../services/url_base';
+import axios from 'axios';
 
 const AddSwapPayment = () => {
 
     const [selectedPayment, setSelectedPayment] = useState(null);
+    const [payment, setPayment] = useState('');
+    // const aluno = localStorage.getItem("aluno-ra");
+    const aluno = '2183321'
 
     const [planoAtual, setPlanoAtual] = useState('PLANO RECORRÊNCIA');
 
@@ -19,6 +24,34 @@ const AddSwapPayment = () => {
     };
 
     const navegation = useNavigate()
+
+    async function getPerformPayment() {
+        try {
+            const response = await axios.get(`${url_base}/listaCartoesSalvos/${aluno}`);
+            const data = response.data;
+            console.log('Dados da declaração:', data);
+
+            // Filtrando os objetos que têm o campo 'id' definido
+            const filteredData = data.filter(item => item.id !== null);
+
+            const formattedData = filteredData.map((item, index) => ({
+                id: index + 1,
+                idCartao: item.id,
+                aluno: item.aluno,
+                num: `****${item.num}`
+            }));
+
+            setPayment(formattedData);
+        } catch (error) {
+            console.error('Erro ao buscar declaração:', error);
+        }
+    }
+
+    useEffect(() => {
+        getPerformPayment();
+    }, [aluno]);
+
+    console.log(payment);
 
     const list = [
         {
