@@ -9,8 +9,8 @@ const StatementConclusion = () => {
 
     const navegation = useNavigate();
     const [declaration, setDeclaration] = useState('');
-    const aluno = localStorage.getItem("aluno-ra");
-    // const aluno = "1412454";
+    // const aluno = localStorage.getItem("aluno-ra");
+    const aluno = "1412454";
 
     async function getDeclaration() {
         try {

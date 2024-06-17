@@ -41,7 +41,7 @@ const CardDrop = () => {
                     <textarea name="describe" id="describe"></textarea>
                 </div>
                 <DefaultButton
-                    text="Uploud"
+                    text="Upload"
                     backgroundColor="#019ED3"
                     color='#fff'
                     onClick={() => navegation("/")}

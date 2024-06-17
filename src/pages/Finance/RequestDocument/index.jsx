@@ -10,7 +10,7 @@ const RequestDocument = () => {
         },
         {
             id: 2,
-            name: 'Carta de Anuencia',
+            name: 'Carta de Anuência',
             route: '/financeiro/solicitar-documentos/carta-de-anuencia'
         },
         {

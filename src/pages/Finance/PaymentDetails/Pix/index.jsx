@@ -19,6 +19,8 @@ const Pix = () => {
 
     const [buttonText, setButtonText] = useState('Copiar');
 
+    const [buttonText2, setButtonText2] = useState('Enviar Email');
+
     const style = {
         width: '200px',
         height: '200px'
@@ -49,10 +51,16 @@ const Pix = () => {
                 <QRCode value={qrText} style={style} />
                 <DefaultButton
                     text= {buttonText}
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
                     onClick={copyToClipboard}
                 />
+                {/* <DefaultButton
+                    text= {buttonText2}
+                    backgroundColor="var(--primary-light-blue)"
+                    color='#fff'
+                    onClick={copyToClipboard}
+                /> */}
             </div>
         </main>
     );

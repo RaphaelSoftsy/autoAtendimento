@@ -12,7 +12,7 @@ const Sumare = () => {
                 <CardRequest text="Descreva o por que da sua solicitação:" />
                 <DefaultButton
                     text="Enviar Solicitação"
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
                     onClick={() => navegation("/")}
                 />

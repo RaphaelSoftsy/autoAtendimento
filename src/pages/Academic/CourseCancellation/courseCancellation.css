@@ -17,6 +17,7 @@
     justify-content: center;
     gap: 40px;
     color: #000;
+    width: 85vw;
 }
 
 .modal-cancellation {
@@ -87,7 +88,6 @@
 .modal-button.cancel:hover {
     background-color: #999;
 }
-
 
 
 @media (max-width: 600px) {

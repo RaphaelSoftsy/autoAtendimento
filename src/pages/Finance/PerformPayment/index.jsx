@@ -66,6 +66,13 @@ const PerformPayment = () => {
 
     console.log(payment);
 
+    // const formattedList = payment.map((item) => ({
+    //     id: item.id,
+    //     name: `Mensalidade ${item.mesName}/${item.ano}`,
+    //     valor: item.valorPagar,
+    //     status: item.resp
+    // }));
+
     const list = [
         {
             id: 1,
