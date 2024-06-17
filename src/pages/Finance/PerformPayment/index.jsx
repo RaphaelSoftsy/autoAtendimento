@@ -1,16 +1,70 @@
 import './performPayment.css'
 import ItemsPayment from '../../../components/ItemsPayment';
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import axios from 'axios';
+import url_base from '../../../services/url_base';
 
 const PerformPayment = () => {
 
     const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const [payment, setPayment] = useState('');
     const navigate = useNavigate();
+    // const aluno = localStorage.getItem("aluno-ra");
+    const aluno = '13121080709'
 
     const MySwal = withReactContent(Swal);
+
+    const monthNames = {
+        '1': 'Janeiro',
+        '2': 'Fevereiro',
+        '3': 'Março',
+        '4': 'Abril',
+        '5': 'Maio',
+        '6': 'Junho',
+        '7': 'Julho',
+        '8': 'Agosto',
+        '9': 'Setembro',
+        '10': 'Outubro',
+        '11': 'Novembro',
+        '12': 'Dezembro'
+    };
+
+    async function getPerformPayment() {
+        try {
+            const response = await axios.get(`${url_base}/cobrancaAluno/aluno/${aluno}/vencidas/n/aVencer/s`);
+            const data = response.data;
+            console.log('Dados da declaração:', data);
+
+             // Mapeando os objetos retornados pela API para o novo formato com IDs incrementais
+             const formattedData = data.map((item, index) => ({
+                id: index + 1,
+                cobranca: item.cobranca,
+                ano: item.ano,
+                mes: item.mes,
+                mesName: monthNames[item.mes],
+                aluno: item.aluno,
+                resp: item.resp,
+                dataDeVencimento: item.dataDeVencimento,
+                valorFaturado: item.valorFaturado,
+                valorDenscontoAtual: item.valorDenscontoAtual,
+                dataDescontoAtual: item.dataDescontoAtual,
+                valorPagar: item.valorPagar
+            }));
+
+            setPayment(formattedData);
+        } catch (error) {
+            console.error('Erro ao buscar declaração:', error);
+        }
+    }
+
+    useEffect(() => {
+        getPerformPayment();
+    }, [aluno]);
+
+    console.log(payment);
 
     const list = [
         {

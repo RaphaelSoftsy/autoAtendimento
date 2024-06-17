@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import CardDeclaration from '../../../components/CardDeclaration'
 import url_base from '../../../services/url_base';
 import { useEffect, useState } from 'react';
 import logo from '../../../assets/logo-sumare-azul.png'
