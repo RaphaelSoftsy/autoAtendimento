@@ -10,7 +10,7 @@ const FiesSumare = () => {
         },
         {
             id: 2,
-            name: 'Sumaré',
+            name: 'Super Sumaré',
             route: '/financeiro/outros-assuntos/fies-sumare/sumare'
         }
     ]

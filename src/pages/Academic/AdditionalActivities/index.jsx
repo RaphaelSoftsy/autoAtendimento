@@ -14,7 +14,7 @@ const AdditionalActivities = () => {
         },
         {
             id: 2,
-            name: 'Histórico Qualifica'
+            name: 'Sumaré Qualifica'
         }
     ]
 

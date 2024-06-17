@@ -11,7 +11,7 @@ const CardCheckout = (props) => {
             <div className="card-checkout">
                 <h2 className='explain-problem'>{props.text}</h2>
                 <DefaultButton
-                    text="Uploud do PDF"
+                    text="Upload do PDF"
                     backgroundColor="var(--primary-light-blue)"
                     color='#fff'
                     onClick={() => navegation("/")}

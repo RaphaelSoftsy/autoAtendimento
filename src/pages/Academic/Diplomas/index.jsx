@@ -5,10 +5,10 @@ const Diplomas = () => {
     const list = [
         {
             id: 1,
-            name: 'Diploma Impreso',
+            name: 'Diploma Impresso',
             detalhes: 'Serviço exclusivo para o(a) aluno(a) de GRADUAÇÃO que já recebeu o diploma digital e deseja ter a impressão da via física do documento, em papel especial, para fins de apresentação decorativa. A retirada deverá ser realizada exclusivamente pelo aluno (portanto documento oficial com foto), ou pelo procurador (mediante apresentação de Procuração Pública), no endereço do atendimento da Sede. A retirada deve ser feita imprescindivelmente em até 60 dias APÓS A NOTIFICAÇÃO da disponibilidade.',
             text_button: 'Solicitar',
-            route: "/academico/solicitacoes-academicas/diplomas/diploma-impreso"
+            route: "/academico/solicitacoes-academicas/diplomas/diploma-impresso"
         },
         {
             id: 2,

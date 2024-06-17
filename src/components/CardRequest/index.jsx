@@ -12,7 +12,7 @@ const CardRequest = (props) => {
                 <h2 className='explain-problem'>{props.text}</h2>
                 <textarea name="request" id="request"></textarea>
                 <DefaultButton
-                    text="Uploud do PDF"
+                    text="Upload do PDF"
                     backgroundColor="#019ED3"
                     color='#fff'
                     onClick={() => navegation("/")}

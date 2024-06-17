@@ -8,33 +8,38 @@ import "./courseCancellation.css";
 const MySwal = withReactContent(Swal);
 
 const CourseCancellation = () => {
-    const navigate = useNavigate();
+    const navegation = useNavigate();
     const hasPendingFees = true; // Simulando a verificação de pendências
 
-    const handleCancelCourse = () => {
-        if (hasPendingFees) {
-            MySwal.fire({
-                icon: 'error',
-                title: 'Erro',
-                text: 'Você possui mensalidades pendentes.',
-                confirmButtonText: 'Realizar Acordo'
-            }).then(() => {
-                navigate("/academico/cancelamento-do-curso/cobrancas");
-            });
-        } else {
-            MySwal.fire({
-                icon: 'question',
-                title: 'Deseja mesmo cancelar o curso?',
-                showCancelButton: true,
-                confirmButtonText: 'Sim',
-                cancelButtonText: 'Não'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate("/teste");
-                }
-            });
-        }
+    const handleNext = () => {
+        navegation('/academico/cancelamento-do-curso/cobrancas');
     };
+
+    // const handleCancelCourse = () => {
+    //     if (hasPendingFees) {
+    //         MySwal.fire({
+    //             icon: 'error',
+    //             title: 'Erro',
+    //             text: 'Você possui mensalidades pendentes.',
+    //             confirmButtonText: 'Realizar Acordo'
+                
+    //         }).then(() => {
+    //             navigate("/academico/cancelamento-do-curso/cobrancas");
+    //         });
+    //     } else {
+    //         MySwal.fire({
+    //             icon: 'question',
+    //             title: 'Deseja mesmo cancelar o curso?',
+    //             showCancelButton: true,
+    //             confirmButtonText: 'Sim',
+    //             cancelButtonText: 'Não'
+    //         }).then((result) => {
+    //             if (result.isConfirmed) {
+    //                 navigate("/teste");
+    //             }
+    //         });
+    //     }
+    // };
 
     return (
         <main className="course-cancellation">
@@ -47,7 +52,7 @@ const CourseCancellation = () => {
                     text="Cancelar Curso"
                     backgroundColor="var(--secondary-light-red)"
                     color='#fff'
-                    onClick={handleCancelCourse}
+                    onClick={handleNext}
                 />
             </div>
         </main>

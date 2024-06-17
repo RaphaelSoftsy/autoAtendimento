@@ -16,9 +16,9 @@ const ItemsPayment = ({ items, selectedSubjects, onSelect }) => {
     };
 
     const statusColors = {
-        'Acordo': 'var(--primary-light-blue)',
-        'Serviço': 'var(--secondary-light-yellow)',
-        'Mensalidade': 'var(--success-light-green)',
+        'Acordo': 'var(--secondary-light-yellow)',
+        'Serviço': 'var(--success-light-green)',
+        'Mensalidade': 'var(--primary-light-blue)',
         'Outros': 'var(--secondary-dark-red)'
     };
 
@@ -49,6 +49,7 @@ const ItemsPayment = ({ items, selectedSubjects, onSelect }) => {
 
                     {expandedItemId === subject.id && (
                         <div className='details'>
+                            <h1>A Vencer</h1>
                             <p>Mensalidade referente a Fevereiro de 2023</p>
                             <p>Vencimento: 10/02</p>
                             <p>Desconto: R$ 60,00</p>

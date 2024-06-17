@@ -139,7 +139,9 @@ const CardForm = () => {
           <option value="elo">Elo</option>
           <option value="banco-do-brasil">Banco do Brasil</option>
         </select> */}
-        <Link className='cadastro'> Cadastrar </Link>
+        {/* <Link className='cadastro'> Deseja salvar esse cartão? </Link>  ajustar isso para check*/}
+        <Link className='cadastro'> Pagar </Link>
+        
       </div>
     </>
 

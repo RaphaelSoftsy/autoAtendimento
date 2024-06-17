@@ -12,7 +12,7 @@ const Handbag = () => {
             <DefaultButton
                 onClick={() => navigate('/')}
                 text='Enviar Solicitação'
-                backgroundColor='#019ED3'
+                backgroundColor='var(--primary-light-blue)'
             />
         </main>
     )
