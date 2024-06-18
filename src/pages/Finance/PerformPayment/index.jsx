@@ -10,7 +10,7 @@ import url_base from '../../../services/url_base';
 const PerformPayment = () => {
 
     const [selectedSubjects, setSelectedSubjects] = useState([]);
-    const [payment, setPayment] = useState('');
+    const [payment, setPayment] = useState([]);
     const navigate = useNavigate();
     // const aluno = localStorage.getItem("aluno-ra");
     const aluno = '13121080709'
@@ -38,8 +38,8 @@ const PerformPayment = () => {
             const data = response.data;
             console.log('Dados da declaração:', data);
 
-             // Mapeando os objetos retornados pela API para o novo formato com IDs incrementais
-             const formattedData = data.map((item, index) => ({
+            // Mapeando os objetos retornados pela API para o novo formato com IDs incrementais
+            const formattedData = data.map((item, index) => ({
                 id: index + 1,
                 cobranca: item.cobranca,
                 ano: item.ano,
@@ -66,37 +66,45 @@ const PerformPayment = () => {
 
     console.log(payment);
 
-    // const formattedList = payment.map((item) => ({
-    //     id: item.id,
-    //     name: `Mensalidade ${item.mesName}/${item.ano}`,
-    //     valor: item.valorPagar,
-    //     status: item.resp
-    // }));
+    const formattedList = payment.map((item) => ({
+        id: item.id,
+        name: `${item.valorFaturado} ${item.mesName}/${item.ano}`,
+        valor: item.valorDenscontoAtual,
+        status: item.valorFaturado,
+        mes: item.mes,
+        ano: item.ano,
+        dataVencimento: item.dataDeVencimento,
+        valorDensconto: item.valorDenscontoAtual
+    }));
 
     const list = [
         {
             id: 1,
             name: 'Mensalidade Jan/234',
             valor: '79,90',
-            status: 'Acordo'
+            status: 'ACORDOS',
+            mes: "Janeiro",
+            ano: "2023",
+            dataVencimento: "12-12-2021",
+            valorDensconto: "60,00"
         },
         {
             id: 2,
             name: 'Mensalidade Jan/235',
             valor: '139,90',
-            status: 'Serviço'
+            status: 'SERVIÇOS'
         },
         {
             id: 3,
             name: 'Mensalidade Jan/236',
             valor: '138,90',
-            status: 'Mensalidade'
+            status: 'MENSALIDADES'
         },
         {
             id: 4,
             name: 'Mensalidade Jan/237',
             valor: '155,90',
-            status: 'Outros'
+            status: 'OUTROS'
         }
     ];
 
