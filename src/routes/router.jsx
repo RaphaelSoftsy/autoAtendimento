@@ -87,6 +87,7 @@ import SpecialDegreeConferral from "../pages/Academic/SpecialDegreeConferral";
 import DuplicateDiploma from "../pages/Academic/DuplicateDiploma";
 import SpecificFinancialStatement from "../pages/Finance/SpecificFinancialStatement";
 import Login from "../pages/Login";
+import ProblemsReviewsSelect from "../pages/Ava/ProblemsReviewsSelect";
 
 
 const RoutesApp = () => {
@@ -242,14 +243,11 @@ const AvaRoutes = () => {
                 <Route path="/problemas-com-acesso-as-disciplinas/descreva-solicitacao" element={<DescribeRequest />} />
                 <Route path="/problemas-na-atividade" element={<ProblemsActivities />} />
                 <Route path="/problemas-na-atividade/explicar-problema" element={<OpenDemand />} />
-                {/* <Route path="/problemas-na-atividade/explique-problema" element={<ExplainProblem />} /> */}
                 <Route path="/problemas-nas-avaliacoes" element={<ProblemsReviews />} />
-                <Route path="/problemas-nas-avaliacoes/avaliacao" element={<Assessment />} />
-                <Route path="/problemas-nas-avaliacoes/avaliacao/abrir-demanda" element={<OpenDemand />} />
-                <Route path="/problemas-nas-avaliacoes/substitutiva" element={<Substitute />} />
-                <Route path="/problemas-nas-avaliacoes/substitutiva/abrir-demanda" element={<OpenDemand />} />
-                <Route path="/problemas-nas-avaliacoes/recuperacao" element={<Recovery />} />
-                <Route path="/problemas-nas-avaliacoes/recuperacao/abrir-demanda" element={<OpenDemand />} />
+                <Route path="/problemas-nas-avaliacoes/escolha" element={<ProblemsReviewsSelect />} />
+                <Route path="/problemas-nas-avaliacoes/escolha/avaliacao" element={<OpenDemand />} />
+                <Route path="/problemas-nas-avaliacoes/escolha/substitutiva" element={<OpenDemand />} />
+                <Route path="/problemas-nas-avaliacoes/escolha/recuperacao" element={<OpenDemand />} />
             </Routes>
         </>
     );

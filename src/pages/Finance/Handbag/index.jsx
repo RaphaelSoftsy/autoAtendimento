@@ -4,6 +4,7 @@ import './handbag.css'
 import CardDrop from "../../../components/CardDrop";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import ModifyRA from "../../../components/ModifyRA";
 
 const Handbag = () => {
     const navigate = useNavigate()
@@ -39,16 +40,7 @@ const Handbag = () => {
 
     return (
         <main className="handbag">
-            <div className="teste">
-                <div className="teste2">
-                    <div>Nome: Millena Ferreira</div>
-                    <div>RA: 982739824</div>
-                    <div>Curso: ADS</div>
-                    <div>Semestre: 2 semestre</div>
-                </div>
-                <button>Alterar RA</button>
-            </div>
-
+            <ModifyRA/>
             <CardDrop />
             <DefaultButton
                 onClick={handleCancelCourse}
