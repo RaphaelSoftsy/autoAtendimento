@@ -5,8 +5,12 @@ import notebook from '../../assets/notebook.png'
 import financas from '../../assets/financas.png'
 import cap from '../../assets/cap.png'
 import ButtonHome from '../../components/ButtonHome';
+import Menu from '../../components/Menu';
+import { useState } from 'react';
 
 const Home = () => {
+
+    const [menuVisible, setMenuVisible] = useState(false)
 
     const aluno = '2470005';
 
@@ -15,9 +19,13 @@ const Home = () => {
     return (
         <div>
             <header>
-                <span className='icon-bars'>
+                {/* <span className='icon-bars'>
                     <FaBars className='bars' />
-                </span>
+                </span> */}
+                <span className="icon-bars" onClick={() => setMenuVisible(!menuVisible)}>
+                <FaBars className='icon-header' />
+            </span>
+            {menuVisible && <Menu />}
             </header>
             <main>
                 <figure>
