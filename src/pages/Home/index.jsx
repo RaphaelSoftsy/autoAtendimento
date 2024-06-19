@@ -28,7 +28,7 @@ const Home = () => {
                     <ButtonHome name="Financeiro" img= {financas} rota={"/financeiro"} />
                     <ButtonHome name="Acadêmico" img= {cap} rota={"/academico"} />
                     <ButtonHome name="AVA" img= {notebook} rota={"/ava"} />
-                    <ButtonHome name="Problemas na matrícula" img= {notebook} rota={"/"} />
+                    <ButtonHome name="Problemas na matrícula" img= {notebook} rota={"/home"} />
                 </div>
                
             </main>

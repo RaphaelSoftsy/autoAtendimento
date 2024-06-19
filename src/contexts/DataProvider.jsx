@@ -5,8 +5,8 @@ export const DataContext = createContext({})
 const DataProvider = ({ children }) => {
     let txtRouteStorage = localStorage.getItem('txtRoute')
 
-    const [routeHeader, setRouteHeader] = useState(txtRouteStorage != undefined ? txtRouteStorage : '/')
-    const [oldRouteHeader, setOldRouteHeader] = useState(txtRouteStorage != undefined ? txtRouteStorage : '/')
+    const [routeHeader, setRouteHeader] = useState(txtRouteStorage != undefined ? txtRouteStorage : '/home')
+    const [oldRouteHeader, setOldRouteHeader] = useState(txtRouteStorage != undefined ? txtRouteStorage : '/home')
 
     const data = {
         routeHeader, setRouteHeader,

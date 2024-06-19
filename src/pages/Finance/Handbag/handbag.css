@@ -8,3 +8,16 @@
     gap: 20px;
     padding: 20px;
 }
+
+.teste{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.teste2 {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}

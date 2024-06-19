@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import ItemsPayment from '../../../components/ItemsPayment';
 
 const PerformAccord = () => {
 
@@ -17,19 +18,19 @@ const PerformAccord = () => {
             id: 1,
             name: 'Mensalidade Jan/23',
             valor: '79,99',
-            status: 'Acordo'
+            status: 'ACORDOS'
         },
         {
             id: 2,
             name: 'Mensalidade Fev/23',
             valor: '79,98',
-            status: 'Acordo'
+            status: 'ACORDOS'
         },
         {
             id: 3,
             name: 'Mensalidade Mar/23',
             valor: '79,97',
-            status: 'Acordo'
+            status: 'ACORDOS'
         }
     ];
 
@@ -70,22 +71,42 @@ const PerformAccord = () => {
             navigate('/financeiro/realizar-acordo/detalhes-pagamento');
         }
     };
-    
+
     return (
-        <main className='main-perform-accord'>
-            <div className="perform-accord">
+        // <main className='main-perform-accord'>
+        //     <div className="perform-accord">
+        //         <div className='list-subjects'>
+        //             <h1 className='title'>Selecione as cobranças que você deseja incluir no acordo:</h1>
+        //             <ListSubjectsCheck
+        //                 items={list}
+        //                 selectedSubjects={selectedSubjects}
+        //                 onSelect={handleSubjectSelect} />
+        //         </div>
+        //     </div>
+        //     <div className='footer-container'>
+        //         <Footer text="Avançar" onClick={handleNext}/>
+        //     </div>
+        // </main>
+        <>
+            <main className="perform-payment">
                 <div className='list-subjects'>
-                    <h1 className='title'>Selecione as cobranças que você deseja incluir no acordo:</h1>
-                    <ListSubjectsCheck
+                    <h1 className='title'>Escolha os itens para pagamento</h1>
+                    <ItemsPayment
                         items={list}
                         selectedSubjects={selectedSubjects}
                         onSelect={handleSubjectSelect} />
                 </div>
-            </div>
-            <div className='footer-container'>
-                <Footer text="Avançar" onClick={handleNext}/>
-            </div>
-        </main>
+            </main>
+            <footer className='footer-container'>
+                <div className='footer-payment'>
+                    <div className='total'>
+                        <span>Total:</span>
+                        <span>R$ {formatValue(total)}</span>
+                    </div>
+                    <button onClick={handleNext} className='title-footer' > Próximo </button>
+                </div>
+            </footer>
+        </>
 
     );
 

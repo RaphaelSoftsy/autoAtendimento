@@ -86,6 +86,7 @@ import PrintedDiploma from "../pages/Academic/PrintedDiploma";
 import SpecialDegreeConferral from "../pages/Academic/SpecialDegreeConferral";
 import DuplicateDiploma from "../pages/Academic/DuplicateDiploma";
 import SpecificFinancialStatement from "../pages/Finance/SpecificFinancialStatement";
+import Login from "../pages/Login";
 
 
 const RoutesApp = () => {
@@ -93,7 +94,8 @@ const RoutesApp = () => {
         <BrowserRouter>
             <DataProvider>
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Login />} />
+                    <Route path="/home" element={<Home />} />
                     <Route path="/financeiro/*" element={<FinanceiroRoutes />} />
                     <Route path="/academico/*" element={<AcademicRoutes />} />
                     <Route path="/ava/*" element={<AvaRoutes />} />
