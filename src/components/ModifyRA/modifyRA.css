@@ -1,8 +1,12 @@
 .modify-ra{
-    width: 80%;
+    width: 85vw;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0px 7px 11px -1px var(--primary-dark-blue-alt);
 }
 
 .details-ra {
@@ -22,4 +26,15 @@
     width: 20vw;
     cursor: pointer;
     transition: ease 0.5s;
+}
+
+.custom-select-medium{
+    cursor: pointer;
+    width: 100%;
+    padding: 8px;
+    font-size: .9rem;
+    border: 1px solid var(--neutral-light-gray);
+    border-radius: 5px;
+    height: 50px;
+    font-family: "Source Sans Pro", sans-serif;
 }

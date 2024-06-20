@@ -8,6 +8,7 @@ const Dropdown = (props) => {
                 name={props.name}
                 id={props.id}
                 onChange={(e) => props.onChange(e)}
+                className="custom-select"
             >
                 <option className="opt-drop" value="hide">Selecione</option>
                 {props.itens.map(option => (
