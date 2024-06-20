@@ -88,6 +88,7 @@ import DuplicateDiploma from "../pages/Academic/DuplicateDiploma";
 import SpecificFinancialStatement from "../pages/Finance/SpecificFinancialStatement";
 import Login from "../pages/Login";
 import ProblemsReviewsSelect from "../pages/Ava/ProblemsReviewsSelect";
+import ProofRequestSelect from "../pages/Academic/ProofRequestSelect";
 
 
 const RoutesApp = () => {
@@ -196,8 +197,9 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare" element={<InternalDisciplines />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades" element={<ExternalDisciplines />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
-                <Route path="/solicitacoes-academicas/solicitacao-de-prova/prova-substitutiva" element={<SubstituteProof />} />
-                <Route path="/solicitacoes-academicas/solicitacao-de-prova/prova-recuperacao" element={<RetakeTest />} />
+                <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
+                {/* <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/prova-substitutiva" element={<SubstituteProof />} />
+                <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/prova-recuperacao" element={<RetakeTest />} /> */}
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
                 <Route path="/solicitacoes-academicas/diplomas/diploma-impresso" element={<PrintedDiploma />} />
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />
