@@ -15,6 +15,7 @@ import Jcb from '../../assets/jcb.png';
 const CardForm = () => {
   const [cardNumber, setCardNumber] = useState('');
   const [cardName, setCardName] = useState('');
+  const [cardNickName, setCardNickName] = useState('');
   const [cardMonth, setCardMonth] = useState('');
   const [cardYear, setCardYear] = useState('');
   const [cardCvv, setCardCvv] = useState('');
@@ -57,6 +58,10 @@ const CardForm = () => {
   const handleCardNumberChange = (e) => {
     let value = e.target.value;
 
+    // Permitir apenas números e espaços
+    value = value.replace(/[^\d\s]/g, '');
+
+    // Adicionar espaço a cada 4 dígitos
     value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
 
     setCardNumber(value);
@@ -73,20 +78,73 @@ const CardForm = () => {
   };
 
   const handleCardMonthChange = (e) => {
-    setCardMonth(e.target.value);
+
+    let value = e.target.value;
+
+    if (value.length > 2) {
+      value = value.slice(0, 2);
+    }
+
+    // Limitar o valor a 1-12
+    // const intValue = parseInt(value, 10);
+    // if (intValue < 1 || intValue > 12) {
+    //   value = '';
+    // }
+
+    setCardMonth(value);
   };
 
   const handleCardYearChange = (e) => {
-    setCardYear(e.target.value);
+
+    let value = e.target.value;
+
+    if (value.length > 2) {
+      value = value.slice(0, 2);
+    }
+
+    setCardYear(value);
   };
 
   const handleCardCvvChange = (e) => {
-    setCardCvv(e.target.value);
+    let value = e.target.value;
+
+    if (value.length > 3) {
+      value = value.slice(0, 3);
+    }
+
+    setCardCvv(value);
+  };
+
+  const handleCardNickNameChange = (e) => {
+    setCardNickName(e.target.value);
   };
 
   // const handleCardBrandChange = (e) => {
   //   setCardBrand(e.target.value);
   // };
+
+  const handleNext = () => {
+    // Validar número do cartão, nome, CVV
+    if (cardNumber.length !== 19 || cardName.trim() === '' || cardCvv.length !== 3) {
+      alert('Por favor, preencha todos os campos corretamente.');
+      return;
+    }
+  
+    // Obter o ano atual (últimos dois dígitos)
+    const currentYear = new Date().getFullYear() % 100;
+  
+    // Concatenar o ano e o mês e converter para número
+    const expirationDate = parseInt(cardYear + cardMonth, 10);
+  
+    // Validar se a data de expiração é maior que a data atual
+    if (expirationDate <= currentYear * 100 + new Date().getMonth() + 1) {
+      alert('Data de validade inválida.');
+      return;
+    }
+    
+    console.log('Todos os campos estão preenchidos corretamente. Avançar para a próxima etapa.');
+  };
+  
 
   return (
     <>
@@ -112,25 +170,64 @@ const CardForm = () => {
         </div>
         <div className='title-card-form'>
           <span>NUMERO CARTÃO</span>
-          <input type="text" placeholder="Número do Cartão" className='card-input' value={cardNumber} onChange={handleCardNumberChange} maxLength={19} />
+          <input
+            type="text"
+            placeholder="Número do Cartão"
+            className='card-input'
+            value={cardNumber}
+            onChange={handleCardNumberChange}
+            maxLength={19}
+            pattern="[0-9]*"
+            required
+          />
         </div>
         <div className='title-card-form'>
           <span>NOME</span>
-          <input type="text" placeholder="Nome" value={cardName} className='card-input' onChange={handleCardNameChange} />
+          <input type="text" placeholder="Nome" value={cardName} className='card-input' onChange={handleCardNameChange} required />
         </div>
-
+        <div className='title-card-form'>
+          <span>APELIDO</span>
+          <input type="text" placeholder="Apelido" value={cardNickName} className='card-input' onChange={handleCardNickNameChange} />
+        </div>
         <div className="expiration-cvv">
           <div className='title-card-form'>
             <span>VALIDADE</span>
             <div className='title-card-form-validaty'>
-              <input type="text" placeholder="MM" value={cardMonth} className='card-input-validaty' onChange={handleCardMonthChange} maxLength={2} />
-              <input type="text" placeholder="AA" value={cardYear} className='card-input-validaty' onChange={handleCardYearChange} maxLength={2} />
+              <input
+                type="number"
+                placeholder="MM"
+                value={cardMonth}
+                className='card-input-validaty'
+                onChange={handleCardMonthChange}
+                min="1"
+                max="12"
+                pattern="[0-9]*"
+                required />
+              <input
+                type="number"
+                placeholder="AA"
+                value={cardYear}
+                className='card-input-validaty'
+                onChange={handleCardYearChange}
+                min="01"
+                max="99"
+                pattern="[0-9]*"
+                required />
             </div>
 
           </div>
           <div className='title-card-form-cvv'>
             <span>CVV</span>
-            <input type="text" placeholder="CVV" value={cardCvv} className='card-input-cvv' onChange={handleCardCvvChange} maxLength={3} />
+            <input
+              type="number"
+              placeholder="CVV"
+              value={cardCvv}
+              className='card-input-cvv'
+              onChange={handleCardCvvChange}
+              min="0"
+              max="999"
+              pattern="[0-9]*"
+              required />
           </div>
         </div>
         {/* <select value={cardBrand} onChange={handleCardBrandChange}>
@@ -140,8 +237,8 @@ const CardForm = () => {
           <option value="banco-do-brasil">Banco do Brasil</option>
         </select> */}
         {/* <Link className='cadastro'> Deseja salvar esse cartão? </Link>  ajustar isso para check*/}
-        <Link className='cadastro'> Pagar </Link>
-        
+        <button className='cadastro' onClick={handleNext} > Registrar Cartão </button>
+
       </div>
     </>
 
