@@ -12,6 +12,9 @@ const Subject = (props) => {
         <Link key={props.id} to={props.route} className='topic' onClick={() => {
             localStorage.setItem('routeHeader', location.pathname)
             setRouteHeader(location.pathname)
+            if(props.onClick() != undefined){
+                props.onClick()
+            }
         }}>
             <span>{props.name}</span>
             <FaChevronRight />
@@ -23,7 +26,7 @@ const ListSubjects = (props) => {
     return (
         <ul className='list'>
             {props.itens.map(subject => (
-                <Subject key={subject.id} route={subject.route} name={subject.name} />
+                <Subject key={subject.id} onClick={props.onClick} route={subject.route} name={subject.name} />
             ))}
         </ul>
     )
