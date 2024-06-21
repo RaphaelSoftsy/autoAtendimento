@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: start;
     gap: 15px;
+    padding-right: 20px;
 }
 
 .rejection-adaptation{
@@ -31,6 +32,7 @@
 
 .select-diploma{
     width: 100%;
+    text-align: start;
 }
 
 @media(max-width:999px) {

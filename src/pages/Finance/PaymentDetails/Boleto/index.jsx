@@ -93,21 +93,21 @@ const Boleto = () => {
                 <span className='codigo-barra'>{codigoBarra}</span>
                 <DefaultButton
                     text={buttonText}
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
                     onClick={copyToClipboard}
                 />
                 <DefaultButton
                     text="Baixar Boleto"
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
                     onClick={downloadPdf}
                 />
-                <DefaultButton
+                {/* <DefaultButton
                     text="Enviar no E-mail"
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
-                />
+                /> */}
             </div>
         </main>
     );

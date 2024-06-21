@@ -28,9 +28,3 @@
     color: var(--primary-light-blue);
     cursor: pointer;
 }
-
-/* @media(max-width: 999px) {
-    .list{
-        width: 100%;
-    }
-} */

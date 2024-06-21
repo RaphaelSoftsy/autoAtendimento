@@ -30,7 +30,7 @@ const Cartao = () => {
                 <div class="vista-parcela">
                     <p>Selecione o Parcelamento:</p>
                     <span>R$ {total} - 2° via de Diploma em pele</span>
-                    <select value={parcelas} onChange={handleParcelasChange}>
+                    <select value={parcelas} onChange={handleParcelasChange} className='custom-select'>
                         <option value={1}>1 à vista</option>
                         <option value={2}>2x de R$ {(formatValue(total) / 2).toFixed(2).replace('.', ',')}</option>
                         <option value={3}>3x de R$ {(formatValue(total) / 3).toFixed(2).replace('.', ',')}</option>

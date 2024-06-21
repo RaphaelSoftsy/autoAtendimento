@@ -19,7 +19,7 @@ const StatementConclusion = () => {
             console.log('Dados da declaração:', data);
             setDeclaration(data);
         } catch (error) {
-            alert("Não foi encontrado Aluno com esse RA em situação de Conclusão");
+            // alert("Não foi encontrado Aluno com esse RA em situação de Conclusão");
             setDeclaration('');
         }
     }
