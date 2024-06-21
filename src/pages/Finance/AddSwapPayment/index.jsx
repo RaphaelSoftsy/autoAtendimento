@@ -15,6 +15,11 @@ const AddSwapPayment = () => {
 
     const [planoAtual, setPlanoAtual] = useState('PLANO RECORRÊNCIA');
 
+    const statusPlano = {
+        'PLANO RECORRÊNCIA': 'Recorrente',
+        'PLANO MENSAL': 'Mensal'
+    }
+
     const handleSelectPayment = (id) => {
         setSelectedPayment(id);
     };
@@ -71,6 +76,15 @@ const AddSwapPayment = () => {
             name: 'PIX',
         }
     ]
+
+    const filteredList = list.filter(item => {
+        if (planoAtual === 'PLANO RECORRÊNCIA') {
+            return !['Boleto', 'PIX'].includes(item.name);
+        } else {
+            return true;
+        }
+    });
+
     return (
         <>
             <main className='add-swap-payment'>
@@ -83,18 +97,14 @@ const AddSwapPayment = () => {
                 <h2 className='meio-pagamento'>Seus Meios de Pagamento</h2>
                 <div className='list-cards'>
                     <CardList
-                        items={list}
+                        items={filteredList}
                         selectedSubject={selectedPayment}
                         onSelect={handleSelectPayment}
                     />
                 </div>
                 <div className='buttons'>
                     <DefaultButton
-                        text={`Se for plano 
-                        ${planoAtual === 'PLANO RECORRÊNCIA' ? 'recorrência' : 'mensal'} 
-                        ALTERAR PLANO PARA 
-                        ${planoAtual === 'PLANO RECORRÊNCIA' ? 'MENSAL' : 'RECORRÊNCIA'}`
-                        }
+                        text={`Alterar Plano para ${statusPlano[planoAtual === 'PLANO RECORRÊNCIA' ? 'PLANO MENSAL' : 'PLANO RECORRÊNCIA']}`}
                         backgroundColor="var(--custom-green)"
                         onClick={togglePlano}
                     />

@@ -6,7 +6,7 @@ const ListSubjectsCheck = ({ items, selectedSubjects, onSelect }) => {
     };
 
     return (
-        <ul className='list'>
+        <ul className='list-check'>
             {items.map(subject => (
                 <li key={subject.id} className='topics'>
                     <input
