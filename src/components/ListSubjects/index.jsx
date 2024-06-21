@@ -30,3 +30,46 @@ const ListSubjects = (props) => {
 }
 
 export default ListSubjects
+
+// const Subject = ({ id, route, name, valor, onSelect }) => {
+//     const { setRouteHeader, routeHeader } = useContext(DataContext);
+//     const location = useLocation();
+
+//     const handleClick = () => {
+//         onSelect(route, valor);
+//     };
+
+//     return (
+//         <Link 
+//             key={id} 
+//             to={route} 
+//             className='topic' 
+//             onClick={() => {
+//                 handleClick();
+//                 localStorage.setItem('routeHeader', location.pathname);
+//                 setRouteHeader(location.pathname);
+//             }}
+//         >
+//             <span>{name}</span>
+//             <FaChevronRight />
+//         </Link>
+//     );
+// };
+
+// const ListSubjects = ({ itens, onOptionSelect }) => {
+//     return (
+//         <ul className='list'>
+//             {itens.map(subject => (
+//                 <Subject 
+//                     key={subject.id} 
+//                     route={subject.route} 
+//                     name={subject.name} 
+//                     valor={subject.valor}
+//                     onSelect={onOptionSelect}
+//                 />
+//             ))}
+//         </ul>
+//     );
+// };
+
+// export default ListSubjects;

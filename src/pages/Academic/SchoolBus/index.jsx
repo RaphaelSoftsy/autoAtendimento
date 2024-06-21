@@ -16,7 +16,7 @@ const SchoolBus = () => {
     const list = [
         {
             id: 1,
-            name: 'Bilhete Unico'
+            name: 'Bilhete Único'
         }
     ];
 

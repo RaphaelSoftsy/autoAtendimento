@@ -4,6 +4,7 @@ import './financialStatement.css'
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useState } from 'react';
+import Dropdown from '../../../components/Dropdown/Dropdown';
 
 const FinancialStatement = () => {
 
@@ -30,6 +31,17 @@ const FinancialStatement = () => {
         setSelectedYear(e.target.value);
     };
 
+    const list = [
+        {
+            id: 1,
+            name: 'Janeiro a Junho de 2022'
+        },
+        {
+            id: 2,
+            name: 'Junho a Dezembro de 2022'
+        }
+    ]
+
     return (
         <>
             <main className='financial-statement'>
@@ -37,11 +49,18 @@ const FinancialStatement = () => {
                     <h1 className='title'>Selecione o Ano e Periodo desejado</h1>
                     <div className='select-year'>
                         <p>Selecione o Ano</p>
-                        <select value={selectedYear} onChange={handleSelectChange}>
+                        {/* <select value={selectedYear} onChange={handleSelectChange}>
                             <option value='' disabled hidden>Selecione um período</option>
                             <option value='Janeiro a Junho de 2022'>Janeiro a Junho de 2022</option>
                             <option value='Junho a Dezembro de 2022'>Junho a Dezembro de 2022</option>
-                        </select>
+                        </select> */}
+                        <Dropdown
+                            id='dropdown-handbag'
+                            name='dropdown-handbag'
+                            itens={list}
+                            label=''
+                            onChange={handleSelectChange}
+                        />
                     </div>
                 </div>
             </main>

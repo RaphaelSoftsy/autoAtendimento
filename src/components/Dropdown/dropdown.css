@@ -1,5 +1,16 @@
-.opt-drop{
-    &[value="hide"]{
+.opt-drop {
+    &[value="hide"] {
         display: none;
     }
+}
+
+.custom-select {
+    width: 100%;
+    padding: 8px;
+    font-size: 1.2em;
+    border: 1px solid var(--neutral-light-gray);
+    border-radius: 5px;
+    height: 50px;
+    font-family: "Source Sans Pro", sans-serif;
+
 }
