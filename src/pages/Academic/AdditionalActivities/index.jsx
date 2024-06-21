@@ -33,14 +33,14 @@ const AdditionalActivities = () => {
             <main className='main-additional-activities'>
                 <div className='additional-activities'>
                     <div className='charge-student'>
-                        <h3>Carga Horaria Aluno:</h3>
+                        <h3>Carga Horária Aluno:</h3>
                         <div className='card-charge-student'>
                             <span>100 horas</span>
                             <FaRegHourglass />
                         </div>
                     </div>
                     <div className='charge-student-missing'>
-                        <h3>Carga Horaria Faltante:</h3>
+                        <h3>Carga Horária Faltante:</h3>
                         <div className='card-student-missing'>
                             <span>50 horas</span>
                             <FaRegHourglassHalf />

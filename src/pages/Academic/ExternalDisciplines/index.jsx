@@ -18,7 +18,7 @@ const ExternalDisciplines = () => {
         <main className='main-perform-accord'>
             <div className="rescue-checks">
                 <div className="card-checkout">
-                    <span><b>O prazo para seu aproveitamento é de 10 dias uteis.</b></span>
+                    <span><b>O prazo para seu aproveitamento é de 10 dias úteis.</b></span>
                     <h4>Caso queira abrir uma solicitação clique abaixo.</h4>
                     <DefaultButton
                         text="Abrir Solicitação"

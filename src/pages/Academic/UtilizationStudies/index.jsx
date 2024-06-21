@@ -5,7 +5,7 @@ const UtilizationStudies = () => {
     const list = [
         {
             id: 1,
-            name: 'Aproveitar disciplinas cursadas na Sumare',
+            name: 'Aproveitar disciplinas cursadas na Sumaré',
             route: '/academico/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare'
         },
         {

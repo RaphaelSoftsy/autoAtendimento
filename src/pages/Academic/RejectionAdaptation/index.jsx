@@ -54,9 +54,9 @@ const RejectionAdaptation = () => {
         <>
             <main className='rejection-adaptation'>
                 <div className='discipline'>
-                    <h3>Selecione a Disciplina que deseja realizar a Matricula, lembrando que você pode ter 4 disciplinas simultaneamente</h3>
+                    <h3>Selecione a Disciplina que deseja realizar a Matrícula, lembrando que você pode ter 4 disciplinas simultaneamente</h3>
                     <div className='registration'>
-                        <span>Nº de Disciplinas já matriculadas 2</span>
+                        <span>Nº de Disciplinas já matrículadas 2</span>
                         <span>Nº de Disciplinas que pode solicitar 2</span>
                     </div>
                     <h3 className='select-diploma'>Selecione a Disciplina</h3>

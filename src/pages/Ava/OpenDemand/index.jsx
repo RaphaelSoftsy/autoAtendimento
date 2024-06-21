@@ -11,7 +11,7 @@ const OpenDemand = () => {
         <main className='main-perform-accord'>
             <div className="rescue-checks">
                 <div className='list-subjects'>
-                    <CardCheckout text="Por favor, para analise nos explique seu problema" />
+                    <CardCheckout text="Por favor, para análise nos explique seu problema" />
                 </div>
             </div>
             <Footer text="Relatar Problema" style={style} />

@@ -41,13 +41,13 @@ const Pay = () => {
                 </div>
                 <div className="buttons">
                     <DefaultButton
-                        text="Ir para Inicio"
-                        backgroundColor="#019ED3"
-                        onClick={() => navegation("/")}
+                        text="Ir para Início"
+                        backgroundColor="var(--primary-light-blue)"
+                        onClick={() => navegation("/home")}
                     />
                     <DefaultButton
                         text="Finalizar Sessão"
-                        backgroundColor="#DC143C"
+                        backgroundColor="var(--secondary-light-red)"
                         onClick={() => navegation("/financeiro")}
                     />
                 </div>
