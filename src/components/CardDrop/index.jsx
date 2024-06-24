@@ -3,6 +3,7 @@ import DefaultButton from '../DefaultButton';
 import Dropdown from '../Dropdown/Dropdown';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import TextArea from '../TextArea';
 
 const CardDrop = () => {
 
@@ -36,13 +37,10 @@ const CardDrop = () => {
                     label=''
                     onChange={(e) => setTypeScholarship(e.target.value)}
                 />
-                <div className="describe">
-                    <h3>Descreva o por que da sua solicitação:</h3>
-                    <textarea name="describe" id="describe"></textarea>
-                </div>
+                <TextArea text ='Descreva o por que da sua solicitação:' id= ''/>
                 <DefaultButton
                     text="Upload"
-                    backgroundColor="#019ED3"
+                    backgroundColor="var(--primary-light-blue)"
                     color='#fff'
                     onClick={() => navegation("/")}
                 />

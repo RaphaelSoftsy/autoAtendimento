@@ -6,6 +6,7 @@
 }
 
 .container-payment {
+    border-top: 1px solid var(--neutral-light-gray);
     background-color: #fff;
     color: #000;
     display: flex;

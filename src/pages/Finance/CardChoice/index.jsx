@@ -38,7 +38,7 @@ const CardChoice = () => {
                 </div>
                 <div className='buttons'>
                     <DefaultButton
-                        text="Cadastrar Novo Cartão"
+                        text="Novo Cartão"
                         backgroundColor="var(--success-dark-green)"
                         onClick={() => navegation("/financeiro/adicionar-cartao")}
                     />
