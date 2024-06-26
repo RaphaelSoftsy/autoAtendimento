@@ -50,7 +50,7 @@ const ItemsPayment = ({ items, selectedSubjects, onSelect }) => {
                     {expandedItemId === subject.id && (
                         <div className='details'>
                             <h1>A Vencer</h1>
-                            <p>{subject.status} referente a {subject.mes} de {subject.ano}</p>
+                            <p>Descrição: {subject.descricao}</p>
                             <p>Vencimento: {subject.dataVencimento}</p>
                             <p>Desconto: {subject.valorDensconto}</p>
                         </div>

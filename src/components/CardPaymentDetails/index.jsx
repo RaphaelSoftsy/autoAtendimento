@@ -5,10 +5,10 @@ const CardPaymentDetails = ({ items }) => {
 
 
     const statusIcons = {
-        'Acordo': <FaHandsHelping />,
-        'Serviço': <FaFileAlt />,
-        'Mensalidade': <FaGraduationCap />,
-        'Outros': <FaQuestionCircle />
+        'ACORDOS': <FaHandsHelping />,
+        'SERVIÇOS': <FaFileAlt />,
+        'MENSALIDADES': <FaGraduationCap />,
+        'OUTROS': <FaQuestionCircle />
     };
 
     const getIcon = (status) => {

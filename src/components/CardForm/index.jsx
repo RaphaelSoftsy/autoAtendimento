@@ -11,6 +11,8 @@ import Discover from '../../assets/discover.png';
 import Hipercard from '../../assets/hipercard.png';
 import Elo from '../../assets/elo.png';
 import Jcb from '../../assets/jcb.png';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const CardForm = () => {
   const [cardNumber, setCardNumber] = useState('');
@@ -86,10 +88,10 @@ const CardForm = () => {
     }
 
     // Limitar o valor a 1-12
-    // const intValue = parseInt(value, 10);
-    // if (intValue < 1 || intValue > 12) {
-    //   value = '';
-    // }
+    const intValue = parseInt(value, 10);
+    if (intValue < 1 || intValue > 12) {
+      value = '';
+    }
 
     setCardMonth(value);
   };
@@ -123,28 +125,40 @@ const CardForm = () => {
   //   setCardBrand(e.target.value);
   // };
 
+  const MySwal = withReactContent(Swal);
+
   const handleNext = () => {
     // Validar número do cartão, nome, CVV
     if (cardNumber.length !== 19 || cardName.trim() === '' || cardCvv.length !== 3) {
-      alert('Por favor, preencha todos os campos corretamente.');
+      MySwal.fire({
+        icon: 'error',
+        title: 'Erro',
+        text: 'Por favor, preencha todos os campos corretamente.',
+        confirmButtonText: 'OK'
+      });
       return;
     }
-  
+
     // Obter o ano atual (últimos dois dígitos)
     const currentYear = new Date().getFullYear() % 100;
-  
+
     // Concatenar o ano e o mês e converter para número
     const expirationDate = parseInt(cardYear + cardMonth, 10);
-  
+
     // Validar se a data de expiração é maior que a data atual
     if (expirationDate <= currentYear * 100 + new Date().getMonth() + 1) {
-      alert('Data de validade inválida.');
+      MySwal.fire({
+        icon: 'error',
+        title: 'Erro',
+        text: 'Data de validade inválida.',
+        confirmButtonText: 'OK'
+      });
       return;
     }
-    
+
     console.log('Todos os campos estão preenchidos corretamente. Avançar para a próxima etapa.');
   };
-  
+
 
   return (
     <>

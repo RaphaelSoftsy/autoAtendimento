@@ -28,11 +28,11 @@ const Internship = () => {
             name: 'Carta de Apresentação – Licenciatura',
             route: '/academico/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura'
         },
-        {
-            id: 6,
-            name: 'Regulamentos, manuais e outros documentos de estágio. Ir para o site',
-            route: '/academico/solicitacoes-academicas/estagio/regulamentos-manuais-e-outros-documentos-de-estagio'
-        },
+        // {
+        //     id: 6,
+        //     name: 'Regulamentos, manuais e outros documentos de estágio. Ir para o site',
+        //     route: '/academico/solicitacoes-academicas/estagio/regulamentos-manuais-e-outros-documentos-de-estagio'
+        // },
     ]
 
     return (
