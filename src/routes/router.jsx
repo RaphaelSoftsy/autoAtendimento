@@ -91,6 +91,10 @@ import ProblemsReviewsSelect from "../pages/Ava/ProblemsReviewsSelect";
 import ProofRequestSelect from "../pages/Academic/ProofRequestSelect";
 import SigningInternshipContract from "../pages/Academic/SigningInternshipContract";
 import ProofRequestOpenDemand from "../pages/Academic/ProofRequestOpenDemand";
+import InternshipReportSubmission from "../pages/Academic/InternshipReportSubmission";
+import TerminationInternshipContract from "../pages/Academic/TerminationInternshipContract";
+import UndergraduateCoverLetter from "../pages/Academic/UndergraduateCoverLetter";
+import SubmissionInternshipReport from "../pages/Academic/SubmissionInternshipReport";
 
 
 const RoutesApp = () => {
@@ -208,12 +212,11 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />
                 <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma" element={<DuplicateDiploma />} />
                 <Route path="/solicitacoes-academicas/estagio" element={<Internship />} />
-                {/* <Route path="/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio" element={<SigningInternshipContract />} /> */}
-                {/* <Route path="/solicitacoes-academicas/estagio/entrega-de-relatorio-de-estagio" element={<InternshipReportSubmission />} /> */}
-                {/* <Route path="/solicitacoes-academicas/estagio/rescisao-de-contrato-de-estagio" element={<SubmissionInternshipReport />} />
-                <Route path="/solicitacoes-academicas/estagio/convalidacao-de-horas" element={<TerminationInternshipContract />} /> */}
-                {/* <Route path="/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura" element={<UndergraduateCoverLetter />} /> */}
-
+                <Route path="/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio" element={<SigningInternshipContract />} />
+                <Route path="/solicitacoes-academicas/estagio/entrega-de-relatorio-de-estagio" element={<InternshipReportSubmission />} />
+                <Route path="/solicitacoes-academicas/estagio/rescisao-de-contrato-de-estagio" element={<SubmissionInternshipReport />} />
+                <Route path="/solicitacoes-academicas/estagio/convalidacao-de-horas" element={<TerminationInternshipContract />} />
+                <Route path="/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura" element={<UndergraduateCoverLetter />} />
 
                 <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />
                 <Route path="/solicitacoes-academicas/enade" element={<Enade />} />
