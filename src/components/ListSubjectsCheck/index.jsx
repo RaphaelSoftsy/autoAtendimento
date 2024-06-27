@@ -1,8 +1,8 @@
 import './listSubjectsCheck.css'
 
-const ListSubjectsCheck = ({ items, selectedSubjects, onSelect }) => {
+const ListSubjectsCheck = ({ items, selectedSubjects, onSelect, multiple }) => {
     const handleClick = (id) => {
-        onSelect(id);
+        onSelect(id, multiple);
     };
 
     return (
