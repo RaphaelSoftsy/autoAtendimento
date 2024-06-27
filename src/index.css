@@ -43,3 +43,19 @@ ol,
 li {
   list-style-type: none;
 }
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2em;
+  border: 1px solid var(--neutral-dark-gray-alt);
+  border-radius: 4px;
+  font-family: "Source Sans Pro", sans-serif;
+  height: 100px;
+  resize: none;
+  outline: none;
+  box-shadow: 0px 4px 10px -6px #4c4c4c;
+  overflow-wrap: break-word;
+  line-height: 20px;
+  background-color: transparent;
+}

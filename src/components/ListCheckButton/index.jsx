@@ -1,8 +1,8 @@
-import './listCheckButton.css'
+import './listCheckButton.css';
 
-const ListCheckButton = ({ items, selectedSubjects, onSelect, text }) => {
+const ListCheckButton = ({ items, selectedSubjects, onSelect, text, multiple }) => {
     const handleClick = (id) => {
-        onSelect(id);
+        onSelect(id, multiple);
     };
 
     return (
@@ -23,9 +23,7 @@ const ListCheckButton = ({ items, selectedSubjects, onSelect, text }) => {
                 <button className="button-check">{text}</button>
             </ul>
         </>
-
     );
 };
 
-
-export default ListCheckButton
+export default ListCheckButton;

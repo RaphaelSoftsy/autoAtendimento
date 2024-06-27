@@ -1,38 +1,91 @@
 import './performAccord.css'
-import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
-import Footer from '../../../components/Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import ItemsPayment from '../../../components/ItemsPayment';
+import axios from 'axios';
+import url_base from '../../../services/url_base';
 
 const PerformAccord = () => {
 
     const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const [payment, setPayment] = useState([]);
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
+    // const aluno = localStorage.getItem("aluno-ra");
+    const aluno = '2473773'
 
-    const list = [
-        {
-            id: 1,
-            name: 'Mensalidade Jan/23',
-            valor: '79,99',
-            status: 'ACORDOS'
-        },
-        {
-            id: 2,
-            name: 'Mensalidade Fev/23',
-            valor: '79,98',
-            status: 'ACORDOS'
-        },
-        {
-            id: 3,
-            name: 'Mensalidade Mar/23',
-            valor: '79,97',
-            status: 'ACORDOS'
+    const monthNames = {
+        '1': 'Janeiro',
+        '2': 'Fevereiro',
+        '3': 'Março',
+        '4': 'Abril',
+        '5': 'Maio',
+        '6': 'Junho',
+        '7': 'Julho',
+        '8': 'Agosto',
+        '9': 'Setembro',
+        '10': 'Outubro',
+        '11': 'Novembro',
+        '12': 'Dezembro'
+    };
+
+    async function getPerformPayment() {
+        try {
+            const response = await axios.get(`${url_base}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=S&aVencer=N`);
+            const data = response.data;
+            console.log('Dados da declaração:', data);
+
+            // Mapeando os objetos retornados pela API para o novo formato com IDs incrementais
+            const formattedData = data
+            .filter(item => parseFloat(item.valorPagar) !== 0)
+            .map((item, index) => ({
+                id: index + 1,
+                aluno: item.aluno,
+                resp: item.resp,
+                statusCobranca: item.statusCobranca,
+                cobranca: item.cobranca,
+                tipoCobranca: item.tipoCobranca,
+                descricao: item.descricao,
+                curso: item.curso,
+                turno: item.turno,
+                serie: item.serie,
+                mes: item.mes,
+                mesName: monthNames[item.mes],
+                ano: item.ano,
+                dataDeVencimento: item.dataDeVencimento,
+                dataDescontoAtual: item.dataDescontoAtual,
+                valorDescontoAtual: item.valorDescontoAtual,
+                valorFaturado: item.valorFaturado,
+                valorPagar: item.valorPagar,
+                jurosMulta: item.jurosMulta
+            }));
+
+            setPayment(formattedData);
+        } catch (error) {
+            console.error('Erro ao buscar declaração:', error);
         }
-    ];
+    }
+
+    useEffect(() => {
+        getPerformPayment();
+    }, [aluno]);
+
+
+    console.log(payment);
+
+    const formattedList = payment.map((item) => ({
+        id: item.id,
+        name: `${item.tipoCobranca} ${item.mesName}/${item.ano}`,
+        valor: item.valorPagar,
+        status: item.tipoCobranca,
+        descricao: item.descricao,
+        mes: item.mes,
+        ano: item.ano,
+        dataVencimento: item.dataDeVencimento,
+        valorDensconto: item.valorDenscontoAtual
+    }));
 
     const handleSubjectSelect = (id) => {
         setSelectedSubjects(prevSelected => {
@@ -46,7 +99,7 @@ const PerformAccord = () => {
     };
 
     const total = selectedSubjects.reduce((acc, id) => {
-        const item = list.find(item => item.id === id);
+        const item = formattedList.find(item => item.id === id);
         return acc + parseFloat(item.valor.replace(',', '.'));
     }, 0);
 
@@ -63,7 +116,7 @@ const PerformAccord = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            const selectedItems = list.filter(item => selectedSubjects.includes(item.id));
+            const selectedItems = formattedList.filter(item => selectedSubjects.includes(item.id));
             localStorage.setItem("selectedItemsAccord", JSON.stringify(selectedItems));
 
             localStorage.setItem("totalAccord", formatValue(total));
@@ -92,7 +145,7 @@ const PerformAccord = () => {
                 <div className='list-subjects'>
                     <h1 className='title'>Escolha os itens para pagamento</h1>
                     <ItemsPayment
-                        items={list}
+                        items={formattedList}
                         selectedSubjects={selectedSubjects}
                         onSelect={handleSubjectSelect} />
                 </div>

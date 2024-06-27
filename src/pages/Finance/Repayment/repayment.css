@@ -14,3 +14,7 @@
     align-items: center;
     gap: 20px;
 }
+
+.box-dropdown{
+    width: 100%;
+}

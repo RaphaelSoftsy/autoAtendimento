@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import ReactDatePicker from 'react-datepicker';
 import { FaCalendarAlt } from "react-icons/fa";
 import DefaultButton from '../DefaultButton';
-
+import TextArea from '../TextArea';
 
 const CardSelectPeriod = () => {
 
@@ -40,10 +40,7 @@ const CardSelectPeriod = () => {
                     />
                 </div>
             </div>
-            <div className="description-request">
-                <span>Descreva seu pedido:</span>
-                <textarea name="" id=""></textarea>
-            </div>
+            <TextArea text='Descreva seu pedido:' id='' />
             <DefaultButton
                 text="Enviar Solicitação"
                 backgroundColor="var(--primary-light-blue)"

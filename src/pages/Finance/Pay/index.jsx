@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Pay = () => {
 
+    /*precisa de um botao para enviar para o email ou fazer a logica automatica*/
+
     const navegation = useNavigate()
 
     const [animationState, setAnimationState] = useState({

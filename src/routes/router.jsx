@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import Home from "../pages/Home";
 import Header from "../components/Header";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
-import {listRoutesAcademic, listRoutesAva, listRoutesFinanceiro} from "../hook/routes";
+import { listRoutesAcademic, listRoutesAva, listRoutesFinanceiro } from "../hook/routes";
 
 import SubjectAcd from "../pages/Academic/SubjectAcd";
 import ReviewsNotes from "../pages/Academic/ReviewsNotes";
@@ -89,6 +89,12 @@ import SpecificFinancialStatement from "../pages/Finance/SpecificFinancialStatem
 import Login from "../pages/Login";
 import ProblemsReviewsSelect from "../pages/Ava/ProblemsReviewsSelect";
 import ProofRequestSelect from "../pages/Academic/ProofRequestSelect";
+import SigningInternshipContract from "../pages/Academic/SigningInternshipContract";
+import ProofRequestOpenDemand from "../pages/Academic/ProofRequestOpenDemand";
+import InternshipReportSubmission from "../pages/Academic/InternshipReportSubmission";
+import TerminationInternshipContract from "../pages/Academic/TerminationInternshipContract";
+import UndergraduateCoverLetter from "../pages/Academic/UndergraduateCoverLetter";
+import SubmissionInternshipReport from "../pages/Academic/SubmissionInternshipReport";
 
 
 const RoutesApp = () => {
@@ -108,13 +114,13 @@ const RoutesApp = () => {
 };
 
 const FinanceiroRoutes = () => {
-    const {routeHeader} = useContext(DataContext)
+    const { routeHeader } = useContext(DataContext)
     const location = useLocation()
     const [nameHeader, setNameHeader] = useState('Financeiro')
 
     useEffect(() => {
-        listRoutesFinanceiro.find( rt => {
-            if(rt.route == location.pathname){
+        listRoutesFinanceiro.find(rt => {
+            if (rt.route == location.pathname) {
                 setNameHeader(rt.header)
             }
         })
@@ -173,13 +179,13 @@ const FinanceiroRoutes = () => {
 };
 
 const AcademicRoutes = () => {
-    const {routeHeader} = useContext(DataContext)
+    const { routeHeader } = useContext(DataContext)
     const location = useLocation()
     const [nameHeader, setNameHeader] = useState('Acadêmico')
 
     useEffect(() => {
-        listRoutesAcademic.find( rt => {
-            if(rt.route == location.pathname){
+        listRoutesAcademic.find(rt => {
+            if (rt.route == location.pathname) {
                 setNameHeader(rt.header)
             }
         })
@@ -198,6 +204,7 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades" element={<ExternalDisciplines />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
+                <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} />
                 {/* <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/prova-substitutiva" element={<SubstituteProof />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/prova-recuperacao" element={<RetakeTest />} /> */}
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
@@ -205,6 +212,12 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />
                 <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma" element={<DuplicateDiploma />} />
                 <Route path="/solicitacoes-academicas/estagio" element={<Internship />} />
+                <Route path="/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio" element={<SigningInternshipContract />} />
+                <Route path="/solicitacoes-academicas/estagio/entrega-de-relatorio-de-estagio" element={<InternshipReportSubmission />} />
+                <Route path="/solicitacoes-academicas/estagio/rescisao-de-contrato-de-estagio" element={<SubmissionInternshipReport />} />
+                <Route path="/solicitacoes-academicas/estagio/convalidacao-de-horas" element={<TerminationInternshipContract />} />
+                <Route path="/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura" element={<UndergraduateCoverLetter />} />
+
                 <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />
                 <Route path="/solicitacoes-academicas/enade" element={<Enade />} />
                 <Route path="/solicitacoes-academicas/rematricula" element={<ReEnrollment />} />
@@ -223,13 +236,13 @@ const AcademicRoutes = () => {
 };
 
 const AvaRoutes = () => {
-    const {routeHeader} = useContext(DataContext)
+    const { routeHeader } = useContext(DataContext)
     const location = useLocation()
     const [nameHeader, setNameHeader] = useState('Ava')
 
     useEffect(() => {
-        listRoutesAva.find( rt => {
-            if(rt.route == location.pathname){
+        listRoutesAva.find(rt => {
+            if (rt.route == location.pathname) {
                 setNameHeader(rt.header)
             }
         })

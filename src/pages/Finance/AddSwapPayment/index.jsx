@@ -109,6 +109,11 @@ const AddSwapPayment = () => {
                         onClick={togglePlano}
                     />
                     <DefaultButton
+                        text="Selecionar Novo Cartão Principal"
+                        backgroundColor="var(--custom-green)"
+                        onClick={() => navegation("/")}
+                    />
+                    <DefaultButton
                         text="Cadastrar Novo Cartão"
                         backgroundColor="var(--custom-green)"
                         onClick={() => navegation("/financeiro/adicionar-cartao")}
@@ -121,9 +126,7 @@ const AddSwapPayment = () => {
                 </div>
             </main>
         </>
-
     );
-
 };
 
 export default AddSwapPayment

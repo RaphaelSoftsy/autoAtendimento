@@ -13,8 +13,7 @@ const PerformPayment = () => {
     const [payment, setPayment] = useState([]);
     const navigate = useNavigate();
     // const aluno = localStorage.getItem("aluno-ra");
-    const aluno = '13121080709'
-
+    const aluno = '2473773'
     const MySwal = withReactContent(Swal);
 
     const monthNames = {
@@ -34,24 +33,33 @@ const PerformPayment = () => {
 
     async function getPerformPayment() {
         try {
-            const response = await axios.get(`${url_base}/cobrancaAluno/aluno/${aluno}/vencidas/n/aVencer/s`);
+            const response = await axios.get(`${url_base}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=N&aVencer=S`);
             const data = response.data;
             console.log('Dados da declaração:', data);
 
             // Mapeando os objetos retornados pela API para o novo formato com IDs incrementais
-            const formattedData = data.map((item, index) => ({
+            const formattedData = data
+            .filter(item => parseFloat(item.valorPagar) !== 0)
+            .map((item, index) => ({
                 id: index + 1,
-                cobranca: item.cobranca,
-                ano: item.ano,
-                mes: item.mes,
-                mesName: monthNames[item.mes],
                 aluno: item.aluno,
                 resp: item.resp,
+                statusCobranca: item.statusCobranca,
+                cobranca: item.cobranca,
+                tipoCobranca: item.tipoCobranca,
+                descricao: item.descricao,
+                curso: item.curso,
+                turno: item.turno,
+                serie: item.serie,
+                mes: item.mes,
+                mesName: monthNames[item.mes],
+                ano: item.ano,
                 dataDeVencimento: item.dataDeVencimento,
-                valorFaturado: item.valorFaturado,
-                valorDenscontoAtual: item.valorDenscontoAtual,
                 dataDescontoAtual: item.dataDescontoAtual,
-                valorPagar: item.valorPagar
+                valorDescontoAtual: item.valorDescontoAtual,
+                valorFaturado: item.valorFaturado,
+                valorPagar: item.valorPagar,
+                jurosMulta: item.jurosMulta
             }));
 
             setPayment(formattedData);
@@ -68,45 +76,15 @@ const PerformPayment = () => {
 
     const formattedList = payment.map((item) => ({
         id: item.id,
-        name: `${item.valorFaturado} ${item.mesName}/${item.ano}`,
-        valor: item.valorDenscontoAtual,
-        status: item.valorFaturado,
+        name: `${item.tipoCobranca} ${item.mesName}/${item.ano}`,
+        valor: item.valorPagar,
+        status: item.tipoCobranca,
+        descricao: item.descricao,
         mes: item.mes,
         ano: item.ano,
         dataVencimento: item.dataDeVencimento,
         valorDensconto: item.valorDenscontoAtual
     }));
-
-    const list = [
-        {
-            id: 1,
-            name: 'Mensalidade Jan/234',
-            valor: '79,90',
-            status: 'ACORDOS',
-            mes: "Janeiro",
-            ano: "2023",
-            dataVencimento: "12-12-2021",
-            valorDensconto: "60,00"
-        },
-        {
-            id: 2,
-            name: 'Mensalidade Jan/235',
-            valor: '139,90',
-            status: 'SERVIÇOS'
-        },
-        {
-            id: 3,
-            name: 'Mensalidade Jan/236',
-            valor: '138,90',
-            status: 'MENSALIDADES'
-        },
-        {
-            id: 4,
-            name: 'Mensalidade Jan/237',
-            valor: '155,90',
-            status: 'OUTROS'
-        }
-    ];
 
     const handleSubjectSelect = (id) => {
         setSelectedSubjects(prevSelected => {
@@ -120,7 +98,7 @@ const PerformPayment = () => {
     };
 
     const total = selectedSubjects.reduce((acc, id) => {
-        const item = list.find(item => item.id === id);
+        const item = formattedList.find(item => item.id === id);
         return acc + parseFloat(item.valor.replace(',', '.'));
     }, 0);
 
@@ -137,7 +115,7 @@ const PerformPayment = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            const selectedItems = list.filter(item => selectedSubjects.includes(item.id));
+            const selectedItems = formattedList.filter(item => selectedSubjects.includes(item.id));
             localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
 
             localStorage.setItem("total", formatValue(total));
@@ -152,9 +130,10 @@ const PerformPayment = () => {
                 <div className='list-subjects'>
                     <h1 className='title'>Escolha os itens para pagamento</h1>
                     <ItemsPayment
-                        items={list}
+                        items={formattedList}
                         selectedSubjects={selectedSubjects}
-                        onSelect={handleSubjectSelect} />
+                        onSelect={handleSubjectSelect} 
+                        />
                 </div>
             </main>
             <footer className='footer-container'>

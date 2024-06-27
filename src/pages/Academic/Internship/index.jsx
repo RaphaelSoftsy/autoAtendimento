@@ -6,33 +6,33 @@ const Internship = () => {
         {
             id: 1,
             name: 'Assinatura de Contrato de Estágio',
-            route: '/academico/expedicao-de-documentos/estagio/assinatura-de-contrato-de-estagio'
+            route: '/academico/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio'
         },
         {
             id: 2,
             name: 'Entrega de Relatório de Estágio',
-            route: '/academico/expedicao-de-documentos/estagio/entrega-de-relatorio-de-estagio'
+            route: '/academico/solicitacoes-academicas/estagio/entrega-de-relatorio-de-estagio'
         },
         {
             id: 3,
             name: 'Rescisão de Contrato de Estágio',
-            route: '/academico/expedicao-de-documentos/estagio/rescisao-de-contrato-de-estagio'
+            route: '/academico/solicitacoes-academicas/estagio/rescisao-de-contrato-de-estagio'
         },
         {
             id: 4,
             name: 'Convalidação de Horas',
-            route: '/academico/expedicao-de-documentos/estagio/convalidacao-de-horas'
+            route: '/academico/solicitacoes-academicas/estagio/convalidacao-de-horas'
         },
         {
             id: 5,
             name: 'Carta de Apresentação – Licenciatura',
-            route: '/academico/expedicao-de-documentos/estagio/carta-de-apresentacao-licenciatura'
+            route: '/academico/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura'
         },
         {
             id: 6,
             name: 'Regulamentos, manuais e outros documentos de estágio. Ir para o site',
-            route: '/academico/expedicao-de-documentos/estagio/regulamentos-manuais-e-outros-documentos-de-estagio'
-        },
+            route: 'https://sumare.edu.br/estagio.html'
+        }
     ]
 
     return (
