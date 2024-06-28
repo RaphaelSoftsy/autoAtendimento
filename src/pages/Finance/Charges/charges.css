@@ -7,3 +7,16 @@
     align-items: center;
     justify-content: center;
 }
+
+.teste {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filtro {
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+}
+

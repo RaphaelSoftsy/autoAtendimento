@@ -95,6 +95,10 @@ import InternshipReportSubmission from "../pages/Academic/InternshipReportSubmis
 import TerminationInternshipContract from "../pages/Academic/TerminationInternshipContract";
 import UndergraduateCoverLetter from "../pages/Academic/UndergraduateCoverLetter";
 import SubmissionInternshipReport from "../pages/Academic/SubmissionInternshipReport";
+import ForgetPassword from "../pages/Password/ForgetPassword";
+import PasswordRecovery from "../pages/Password/PasswordRecovery";
+import Verification from "../pages/Password/Verification";
+import CreateNewPassword from "../pages/Password/CreateNewPassword";
 
 
 const RoutesApp = () => {
@@ -103,6 +107,14 @@ const RoutesApp = () => {
             <DataProvider>
                 <Routes>
                     <Route path="/" element={<Login />} />
+
+
+                    <Route path="/esquecer-senha" element={<ForgetPassword />} />
+                    <Route path="/recuperacao-senha" element={<PasswordRecovery />} />
+                    <Route path="/verificacao" element={<Verification />} />
+                    <Route path="/criar-nova-senha" element={<CreateNewPassword />} />
+
+
                     <Route path="/home" element={<Home />} />
                     <Route path="/financeiro/*" element={<FinanceiroRoutes />} />
                     <Route path="/academico/*" element={<AcademicRoutes />} />
