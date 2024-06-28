@@ -86,6 +86,7 @@ const Login = () => {
                         {passwordVisible ? <FaEyeSlash /> : <FaEye />}
                     </span>
                 </div>
+                <Link to={'/esquecer-senha'}>Esqueceu a senha?</Link>
 
                 <button className="button-login" onClick={handleNext}>Login</button>
             </div>
