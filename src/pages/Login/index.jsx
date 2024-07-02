@@ -26,17 +26,41 @@ const Login = () => {
             const data = response.data;
             console.log('Dados Login:', data);
 
+            if(data === 'autenticado') {
+                navegation('/home');
+                MySwal.fire({
+                    icon:'success',
+                    title: 'Login efetuado com sucesso!',
+                    confirmButtonText: 'OK'
+                });
+            }else if(data === 'N'){
+                MySwal.fire({
+                    icon: 'info',
+                    title: 'Erro',
+                    text: 'Login ou senha inválidos',
+                    confirmButtonText: 'OK'
+                });
+            }else{
+                MySwal.fire({
+                    icon: 'error',
+                    title: 'Erro de Login',
+                    text: 'Por favor, tente novamente.',
+                    confirmButtonText: 'OK',
+                });
+            }
+
             setLogin(data);
         } catch (error) {
             console.error('Erro ao buscar login:', error);
         }
     }
 
-    useEffect(() => {
-        if (ra && senha) {
-            getLogin();
-        }
-    }, [ra, senha]);
+    const handleInputChange = (e) => {
+        let value = e.target.value;
+
+        value = value.replace(/[^\d]/g, '');
+        setRa(value);
+    };
 
 
     const handleNext = () => {
@@ -48,21 +72,9 @@ const Login = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-
-            if (login === 'N') {
-                MySwal.fire({
-                    icon: 'info',
-                    title: 'Erro',
-                    text: 'Login ou senha inválidos',
-                    confirmButtonText: 'OK'
-                });
-            } else {
-                navegation('/home');
-            }
+            getLogin();
         }
     };
-    
-
 
     return (
         <main className="auto-atendimento">
@@ -74,7 +86,7 @@ const Login = () => {
                     placeholder="RA"
                     className='input-ra-senha'
                     value={ra}
-                    onChange={(e) => setRa(e.target.value)}
+                    onChange={handleInputChange}
                 />
                 <div className="password-wrapper">
                     <input

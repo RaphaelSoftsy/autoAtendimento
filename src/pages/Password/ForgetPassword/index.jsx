@@ -13,21 +13,28 @@ const ForgetPassword = () => {
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
 
-    // async function getAluno() {
-    //     try {
-    //         const response = await axios.get(`https://api-relatorios.sumare.edu.br/api-rel-split/login/interno?login=${ra}&senha=${senha}`);
-    //         const data = response.data;
-    //         console.log('Dados Aluno:', data);
-
-    //         setLogin(data);
-    //     } catch (error) {
-    //         console.error('Erro ao buscar aluno:', error);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //         getAluno();
-    // }, []);
+    async function getAluno() {
+        try {
+            const response = await axios.get(`https://api-academico.sumare.edu.br/api-redefinir-senha/listarContatosAluno/aluno/${ra}`);
+            const data = response.data;
+            console.log('Dados Aluno:', data);
+            
+            if (data && data.length > 0) {
+                setAluno(data);
+                localStorage.setItem("aluno-ra-senha", ra);
+                navegation('/recuperacao-senha');
+            } else {
+                MySwal.fire({
+                    icon: 'error',
+                    title: 'Erro de Validação',
+                    text: 'Não foi possível validar o RA. Por favor, tente novamente.',
+                    confirmButtonText: 'OK',
+                });
+            }
+        } catch (error) {
+            console.error('Erro ao buscar aluno:', error);
+        }
+    }
 
 
     const handleInputChange = (e) => {
@@ -38,10 +45,15 @@ const ForgetPassword = () => {
     };
 
     const handleNext = () => {
-        if (ra.length >= 7 && !isNaN(ra)) {
-            localStorage.setItem("aluno-ra-senha", ra);
-            console.log(ra);
-            navegation('/recuperacao-senha');
+        if (ra.trim() === '') {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro de Validação',
+                text: 'O campo RA não pode estar vazio.',
+                confirmButtonText: 'OK',
+            });
+        } else if (ra.length >= 7 && !isNaN(ra)) {
+            getAluno();
         } else {
             MySwal.fire({
                 icon: 'error',
@@ -54,7 +66,7 @@ const ForgetPassword = () => {
 
     return (
         <main className="forget-password">
-            <img src={Logo} alt="logo sumaré" className="logo-sumare-password"/>
+            <img src={Logo} alt="logo sumaré" className="logo-sumare-password" />
             <div className="card-password">
                 <h2>Acesso</h2>
                 <p>Para recuperar sua senha, digite seu RA e siga as instruções fornecidas.</p>
