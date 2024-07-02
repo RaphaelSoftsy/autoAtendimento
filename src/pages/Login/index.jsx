@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import Logo from '../../assets/logo-sumare.svg';
 
 const Login = () => {
 
@@ -56,7 +57,7 @@ const Login = () => {
                     confirmButtonText: 'OK'
                 });
             } else {
-                navegation('/home'); // Navega para a página inicial
+                navegation('/home');
             }
         }
     };
@@ -66,6 +67,7 @@ const Login = () => {
     return (
         <main className="auto-atendimento">
             <div className="login">
+            <img src={Logo} alt="logo sumaré" className="logo-sumare-password"/>
                 <h1>Auto Atendimento</h1>
                 <input
                     type="tel"
@@ -86,7 +88,7 @@ const Login = () => {
                         {passwordVisible ? <FaEyeSlash /> : <FaEye />}
                     </span>
                 </div>
-                <Link to={'/esquecer-senha'}>Esqueceu a senha?</Link>
+                <Link to={'/esquecer-senha'} className="esquecer-senha">Esqueceu a senha?</Link>
 
                 <button className="button-login" onClick={handleNext}>Login</button>
             </div>
