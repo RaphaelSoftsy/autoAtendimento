@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import Logo from '../../assets/logo-sumare.svg';
 
 const Login = () => {
 
@@ -25,17 +26,41 @@ const Login = () => {
             const data = response.data;
             console.log('Dados Login:', data);
 
+            if(data === 'autenticado') {
+                navegation('/home');
+                MySwal.fire({
+                    icon:'success',
+                    title: 'Login efetuado com sucesso!',
+                    confirmButtonText: 'OK'
+                });
+            }else if(data === 'N'){
+                MySwal.fire({
+                    icon: 'info',
+                    title: 'Erro',
+                    text: 'Login ou senha inválidos',
+                    confirmButtonText: 'OK'
+                });
+            }else{
+                MySwal.fire({
+                    icon: 'error',
+                    title: 'Erro de Login',
+                    text: 'Por favor, tente novamente.',
+                    confirmButtonText: 'OK',
+                });
+            }
+
             setLogin(data);
         } catch (error) {
             console.error('Erro ao buscar login:', error);
         }
     }
 
-    useEffect(() => {
-        if (ra && senha) {
-            getLogin();
-        }
-    }, [ra, senha]);
+    const handleInputChange = (e) => {
+        let value = e.target.value;
+
+        value = value.replace(/[^\d]/g, '');
+        setRa(value);
+    };
 
 
     const handleNext = () => {
@@ -47,32 +72,21 @@ const Login = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-
-            if (login === 'N') {
-                MySwal.fire({
-                    icon: 'info',
-                    title: 'Erro',
-                    text: 'Login ou senha inválidos',
-                    confirmButtonText: 'OK'
-                });
-            } else {
-                navegation('/home'); // Navega para a página inicial
-            }
+            getLogin();
         }
     };
-    
-
 
     return (
         <main className="auto-atendimento">
             <div className="login">
+            <img src={Logo} alt="logo sumaré" className="logo-sumare-password"/>
                 <h1>Auto Atendimento</h1>
                 <input
                     type="tel"
                     placeholder="RA"
                     className='input-ra-senha'
                     value={ra}
-                    onChange={(e) => setRa(e.target.value)}
+                    onChange={handleInputChange}
                 />
                 <div className="password-wrapper">
                     <input
@@ -86,7 +100,7 @@ const Login = () => {
                         {passwordVisible ? <FaEyeSlash /> : <FaEye />}
                     </span>
                 </div>
-                <Link to={'/esquecer-senha'}>Esqueceu a senha?</Link>
+                <Link to={'/esquecer-senha'} className="esquecer-senha">Esqueceu a senha?</Link>
 
                 <button className="button-login" onClick={handleNext}>Login</button>
             </div>
