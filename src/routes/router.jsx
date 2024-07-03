@@ -107,14 +107,10 @@ const RoutesApp = () => {
             <DataProvider>
                 <Routes>
                     <Route path="/" element={<Login />} />
-
-
                     <Route path="/esquecer-senha" element={<ForgetPassword />} />
                     <Route path="/recuperacao-senha" element={<PasswordRecovery />} />
                     <Route path="/verificacao" element={<Verification />} />
                     <Route path="/criar-nova-senha" element={<CreateNewPassword />} />
-
-
                     <Route path="/home" element={<Home />} />
                     <Route path="/financeiro/*" element={<FinanceiroRoutes />} />
                     <Route path="/academico/*" element={<AcademicRoutes />} />

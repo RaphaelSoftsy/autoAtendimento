@@ -5,45 +5,97 @@ import CardDrop from "../../../components/CardDrop";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import ModifyRA from "../../../components/ModifyRA";
+import { useState } from "react";
+import axios from "axios";
 
 const Handbag = () => {
-    const navigate = useNavigate()
 
+    const navegation = useNavigate()
+    const [obs, setObs] = useState("");
+    const [selectedOptionHandbag, setSelectedOptionHandbag] = useState(null);
+    const ra = localStorage.getItem('aluno-ra');
     const MySwal = withReactContent(Swal);
-    const hasPendingFees = true; // Simulando a verificação de pendências
 
-    const handleCancelCourse = () => {
-        if (hasPendingFees) {
+    console.log(ra);
+
+    async function getBolsa() {
+        try {
+            const response = await axios.post(`http://localhost:8080/solicitacaoBolsa`, {
+                aluno: ra,
+                obs: obs,
+                tipoBolsa: selectedOptionHandbag.name
+            })
+            const data = response.data;
+            console.log('Dados Bolsa:', data);
+
+            // if (data.success) {
+            //     MySwal.fire({
+            //         icon: 'success',
+            //         title: 'Enviado com sucesso!',
+            //         timer: 5000,
+            //         timerProgressBar: true,
+            //         showConfirmButton: true
+            //     }).then((result) => {
+            //         if (result.isConfirmed) {
+            //             navegation('/academico');
+            //         }
+            //     });
+            // } else {
+            //     MySwal.fire({
+            //         icon: 'error',
+            //         title: 'Erro ao alterar senha',
+            //         text: 'Ocorreu um erro ao tentar enviar sua solicitação.',
+            //         confirmButtonText: 'OK',
+            //     });
+            // }
+
+        } catch (error) {
+            console.error('Erro ao buscar bolsa :', error);
+        }
+    }
+
+
+    
+    const handleObsChange = (newObs) => {
+        setObs(newObs);
+    };
+
+    const handleSubjectSelect = (selected) => {
+        setSelectedOptionHandbag(selected);
+    };
+
+    const handleUpload = () => {
+        console.log('Upload clicado');
+    };
+
+    const handleBolsa = () => {
+        if (selectedOptionHandbag === null || selectedOptionHandbag === "" || obs === null || obs === "") {
             MySwal.fire({
                 icon: 'error',
                 title: 'Erro',
-                text: 'Neste curso você não possui acesso a bolsa.Tente trocar de RA',
-                confirmButtonText: 'RA'
-                
-            }).then(() => {
-                navigate("/");
+                text: 'Por favor, prencher todos os campos.',
+                confirmButtonText: 'OK',
             });
-        } else {
-            MySwal.fire({
-                icon: 'question',
-                title: 'Deseja mesmo cancelar o curso?',
-                showCancelButton: true,
-                confirmButtonText: 'Sim',
-                cancelButtonText: 'Não'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate("/teste");
-                }
-            });
+        }else{
+            getBolsa();
+            console.log('Observação:', obs);
+            console.log('Opção selecionada:', selectedOptionHandbag.name);
         }
+        
     };
+
 
     return (
         <main className="handbag">
-            <ModifyRA/>
-            <CardDrop />
+            <ModifyRA />
+            <CardDrop
+                 obs={obs}
+                 setObs={handleObsChange}
+                 setSelect={handleSubjectSelect}
+                 onClickButton={handleUpload}
+            />
             <DefaultButton
-                onClick={handleCancelCourse}
+                onClick={handleBolsa}
                 text='Enviar Solicitação'
                 backgroundColor='var(--primary-light-blue)'
             />

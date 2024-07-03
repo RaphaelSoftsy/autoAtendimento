@@ -1,13 +1,19 @@
 import './dropdown.css'
 
 const Dropdown = (props) => {
+
+    const handleChange = (e) => {
+        const selectedOption = props.itens.find(item => item.id === parseInt(e.target.value, 10));
+        props.onChange(selectedOption);
+    };
+
     return (
         <div className="box-dropdown">
             <label htmlFor={props.id}>{props.label}</label>
             <select
                 name={props.name}
                 id={props.id}
-                onChange={(e) => props.onChange(e)}
+                onChange={handleChange}
                 className="custom-select"
             >
                 <option className="opt-drop" value="hide">Selecione</option>

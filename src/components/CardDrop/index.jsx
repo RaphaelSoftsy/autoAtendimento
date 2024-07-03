@@ -5,11 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TextArea from '../TextArea';
 
-const CardDrop = () => {
-
-    const navegation = useNavigate();
-
-    const [typeScholarship, setTypeScholarship] = useState('')
+const CardDrop = ({ obs, setObs, setSelect, onClickButton }) => {
 
     const list = [
         {
@@ -26,6 +22,10 @@ const CardDrop = () => {
         }
     ]
 
+    const handleObsChange = (e) => {
+        setObs(e.target.value);
+    };
+
     return (
         <>
             <div className="card-drop">
@@ -35,14 +35,19 @@ const CardDrop = () => {
                     name='dropdown-handbag'
                     itens={list}
                     label=''
-                    onChange={(e) => setTypeScholarship(e.target.value)}
+                    onChange={setSelect}
                 />
-                <TextArea text ='Descreva o por que da sua solicitação:' id= ''/>
+                <TextArea
+                    id=''
+                    text='Descreva o porquê da sua solicitação:'
+                    value={obs}
+                    onChange={handleObsChange}
+                />
                 <DefaultButton
                     text="Upload"
                     backgroundColor="var(--primary-light-blue)"
                     color='#fff'
-                    onClick={() => navegation("/")}
+                    onClick={onClickButton}
                 />
             </div>
         </>
