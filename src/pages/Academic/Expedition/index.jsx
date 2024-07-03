@@ -21,7 +21,7 @@ const Expedition = () => {
         },
         {
             id: 4,
-            name: 'Declaração Especifica Academica',
+            name: 'Declaração Especifica Acadêmica',
             route: '/academico/expedicao-de-documentos/declaracao-especifica-academica'
         },
         {

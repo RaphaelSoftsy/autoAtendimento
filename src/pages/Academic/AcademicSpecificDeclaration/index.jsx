@@ -9,7 +9,6 @@ import withReactContent from "sweetalert2-react-content";
 const AcademicSpecificDeclaration = () => {
 
     const navegation = useNavigate();
-    const [DeclaracaoEspecifica, setDeclaracaoEspecifica] = useState([]);
     const [obs, setObs] = useState("");
     const ra = localStorage.getItem('aluno-ra');
     const MySwal = withReactContent(Swal);
@@ -23,7 +22,7 @@ const AcademicSpecificDeclaration = () => {
             const data = response.data;
             console.log('Dados Declaração Especifica:', data);
 
-            if (data.success) {
+            if (response.status === 200) {
                 MySwal.fire({
                     icon: 'success',
                     title: 'Enviado com sucesso!',
@@ -31,7 +30,10 @@ const AcademicSpecificDeclaration = () => {
                     timerProgressBar: true,
                     showConfirmButton: true
                 }).then((result) => {
-                    if (result.isConfirmed) {
+                    // Verifica se o modal foi fechado pelo timer
+                    const closedByTimer = result.dismiss === 'timer';
+
+                    if (result.isConfirmed || closedByTimer) {
                         navegation('/academico');
                     }
                 });

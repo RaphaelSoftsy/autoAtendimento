@@ -16,15 +16,17 @@ const Handbag = () => {
     const ra = localStorage.getItem('aluno-ra');
     const MySwal = withReactContent(Swal);
 
+    console.log(ra);
+
     async function getBolsa() {
         try {
             const response = await axios.post(`http://localhost:8080/solicitacaoBolsa`, {
                 aluno: ra,
                 obs: obs,
-                tipoBolsa: selectedOptionHandbag
+                tipoBolsa: selectedOptionHandbag.name
             })
             const data = response.data;
-            console.log('Dados Declaração Especifica:', data);
+            console.log('Dados Bolsa:', data);
 
             // if (data.success) {
             //     MySwal.fire({
@@ -48,7 +50,7 @@ const Handbag = () => {
             // }
 
         } catch (error) {
-            console.error('Erro ao buscar declaração espeficica :', error);
+            console.error('Erro ao buscar bolsa :', error);
         }
     }
 
@@ -77,7 +79,7 @@ const Handbag = () => {
         }else{
             getBolsa();
             console.log('Observação:', obs);
-            console.log('Opção selecionada:', selectedOptionHandbag);
+            console.log('Opção selecionada:', selectedOptionHandbag.name);
         }
         
     };
