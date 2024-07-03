@@ -27,6 +27,8 @@ const Login = () => {
             console.log('Dados Login:', data);
 
             if(data === 'autenticado') {
+                setLogin(data);
+                localStorage.setItem("aluno-ra", ra);
                 navegation('/home');
                 MySwal.fire({
                     icon:'success',
@@ -48,8 +50,6 @@ const Login = () => {
                     confirmButtonText: 'OK',
                 });
             }
-
-            setLogin(data);
         } catch (error) {
             console.error('Erro ao buscar login:', error);
         }
