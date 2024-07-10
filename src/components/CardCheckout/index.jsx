@@ -1,27 +1,44 @@
+import React from 'react';
 import './cardCheckout.css';
 import DefaultButton from '../DefaultButton';
-import { useNavigate } from 'react-router-dom';
 
 const CardCheckout = (props) => {
-
-    const navegation = useNavigate();
-
     return (
-        <>
-            <div className="card-checkout">
-                <h2 className='explain-problem'>{props.text}</h2>
-                <DefaultButton
-                    text="Upload do PDF"
-                    backgroundColor="var(--primary-light-blue)"
-                    color='#fff'
-                    onClick={() => navegation("/")}
+        <div className="card-checkout">
+            <h2 className='explain-problem'>{props.text}</h2>
+
+            <label className="file-upload">
+                <input
+                    type="file"
+                    accept=".pdf,.doc,.png,.jpg"
+                    onChange={props.onChangeInputFile}
                 />
-                <div className="observation">
-                    <span>Observação:</span>
-                    <textarea name="observation" id="observation"></textarea>
-                </div>
+                {props.selectedFile ? (
+                    <div className="file-info">
+                        <p>{props.selectedFileName}</p>
+                    </div>
+                ) : (
+                    <p>Upload de arquivo (Coloque aqui se tiver)</p>
+                )}
+            </label>
+
+            <div className="observation">
+                <span>{props.textTextArea}</span>
+                <textarea
+                    name="obs"
+                    id="observation"
+                    value={props.observation}
+                    onChange={props.onObservationChange}
+                ></textarea>
             </div>
-        </>
+
+            <DefaultButton
+                text="Enviar Solicitação"
+                backgroundColor="var(--primary-light-blue)"
+                color='#fff'
+                onClick={props.onClick}
+            />
+        </div>
     );
 }
 

@@ -1,31 +1,47 @@
 import './problemsAccessingDiscipline.css'
 import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
 import Footer from '../../../components/Footer';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useNavigate } from 'react-router-dom';
+import url_base from '../../../services/url_base';
+import axios from 'axios';
 
 const ProblemsAccessingDiscipline = () => {
-    
+
     const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const [problems, setProblems] = useState([]);
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
+    // const aluno = localStorage.getItem("aluno-ra");
+    const ra = '2473474'
 
-    const list = [
-        {
-            id: 1,
-            name: 'Disciplina 1'
-        },
-        {
-            id: 2,
-            name: 'Disciplina 2'
-        },
-        {
-            id: 3,
-            name: 'Disciplina 3'
+    async function getProblemsAccessingDiscipline() {
+
+        MySwal.showLoading()
+
+        try {
+            const response = await axios.get(`${url_base}/disciplinaMatriculada/${ra}`);
+            const data = response.data;
+
+            const formattedData = data
+                .map((item, index) => ({
+                    id: index + 1,
+                    aluno: item.aluno,
+                    name: item.nomeDisciplina
+                }));
+
+            setProblems(formattedData);
+        } catch (error) {
+            console.error('Erro ao buscar declaração:', error);
         }
-    ];
+        MySwal.close()
+    }
+
+    useEffect(() => {
+        getProblemsAccessingDiscipline();
+    }, []);
 
     const handleSubjectSelect = (id) => {
         setSelectedSubjects(prevSelected => {
@@ -56,10 +72,16 @@ const ProblemsAccessingDiscipline = () => {
             <div className="problems-reviews">
                 <div className='list-subjects'>
                     <h1 className='title'>Em qual disciplina você está com problemas?</h1>
-                    <ListSubjectsCheck
-                        items={list}
-                        selectedSubjects={selectedSubjects}
-                        onSelect={handleSubjectSelect} />
+                    {problems.length > 0 ?
+                        <ListSubjectsCheck
+                            items={problems}
+                            selectedSubjects={selectedSubjects}
+                            onSelect={handleSubjectSelect} />
+
+                        :
+                        ''
+                    }
+
                 </div>
             </div>
             <Footer text="Avançar" onClick={handleNext} />

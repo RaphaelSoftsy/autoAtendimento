@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import axios from 'axios';
 import url_base from '../../../services/url_base';
+import Loading from '../../../components/Loading';
 
 const PerformPayment = () => {
 
@@ -32,6 +33,9 @@ const PerformPayment = () => {
     };
 
     async function getPerformPayment() {
+
+        MySwal.showLoading()
+
         try {
             const response = await axios.get(`${url_base}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=N&aVencer=S`);
             const data = response.data;
@@ -39,33 +43,34 @@ const PerformPayment = () => {
 
             // Mapeando os objetos retornados pela API para o novo formato com IDs incrementais
             const formattedData = data
-            .filter(item => parseFloat(item.valorPagar) !== 0)
-            .map((item, index) => ({
-                id: index + 1,
-                aluno: item.aluno,
-                resp: item.resp,
-                statusCobranca: item.statusCobranca,
-                cobranca: item.cobranca,
-                tipoCobranca: item.tipoCobranca,
-                descricao: item.descricao,
-                curso: item.curso,
-                turno: item.turno,
-                serie: item.serie,
-                mes: item.mes,
-                mesName: monthNames[item.mes],
-                ano: item.ano,
-                dataDeVencimento: item.dataDeVencimento,
-                dataDescontoAtual: item.dataDescontoAtual,
-                valorDescontoAtual: item.valorDescontoAtual,
-                valorFaturado: item.valorFaturado,
-                valorPagar: item.valorPagar,
-                jurosMulta: item.jurosMulta
-            }));
+                .filter(item => parseFloat(item.valorPagar) !== 0)
+                .map((item, index) => ({
+                    id: index + 1,
+                    aluno: item.aluno,
+                    resp: item.resp,
+                    statusCobranca: item.statusCobranca,
+                    cobranca: item.cobranca,
+                    tipoCobranca: item.tipoCobranca,
+                    descricao: item.descricao,
+                    curso: item.curso,
+                    turno: item.turno,
+                    serie: item.serie,
+                    mes: item.mes,
+                    mesName: monthNames[item.mes],
+                    ano: item.ano,
+                    dataDeVencimento: item.dataDeVencimento,
+                    dataDescontoAtual: item.dataDescontoAtual,
+                    valorDescontoAtual: item.valorDescontoAtual,
+                    valorFaturado: item.valorFaturado,
+                    valorPagar: item.valorPagar,
+                    jurosMulta: item.jurosMulta
+                }));
 
             setPayment(formattedData);
         } catch (error) {
             console.error('Erro ao buscar declaração:', error);
         }
+        MySwal.close()
     }
 
     useEffect(() => {
@@ -129,11 +134,15 @@ const PerformPayment = () => {
             <main className="perform-payment">
                 <div className='list-subjects'>
                     <h1 className='title'>Escolha os itens para pagamento</h1>
-                    <ItemsPayment
-                        items={formattedList}
-                        selectedSubjects={selectedSubjects}
-                        onSelect={handleSubjectSelect} 
+                    {payment.length > 0 ?
+                        <ItemsPayment
+                            items={formattedList}
+                            selectedSubjects={selectedSubjects}
+                            onSelect={handleSubjectSelect}
                         />
+                        :
+                        ''
+                    }
                 </div>
             </main>
             <footer className='footer-container'>

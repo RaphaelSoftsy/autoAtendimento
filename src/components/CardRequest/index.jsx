@@ -1,22 +1,31 @@
 import './cardRequest.css';
-import DefaultButton from '../DefaultButton';
-import { useNavigate } from 'react-router-dom';
 import TextArea from '../TextArea';
 
 const CardRequest = (props) => {
 
-    const navegation = useNavigate();
-
     return (
         <>
             <div className="card-request">
-                <TextArea text ={props.text} id= {props.id}/>
-                <DefaultButton
-                    text="Upload do PDF"
-                    backgroundColor="var(--primary-light-blue)"
-                    color='#fff'
-                    onClick={() => navegation("/")}
+                <TextArea
+                    text={props.title}
+                    id="observation"
+                    value={props.observation}
+                    onChange={props.onObservationChange}
                 />
+                <label className="file-upload">
+                    <input
+                        type="file"
+                        accept=".pdf,.doc,.png,.jpg"
+                        onChange={props.onChangeInputFile}
+                    />
+                    {props.selectedFile ? (
+                        <div className="file-info">
+                            <p>{props.selectedFileName}</p>
+                        </div>
+                    ) : (
+                        <p>Upload de arquivo (Coloque aqui se tiver)</p>
+                    )}
+                </label>
             </div>
         </>
     );

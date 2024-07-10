@@ -99,6 +99,9 @@ import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
 import CreateNewPassword from "../pages/Password/CreateNewPassword";
+import ProgramContentServiceNumber from "../pages/Academic/ProgramContentServiceNumber";
+import FiesServiceNumber from "../pages/Finance/FiesSumare/Fies/FiesServiceNumber";
+import SumareServiceNumber from "../pages/Finance/FiesSumare/Sumare/SumareServiceNumber";
 
 
 const RoutesApp = () => {
@@ -170,7 +173,9 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/mensalidades-servicos/acordo" element={<AccordMonthlyService />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
                 <Route path="/outros-assuntos/fies-sumare/fies" element={<Fies />} />
+                <Route path="/outros-assuntos/fies-sumare/fies/numero-servico" element={<FiesServiceNumber />} />
                 <Route path="/outros-assuntos/fies-sumare/sumare" element={<Sumare />} />
+                <Route path="/outros-assuntos/fies-sumare/sumare/numero-servico" element={<SumareServiceNumber />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
                 <Route path="/outros-assuntos/cashback/mensalidades" element={<TuitionCashBack />} />
                 <Route path="/outros-assuntos/cashback/servicos" element={<ServiceCashBack />} />
@@ -235,7 +240,8 @@ const AcademicRoutes = () => {
                 <Route path="/expedicao-de-documentos/historico-escolar" element={<SchoolRecords />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-conclusao" element={<StatementConclusion />} />
                 <Route path="/expedicao-de-documentos/declaracao-especifica-academica" element={<AcademicSpecificDeclaration />} />
-                <Route path="/expedicao-de-documentos/conteudo-promatico" element={<ProgramContent />} />
+                <Route path="/expedicao-de-documentos/conteudo-programatico" element={<ProgramContent />} />
+                <Route path="/expedicao-de-documentos/conteudo-programatico/numero-servico" element={<ProgramContentServiceNumber />} />
                 <Route path="/cancelamento-do-curso" element={<CourseCancellation />} />
                 <Route path="/cancelamento-do-curso/cobrancas" element={<OpenCollection />} />
             </Routes>

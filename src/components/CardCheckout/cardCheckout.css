@@ -28,3 +28,34 @@
 .observation span{
     font-weight: bold;
 }
+
+.file-upload {
+    width: 80vw;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem 0px;
+    background-color: var(--primary-light-blue);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.file-upload input[type="file"] {
+    opacity: 0;
+    position: fixed;
+    cursor: pointer;
+    width: 80%;
+    height: 10%;
+}
+

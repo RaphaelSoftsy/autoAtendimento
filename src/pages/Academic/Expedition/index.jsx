@@ -27,7 +27,7 @@ const Expedition = () => {
         {
             id: 5,
             name: 'Conteúdo Programático',
-            route: '/academico/expedicao-de-documentos/conteudo-promatico'
+            route: '/academico/expedicao-de-documentos/conteudo-programatico'
         },
     ]
 
