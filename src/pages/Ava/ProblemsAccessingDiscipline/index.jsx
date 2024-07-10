@@ -72,10 +72,16 @@ const ProblemsAccessingDiscipline = () => {
             <div className="problems-reviews">
                 <div className='list-subjects'>
                     <h1 className='title'>Em qual disciplina você está com problemas?</h1>
-                    <ListSubjectsCheck
-                        items={problems}
-                        selectedSubjects={selectedSubjects}
-                        onSelect={handleSubjectSelect} />
+                    {problems.length > 0 ?
+                        <ListSubjectsCheck
+                            items={problems}
+                            selectedSubjects={selectedSubjects}
+                            onSelect={handleSubjectSelect} />
+
+                        :
+                        ''
+                    }
+
                 </div>
             </div>
             <Footer text="Avançar" onClick={handleNext} />

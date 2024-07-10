@@ -100,6 +100,8 @@ import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
 import CreateNewPassword from "../pages/Password/CreateNewPassword";
 import ProgramContentServiceNumber from "../pages/Academic/ProgramContentServiceNumber";
+import FiesServiceNumber from "../pages/Finance/FiesSumare/Fies/FiesServiceNumber";
+import SumareServiceNumber from "../pages/Finance/FiesSumare/Sumare/SumareServiceNumber";
 
 
 const RoutesApp = () => {
@@ -171,7 +173,9 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/mensalidades-servicos/acordo" element={<AccordMonthlyService />} />
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
                 <Route path="/outros-assuntos/fies-sumare/fies" element={<Fies />} />
+                <Route path="/outros-assuntos/fies-sumare/fies/numero-servico" element={<FiesServiceNumber />} />
                 <Route path="/outros-assuntos/fies-sumare/sumare" element={<Sumare />} />
+                <Route path="/outros-assuntos/fies-sumare/sumare/numero-servico" element={<SumareServiceNumber />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
                 <Route path="/outros-assuntos/cashback/mensalidades" element={<TuitionCashBack />} />
                 <Route path="/outros-assuntos/cashback/servicos" element={<ServiceCashBack />} />

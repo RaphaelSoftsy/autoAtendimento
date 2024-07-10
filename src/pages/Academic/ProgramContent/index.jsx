@@ -4,13 +4,14 @@ import Swal from 'sweetalert2';
 import Footer from '../../../components/Footer';
 import CardCheckout from '../../../components/CardCheckout';
 import withReactContent from 'sweetalert2-react-content';
+import axios from 'axios';
 
 const ProgramContent = () => {
     const style = {
         backgroundColor: "var(--secondary-light-red)"
     };
 
-    const navigate = useNavigate();
+    const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
 
     const [formData, setFormData] = useState({
@@ -51,8 +52,17 @@ const ProgramContent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        MySwal.showLoading()
-
+        if (!formData.arquivo) {
+            MySwal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Por favor, selecione um arquivo antes de enviar!",
+            });
+            return;
+        }
+    
+        MySwal.showLoading();
+    
         const dataToSend = {
             aluno: formData.aluno,
             obs: formData.obs,
@@ -62,32 +72,30 @@ const ProgramContent = () => {
             tipoArq: formData.tipoArq,
             arquivo: formData.arquivo
         };
-
+    
         console.log("Data to send:", JSON.stringify(dataToSend));
-        
+    
         try {
-            const response = await fetch('http://localhost:8080/conteudoProgramatico', {
-                method: 'POST',
+            const response = await axios.post('http://localhost:8080/conteudoProgramatico', dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
-                },
-                body: JSON.stringify(dataToSend)
+                }
             });
-
-            if (response.ok) {
-                const responseData = await response.json();
-                MySwal.close()
+    
+            if (response.status === 200) {
+                const responseData = response.data;
+                MySwal.close();
                 MySwal.fire({
                     title: "Cadastrado com sucesso",
                     icon: "success",
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navigate("numero-servico");
+                navegation("numero-servico");
             } else {
                 throw new Error('Network response was not ok.');
             }
         } catch (error) {
-            MySwal.close()
+            MySwal.close();
             console.log(error);
             MySwal.fire({
                 icon: "error",
@@ -95,7 +103,6 @@ const ProgramContent = () => {
                 text: "Não foi possível realizar esse comando!",
             });
         }
-        
     };
 
     const [selectedFile, setSelectedFile] = useState(null);
@@ -116,13 +123,14 @@ const ProgramContent = () => {
                         selectedFile={selectedFile}
                         selectedFileName={selectedFile ? selectedFile.name : ""}
                         onClick={handleSubmit}
+                        textTextArea='Observação'
                         observation={formData.obs}
                         onObservationChange={handleChangeObservation}
                     />
                 </div>
             </div>
             <div className='footer-container'>
-                <Footer text="Relatar Problema" style={style} onClick={() => navigate('/')} />
+                <Footer text="Relatar Problema" style={style} onClick={() => navegation('/')} />
             </div>
         </main>
     );
@@ -130,7 +138,7 @@ const ProgramContent = () => {
 
 export default ProgramContent;
 
-function convertToBase64(file, callback) {
+export function convertToBase64(file, callback) {
     const reader = new FileReader();
     reader.onload = function (event) {
         callback(event.target.result);

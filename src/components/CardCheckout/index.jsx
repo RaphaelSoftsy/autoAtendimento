@@ -23,7 +23,7 @@ const CardCheckout = (props) => {
             </label>
 
             <div className="observation">
-                <span>Observação:</span>
+                <span>{props.textTextArea}</span>
                 <textarea
                     name="obs"
                     id="observation"
@@ -33,7 +33,7 @@ const CardCheckout = (props) => {
             </div>
 
             <DefaultButton
-                text="Enviar"
+                text="Enviar Solicitação"
                 backgroundColor="var(--primary-light-blue)"
                 color='#fff'
                 onClick={props.onClick}
