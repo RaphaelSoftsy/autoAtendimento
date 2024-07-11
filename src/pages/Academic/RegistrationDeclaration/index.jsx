@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import CardDeclaration from '../../../components/CardDeclaration';
-import url_base from '../../../services/url_base';
+import { url_base_local } from '../../../services/url_base';
 
 const RegistrationDeclaration = () => {
     const navegation = useNavigate();
@@ -11,7 +11,7 @@ const RegistrationDeclaration = () => {
 
     async function getDeclaration() {
         try {
-            const response = await axios.get(`${url_base}/api-aluno/financeiro/declaracao-anual?ra=${aluno}`);
+            const response = await axios.get(`${url_base_local}/api-aluno/financeiro/declaracao-anual?ra=${aluno}`);
             const data = response.data.descricao;
             console.log('Dados da declaração:', data);
             setDeclaration(data);

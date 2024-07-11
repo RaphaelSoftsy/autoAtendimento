@@ -1,4 +1,4 @@
-//  const url_base = 'https://api-academico.sumare.edu.br';
- const url_base = 'http://localhost:8080';
+const url_base_hospedada = 'https://api-academico.sumare.edu.br';
+const url_base_local = 'http://localhost:8080';
 
-export default url_base;
+export { url_base_hospedada, url_base_local};

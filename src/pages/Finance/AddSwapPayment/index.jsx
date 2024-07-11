@@ -3,8 +3,8 @@ import CardList from '../../../components/CardList';
 import './addSwapPayment.css'
 import DefaultButton from '../../../components/DefaultButton';
 import { useNavigate } from 'react-router-dom';
-import url_base from '../../../services/url_base';
 import axios from 'axios';
+import { url_base_local } from '../../../services/url_base';
 
 const AddSwapPayment = () => {
 
@@ -32,7 +32,7 @@ const AddSwapPayment = () => {
 
     async function getPerformPayment() {
         try {
-            const response = await axios.get(`${url_base}/listaCartoesSalvos/${aluno}`);
+            const response = await axios.get(`${url_base_local}/listaCartoesSalvos/${aluno}`);
             const data = response.data;
             console.log('Dados da declaração:', data);
 

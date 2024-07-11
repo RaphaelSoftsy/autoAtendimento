@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useNavigate } from 'react-router-dom';
-import url_base from '../../../services/url_base';
 import axios from 'axios';
+import { url_base_local } from '../../../services/url_base';
 
 const ProblemsAccessingDiscipline = () => {
 
@@ -22,7 +22,7 @@ const ProblemsAccessingDiscipline = () => {
         MySwal.showLoading()
 
         try {
-            const response = await axios.get(`${url_base}/disciplinaMatriculada/${ra}`);
+            const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${ra}`);
             const data = response.data;
 
             const formattedData = data
