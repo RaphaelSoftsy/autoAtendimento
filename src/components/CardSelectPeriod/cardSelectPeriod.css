@@ -4,26 +4,18 @@
     height: auto;
     border-radius: 15px;
     box-shadow: 0px 7px 11px -1px var(--primary-dark-blue-alt);
-    padding: 15px 12px;
+    padding: 20px 40px;
     color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
-}
-
-.select-period {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
+    text-align: start;
 }
 
 .select-period-start {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 10px;
     width: 100%;
 }
@@ -31,26 +23,37 @@
 .select-period-end {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 10px;
     width: 100%;
 }
 
+.select-period {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: fit-content;
+}
+
 .date-picker {
-    padding: 8px;
-    font-size: 1.2em;
-    border: 1px solid var(--neutral-light-gray);
+    border: 1px solid var(--neutral-dark-gray-alt);
     border-radius: 5px;
-    height: 50px;
-    width: 50vw;
-    font-family: "Source Sans Pro", sans-serif;
+    padding: 10px 40px 10px 35px;
+    font-size: 1rem;
+    width: 100%;
 }
 
 .date-picker-icon {
-    width: 30px;
-    height: 30px;
+    position: absolute;
+    left: 10px;
+    pointer-events: none;
+    color: #007bff;
+    font-size: 20px;
 }
 
-.description-request{
-    width: 55vw;
+.select-period{
+    width: 100%;
+}
+
+.react-datepicker-wrapper{
+    width: 100%;
 }

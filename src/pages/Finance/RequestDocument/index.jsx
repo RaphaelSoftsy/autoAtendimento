@@ -20,7 +20,7 @@ const RequestDocument = () => {
         },
         {
             id: 4,
-            name: 'Declaração Especifica Financeira',
+            name: 'Declaração Específica Financeira',
             route: '/financeiro/solicitar-documentos/declaracao-especifica-financeira'
         }
     ]

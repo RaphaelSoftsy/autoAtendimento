@@ -1,15 +1,22 @@
-import { useState } from 'react';
 import './cardSelectPeriod.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import ReactDatePicker from 'react-datepicker';
+import ReactDatePicker, { registerLocale } from 'react-datepicker';
+import pt from 'date-fns/locale/pt';
 import { FaCalendarAlt } from "react-icons/fa";
 import DefaultButton from '../DefaultButton';
 import TextArea from '../TextArea';
 
-const CardSelectPeriod = () => {
+registerLocale('pt', pt);
 
-    const [dataInicioSelecionada, setDataInicioSelecionada] = useState(null);
-    const [dataFimSelecionada, setDataFimSelecionada] = useState(null);
+const CardSelectPeriod = ({
+    onClick,
+    dataInicioSelecionada,
+    setDataInicioSelecionada,
+    dataFimSelecionada,
+    setDataFimSelecionada,
+    onChangeTextArea,
+    value
+}) => {
 
     return (
         <div className='card-select-period'>
@@ -17,35 +24,46 @@ const CardSelectPeriod = () => {
             <div className="select-period-start">
                 <span>Data Início:</span>
                 <div className="select-period">
-                    <FaCalendarAlt className="date-picker-icon" />
                     <ReactDatePicker
                         selected={dataInicioSelecionada}
-                        onChange={date => setDataInicioSelecionada(date)}
-                        dateFormat="dd/MM/yyyy"
-                        placeholderText="Selecione uma data"
-                        className='date-picker'
+                        onChange={(date) => setDataInicioSelecionada(date)}
+                        dateFormat="MM/yyyy"
+                        showMonthYearPicker
+                        showFullMonthYearPicker
+                        locale="pt"
+                        className="date-picker"
+                        placeholderText="Selecionar data"
                     />
+                     <FaCalendarAlt className="date-picker-icon" />
                 </div>
             </div>
             <div className="select-period-end">
                 <span>Data Fim:</span>
                 <div className="select-period">
-                    <FaCalendarAlt className="date-picker-icon" />
                     <ReactDatePicker
                         selected={dataFimSelecionada}
-                        onChange={date => setDataFimSelecionada(date)}
-                        dateFormat="dd/MM/yyyy"
-                        placeholderText="Selecione uma data"
-                        className='date-picker'
+                        onChange={(date) => setDataFimSelecionada(date)}
+                        dateFormat="MM/yyyy"
+                        showMonthYearPicker
+                        showFullMonthYearPicker
+                        locale="pt"
+                        className="date-picker"
+                        placeholderText="Selecionar data"
                     />
+                    <FaCalendarAlt className="date-picker-icon" />
                 </div>
             </div>
-            <TextArea text='Descreva seu pedido:' id='' />
+            <TextArea
+                text='Descreva seu pedido:'
+                id=''
+                value={value}
+                onChange={onChangeTextArea}
+            />
             <DefaultButton
                 text="Enviar Solicitação"
                 backgroundColor="var(--primary-light-blue)"
                 color='#fff'
-                onClick={() => navegation("/financeiro/adicionar-cartao")}
+                onClick={onClick}
             />
         </div>
     )
