@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import url_base from '../../../services/url_base';
 import { useEffect, useState } from 'react';
 import logo from '../../../assets/logo-sumare-azul.png'
 import DefaultButton from '../../../components/DefaultButton';
+import { url_base_local } from '../../../services/url_base';
 
 const SchoolRecords = () => {
 
@@ -13,7 +13,7 @@ const SchoolRecords = () => {
 
     async function getDeclaration() {
         try {
-            const response = await axios.get(`${url_base}/api-documento/documentos/historico?aluno=${aluno}`);
+            const response = await axios.get(`${url_base_local}/api-documento/documentos/historico?aluno=${aluno}`);
             const data = response.data;
             console.log('Dados da declaração:', data);
             setDeclaration(data);

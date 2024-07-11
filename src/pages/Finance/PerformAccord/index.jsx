@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import ItemsPayment from '../../../components/ItemsPayment';
 import axios from 'axios';
-import url_base from '../../../services/url_base';
+import { url_base_local } from '../../../services/url_base';
 
 const PerformAccord = () => {
 
@@ -33,7 +33,7 @@ const PerformAccord = () => {
 
     async function getPerformPayment() {
         try {
-            const response = await axios.get(`${url_base}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=S&aVencer=N`);
+            const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=S&aVencer=N`);
             const data = response.data;
             console.log('Dados da declaração:', data);
 

@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../../../assets/logo-sumare-azul.png'
-import url_base from '../../../services/url_base';
 import DefaultButton from '../../../components/DefaultButton';
+import { url_base_local } from '../../../services/url_base';
 
 const StatementConclusion = () => {
 
@@ -14,7 +14,7 @@ const StatementConclusion = () => {
 
     async function getDeclaration() {
         try {
-            const response = await axios.get(`${url_base}/api-documento/documentos/conclusao?aluno=${aluno}`);
+            const response = await axios.get(`${url_base_local}/api-documento/documentos/conclusao?aluno=${aluno}`);
             const data = response.data;
             console.log('Dados da declaração:', data);
             setDeclaration(data);

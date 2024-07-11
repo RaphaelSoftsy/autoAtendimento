@@ -161,7 +161,6 @@ const FinanceiroRoutes = () => {
                 <Route path="/solicitar-documentos/carta-de-anuencia" element={<ConsentLetter />} />
                 <Route path="/solicitar-documentos/declaracao-de-quitacao" element={<DischargeDeclaration />} />
                 <Route path="/solicitar-documentos/declaracao-especifica-financeira" element={<SpecificFinancialStatement />} />
-                <Route path="/solicitar-documentos/declaracao-financeira/emitir-declaracao" element={<SendDeclarationFinancial />} />
                 <Route path="/acrescentar-ou-trocar-meios-de-pagamento" element={<AddSwapPayment />} />
                 <Route path="/adicionar-cartao" element={<AddCreditCard />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />

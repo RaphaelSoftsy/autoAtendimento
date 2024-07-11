@@ -5,8 +5,7 @@ import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import axios from 'axios';
-import url_base from '../../../services/url_base';
-import Loading from '../../../components/Loading';
+import { url_base_local } from '../../../services/url_base';
 
 const PerformPayment = () => {
 
@@ -37,7 +36,7 @@ const PerformPayment = () => {
         MySwal.showLoading()
 
         try {
-            const response = await axios.get(`${url_base}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=N&aVencer=S`);
+            const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=N&aVencer=S`);
             const data = response.data;
             console.log('Dados da declaração:', data);
 
