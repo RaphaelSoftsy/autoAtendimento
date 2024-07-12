@@ -167,23 +167,23 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/bolsa" element={<Handbag />} />
                 <Route path="/outros-assuntos/reembolso" element={<Repayment />} />
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
-                <Route path="/outros-assuntos/mensalidades-servicos/mensalidade" element={<TuitionMonthlyService />} />
+                {/* <Route path="/outros-assuntos/mensalidades-servicos/mensalidade" element={<TuitionMonthlyService />} />
                 <Route path="/outros-assuntos/mensalidades-servicos/servicos" element={<ServiceMonthlyService />} />
-                <Route path="/outros-assuntos/mensalidades-servicos/acordo" element={<AccordMonthlyService />} />
+                <Route path="/outros-assuntos/mensalidades-servicos/acordo" element={<AccordMonthlyService />} /> */}
                 <Route path="/outros-assuntos/fies-sumare" element={<FiesSumare />} />
                 <Route path="/outros-assuntos/fies-sumare/fies" element={<Fies />} />
                 <Route path="/outros-assuntos/fies-sumare/fies/numero-servico" element={<FiesServiceNumber />} />
                 <Route path="/outros-assuntos/fies-sumare/sumare" element={<Sumare />} />
                 <Route path="/outros-assuntos/fies-sumare/sumare/numero-servico" element={<SumareServiceNumber />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
-                <Route path="/outros-assuntos/cashback/mensalidades" element={<TuitionCashBack />} />
+                {/* <Route path="/outros-assuntos/cashback/mensalidades" element={<TuitionCashBack />} />
                 <Route path="/outros-assuntos/cashback/servicos" element={<ServiceCashBack />} />
-                <Route path="/outros-assuntos/cashback/todos" element={<EveryCashBack />} />
+                <Route path="/outros-assuntos/cashback/todos" element={<EveryCashBack />} /> */}
                 <Route path="/outros-assuntos/cobrança-indevida" element={<Charges />} />
-                <Route path="/outros-assuntos/cobrança-indevida/mensalidades" element={<TuitionCharges />} />
+                {/* <Route path="/outros-assuntos/cobrança-indevida/mensalidades" element={<TuitionCharges />} />
                 <Route path="/outros-assuntos/cobrança-indevida/servicos" element={<ServiceCharges />} />
                 <Route path="/outros-assuntos/cobrança-indevida/acordo" element={<AccordCharges />} />
-                <Route path="/outros-assuntos/cobrança-indevida/todos" element={<EveryCharges />} />
+                <Route path="/outros-assuntos/cobrança-indevida/todos" element={<EveryCharges />} /> */}
                 <Route path="/outros-assuntos/resgate-cheque" element={<RescueChecks />} />
             </Routes>
         </>
