@@ -7,6 +7,7 @@ import { useState } from "react";
 import CardCheckout from "../../../../components/CardCheckout";
 import axios from "axios";
 import { convertToBase64 } from "../../../Academic/ProgramContent";
+import { url_base_local } from "../../../../services/url_base";
 
 const Fies = () => {
 
@@ -75,7 +76,7 @@ const Fies = () => {
         console.log("Data to send:", JSON.stringify(dataToSend));
 
         try {
-            const response = await axios.post('http://localhost:8080/solicitacaoFies', dataToSend, {
+            const response = await axios.post(`${url_base_local}/solicitacaoFies`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
