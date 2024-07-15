@@ -14,7 +14,7 @@ const InternalDisciplines = () => {
     }
 
     const handleNext = () => {
-        navegation('/');
+        navegation('/academico/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare/abrir-demanda');
     };
 
     return (
@@ -42,8 +42,20 @@ const InternalDisciplines = () => {
             </div>
             <div className='footer-container'>
                 <footer className='footer-double'>
-                    <button className='title-footer' style={style1} > Voltar para Serviços </button>
-                    <button className='title-footer' style={style2} > Finalizar Sessão </button>
+                    <button
+                        className='title-footer'
+                        style={style1}
+                        onClick={() => navegation("/academico")}
+                    >
+                        Voltar para Serviços
+                    </button>
+                    <button
+                        className='title-footer'
+                        style={style2}
+                        onClick={() => navegation("/home")}
+                    >
+                        Finalizar Sessão
+                    </button>
                 </footer>
             </div>
         </main>

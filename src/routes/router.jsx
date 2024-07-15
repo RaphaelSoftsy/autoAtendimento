@@ -102,6 +102,17 @@ import CreateNewPassword from "../pages/Password/CreateNewPassword";
 import ProgramContentServiceNumber from "../pages/Academic/ProgramContentServiceNumber";
 import FiesServiceNumber from "../pages/Finance/FiesSumare/Fies/FiesServiceNumber";
 import SumareServiceNumber from "../pages/Finance/FiesSumare/Sumare/SumareServiceNumber";
+import HandbagServiceNumber from "../pages/Finance/HandbagServiceNumber";
+import InternalDisciplinesOpenDemand from "../pages/Academic/InternalDisciplinesOpenDemand";
+import ExternalDisciplinesOpenDemand from "../pages/Academic/ExternalDisciplinesOpenDemand";
+import InternalDisciplinesServiceNumber from "../pages/Academic/InternalDisciplinesServiceNumber";
+import ExternalDisciplinesServiceNumber from "../pages/Academic/ExternalDisciplinesServiceNumber";
+import EnadeOpenDemand from "../pages/Academic/EnadeOpenDemand";
+import EnadeServiceNumber from "../pages/Academic/EnadeServiceNumber";
+import PrintedDiplomaServiceNumber from "../pages/Academic/PrintedDiplomaServiceNumber";
+import SpecialDegreeConferralServiceNumber from "../pages/Academic/SpecialDegreeConferralServiceNumber";
+import DuplicateDiplomaServiceNumber from "../pages/Academic/DuplicateDiplomaServiceNumber";
+import SchoolBusServiceNumber from "../pages/Academic/SchoolBusServiceNumber";
 
 
 const RoutesApp = () => {
@@ -165,6 +176,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/adicionar-cartao" element={<AddCreditCard />} />
                 <Route path="/outros-assuntos" element={<OutherSubjects />} />
                 <Route path="/outros-assuntos/bolsa" element={<Handbag />} />
+                <Route path="/outros-assuntos/bolsa/numero-servico" element={<HandbagServiceNumber />} />
                 <Route path="/outros-assuntos/reembolso" element={<Repayment />} />
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
                 {/* <Route path="/outros-assuntos/mensalidades-servicos/mensalidade" element={<TuitionMonthlyService />} />
@@ -213,7 +225,11 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos" element={<UtilizationStudies />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare" element={<InternalDisciplines />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare/abrir-demanda" element={<InternalDisciplinesOpenDemand />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare/abrir-demanda/numero-servico" element={<InternalDisciplinesServiceNumber />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades" element={<ExternalDisciplines />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades/abrir-demanda" element={<ExternalDisciplinesOpenDemand />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades/abrir-demanda/numero-servico" element={<ExternalDisciplinesServiceNumber />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} />
@@ -221,8 +237,11 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/prova-recuperacao" element={<RetakeTest />} /> */}
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
                 <Route path="/solicitacoes-academicas/diplomas/diploma-impresso" element={<PrintedDiploma />} />
+                <Route path="/solicitacoes-academicas/diplomas/diploma-impresso/numero-servico" element={<PrintedDiplomaServiceNumber />} />
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />
+                <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial/numero-servico" element={<SpecialDegreeConferralServiceNumber />} />
                 <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma" element={<DuplicateDiploma />} />
+                <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma/numero-servico" element={<DuplicateDiplomaServiceNumber />} />
                 <Route path="/solicitacoes-academicas/estagio" element={<Internship />} />
                 <Route path="/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio" element={<SigningInternshipContract />} />
                 <Route path="/solicitacoes-academicas/estagio/entrega-de-relatorio-de-estagio" element={<InternshipReportSubmission />} />
@@ -232,8 +251,11 @@ const AcademicRoutes = () => {
 
                 <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />
                 <Route path="/solicitacoes-academicas/enade" element={<Enade />} />
+                <Route path="/solicitacoes-academicas/enade/abrir-demanda" element={<EnadeOpenDemand />} />
+                <Route path="/solicitacoes-academicas/enade/abrir-demanda/numero-servico" element={<EnadeServiceNumber />} />
                 <Route path="/solicitacoes-academicas/rematricula" element={<ReEnrollment />} />
                 <Route path="/solicitacoes-academicas/transporte-escolar" element={<SchoolBus />} />
+                <Route path="/solicitacoes-academicas/transporte-escolar/numero-servico" element={<SchoolBusServiceNumber />} />
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-matricula" element={<RegistrationDeclaration />} />
                 <Route path="/expedicao-de-documentos/historico-escolar" element={<SchoolRecords />} />

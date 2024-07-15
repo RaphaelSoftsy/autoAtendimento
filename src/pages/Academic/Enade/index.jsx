@@ -19,10 +19,10 @@ const Enade = () => {
             <div className="card-checkout">
                 <span><b>O seu curso ainda não participa do ENADE (Exame Nacional de Desempenho dos Estudantes)</b></span>
                 <DefaultButton
-                    text="Abrir uma Demanada"
+                    text="Abrir uma Demanda"
                     backgroundColor="var(--primary-light-blue)"
                     color='#fff'
-                    onClick={() => navegation("/")}
+                    onClick={() => navegation("/academico/solicitacoes-academicas/enade/abrir-demanda")}
                 />
             </div>
             </div>
