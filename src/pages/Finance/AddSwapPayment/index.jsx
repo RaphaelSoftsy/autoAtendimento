@@ -31,6 +31,7 @@ const AddSwapPayment = () => {
         const tipo = novoPlano === 'PLANO RECORRÊNCIA' ? 'R' : 'M';
 
         const result = await MySwal.fire({
+            icon: 'warning',
             title: 'Deseja realmente trocar o plano?',
             showCancelButton: true,
             confirmButtonText: 'Sim',
@@ -41,13 +42,15 @@ const AddSwapPayment = () => {
             MySwal.showLoading();
 
             try {
-                const alunoId = '2471074'; // Certifique-se de que este ID está correto e disponível
+                const alunoId = '2471074';
                 const response = await axios.put(`${url_base_local}/definirPlano/dados`, {
                     aluno: alunoId,
                     tipo: tipo
                 });
                 console.log('Plano alterado com sucesso:', response.data);
+
                 setPlanoAtual(novoPlano);
+
             } catch (error) {
                 console.error('Erro ao trocar plano:', error);
                 MySwal.fire({
@@ -108,7 +111,16 @@ const AddSwapPayment = () => {
             const data = response.data;
             console.log('Cartão principal atualizado com sucesso:', data);
 
-            getListCard();
+            if (response.statusCode === 200) {
+                getListCard();
+                MySwal.fire({
+                    title: 'Sucesso',
+                    text: 'Plano alterado com sucesso.',
+                    icon: 'success'
+                });
+            } else {
+                throw new Error('Network response was not ok.');
+            }
         } catch (error) {
             console.error('Erro ao definir novo cartão principal:', error);
             MySwal.fire({
@@ -135,6 +147,7 @@ const AddSwapPayment = () => {
     const handlePayment = () => {
         if (selectedPayment) {
             putSelectNewCard(aluno, selectedPayment);
+            setSelectedPayment(null);
         } else {
             MySwal.fire({
                 title: 'Erro',
@@ -166,7 +179,7 @@ const AddSwapPayment = () => {
             </div>
             <div className='buttons'>
                 <DefaultButton
-                    text={`Alterar Plano para ${statusPlano[planoAtual === 'PLANO RECORRÊNCIA' ? 'PLANO MENSAL' : 'PLANO RECORRÊNCIA']}`}
+                    text={`Alterar Plano ${statusPlano[planoAtual]} para ${statusPlano[planoAtual === 'PLANO RECORRÊNCIA' ? 'PLANO MENSAL' : 'PLANO RECORRÊNCIA']}`}
                     backgroundColor="var(--custom-green)"
                     onClick={togglePlano}
                 />

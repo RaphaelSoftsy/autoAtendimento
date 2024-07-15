@@ -9,12 +9,12 @@ const UndergraduateCoverLetter = () => {
 
     return (
         <main className='main-perform-accord'>
-            <div className="rescue-checks">
+            {/* <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout text="Por favor, para análise inserir todos os Documentos" />
                 </div>
             </div>
-            <Footer text="Enviar Solicitação" style={style} />
+            <Footer text="Enviar Solicitação" style={style} /> */}
         </main>
     );
     

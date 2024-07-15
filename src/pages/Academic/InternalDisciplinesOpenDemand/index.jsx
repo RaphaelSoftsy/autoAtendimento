@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import CardCheckout from "../../../components/CardCheckout";
 import Footer from "../../../components/Footer";
 import withReactContent from "sweetalert2-react-content";
@@ -6,9 +7,8 @@ import { useState } from "react";
 import { convertToBase64 } from "../ProgramContent";
 import axios from "axios";
 import { url_base_local } from "../../../services/url_base";
-import Swal from "sweetalert2";
 
-const SpecialDegreeConferral = () => {
+const InternalDisciplinesOpenDemand = () => {
 
     const style = {
         backgroundColor: "var(--secondary-light-red)"
@@ -120,7 +120,7 @@ const SpecialDegreeConferral = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor envie os documentos'
+                        text='Por favor, para análise nos explique seu problema'
                         onChangeInputFile={handleFileChanges}
                         selectedFile={selectedFile}
                         selectedFileName={selectedFile ? selectedFile.name : ""}
@@ -131,12 +131,10 @@ const SpecialDegreeConferral = () => {
                     />
                 </div>
             </div>
-            <div className='footer-container'>
-                <Footer text="Relatar Problema" route="" style={style} />
-            </div>
+            <Footer text="Relatar Problema" style={style} />
         </main>
     );
 
 }
 
-export default SpecialDegreeConferral;
+export default InternalDisciplinesOpenDemand;

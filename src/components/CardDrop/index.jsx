@@ -1,12 +1,8 @@
 import './cardDrop.css';
-import DefaultButton from '../DefaultButton';
 import Dropdown from '../Dropdown/Dropdown';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import TextArea from '../TextArea';
 
-const CardDrop = ({ obs, setObs, setSelect, onClickButton }) => {
-
+const CardDrop = ({ obs, setObs, setSelect, onChangeInputFile, selectedFile, selectedFileName }) => {
     const list = [
         {
             id: 1,
@@ -20,7 +16,7 @@ const CardDrop = ({ obs, setObs, setSelect, onClickButton }) => {
             id: 3,
             name: 'Mantenedora'
         }
-    ]
+    ];
 
     const handleObsChange = (e) => {
         setObs(e.target.value);
@@ -43,15 +39,23 @@ const CardDrop = ({ obs, setObs, setSelect, onClickButton }) => {
                     value={obs}
                     onChange={handleObsChange}
                 />
-                <DefaultButton
-                    text="Upload"
-                    backgroundColor="var(--primary-light-blue)"
-                    color='#fff'
-                    onClick={onClickButton}
-                />
+                <label className="file-upload">
+                    <input
+                        type="file"
+                        accept=".pdf,.doc,.png,.jpg"
+                        onChange={onChangeInputFile}
+                    />
+                    {selectedFile ? (
+                        <div className="file-info">
+                            <p>{selectedFileName}</p>
+                        </div>
+                    ) : (
+                        <p>Upload de arquivo (Coloque aqui se tiver)</p>
+                    )}
+                </label>
             </div>
         </>
     );
-}
+};
 
 export default CardDrop;

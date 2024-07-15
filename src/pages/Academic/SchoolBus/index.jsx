@@ -40,7 +40,7 @@ const SchoolBus = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            navegation('/');
+            navegation('/academico/solicitacoes-academicas/transporte-escolar/numero-servico');
         }
     };
 

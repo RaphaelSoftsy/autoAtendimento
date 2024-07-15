@@ -7,55 +7,93 @@ import withReactContent from 'sweetalert2-react-content';
 import ModifyRA from "../../../components/ModifyRA";
 import { useState } from "react";
 import axios from "axios";
+import { convertToBase64 } from "../../Academic/ProgramContent";
 
 const Handbag = () => {
 
-    const navegation = useNavigate()
+    const navegation = useNavigate();
     const [obs, setObs] = useState("");
     const [selectedOptionHandbag, setSelectedOptionHandbag] = useState(null);
-    const ra = localStorage.getItem('aluno-ra');
+    // const ra = localStorage.getItem('aluno-ra');
+    const ra = '2471074';
     const MySwal = withReactContent(Swal);
+    const [formData, setFormData] = useState({
+        nomeArq: '',
+        tamanhoArq: '',
+        extensaoArq: '',
+        tipoArq: '',
+        arquivo: ''
+    });
 
-    console.log(ra);
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            convertToBase64(file, (base64String) => {
+                const imgSplit = base64String.split(',');
+                setFormData(prevState => ({
+                    ...prevState,
+                    nomeArq: file.name,
+                    tamanhoArq: file.size,
+                    extensaoArq: file.name.split('.').pop().toUpperCase(),
+                    tipoArq: file.type,
+                    arquivo: imgSplit[1]
+                }));
+            });
+        }
+    };
 
     async function getBolsa() {
+
+        if (!formData.arquivo) {
+            MySwal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Por favor, selecione um arquivo antes de enviar!",
+            });
+            return;
+        }
+
+        MySwal.showLoading();
+
         try {
-            const response = await axios.post(`http://localhost:8080/solicitacaoBolsa`, {
+            const dataToSend = {
                 aluno: ra,
                 obs: obs,
+                nomeArq: formData.nomeArq,
+                tamanhoArq: formData.tamanhoArq,
+                extensaoArq: formData.extensaoArq,
+                tipoArq: formData.tipoArq,
+                arquivo: formData.arquivo,
                 tipoBolsa: selectedOptionHandbag.name
-            })
+            };
+
+            const response = await axios.post('http://localhost:8080/solicitacaoBolsa', dataToSend, {
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            });
+
             const data = response.data;
             console.log('Dados Bolsa:', data);
 
-            // if (data.success) {
-            //     MySwal.fire({
-            //         icon: 'success',
-            //         title: 'Enviado com sucesso!',
-            //         timer: 5000,
-            //         timerProgressBar: true,
-            //         showConfirmButton: true
-            //     }).then((result) => {
-            //         if (result.isConfirmed) {
-            //             navegation('/academico');
-            //         }
-            //     });
-            // } else {
-            //     MySwal.fire({
-            //         icon: 'error',
-            //         title: 'Erro ao alterar senha',
-            //         text: 'Ocorreu um erro ao tentar enviar sua solicitação.',
-            //         confirmButtonText: 'OK',
-            //     });
-            // }
+            if (response.status === 200) {
+                const responseData = response.data;
+                MySwal.close();
+                MySwal.fire({
+                    title: "Cadastrado com sucesso",
+                    icon: "success",
+                });
+                localStorage.setItem("numero-servico", JSON.stringify(responseData));
+                navegation("numero-servico");
+            } else {
+                throw new Error('Network response was not ok.');
+            }
 
         } catch (error) {
             console.error('Erro ao buscar bolsa :', error);
         }
     }
 
-
-    
     const handleObsChange = (newObs) => {
         setObs(newObs);
     };
@@ -64,35 +102,37 @@ const Handbag = () => {
         setSelectedOptionHandbag(selected);
     };
 
-    const handleUpload = () => {
-        console.log('Upload clicado');
-    };
-
     const handleBolsa = () => {
         if (selectedOptionHandbag === null || selectedOptionHandbag === "" || obs === null || obs === "") {
             MySwal.fire({
                 icon: 'error',
                 title: 'Erro',
-                text: 'Por favor, prencher todos os campos.',
+                text: 'Por favor, preencha todos os campos.',
                 confirmButtonText: 'OK',
             });
-        }else{
+        } else {
             getBolsa();
-            console.log('Observação:', obs);
-            console.log('Opção selecionada:', selectedOptionHandbag.name);
         }
-        
     };
 
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const handleFileChanges = (event) => {
+        const file = event.target.files[0];
+        setSelectedFile(file);
+        handleFileChange(event);
+    };
 
     return (
         <main className="handbag">
             <ModifyRA />
             <CardDrop
-                 obs={obs}
-                 setObs={handleObsChange}
-                 setSelect={handleSubjectSelect}
-                 onClickButton={handleUpload}
+                obs={obs}
+                setObs={handleObsChange}
+                setSelect={handleSubjectSelect}
+                onChangeInputFile={handleFileChanges}
+                selectedFile={selectedFile}
+                selectedFileName={selectedFile ? selectedFile.name : ""}
             />
             <DefaultButton
                 onClick={handleBolsa}
