@@ -8,7 +8,7 @@ import { url_base_local } from "../../../services/url_base";
 import Swal from "sweetalert2";
 import { convertToBase64 } from "../../Academic/ProgramContent";
 
-const OpenDemand = () => {
+const ProblemsActivitiesOpenDemandRecovery = () => {
 
     const style = {
         backgroundColor: "var(--secondary-light-red)"
@@ -139,4 +139,4 @@ const OpenDemand = () => {
 
 }
 
-export default OpenDemand;
+export default ProblemsActivitiesOpenDemandRecovery;

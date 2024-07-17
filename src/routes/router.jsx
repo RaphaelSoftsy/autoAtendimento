@@ -113,23 +113,30 @@ import PrintedDiplomaServiceNumber from "../pages/Academic/PrintedDiplomaService
 import SpecialDegreeConferralServiceNumber from "../pages/Academic/SpecialDegreeConferralServiceNumber";
 import DuplicateDiplomaServiceNumber from "../pages/Academic/DuplicateDiplomaServiceNumber";
 import SchoolBusServiceNumber from "../pages/Academic/SchoolBusServiceNumber";
+import { RAProvider } from "../contexts/RAContext";
+import ProblemsActivitiesOpenDemand from "../pages/Ava/ProblemsActivitiesOpenDemand";
+import ProblemsActivitiesOpenDemandAssessment from "../pages/Ava/ProblemsActivitiesOpenDemandAssessment";
+import ProblemsActivitiesOpenDemandSubstitute from "../pages/Ava/ProblemsActivitiesOpenDemandSubstitute";
+import ProblemsActivitiesOpenDemandRecovery from "../pages/Ava/ProblemsActivitiesOpenDemandRecovery";
 
 
 const RoutesApp = () => {
     return (
         <BrowserRouter>
             <DataProvider>
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/esquecer-senha" element={<ForgetPassword />} />
-                    <Route path="/recuperacao-senha" element={<PasswordRecovery />} />
-                    <Route path="/verificacao" element={<Verification />} />
-                    <Route path="/criar-nova-senha" element={<CreateNewPassword />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/financeiro/*" element={<FinanceiroRoutes />} />
-                    <Route path="/academico/*" element={<AcademicRoutes />} />
-                    <Route path="/ava/*" element={<AvaRoutes />} />
-                </Routes>
+                <RAProvider>
+                    <Routes>
+                        <Route path="/" element={<Login />} />
+                        <Route path="/esquecer-senha" element={<ForgetPassword />} />
+                        <Route path="/recuperacao-senha" element={<PasswordRecovery />} />
+                        <Route path="/verificacao" element={<Verification />} />
+                        <Route path="/criar-nova-senha" element={<CreateNewPassword />} />
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/financeiro/*" element={<FinanceiroRoutes />} />
+                        <Route path="/academico/*" element={<AcademicRoutes />} />
+                        <Route path="/ava/*" element={<AvaRoutes />} />
+                    </Routes>
+                </RAProvider>
             </DataProvider>
         </BrowserRouter>
     );
@@ -143,6 +150,7 @@ const FinanceiroRoutes = () => {
     useEffect(() => {
         listRoutesFinanceiro.find(rt => {
             if (rt.route == location.pathname) {
+                F
                 setNameHeader(rt.header)
             }
         })
@@ -292,12 +300,12 @@ const AvaRoutes = () => {
                 <Route path="/problemas-com-acesso-as-disciplinas" element={<ProblemsAccessingDiscipline />} />
                 <Route path="/problemas-com-acesso-as-disciplinas/descreva-solicitacao" element={<DescribeRequest />} />
                 <Route path="/problemas-na-atividade" element={<ProblemsActivities />} />
-                <Route path="/problemas-na-atividade/explicar-problema" element={<OpenDemand />} />
+                <Route path="/problemas-na-atividade/explicar-problema" element={<ProblemsActivitiesOpenDemand />} />
                 <Route path="/problemas-nas-avaliacoes" element={<ProblemsReviews />} />
                 <Route path="/problemas-nas-avaliacoes/escolha" element={<ProblemsReviewsSelect />} />
-                <Route path="/problemas-nas-avaliacoes/escolha/avaliacao" element={<OpenDemand />} />
-                <Route path="/problemas-nas-avaliacoes/escolha/substitutiva" element={<OpenDemand />} />
-                <Route path="/problemas-nas-avaliacoes/escolha/recuperacao" element={<OpenDemand />} />
+                <Route path="/problemas-nas-avaliacoes/escolha/avaliacao" element={<ProblemsActivitiesOpenDemandAssessment />} />
+                <Route path="/problemas-nas-avaliacoes/escolha/substitutiva" element={<ProblemsActivitiesOpenDemandSubstitute />} />
+                <Route path="/problemas-nas-avaliacoes/escolha/recuperacao" element={<ProblemsActivitiesOpenDemandRecovery />} />
             </Routes>
         </>
     );

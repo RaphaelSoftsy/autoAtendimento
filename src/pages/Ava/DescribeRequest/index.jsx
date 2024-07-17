@@ -9,7 +9,7 @@ const DescribeRequest = () => {
     return (
         <main className="problems-accessing-ava">
             <div className='problems-accessing-ava-card'>
-                <CardRequest text="Descreva sua solicitação:"/>
+                <CardRequest title="Descreva sua solicitação:"/>
                 <DefaultButton
                     text="Enviar Solicitação"
                     backgroundColor="var(--primary-light-blue)"
