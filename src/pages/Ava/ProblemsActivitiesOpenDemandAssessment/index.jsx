@@ -7,6 +7,7 @@ import axios from "axios";
 import { url_base_local } from "../../../services/url_base";
 import Swal from "sweetalert2";
 import { convertToBase64 } from "../../Academic/ProgramContent";
+import InputUpload from "../../../components/InputUpload";
 
 const ProblemsActivitiesOpenDemandAssessment = () => {
 

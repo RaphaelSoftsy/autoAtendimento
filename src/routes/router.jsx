@@ -150,7 +150,6 @@ const FinanceiroRoutes = () => {
     useEffect(() => {
         listRoutesFinanceiro.find(rt => {
             if (rt.route == location.pathname) {
-                F
                 setNameHeader(rt.header)
             }
         })
