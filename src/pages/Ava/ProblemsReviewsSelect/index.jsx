@@ -1,31 +1,43 @@
+import { useState } from 'react';
 import ListSubjects from '../../../components/ListSubjects';
 
 const ProblemsReviewsSelect = () => {
+
+    const baseRoute = '/ava/problemas-nas-avaliacoes/escolha/abrir-demanda';
 
     const list = [
         {
             id: 1,
             name: 'Avaliação',
-            route: '/ava/problemas-nas-avaliacoes/escolha/avaliacao'
+            route: baseRoute
         },
         {
             id: 2,
             name: 'Substitutiva',
-            route: '/ava/problemas-nas-avaliacoes/escolha/substitutiva'
+            route: baseRoute
         },
         {
             id: 3,
             name: 'Recuperação',
-            route: '/ava/problemas-nas-avaliacoes/escolha/recuperacao'
+            route: baseRoute
         }
     ];
 
+    const [selectedSubjectName, setSelectedSubjectName] = useState(null);
+
+    const handleSubjectClick = (name) => {
+        setSelectedSubjectName(name);
+        localStorage.setItem('avaliacao-selecionada', name);
+    };
 
     return (
         <main className="problems-reviews">
             <div className='list-subjects'>
                 <h1 className='title'>Selecione qual das opções deseja:</h1>
-                <ListSubjects itens={list} />
+                <ListSubjects
+                    itens={list}
+                    onClick={(name) => handleSubjectClick(name)}
+                />
             </div>
         </main>
     )

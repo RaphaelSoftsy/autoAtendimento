@@ -1,5 +1,5 @@
-import './subjectAva.css'
 import ListSubjects from '../../../components/ListSubjects';
+import './subjectAva.css';
 
 const SubjectFinance = () => {
     const list = [
