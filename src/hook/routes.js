@@ -404,7 +404,7 @@ export const listRoutesAva = [
     {
         id: 4,
         name: 'Descreva sua Solicitação',
-        header: 'Descreva sua Solicitação',
+        header: 'Problemas com Acesso as disciplinas',
         route: '/ava/problemas-com-acesso-as-disciplinas/descreva-solicitacao'
     },
     {
@@ -416,7 +416,7 @@ export const listRoutesAva = [
     {
         id: 6,
         name: 'Explique seu problema',
-        header: 'Explique seu problema',
+        header: 'Problemas na Atividade',
         route: '/ava/problemas-na-atividade/explicar-problema'
     },
     {
@@ -428,43 +428,19 @@ export const listRoutesAva = [
     {
         id: 8,
         name: 'Avaliação',
-        header: 'Avaliação',
-        route: '/ava/problemas-nas-avaliacoes/avaliacao'
+        header: 'Problemas nas avaliações',
+        route: '/ava/problemas-nas-avaliacoes/escolha/avaliacao'
     },
     {
         id: 9,
-        name: 'Abrir Demanda',
-        header: 'Abrir Demanda',
-        route: '/ava/problemas-nas-avaliacoes/avaliacao/abrir-demanda'
+        name: 'Substutiva',
+        header: 'Problemas nas avaliações',
+        route: '/ava/problemas-nas-avaliacoes/escolha/substitutiva'
     },
     {
         id: 10,
-        name: 'Substitutiva',
-        header: 'Substitutiva',
-        route: '/ava/problemas-nas-avaliacoes/substitutiva'
-    },
-    {
-        id: 11,
-        name: 'Abrir Demanda',
-        header: 'Abrir Demanda',
-        route: '/ava/problemas-nas-avaliacoes/substitutiva/abrir-demanda'
-    },
-    {
-        id: 12,
         name: 'Recuperação',
-        header: 'Recuperação',
-        route: '/ava/problemas-nas-avaliacoes/recuperacao'
-    },
-    {
-        id: 13,
-        name: 'Abrir Demanda',
-        header: 'Abrir Demanda',
-        route: '/ava/problemas-nas-avaliacoes/recuperacao/abrir-demanda'
-    },
-    {
-        id: 14,
-        name: 'Tutoria',
-        header: 'Tutoria',
-        route: '/ava/tutoria'
+        header: 'Problemas nas avaliações',
+        route: '/ava/problemas-nas-avaliacoes/escolha/recuperacao'
     }
 ];
