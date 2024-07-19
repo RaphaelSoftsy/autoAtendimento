@@ -118,6 +118,9 @@ import ProblemsActivitiesOpenDemand from "../pages/Ava/ProblemsActivitiesOpenDem
 import ProblemsActivitiesOpenDemandAssessment from "../pages/Ava/ProblemsActivitiesOpenDemandAssessment";
 import ProblemsActivitiesOpenDemandSubstitute from "../pages/Ava/ProblemsActivitiesOpenDemandSubstitute";
 import ProblemsActivitiesOpenDemandRecovery from "../pages/Ava/ProblemsActivitiesOpenDemandRecovery";
+import ProblemsAccessingAVAServiceNumber from "../pages/Ava/ProblemsAccessingAVAServiceNumber";
+import DescribeRequestServiceNumber from "../pages/Ava/DescribeRequestServiceNumber";
+import ProblemsActivitiesServiceNumber from "../pages/Ava/ProblemsActivitiesServiceNumber";
 
 
 const RoutesApp = () => {
@@ -296,10 +299,13 @@ const AvaRoutes = () => {
             <Routes>
                 <Route path="/" element={<SubjectAva />} />
                 <Route path="/problemas-com-acesso-ao-ava" element={<ProblemsAccessingAVA />} />
+                <Route path="/problemas-com-acesso-ao-ava/numero-servico" element={<ProblemsAccessingAVAServiceNumber />} />
                 <Route path="/problemas-com-acesso-as-disciplinas" element={<ProblemsAccessingDiscipline />} />
                 <Route path="/problemas-com-acesso-as-disciplinas/descreva-solicitacao" element={<DescribeRequest />} />
+                <Route path="/problemas-com-acesso-as-disciplinas/descreva-solicitacao/numero-servico" element={<DescribeRequestServiceNumber />} />
                 <Route path="/problemas-na-atividade" element={<ProblemsActivities />} />
                 <Route path="/problemas-na-atividade/explicar-problema" element={<ProblemsActivitiesOpenDemand />} />
+                <Route path="/problemas-na-atividade/explicar-problema/numero-servico" element={<ProblemsActivitiesServiceNumber />} />
                 <Route path="/problemas-nas-avaliacoes" element={<ProblemsReviews />} />
                 <Route path="/problemas-nas-avaliacoes/escolha" element={<ProblemsReviewsSelect />} />
                 <Route path="/problemas-nas-avaliacoes/escolha/avaliacao" element={<ProblemsActivitiesOpenDemandAssessment />} />

@@ -16,6 +16,7 @@ const ProblemsActivitiesOpenDemand = () => {
 
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
+    const disciplinaSelecionada = localStorage.getItem("disciplina-selecionada");
 
     const [formData, setFormData] = useState({
         aluno: '2471074',
@@ -24,7 +25,8 @@ const ProblemsActivitiesOpenDemand = () => {
         tamanhoArq: '',
         extensaoArq: '',
         tipoArq: '',
-        arquivo: ''
+        arquivo: '',
+        disciplina: ''
     });
 
     const handleChangeObservation = (e) => {
@@ -72,13 +74,12 @@ const ProblemsActivitiesOpenDemand = () => {
             tamanhoArq: formData.tamanhoArq,
             extensaoArq: formData.extensaoArq,
             tipoArq: formData.tipoArq,
-            arquivo: formData.arquivo
+            arquivo: formData.arquivo,
+            disciplina: disciplinaSelecionada
         };
 
-        console.log("Data to send:", JSON.stringify(dataToSend));
-
         try {
-            const response = await axios.post(`${url_base_local}/solicitacaoFies`, dataToSend, {
+            const response = await axios.post(`${url_base_local}/problemaAtividade`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
@@ -134,9 +135,6 @@ const ProblemsActivitiesOpenDemand = () => {
             <Footer text="Relatar Problema" style={style} />
         </main>
     );
-
-
-
 }
 
 export default ProblemsActivitiesOpenDemand;

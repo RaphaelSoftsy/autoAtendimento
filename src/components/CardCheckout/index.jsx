@@ -7,17 +7,17 @@ const CardCheckout = (props) => {
     return (
         <div className="card-checkout">
             <h2 className='explain-problem'>{props.text}</h2>
+            <TextArea
+                text={props.textTextArea}
+                id="observation"
+                value={props.observation}
+                onChange={props.onObservationChange}
+            />
             <InputUpload
                 onChangeInputFile={props.onChangeInputFile}
                 selectedFileName={props.selectedFileName}
             />
-            <TextArea
-                text="Observação :"
-                value={props.observation}
-                onChange={props.onObservationChangee}
-                placeholder="Insira aqui o texto de upload"
 
-            />
             <div className="button-group">
                 <DefaultButton
                     text="Enviar Solicitação"

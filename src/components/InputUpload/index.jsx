@@ -19,7 +19,7 @@ const InputUpload = (props) => {
                     onChange={props.onChangeInputFile}
                     style={{ display: 'none' }}
                 />
-                <div className="file-size">O arquivo deve ter 25 MB no máximo</div>
+                {/* <div className="file-size">O arquivo deve ter 25 MB no máximo</div> */}
             </div>
         </>
     );
