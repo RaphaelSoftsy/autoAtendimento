@@ -1,5 +1,6 @@
 import './cardRequest.css';
 import TextArea from '../TextArea';
+import InputUpload from '../InputUpload';
 
 const CardRequest = (props) => {
 
@@ -12,20 +13,10 @@ const CardRequest = (props) => {
                     value={props.observation}
                     onChange={props.onObservationChange}
                 />
-                <label className="file-upload">
-                    <input
-                        type="file"
-                        accept=".pdf,.doc,.png,.jpg"
-                        onChange={props.onChangeInputFile}
-                    />
-                    {props.selectedFile ? (
-                        <div className="file-info">
-                            <p>{props.selectedFileName}</p>
-                        </div>
-                    ) : (
-                        <p>Upload de arquivo (Coloque aqui se tiver)</p>
-                    )}
-                </label>
+                <InputUpload
+                    onChangeInputFile={props.onChangeInputFile}
+                    selectedFileName={props.selectedFileName}
+                />
             </div>
         </>
     );

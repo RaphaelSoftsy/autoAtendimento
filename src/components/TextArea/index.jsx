@@ -5,9 +5,8 @@ const TextArea = (props) => {
         <div className="describe">
             <span>{props.text}</span>
             <textarea
-                name="request"
+                name="obs"
                 id={props.id}
-                onClick={props.onClick}
                 value={props.value}
                 onChange={props.onChange}
             ></textarea>

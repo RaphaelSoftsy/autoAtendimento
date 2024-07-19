@@ -11,14 +11,13 @@ import ModifyRA from '../../../components/ModifyRA';
 import { useRA } from '../../../contexts/RAContext';
 
 const ProblemsAccessingDiscipline = () => {
+
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [problems, setProblems] = useState([]);
-    const navigate = useNavigate();
+    const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
 
     const { currentRA } = useRA();
-
-    console.log(currentRA);
 
     useEffect(() => {
         getProblemsAccessingDiscipline();
@@ -45,16 +44,22 @@ const ProblemsAccessingDiscipline = () => {
         MySwal.close();
     }
 
-    const handleSubjectSelect = (id) => {
-        setSelectedSubjects(prevSelected => {
-            const index = prevSelected.indexOf(id);
-            if (index !== -1) {
-                return prevSelected.filter(subjectId => subjectId !== id);
-            } else {
-                return [...prevSelected, id];
-            }
-        });
+    const handleSubjectSelect = (id, multiple) => {
+        if (multiple) {
+            setSelectedSubjects(prevSelected => {
+                const index = prevSelected.indexOf(id);
+                if (index !== -1) {
+                    return prevSelected.filter(subjectId => subjectId !== id);
+                } else {
+                    return [...prevSelected, id];
+                }
+            });
+        } else {
+            setSelectedSubjects([id]);
+        }
     };
+
+    const selectedSubjectName = problems.find(problem => problem.id === selectedSubjects[0])?.name;
 
     const handleNext = () => {
         if (selectedSubjects.length === 0) {
@@ -65,7 +70,8 @@ const ProblemsAccessingDiscipline = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            navigate('/ava/problemas-com-acesso-as-disciplinas/descreva-solicitacao');
+            localStorage.setItem("disciplina-selecionada", selectedSubjectName);
+            navegation('/ava/problemas-com-acesso-as-disciplinas/descreva-solicitacao');
         }
     };
 
