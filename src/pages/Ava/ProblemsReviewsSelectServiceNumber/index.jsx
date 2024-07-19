@@ -1,6 +1,6 @@
 import CardServiceNumber from '../../../components/CardServiceNumber';
 
-const DescribeRequestServiceNumber = () => {
+const ProblemsReviewsSelectServiceNumber = () => {
 
     const numberService = localStorage.getItem('numero-servico')
 
@@ -15,4 +15,4 @@ const DescribeRequestServiceNumber = () => {
     );
 };
 
-export default DescribeRequestServiceNumber;
+export default ProblemsReviewsSelectServiceNumber;

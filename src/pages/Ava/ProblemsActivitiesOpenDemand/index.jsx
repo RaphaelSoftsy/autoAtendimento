@@ -1,11 +1,11 @@
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import CardCheckout from "../../../components/CardCheckout";
 import Footer from "../../../components/Footer";
-import withReactContent from "sweetalert2-react-content";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
 import { url_base_local } from "../../../services/url_base";
-import Swal from "sweetalert2";
 import { convertToBase64 } from "../../Academic/ProgramContent";
 
 const ProblemsActivitiesOpenDemand = () => {

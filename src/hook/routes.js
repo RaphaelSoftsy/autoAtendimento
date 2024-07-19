@@ -429,18 +429,6 @@ export const listRoutesAva = [
         id: 8,
         name: 'Avaliação',
         header: 'Problemas nas avaliações',
-        route: '/ava/problemas-nas-avaliacoes/escolha/avaliacao'
-    },
-    {
-        id: 9,
-        name: 'Substutiva',
-        header: 'Problemas nas avaliações',
-        route: '/ava/problemas-nas-avaliacoes/escolha/substitutiva'
-    },
-    {
-        id: 10,
-        name: 'Recuperação',
-        header: 'Problemas nas avaliações',
-        route: '/ava/problemas-nas-avaliacoes/escolha/recuperacao'
+        route: '/ava/problemas-nas-avaliacoes/escolha/abrir-demanda'
     }
 ];

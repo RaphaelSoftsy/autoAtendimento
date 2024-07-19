@@ -1,14 +1,14 @@
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import CardCheckout from "../../../components/CardCheckout";
 import Footer from "../../../components/Footer";
-import withReactContent from "sweetalert2-react-content";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
 import { url_base_local } from "../../../services/url_base";
-import Swal from "sweetalert2";
 import { convertToBase64 } from "../../Academic/ProgramContent";
 
-const ProblemsActivitiesOpenDemandAssessment = () => {
+const ProblemsReviewsSelectOpenDemand = () => {
 
     const style = {
         backgroundColor: "var(--secondary-light-red)"
@@ -17,6 +17,7 @@ const ProblemsActivitiesOpenDemandAssessment = () => {
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
     const disciplinaSelecionada = localStorage.getItem("disciplina-selecionada");
+    const avaliacaoSelecionada = localStorage.getItem("avaliacao-selecionada");
 
     const [formData, setFormData] = useState({
         aluno: '2471074',
@@ -77,7 +78,7 @@ const ProblemsActivitiesOpenDemandAssessment = () => {
             tipoArq: formData.tipoArq,
             arquivo: formData.arquivo,
             disciplina: disciplinaSelecionada,
-            avaliacao: 'Avaliação'
+            avaliacao: avaliacaoSelecionada
         };
 
         console.log("Data to send:", JSON.stringify(dataToSend));
@@ -141,4 +142,4 @@ const ProblemsActivitiesOpenDemandAssessment = () => {
     );
 }
 
-export default ProblemsActivitiesOpenDemandAssessment;
+export default ProblemsReviewsSelectOpenDemand;

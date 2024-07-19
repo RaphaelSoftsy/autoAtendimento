@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import CardCheckout from "../../../components/CardCheckout";
 import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../../Academic/ProgramContent";
-import CardCheckout from "../../../components/CardCheckout";
 
 const DescribeRequest = () => {
 
