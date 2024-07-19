@@ -128,7 +128,7 @@ const ProblemsActivitiesOpenDemandRecovery = () => {
                         selectedFile={selectedFile}
                         selectedFileName={selectedFile ? selectedFile.name : ""}
                         onClick={handleSubmit}
-                        textTextArea='Observação'
+                        textTextArea=''
                         observation={formData.obs}
                         onObservationChange={handleChangeObservation}
                     />

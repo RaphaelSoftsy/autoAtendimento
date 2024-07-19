@@ -59,3 +59,7 @@ textarea {
   line-height: 20px;
   background-color: transparent;
 }
+
+div:where(.swal2-container) h2:where(.swal2-title) {
+  font-size: 1.5rem !important;
+}
