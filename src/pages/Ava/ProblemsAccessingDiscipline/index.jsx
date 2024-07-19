@@ -78,7 +78,7 @@ const ProblemsAccessingDiscipline = () => {
     return (
         <main className='main-problems-reviews'>
             <div className="problems-reviews">
-                <ModifyRA />
+                {/* <ModifyRA /> */}
                 <div className='list-subjects'>
                     <h1 className='title'>Em qual disciplina você está com problemas?</h1>
                     {problems.length > 0 ?
