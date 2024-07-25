@@ -5,7 +5,7 @@ import CardDeclaration from '../../../components/CardDeclaration';
 import { url_base_hospedada, url_base_local } from '../../../services/url_base';
 
 const RegistrationDeclaration = () => {
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const [declaration, setDeclaration] = useState('');
     const aluno = localStorage.getItem("aluno-ra");
 
@@ -26,28 +26,22 @@ const RegistrationDeclaration = () => {
 
     const buttons = [
         {
-            text: "Imprimir Declaração",
-            backgroundColor: "var(--primary-light-blue)",
-            color: '#fff',
-            onClick: () => navegation("/")
-        },
-        {
             text: "Voltar para Serviços",
             backgroundColor: "var(--secondary-light-yellow)",
             color: '#fff',
-            onClick: () => navegation("/")
+            onClick: () => navigate("/")
         },
         {
             text: "Abrir Demanda",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
-            onClick: () => navegation("/")
+            onClick: () => navigate("/")
         },
         {
             text: "Finalizar Sessão",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
-            onClick: () => navegation("/")
+            onClick: () => navigate("/")
         }
     ];
 
@@ -63,4 +57,3 @@ const RegistrationDeclaration = () => {
 }
 
 export default RegistrationDeclaration;
-

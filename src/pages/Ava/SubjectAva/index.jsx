@@ -26,7 +26,7 @@ const SubjectFinance = () => {
         {
             id: 5,
             name: 'Tutoria',
-            route: '/ava/tutoria'
+            route: ''
         }
     ]
 

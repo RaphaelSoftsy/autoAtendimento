@@ -29,7 +29,7 @@ const InternalDisciplines = () => {
                 <Footer text='Simular Aproveitamento' onClick={handleNext} />
             </div> */}
             <div className="rescue-checks">
-                <div className="card-checkout">
+                <div className="card-checkout-fill-max-width">
                     <span><b>O prazo para seu aproveitamento é de 10 dias úteis.</b></span>
                     <h4>Caso queira abrir uma solicitação clique abaixo.</h4>
                     <DefaultButton

@@ -125,14 +125,14 @@ const DuplicateDiploma = () => {
                         selectedFile={selectedFile}
                         selectedFileName={selectedFile ? selectedFile.name : ""}
                         onClick={handleSubmit}
-                        textTextArea='Observação'
+                        textTextArea=''
                         observation={formData.obs}
                         onObservationChange={handleChangeObservation}
                     />
                 </div>
             </div>
             <div className='footer-container'>
-                <Footer text="Relatar Problema" route="" style={style} />
+                <Footer text="Realizar Pagamento" route="" style={style} />
             </div>
         </main>
     );

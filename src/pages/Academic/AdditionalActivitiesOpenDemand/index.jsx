@@ -8,7 +8,7 @@ import axios from "axios";
 import { url_base_local } from "../../../services/url_base";
 import Swal from "sweetalert2";
 
-const ExternalDisciplinesOpenDemand = () => {
+const AdditionalActivitiesOpenDemand = () => {
 
     const style = {
         backgroundColor: "var(--secondary-light-red)"
@@ -75,8 +75,10 @@ const ExternalDisciplinesOpenDemand = () => {
             arquivo: formData.arquivo
         };
 
+        console.log("Data to send:", JSON.stringify(dataToSend));
+
         try {
-            const response = await axios.post(`${url_base_local}/aproveitamentoExterno`, dataToSend, {
+            const response = await axios.post(`${url_base_local}/problemaComplementar`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
@@ -135,4 +137,4 @@ const ExternalDisciplinesOpenDemand = () => {
 
 }
 
-export default ExternalDisciplinesOpenDemand;
+export default AdditionalActivitiesOpenDemand;
