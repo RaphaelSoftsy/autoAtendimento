@@ -35,7 +35,10 @@
     width: 80vw;
     padding: 20px;
     font-size: 16px;
-    text-align: justify;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
     color: #333;
     border: 1px solid var(--neutral-light-gray);
     border-radius: 8px;
@@ -72,7 +75,6 @@
     gap: 30px;
 }
 
-
 .print-area-school-records {
     display: flex;
     flex-direction: column;
@@ -82,10 +84,14 @@
 }
 
 .declaration-content-print {
+    margin-top: 120px;
     padding: 20px;
     font-size: 16px;
-    text-align: justify;
+    text-align: center;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
 }
 
 /*------PRINT DO HISTÓRICO ESCOLAR-------*/

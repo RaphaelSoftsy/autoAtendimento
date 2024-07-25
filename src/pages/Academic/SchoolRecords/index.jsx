@@ -35,7 +35,7 @@ const SchoolRecords = () => {
             onClick: () => navigate("/")
         },
         {
-            text: "Abrir Demanda",
+            text: "Relatar Problema",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
             onClick: () => navigate("/")
