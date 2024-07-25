@@ -38,7 +38,7 @@ const StatementConclusion = () => {
             onClick: () => navegation("/")
         },
         {
-            text: "Abrir Demanda",
+            text: "Relatar Problema",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
             onClick: () => navegation("/")

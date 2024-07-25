@@ -25,7 +25,7 @@ const CardDeclaration = ({ buttonProps, declarationText }) => {
                 <DefaultButton key={index} {...props} />
             ))}
             <div style={{ display: 'none' }}>
-                <div ref={printRef} className='print-area-school-records'>
+                <div ref={printRef} className='print-area-declaration'>
                     <img src={logo} alt="logo da sumare" className='logo-sumare-azul' />
                     <div className="declaration-content-print" dangerouslySetInnerHTML={{ __html: declarationText }} />
                 </div>
