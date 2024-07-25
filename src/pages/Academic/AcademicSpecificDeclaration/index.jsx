@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { url_base_local } from "../../../services/url_base";
 
 const AcademicSpecificDeclaration = () => {
 
@@ -15,7 +16,7 @@ const AcademicSpecificDeclaration = () => {
 
     async function getDeclaracaoEspecifica() {
         try {
-            const response = await axios.post(`http://localhost:8080/declaracaoEspecifica`, {
+            const response = await axios.post(`${url_base_local}/declaracaoEspecifica`, {
                 aluno: ra,
                 obs: obs
             })
@@ -26,7 +27,7 @@ const AcademicSpecificDeclaration = () => {
                 MySwal.fire({
                     icon: 'success',
                     title: 'Enviado com sucesso!',
-                    timer: 5000,
+                    timer: 3000,
                     timerProgressBar: true,
                     showConfirmButton: true
                 }).then((result) => {
@@ -34,7 +35,7 @@ const AcademicSpecificDeclaration = () => {
                     const closedByTimer = result.dismiss === 'timer';
 
                     if (result.isConfirmed || closedByTimer) {
-                        navegation('/academico');
+                        navegation('numero-servico');
                     }
                 });
             } else {

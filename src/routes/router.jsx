@@ -100,6 +100,9 @@ import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
 import ProblemsReviewsSelectServiceNumber from "../pages/Ava/ProblemsReviewsSelectServiceNumber";
+import AcademicSpecificDeclarationServiceNumber from "../pages/Academic/AcademicSpecificDeclarationServiceNumber";
+import AdditionalActivitiesOpenDemand from "../pages/Academic/AdditionalActivitiesOpenDemand";
+import AdditionalActivitiesServiceNumber from "../pages/Academic/AdditionalActivitiesServiceNumber";
 
 
 const RoutesApp = () => {
@@ -239,6 +242,8 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura" element={<UndergraduateCoverLetter />} />
 
                 <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />
+                <Route path="/solicitacoes-academicas/atividades-complementares/abrir-demanda" element={<AdditionalActivitiesOpenDemand />} />
+                <Route path="/solicitacoes-academicas/atividades-complementares/abrir-demanda/numero-servico" element={<AdditionalActivitiesServiceNumber />} />
                 <Route path="/solicitacoes-academicas/enade" element={<Enade />} />
                 <Route path="/solicitacoes-academicas/enade/abrir-demanda" element={<EnadeOpenDemand />} />
                 <Route path="/solicitacoes-academicas/enade/abrir-demanda/numero-servico" element={<EnadeServiceNumber />} />
@@ -250,6 +255,7 @@ const AcademicRoutes = () => {
                 <Route path="/expedicao-de-documentos/historico-escolar" element={<SchoolRecords />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-conclusao" element={<StatementConclusion />} />
                 <Route path="/expedicao-de-documentos/declaracao-especifica-academica" element={<AcademicSpecificDeclaration />} />
+                <Route path="/expedicao-de-documentos/declaracao-especifica-academica/numero-servico" element={<AcademicSpecificDeclarationServiceNumber />} />
                 <Route path="/expedicao-de-documentos/conteudo-programatico" element={<ProgramContent />} />
                 <Route path="/expedicao-de-documentos/conteudo-programatico/numero-servico" element={<ProgramContentServiceNumber />} />
                 <Route path="/cancelamento-do-curso" element={<CourseCancellation />} />

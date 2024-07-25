@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 const PrintedDiploma = () => {
 
     const style = {
-        backgroundColor: "var(--secondary-light-red)"
+        backgroundColor: "var(--primary-light-blue)"
     }
 
     const navegation = useNavigate();
@@ -117,7 +117,7 @@ const PrintedDiploma = () => {
 
     return (
         <main className='main-perform-accord'>
-            <div className="rescue-checks">
+            {/* <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
                         text='Por favor envie os documentos'
@@ -125,7 +125,7 @@ const PrintedDiploma = () => {
                         selectedFile={selectedFile}
                         selectedFileName={selectedFile ? selectedFile.name : ""}
                         onClick={handleSubmit}
-                        textTextArea='Observação'
+                        textTextArea=''
                         observation={formData.obs}
                         onObservationChange={handleChangeObservation}
                     />
@@ -133,7 +133,7 @@ const PrintedDiploma = () => {
             </div>
             <div className='footer-container'>
                 <Footer text="Relatar Problema" route="" style={style} />
-            </div>
+            </div> */}
         </main>
     );
     

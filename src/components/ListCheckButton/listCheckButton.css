@@ -13,21 +13,3 @@
     border: 0;
     color: #fff;
 }
-
-.list-check {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: space-around;
-    width: 80vw;
-    padding: 32px;
-    background-color: #fff;
-    border-radius: 16px;
-    gap: 32px;
-}
-
-@media (max-width: 999px) {
-    .list-check{
-        width: 100%;
-    }
-}

@@ -64,3 +64,114 @@
 .logo-sumare-azul {
     width: 250px;
 }
+
+.print-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.print-area-school-records {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    align-items: start;
+    gap: 20px;
+}
+
+.declaration-content-print {
+    padding: 20px;
+    font-size: 16px;
+    text-align: justify;
+    color: #333;
+}
+
+/*------PRINT DO HISTÓRICO ESCOLAR-------*/
+.print-area-school-records {
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.describe-uni{
+    display: flex;
+    gap: 20px;
+    font-size: 0.8rem;
+}
+
+.describe-uni img{
+    width: auto;
+    height: 50px;
+}
+
+.declaration-content-records-print {
+    padding: 10px;
+    font-size: 0.7rem;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.declaration-content-records-print h2 {
+    text-align: center;
+}
+
+.historico-escolar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.historico-escolar p {
+    flex: 1 1 45%;
+}
+/*-------------------------------------*/
+
+
+
+/*------PRINT DA DECLARAÇÃO DE CONCLUSÃO-------*/
+.print-area-statement-conclusion{
+    padding: 40px;
+    width: 100vw;
+    height: 100vh;
+    text-align: justify;
+}
+
+.declaration-content-conclusion-print {
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+
+.declaration-conclusion {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    gap: 80px;
+}
+
+.declaration-conclusion h2{
+    text-align: center;
+}
+
+.declaration-conclusion-ass {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 30%;
+    padding-top: 20%;
+}
+/*-------------------------------------*/
+
+@page {
+    margin: 40px;
+}
