@@ -41,7 +41,7 @@ const RegistrationDeclaration = () => {
             text: "Voltar para Serviços",
             backgroundColor: "var(--secondary-light-yellow)",
             color: '#fff',
-            onClick: () => navigate("/")
+            onClick: () => navigate("/academico")
         },
         {
             text: "Relatar Problema",
@@ -53,7 +53,7 @@ const RegistrationDeclaration = () => {
             text: "Finalizar Sessão",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
-            onClick: () => navigate("/")
+            onClick: () => navigate("/home")
         }
     ];
 

@@ -107,6 +107,8 @@ import RegistrationDeclarationOpenDemand from "../pages/Academic/RegistrationDec
 import RegistrationDeclarationServiceNumber from "../pages/Academic/RegistrationDeclarationServiceNumber";
 import StatementConclusionOpenDemand from "../pages/Academic/StatementConclusionOpenDemand";
 import StatementConclusionServiceNumber from "../pages/Academic/StatementConclusionServiceNumber";
+import SchoolRecordsOpenDemand from "../pages/Academic/SchoolRecordsOpenDemand";
+import SchoolRecordsServiceNumber from "../pages/Academic/SchoolRecordsServiceNumber";
 
 
 const RoutesApp = () => {
@@ -259,6 +261,8 @@ const AcademicRoutes = () => {
                 <Route path="/expedicao-de-documentos/declaracao-de-matricula/abrir-demanda" element={<RegistrationDeclarationOpenDemand />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-matricula/abrir-demanda/numero-servico" element={<RegistrationDeclarationServiceNumber />} />
                 <Route path="/expedicao-de-documentos/historico-escolar" element={<SchoolRecords />} />
+                <Route path="/expedicao-de-documentos/historico-escolar/abrir-demanda" element={<SchoolRecordsOpenDemand />} />
+                <Route path="/expedicao-de-documentos/historico-escolar/abrir-demanda/numero-servico" element={<SchoolRecordsServiceNumber />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-conclusao" element={<StatementConclusion />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-conclusao/abrir-demanda" element={<StatementConclusionOpenDemand />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-conclusao/abrir-demanda/numero-servico" element={<StatementConclusionServiceNumber />} />
