@@ -66,8 +66,8 @@ const CourseCancellation = () => {
                     <>
                         <span>Seu curso atual: <b>{course[0].curso}</b></span>
                         <span>Seu semestre atual: <b>{course[0].serie} Semestre</b></span>
-                        <span>Polo: Sumaré <b>polo</b></span>
-                        <span>Situação Financeira <b>Inadimplente</b></span>
+                        <span>Polo: Sumaré <b>{course[0].nomePolo}</b></span>
+                        <span>Situação Financeira <b>{course[0].inadimplente === 'S' ? 'Inadimplente' : 'Adimplente'}</b></span>
                     </>
                 ) : (
                     <p>Carregando dados do aluno...</p>

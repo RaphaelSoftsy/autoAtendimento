@@ -41,7 +41,7 @@ const StatementConclusion = () => {
             text: "Relatar Problema",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
-            onClick: () => navegation("/")
+            onClick: () => navegation("abrir-demanda")
         },
         {
             text: "Finalizar Sessão",
