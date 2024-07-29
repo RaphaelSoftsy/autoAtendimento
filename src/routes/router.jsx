@@ -103,6 +103,10 @@ import ProblemsReviewsSelectServiceNumber from "../pages/Ava/ProblemsReviewsSele
 import AcademicSpecificDeclarationServiceNumber from "../pages/Academic/AcademicSpecificDeclarationServiceNumber";
 import AdditionalActivitiesOpenDemand from "../pages/Academic/AdditionalActivitiesOpenDemand";
 import AdditionalActivitiesServiceNumber from "../pages/Academic/AdditionalActivitiesServiceNumber";
+import RegistrationDeclarationOpenDemand from "../pages/Academic/RegistrationDeclarationOpenDemand";
+import RegistrationDeclarationServiceNumber from "../pages/Academic/RegistrationDeclarationServiceNumber";
+import StatementConclusionOpenDemand from "../pages/Academic/StatementConclusionOpenDemand";
+import StatementConclusionServiceNumber from "../pages/Academic/StatementConclusionServiceNumber";
 
 
 const RoutesApp = () => {
@@ -252,8 +256,12 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/transporte-escolar/numero-servico" element={<SchoolBusServiceNumber />} />
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-matricula" element={<RegistrationDeclaration />} />
+                <Route path="/expedicao-de-documentos/declaracao-de-matricula/abrir-demanda" element={<RegistrationDeclarationOpenDemand />} />
+                <Route path="/expedicao-de-documentos/declaracao-de-matricula/abrir-demanda/numero-servico" element={<RegistrationDeclarationServiceNumber />} />
                 <Route path="/expedicao-de-documentos/historico-escolar" element={<SchoolRecords />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-conclusao" element={<StatementConclusion />} />
+                <Route path="/expedicao-de-documentos/declaracao-de-conclusao/abrir-demanda" element={<StatementConclusionOpenDemand />} />
+                <Route path="/expedicao-de-documentos/declaracao-de-conclusao/abrir-demanda/numero-servico" element={<StatementConclusionServiceNumber />} />
                 <Route path="/expedicao-de-documentos/declaracao-especifica-academica" element={<AcademicSpecificDeclaration />} />
                 <Route path="/expedicao-de-documentos/declaracao-especifica-academica/numero-servico" element={<AcademicSpecificDeclarationServiceNumber />} />
                 <Route path="/expedicao-de-documentos/conteudo-programatico" element={<ProgramContent />} />

@@ -8,7 +8,7 @@ const RegistrationDeclaration = () => {
     const navigate = useNavigate();
     const [declaration, setDeclaration] = useState('');
     //const aluno = localStorage.getItem("aluno-ra");
-const aluno = "2471074"
+    const aluno = "2471074"
 
     async function getDeclaration() {
         try {
@@ -47,7 +47,7 @@ const aluno = "2471074"
             text: "Relatar Problema",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
-            onClick: () => navigate("/")
+            onClick: () => navigate("abrir-demanda")
         },
         {
             text: "Finalizar Sessão",
