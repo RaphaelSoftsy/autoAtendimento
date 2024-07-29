@@ -35,7 +35,7 @@ const StatementConclusion = () => {
             text: "Voltar para Serviços",
             backgroundColor: "var(--secondary-light-yellow)",
             color: '#fff',
-            onClick: () => navegation("/")
+            onClick: () => navegation("/academico")
         },
         {
             text: "Relatar Problema",
@@ -47,7 +47,7 @@ const StatementConclusion = () => {
             text: "Finalizar Sessão",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
-            onClick: () => navegation("/")
+            onClick: () => navegation("/home")
         }
     ];
 

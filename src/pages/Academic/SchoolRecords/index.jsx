@@ -32,19 +32,19 @@ const SchoolRecords = () => {
             text: "Voltar para Serviços",
             backgroundColor: "var(--secondary-light-yellow)",
             color: '#fff',
-            onClick: () => navigate("/")
+            onClick: () => navigate("/academico")
         },
         {
             text: "Relatar Problema",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
-            onClick: () => navigate("/")
+            onClick: () => navigate("abrir-demanda")
         },
         {
             text: "Finalizar Sessão",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
-            onClick: () => navigate("/")
+            onClick: () => navigate("/home")
         }
     ];
 

@@ -16,7 +16,7 @@ const Enade = () => {
     return (
         <main className='main-perform-accord'>
             <div className="rescue-checks">
-            <div className="card-checkout">
+            <div className="card-checkout-fill-max-width">
                 <span><b>O seu curso ainda não participa do ENADE (Exame Nacional de Desempenho dos Estudantes)</b></span>
                 <DefaultButton
                     text="Abrir uma Demanda"
