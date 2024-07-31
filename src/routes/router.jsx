@@ -109,6 +109,10 @@ import StatementConclusionOpenDemand from "../pages/Academic/StatementConclusion
 import StatementConclusionServiceNumber from "../pages/Academic/StatementConclusionServiceNumber";
 import SchoolRecordsOpenDemand from "../pages/Academic/SchoolRecordsOpenDemand";
 import SchoolRecordsServiceNumber from "../pages/Academic/SchoolRecordsServiceNumber";
+import SigningInternshipContractServiceNumber from "../pages/Academic/SigningInternshipContractServiceNumber";
+import InternshipReportSubmissionServiceNumber from "../pages/Academic/InternshipReportSubmissionServiceNumber";
+import SubmissionInternshipReportServiceNumber from "../pages/Academic/SubmissionInternshipReportServiceNumber";
+import TerminationInternshipContractServiceNumber from "../pages/Academic/TerminationInternshipContractServiceNumber";
 
 
 const RoutesApp = () => {
@@ -242,9 +246,13 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma/numero-servico" element={<DuplicateDiplomaServiceNumber />} />
                 <Route path="/solicitacoes-academicas/estagio" element={<Internship />} />
                 <Route path="/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio" element={<SigningInternshipContract />} />
+                <Route path="/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio/numero-servico" element={<SigningInternshipContractServiceNumber />} />
                 <Route path="/solicitacoes-academicas/estagio/entrega-de-relatorio-de-estagio" element={<InternshipReportSubmission />} />
+                <Route path="/solicitacoes-academicas/estagio/entrega-de-relatorio-de-estagio/numero-servico" element={<InternshipReportSubmissionServiceNumber />} />
                 <Route path="/solicitacoes-academicas/estagio/rescisao-de-contrato-de-estagio" element={<SubmissionInternshipReport />} />
+                <Route path="/solicitacoes-academicas/estagio/rescisao-de-contrato-de-estagio/numero-servico" element={<SubmissionInternshipReportServiceNumber />} />
                 <Route path="/solicitacoes-academicas/estagio/convalidacao-de-horas" element={<TerminationInternshipContract />} />
+                <Route path="/solicitacoes-academicas/estagio/convalidacao-de-horas/numero-servico" element={<TerminationInternshipContractServiceNumber />} />
                 <Route path="/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura" element={<UndergraduateCoverLetter />} />
 
                 <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />

@@ -74,11 +74,11 @@ const SchoolRecordsOpenDemand = () => {
             extensaoArq: formData.extensaoArq,
             tipoArq: formData.tipoArq,
             arquivo: formData.arquivo,
-            declaracao: "Declaração de Conclusão:"
+            declaracao: "Histórico Escolar:"
         };
 
         try {
-            const response = await axios.post(`${url_base_local}/aproveitamentoInterno`, dataToSend, {
+            const response = await axios.post(`${url_base_local}/problemaDeclaracoes`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }

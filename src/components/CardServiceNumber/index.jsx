@@ -18,13 +18,13 @@ const CardServiceNumber = (props) => {
                 text="Voltar para Serviço"
                 backgroundColor="var(--secondary-light-yellow)"
                 color='#fff'
-                onClick={() => navegation('/academico/expedicao-de-documentos')}
+                onClick={() => navegation('/academico')}
             />
             <DefaultButton
                 text="Finalizar Sessão"
                 backgroundColor="var(--secondary-light-red)"
                 color='#fff'
-                onClick={() => navegation('/academico')}
+                onClick={() => navegation('/home')}
             />
         </div>
     );

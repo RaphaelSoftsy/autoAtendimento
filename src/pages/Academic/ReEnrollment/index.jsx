@@ -11,6 +11,7 @@ const ReEnrollment = () => {
 
     const navegation = useNavigate()
     const [reEnrollment, setReEnrollment] = useState([]);
+    const [reEnrollment2, setReEnrollment2] = useState([]);
     const MySwal = withReactContent(Swal);
     const aluno = '2473773'
 
@@ -18,34 +19,58 @@ const ReEnrollment = () => {
         backgroundColor: "var(--secondary-light-red)"
     }
 
-    async function getReEnrollment() {
+    const formatDateBR = (dateString) => {
+        if (!dateString) return '';
+        const [year, month, day] = dateString.split("-");
+        return `${day}/${month}/${year}`;
+    };
 
-        MySwal.showLoading()
+    async function getReEnrollment() {
+        MySwal.showLoading();
 
         try {
             const response = await axios.get(`${url_base_local}/validaRematricula/aluno/${aluno}`);
             const data = response.data;
-            console.log('Dados da declaração:', data);
 
-            setReEnrollment(reEnrollment);
+            setReEnrollment(data);
         } catch (error) {
             console.error('Erro ao buscar declaração:', error);
+        } finally {
+            MySwal.close();
         }
-        MySwal.close()
+    }
+
+    async function getReEnrollment2() {
+        MySwal.showLoading();
+
+        try {
+            const response = await axios.get(`${url_base_local}/dataRematricula/2470559`);
+            const data = response.data[0];
+            console.log('Dados da data de rematricula:', data);
+
+            setReEnrollment2(data);
+        } catch (error) {
+            console.error('Erro ao buscar declaração:', error);
+        } finally {
+            MySwal.close();
+        }
     }
 
     useEffect(() => {
         getReEnrollment();
-    }, []);
-
-    console.log(reEnrollment);
+        getReEnrollment2();
+    }, [aluno]);
 
     return (
         <main className='main-perform-accord'>
             <div className="rescue-checks">
                 <div className="card-checkout-re">
-                    <span>Sua Rematrícula será efetuada de forma automática em: <b>19/06/2023</b></span>
-                    <span>Para tanto basta estar em dia com suas mensalidades.</span>
+                    {reEnrollment2 && (
+                        <>
+                            <span>Sua Rematrícula será efetuada de forma automática em: <b>{formatDateBR(reEnrollment2.dataRema)}</b></span>
+                            <span>Para tanto basta estar em dia com suas mensalidades.</span>
+                        </>
+                    )}
                     <DefaultButton
                         text="Regularizar Financeiro"
                         backgroundColor="var(--primary-light-blue)"

@@ -1,6 +1,6 @@
 import './listCheckButton.css';
 
-const ListCheckButton = ({ items, selectedSubjects, onSelect, text, multiple }) => {
+const ListCheckButton = ({ items, selectedSubjects, onSelect, text, multiple, onClickButton }) => {
     const handleClick = (id) => {
         onSelect(id, multiple);
     };
@@ -20,10 +20,11 @@ const ListCheckButton = ({ items, selectedSubjects, onSelect, text, multiple }) 
                         </label>
                     </li>
                 ))}
-                <button className="button-check">{text}</button>
+                <button className="button-check" onClick={onClickButton}>{text}</button>
             </ul>
         </>
     );
 };
 
 export default ListCheckButton;
+

@@ -78,7 +78,7 @@ const SubmissionInternshipReport = () => {
         console.log("Data to send:", JSON.stringify(dataToSend));
 
         try {
-            const response = await axios.post(`${url_base_local}/solicitacaoFies`, dataToSend, {
+            const response = await axios.post(`${url_base_local}/recisaoEstagio`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
@@ -116,7 +116,7 @@ const SubmissionInternshipReport = () => {
     };
 
     return (
-        <main className='main-perform-accord'>
+        <main>
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
@@ -131,7 +131,7 @@ const SubmissionInternshipReport = () => {
                     />
                 </div>
             </div>
-            <Footer text="Enviar Solicitação" style={style} />
+            {/* <Footer text="Enviar Solicitação" style={style} /> */}
         </main>
     );
 

@@ -12,7 +12,7 @@ const RegistrationDeclaration = () => {
 
     async function getDeclaration() {
         try {
-            const response = await axios.get(`https://api-academico.sumare.edu.br/api-documento/documentos/matricula?aluno=2471074`);
+            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/matricula?aluno=${aluno}`);
             const data = response.data[0];
             console.log('Dados da declaração:', data);
             setDeclaration(data);
@@ -28,8 +28,8 @@ const RegistrationDeclaration = () => {
     const generateDeclarationHTML = (data) => {
         return `
             <p><strong>Reconhecido pela Portaria nº 178, de 06/05/2024, publicada no D.O.U de 07/05/2024, pag. 32</strong></p>
-            <p>Declaro, para fins de direito e todos os efeitos, que ${data.nome} - RA ${data.aluno}, RG nº ${data.rg}, é aluno(a) regularmente matriculado(a) no curso ${data.curso}, no 2º semestre civil de ${data.semestreAno} e duração de ${data.duracaoExten} (${data.duracao}) semestres letivos.</p>
-            <p><img src="" alt="QR Code" /></p>
+            <p style="text-align: justify;">Declaro, para fins de direito e todos os efeitos, que ${data.nome} - RA ${data.aluno}, RG nº ${data.rg}, é aluno(a) regularmente matriculado(a) no curso ${data.curso}, no 2º semestre civil de ${data.semestreAno} e duração de ${data.duracaoExten} (${data.duracao}) semestres letivos.</p>
+            <p ><img style="width: 150px; height: 150px;" src="https://media.istockphoto.com/id/1347277582/pt/vetorial/qr-code-sample-for-smartphone-scanning-on-white-background.jpg?s=612x612&w=0&k=20&c=A2PbuTeIkosSMOtzMohg75W7ZBxXCzKYX7HO-_QPfQU=" alt="QR Code" /></p>
             <p>São Paulo, ${data.dia} de ${data.mes} de ${data.ano}</p>
             <p>Documento com validade de 30 dias a partir da data de emissão.</p>
             <p>Este documento foi gerado eletronicamente e pode ser validado no site da instituição.</p>

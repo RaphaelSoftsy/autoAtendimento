@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import ListCheckButton from '../../../components/ListCheckButton'
-import './rejectionAdaptation.css'
-import Footer from '../../../components/Footer';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useNavigate } from 'react-router-dom';
+import ListCheckButton from '../../../components/ListCheckButton';
+import { url_base_local } from '../../../services/url_base';
+import './rejectionAdaptation.css';
 
 const RejectionAdaptation = () => {
     const list = [
@@ -16,23 +17,48 @@ const RejectionAdaptation = () => {
             id: 2,
             name: 'Disciplina 2 (Reprovação-DP)'
         }
-    ]
+    ];
 
-    const style = {
-        backgroundColor: "var(--secondary-light-red)"
-    }
+    // const style = {
+    //     backgroundColor: "var(--secondary-light-red)"
+    // };
 
     const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const [reEnrollment, setReEnrollment] = useState({ disciplinas: 0 });
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
+    const aluno = '2471074';
+    const maxDisciplines = 4;
+
+    async function getReEnrollment() {
+        MySwal.showLoading();
+
+        try {
+            const response = await axios.get(`${url_base_local}/disciplinasMatriculadas/${aluno}`);
+            const data = response.data[0];
+            console.log('Dados:', data);
+
+            setReEnrollment(data);
+        } catch (error) {
+            console.error('Erro ao buscar declaração:', error);
+        } finally {
+            MySwal.close();
+        }
+    }
+
+    useEffect(() => {
+        getReEnrollment();
+    }, []);
 
     const handleSubjectSelect = (id) => {
         setSelectedSubjects(prevSelected => {
             const index = prevSelected.indexOf(id);
             if (index !== -1) {
                 return prevSelected.filter(subjectId => subjectId !== id);
-            } else {
+            } else if (prevSelected.length < maxDisciplines - reEnrollment.disciplinesEnrolled) {
                 return [...prevSelected, id];
+            } else {
+                return prevSelected;
             }
         });
     };
@@ -46,7 +72,7 @@ const RejectionAdaptation = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            navegation('/');
+            navegation('numero-servico');
         }
     };
 
@@ -56,8 +82,8 @@ const RejectionAdaptation = () => {
                 <div className='discipline'>
                     <h3>Selecione a Disciplina que deseja realizar a Matrícula, lembrando que você pode ter 4 disciplinas simultaneamente</h3>
                     <div className='registration'>
-                        <span>Nº de Disciplinas já matrículadas 2</span>
-                        <span>Nº de Disciplinas que pode solicitar 2</span>
+                        <span>Nº de Disciplinas já matrículadas {reEnrollment.disciplinas}</span>
+                        <span>Nº de Disciplinas que pode solicitar {maxDisciplines - reEnrollment.disciplinas}</span>
                     </div>
                     <h3 className='select-diploma'>Selecione a Disciplina</h3>
                     <ListCheckButton
@@ -65,12 +91,13 @@ const RejectionAdaptation = () => {
                         selectedSubjects={selectedSubjects}
                         onSelect={handleSubjectSelect}
                         text="Solicitar"
+                        onClickButton = {handleNext}
                     />
                 </div>
             </main>
-            <Footer text='Relatar um Problema' onClick={handleNext} style={style} />
+            {/* <Footer text='Relatar um Problema' onClick={handleNext} style={style} /> */}
         </>
-    )
+    );
 }
 
-export default RejectionAdaptation
+export default RejectionAdaptation;
