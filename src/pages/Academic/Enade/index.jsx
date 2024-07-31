@@ -22,14 +22,14 @@ const Enade = () => {
                     text="Abrir uma Demanda"
                     backgroundColor="var(--primary-light-blue)"
                     color='#fff'
-                    onClick={() => navegation("/academico/solicitacoes-academicas/enade/abrir-demanda")}
+                    onClick={() => navegation("abrir-demanda")}
                 />
             </div>
             </div>
             <div className='footer-container'>
                 <footer className='footer-double'>
-                    <Link className='title-footer' style={style1} > Voltar para Serviços </Link>
-                    <Link className='title-footer' style={style2} > Finalizar Sessão </Link>
+                    <Link className='title-footer' style={style1} to={'/academico'}> Voltar para Serviços </Link>
+                    <Link className='title-footer' style={style2} to={'/home'}> Finalizar Sessão </Link>
                 </footer>
             </div>
         </main>

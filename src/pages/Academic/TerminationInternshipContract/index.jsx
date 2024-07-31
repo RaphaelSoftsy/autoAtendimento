@@ -116,7 +116,7 @@ const TerminationInternshipContract = () => {
     };
 
     return (
-        <main className='main-perform-accord'>
+        <main>
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
@@ -131,7 +131,7 @@ const TerminationInternshipContract = () => {
                     />
                 </div>
             </div>
-            <Footer text="Enviar Solicitação" style={style} />
+            {/* <Footer text="Enviar Solicitação" style={style} /> */}
         </main>
     );
 
