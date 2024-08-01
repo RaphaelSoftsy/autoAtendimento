@@ -286,9 +286,9 @@ export const listRoutesAcademic = [
     },
     {
         id: 12,
-        name: 'Diploma Impreso',
-        header: 'Diploma Impreso',
-        route: '/academico/solicitacoes-academicas/diplomas/diploma-impreso'
+        name: 'Diploma Impresso',
+        header: 'Diploma Impresso',
+        route: '/academico/solicitacoes-academicas/diplomas/diploma-impresso'
     },
     {
         id: 13,
@@ -310,72 +310,120 @@ export const listRoutesAcademic = [
     },
     {
         id: 16,
+        name: 'Assinatura de Contrato de Estágio',
+        header: 'Assinatura de Contrato de Estágio',
+        route: '/academico/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio'
+    },
+    {
+        id: 17,
+        name: 'Entrega de Relatório de Estágio',
+        header: 'Entrega de Relatório de Estágio',
+        route: '/academico/solicitacoes-academicas/estagio/entrega-de-relatorio-de-estagio'
+    },
+    {
+        id: 18,
+        name: 'Rescisão de Contrato de Estágio',
+        header: 'Rescisão de Contrato de Estágio',
+        route: '/academico/solicitacoes-academicas/estagio/rescisao-de-contrato-de-estagio'
+    },
+    {
+        id: 19,
+        name: 'Convalidação de Horas',
+        header: 'Convalidação de Horas',
+        route: '/academico/solicitacoes-academicas/estagio/convalidacao-de-horas'
+    },
+    {
+        id: 20,
+        name: 'Carta de Apresentação – Licenciatura',
+        header: 'Carta de Apresentação – Licenciatura',
+        route: '/academico/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura'
+    },
+    {
+        id: 21,
         name: 'Atividades Complementares',
         header: 'Atividades Complementares',
         route: '/academico/solicitacoes-academicas/atividades-complementares'
     },
     {
-        id: 17,
+        id: 22,
+        name: 'Atividades Complementares',
+        header: 'Abrir Demanda',
+        route: '/academico/solicitacoes-academicas/atividades-complementares/abrir-demanda'
+    },
+    {
+        id: 23,
         name: 'Enade',
         header: 'Enade',
         route: '/academico/solicitacoes-academicas/enade'
     },
     {
-        id: 18,
+        id: 24,
+        name: 'Enade',
+        header: 'Abrir Demanda',
+        route: '/academico/solicitacoes-academicas/enade/abrir-demanda'
+    },
+    {
+        id: 25,
         name: 'Rematrícula',
         header: 'Rematrícula',
         route: '/academico/solicitacoes-academicas/rematricula'
     },
     {
-        id: 19,
+        id: 26,
+        name: 'Rematrícula',
+        header: 'Abrir Demanda',
+        route: '/academico/solicitacoes-academicas/rematricula/abrir-demanda'
+    },
+    {
+        id: 27,
         name: 'Transporte Escolar',
         header: 'Transporte Escolar',
         route: '/academico/solicitacoes-academicas/transporte-escolar'
     },
     {
-        id: 20,
+        id: 28,
         name: 'Expedição de Documentos',
         header: 'Expedição de Documentos',
         route: '/academico/expedicao-de-documentos'
     },
     {
-        id: 21,
+        id: 29,
         name: 'Declaração de Matrícula',
         header: 'Declaração de Matrícula',
         route: '/academico/expedicao-de-documentos/declaracao-de-matricula'
     },
     {
-        id: 22,
+        id: 30,
         name: 'Histórico Escolar',
         header: 'Histórico Escolar',
         route: '/academico/expedicao-de-documentos/historico-escolar'
     },
     {
-        id: 23,
+        id: 31,
         name: 'Declaração de Conclusão',
         header: 'Declaração de Conclusão',
         route: '/academico/expedicao-de-documentos/declaracao-de-conclusao'
     },
     {
-        id: 24,
+        id: 32,
         name: 'Declaração Específica Acadêmica',
         header: 'Declaração Específica Acadêmica',
         route: '/academico/expedicao-de-documentos/declaracao-especifica-academica'
     },
     {
-        id: 25,
+        id: 33,
         name: 'Conteúdo Programático',
         header: 'Conteúdo Programático',
         route: '/academico/expedicao-de-documentos/conteudo-programatico'
     },
     {
-        id: 26,
+        id: 34,
         name: 'Cancelamento do Curso',
         header: 'Cancelamento do Curso',
         route: '/academico/cancelamento-do-curso'
     },
     {
-        id: 27,
+        id: 35,
         name: 'Cobranças',
         header: 'Cobranças',
         route: '/academico/cancelamento-do-curso/cobrancas'
