@@ -1,18 +1,18 @@
-import CardServiceNumber from '../../../components/CardServiceNumber';
+import CardServiceNumberPag from '../../../components/CardServiceNumberPag';
 
-const SpecialDegreeConferralServiceNumber  = () => {
+const SpecialDegreeConferralServiceNumber = () => {
 
     const numberService = localStorage.getItem('numero-servico')
 
     return (
         <div className='main-perform-accord'>
             <div className="rescue-checks">
-                <CardServiceNumber
-                    number= {numberService}
+                <CardServiceNumberPag
+                    number={numberService}
                 />
             </div>
         </div>
     );
 };
 
-export default SpecialDegreeConferralServiceNumber ;
+export default SpecialDegreeConferralServiceNumber;

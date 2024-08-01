@@ -2,64 +2,77 @@ import { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import DataProvider, { DataContext } from "../contexts/DataProvider";
+import { RAProvider } from "../contexts/RAContext";
 import { listRoutesAcademic, listRoutesAva, listRoutesFinanceiro } from "../hook/routes";
-import Home from "../pages/Home";
 import AcademicRequests from "../pages/Academic/AcademicRequests";
 import AcademicSpecificDeclaration from "../pages/Academic/AcademicSpecificDeclaration";
+import AcademicSpecificDeclarationServiceNumber from "../pages/Academic/AcademicSpecificDeclarationServiceNumber";
 import AdditionalActivities from "../pages/Academic/AdditionalActivities";
+import AdditionalActivitiesOpenDemand from "../pages/Academic/AdditionalActivitiesOpenDemand";
+import AdditionalActivitiesServiceNumber from "../pages/Academic/AdditionalActivitiesServiceNumber";
 import CourseCancellation from "../pages/Academic/CourseCancellation";
 import Diplomas from "../pages/Academic/Diplomas";
-import Expedition from "../pages/Academic/Expedition";
-import OpenCollection from "../pages/Academic/OpenCollection";
-import ProgramContent from "../pages/Academic/ProgramContent";
-import ProofRequest from "../pages/Academic/ProofRequest";
-import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
-import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
-import ReviewsNotes from "../pages/Academic/ReviewsNotes";
-import SchoolBus from "../pages/Academic/SchoolBus";
-import SchoolRecords from "../pages/Academic/SchoolRecords";
-import StatementConclusion from "../pages/Academic/StatementConclusion";
-import SubjectAcd from "../pages/Academic/SubjectAcd";
-import UtilizationStudies from "../pages/Academic/UtilizationStudies";
-import Internship from "../pages/Academic/Internship";
-import DescribeRequest from "../pages/Ava/DescribeRequest";
-import ProblemsAccessingAVA from "../pages/Ava/ProblemsAccessingAVA";
-import ProblemsAccessingDiscipline from "../pages/Ava/ProblemsAccessingDiscipline";
-import ProblemsActivities from "../pages/Ava/ProblemsActivities";
-import ProblemsReviews from "../pages/Ava/ProblemsReviews";
-import SubjectAva from "../pages/Ava/SubjectAva";
-import { RAProvider } from "../contexts/RAContext";
 import DuplicateDiploma from "../pages/Academic/DuplicateDiploma";
 import DuplicateDiplomaServiceNumber from "../pages/Academic/DuplicateDiplomaServiceNumber";
 import Enade from "../pages/Academic/Enade";
 import EnadeOpenDemand from "../pages/Academic/EnadeOpenDemand";
 import EnadeServiceNumber from "../pages/Academic/EnadeServiceNumber";
+import Expedition from "../pages/Academic/Expedition";
 import ExternalDisciplines from "../pages/Academic/ExternalDisciplines";
 import ExternalDisciplinesOpenDemand from "../pages/Academic/ExternalDisciplinesOpenDemand";
 import ExternalDisciplinesServiceNumber from "../pages/Academic/ExternalDisciplinesServiceNumber";
 import InternalDisciplines from "../pages/Academic/InternalDisciplines";
 import InternalDisciplinesOpenDemand from "../pages/Academic/InternalDisciplinesOpenDemand";
 import InternalDisciplinesServiceNumber from "../pages/Academic/InternalDisciplinesServiceNumber";
+import Internship from "../pages/Academic/Internship";
 import InternshipReportSubmission from "../pages/Academic/InternshipReportSubmission";
+import InternshipReportSubmissionServiceNumber from "../pages/Academic/InternshipReportSubmissionServiceNumber";
+import OpenCollection from "../pages/Academic/OpenCollection";
 import PrintedDiploma from "../pages/Academic/PrintedDiploma";
 import PrintedDiplomaServiceNumber from "../pages/Academic/PrintedDiplomaServiceNumber";
+import ProgramContent from "../pages/Academic/ProgramContent";
 import ProgramContentServiceNumber from "../pages/Academic/ProgramContentServiceNumber";
+import ProofRequest from "../pages/Academic/ProofRequest";
 import ProofRequestOpenDemand from "../pages/Academic/ProofRequestOpenDemand";
 import ProofRequestSelect from "../pages/Academic/ProofRequestSelect";
 import ReEnrollment from "../pages/Academic/ReEnrollment";
+import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
+import RegistrationDeclarationOpenDemand from "../pages/Academic/RegistrationDeclarationOpenDemand";
+import RegistrationDeclarationServiceNumber from "../pages/Academic/RegistrationDeclarationServiceNumber";
+import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
+import ReviewsNotes from "../pages/Academic/ReviewsNotes";
+import SchoolBus from "../pages/Academic/SchoolBus";
 import SchoolBusServiceNumber from "../pages/Academic/SchoolBusServiceNumber";
+import SchoolRecords from "../pages/Academic/SchoolRecords";
+import SchoolRecordsOpenDemand from "../pages/Academic/SchoolRecordsOpenDemand";
+import SchoolRecordsServiceNumber from "../pages/Academic/SchoolRecordsServiceNumber";
 import SigningInternshipContract from "../pages/Academic/SigningInternshipContract";
+import SigningInternshipContractServiceNumber from "../pages/Academic/SigningInternshipContractServiceNumber";
 import SpecialDegreeConferral from "../pages/Academic/SpecialDegreeConferral";
 import SpecialDegreeConferralServiceNumber from "../pages/Academic/SpecialDegreeConferralServiceNumber";
+import StatementConclusion from "../pages/Academic/StatementConclusion";
+import StatementConclusionOpenDemand from "../pages/Academic/StatementConclusionOpenDemand";
+import StatementConclusionServiceNumber from "../pages/Academic/StatementConclusionServiceNumber";
+import SubjectAcd from "../pages/Academic/SubjectAcd";
 import SubmissionInternshipReport from "../pages/Academic/SubmissionInternshipReport";
+import SubmissionInternshipReportServiceNumber from "../pages/Academic/SubmissionInternshipReportServiceNumber";
 import TerminationInternshipContract from "../pages/Academic/TerminationInternshipContract";
+import TerminationInternshipContractServiceNumber from "../pages/Academic/TerminationInternshipContractServiceNumber";
 import UndergraduateCoverLetter from "../pages/Academic/UndergraduateCoverLetter";
+import UtilizationStudies from "../pages/Academic/UtilizationStudies";
+import DescribeRequest from "../pages/Ava/DescribeRequest";
 import DescribeRequestServiceNumber from "../pages/Ava/DescribeRequestServiceNumber";
+import ProblemsAccessingAVA from "../pages/Ava/ProblemsAccessingAVA";
 import ProblemsAccessingAVAServiceNumber from "../pages/Ava/ProblemsAccessingAVAServiceNumber";
+import ProblemsAccessingDiscipline from "../pages/Ava/ProblemsAccessingDiscipline";
+import ProblemsActivities from "../pages/Ava/ProblemsActivities";
 import ProblemsActivitiesOpenDemand from "../pages/Ava/ProblemsActivitiesOpenDemand";
 import ProblemsActivitiesServiceNumber from "../pages/Ava/ProblemsActivitiesServiceNumber";
+import ProblemsReviews from "../pages/Ava/ProblemsReviews";
 import ProblemsReviewsSelect from "../pages/Ava/ProblemsReviewsSelect";
 import ProblemsReviewsSelectOpenDemand from "../pages/Ava/ProblemsReviewsSelectOpenDemand";
+import ProblemsReviewsSelectServiceNumber from "../pages/Ava/ProblemsReviewsSelectServiceNumber";
+import SubjectAva from "../pages/Ava/SubjectAva";
 import AddCreditCard from "../pages/Finance/AddCreditCard";
 import AddSwapPayment from "../pages/Finance/AddSwapPayment";
 import CardChoice from "../pages/Finance/CardChoice";
@@ -94,25 +107,12 @@ import RescueChecks from "../pages/Finance/RescueChecks";
 import SendDeclarationFinancial from "../pages/Finance/SendDeclarationFinancial";
 import SpecificFinancialStatement from "../pages/Finance/SpecificFinancialStatement";
 import SubjectFinance from "../pages/Finance/SubjectFinance";
+import Home from "../pages/Home";
 import Login from "../pages/Login";
 import CreateNewPassword from "../pages/Password/CreateNewPassword";
 import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
-import ProblemsReviewsSelectServiceNumber from "../pages/Ava/ProblemsReviewsSelectServiceNumber";
-import AcademicSpecificDeclarationServiceNumber from "../pages/Academic/AcademicSpecificDeclarationServiceNumber";
-import AdditionalActivitiesOpenDemand from "../pages/Academic/AdditionalActivitiesOpenDemand";
-import AdditionalActivitiesServiceNumber from "../pages/Academic/AdditionalActivitiesServiceNumber";
-import RegistrationDeclarationOpenDemand from "../pages/Academic/RegistrationDeclarationOpenDemand";
-import RegistrationDeclarationServiceNumber from "../pages/Academic/RegistrationDeclarationServiceNumber";
-import StatementConclusionOpenDemand from "../pages/Academic/StatementConclusionOpenDemand";
-import StatementConclusionServiceNumber from "../pages/Academic/StatementConclusionServiceNumber";
-import SchoolRecordsOpenDemand from "../pages/Academic/SchoolRecordsOpenDemand";
-import SchoolRecordsServiceNumber from "../pages/Academic/SchoolRecordsServiceNumber";
-import SigningInternshipContractServiceNumber from "../pages/Academic/SigningInternshipContractServiceNumber";
-import InternshipReportSubmissionServiceNumber from "../pages/Academic/InternshipReportSubmissionServiceNumber";
-import SubmissionInternshipReportServiceNumber from "../pages/Academic/SubmissionInternshipReportServiceNumber";
-import TerminationInternshipContractServiceNumber from "../pages/Academic/TerminationInternshipContractServiceNumber";
 
 
 const RoutesApp = () => {
@@ -235,8 +235,6 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} />
-                {/* <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/prova-substitutiva" element={<SubstituteProof />} />
-                <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/prova-recuperacao" element={<RetakeTest />} /> */}
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
                 <Route path="/solicitacoes-academicas/diplomas/diploma-impresso" element={<PrintedDiploma />} />
                 <Route path="/solicitacoes-academicas/diplomas/diploma-impresso/numero-servico" element={<PrintedDiplomaServiceNumber />} />
@@ -254,7 +252,6 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/estagio/convalidacao-de-horas" element={<TerminationInternshipContract />} />
                 <Route path="/solicitacoes-academicas/estagio/convalidacao-de-horas/numero-servico" element={<TerminationInternshipContractServiceNumber />} />
                 <Route path="/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura" element={<UndergraduateCoverLetter />} />
-
                 <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />
                 <Route path="/solicitacoes-academicas/atividades-complementares/abrir-demanda" element={<AdditionalActivitiesOpenDemand />} />
                 <Route path="/solicitacoes-academicas/atividades-complementares/abrir-demanda/numero-servico" element={<AdditionalActivitiesServiceNumber />} />

@@ -60,9 +60,9 @@ const ProgramContent = () => {
             });
             return;
         }
-    
+
         MySwal.showLoading();
-    
+
         const dataToSend = {
             aluno: formData.aluno,
             obs: formData.obs,
@@ -72,16 +72,16 @@ const ProgramContent = () => {
             tipoArq: formData.tipoArq,
             arquivo: formData.arquivo
         };
-    
+
         console.log("Data to send:", JSON.stringify(dataToSend));
-    
+
         try {
             const response = await axios.post('http://localhost:8080/conteudoProgramatico', dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
             });
-    
+
             if (response.status === 200) {
                 const responseData = response.data;
                 MySwal.close();
@@ -114,7 +114,7 @@ const ProgramContent = () => {
     };
 
     return (
-        <main className='main-perform-accord'>
+        <main>
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
@@ -129,9 +129,7 @@ const ProgramContent = () => {
                     />
                 </div>
             </div>
-            <div className='footer-container'>
-                <Footer text="Relatar Problema" style={style} onClick={() => navegation('/')} />
-            </div>
+            {/* <Footer text="Relatar Problema" style={style} onClick={() => navegation('/')} /> */}
         </main>
     );
 };

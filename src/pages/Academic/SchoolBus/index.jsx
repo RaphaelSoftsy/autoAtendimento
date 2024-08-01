@@ -55,7 +55,7 @@ const SchoolBus = () => {
                         onSelect={handleSubjectSelect} />
                 </div>
             </div>
-            <Footer text="Avançar" onClick={handleNext} />
+            <Footer text="Solicitar Transporte" onClick={handleNext} />
         </main>
     );
 };

@@ -116,7 +116,7 @@ const RegistrationDeclarationOpenDemand = () => {
     };
 
     return (
-        <main className='main-perform-accord'>
+        <main >
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
@@ -131,7 +131,7 @@ const RegistrationDeclarationOpenDemand = () => {
                     />
                 </div>
             </div>
-            <Footer text="Relatar Problema" style={style} />
+            {/* <Footer text="Relatar Problema" style={style} /> */}
         </main>
     );
 

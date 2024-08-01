@@ -55,9 +55,15 @@ const RejectionAdaptation = () => {
             const index = prevSelected.indexOf(id);
             if (index !== -1) {
                 return prevSelected.filter(subjectId => subjectId !== id);
-            } else if (prevSelected.length < maxDisciplines - reEnrollment.disciplinesEnrolled) {
+            } else if (prevSelected.length < maxDisciplines - reEnrollment.disciplinas) {
                 return [...prevSelected, id];
             } else {
+                MySwal.fire({
+                    icon: 'info',
+                    title: 'Limite atingido',
+                    text: `Você já selecionou o máximo de ${maxDisciplines - reEnrollment.disciplinas} disciplinas.`,
+                    confirmButtonText: 'OK'
+                });
                 return prevSelected;
             }
         });
@@ -68,7 +74,7 @@ const RejectionAdaptation = () => {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Você não selecionou nada',
+                text: 'Selecione uma Disciplina para seguir.',
                 confirmButtonText: 'OK'
             });
         } else {

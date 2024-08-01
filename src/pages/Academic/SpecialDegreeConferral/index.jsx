@@ -1,12 +1,11 @@
-import CardCheckout from "../../../components/CardCheckout";
-import Footer from "../../../components/Footer";
-import withReactContent from "sweetalert2-react-content";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { convertToBase64 } from "../ProgramContent";
 import axios from "axios";
-import { url_base_local } from "../../../services/url_base";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import CardCheckout from "../../../components/CardCheckout";
+import { url_base_local } from "../../../services/url_base";
+import { convertToBase64 } from "../ProgramContent";
 
 const SpecialDegreeConferral = () => {
 
@@ -78,7 +77,7 @@ const SpecialDegreeConferral = () => {
         console.log("Data to send:", JSON.stringify(dataToSend));
 
         try {
-            const response = await axios.post(`${url_base_local}/solicitacaoFies`, dataToSend, {
+            const response = await axios.post(`${url_base_local}/grauEspecial`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
@@ -116,11 +115,11 @@ const SpecialDegreeConferral = () => {
     };
 
     return (
-        <main className='main-perform-accord'>
+        <main>
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor envie os documentos'
+                        text='Por favor, envie os documentos'
                         onChangeInputFile={handleFileChanges}
                         selectedFile={selectedFile}
                         selectedFileName={selectedFile ? selectedFile.name : ""}
@@ -131,9 +130,7 @@ const SpecialDegreeConferral = () => {
                     />
                 </div>
             </div>
-            <div className='footer-container'>
-                <Footer text="Realizar Pagamento" route="" style={style} />
-            </div>
+            {/* <Footer text="Realizar Pagamento" route="" style={style} /> */}
         </main>
     );
 

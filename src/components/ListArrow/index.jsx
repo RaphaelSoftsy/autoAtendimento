@@ -3,9 +3,7 @@ import './listArrow.css'
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-
 const ListArrow = ({ items }) => {
-
     const [expandedItemId, setExpandedItemId] = useState(null);
 
     const toggleDetails = (id) => {
@@ -36,7 +34,7 @@ const ListArrow = ({ items }) => {
                             <div className='details-diploma'>
                                 <span>{subject.detalhes}</span>
                             </div>
-                            <Link key={subject.id} to={subject.route} className='solicitar'> {subject.text_button} </Link>
+                            <Link key={subject.id} to={subject.route} onClick={subject.onClick} className='solicitar'> {subject.text_button} </Link>
                         </div>
                     )}
                 </li>
@@ -45,5 +43,4 @@ const ListArrow = ({ items }) => {
     );
 };
 
-
-export default ListArrow
+export default ListArrow;
