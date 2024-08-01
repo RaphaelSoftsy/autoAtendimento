@@ -77,7 +77,7 @@ const SpecialDegreeConferral = () => {
         console.log("Data to send:", JSON.stringify(dataToSend));
 
         try {
-            const response = await axios.post(`${url_base_local}/solicitacaoFies`, dataToSend, {
+            const response = await axios.post(`${url_base_local}/grauEspecial`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }

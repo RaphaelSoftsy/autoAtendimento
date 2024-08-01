@@ -1,6 +1,53 @@
+import axios from 'axios';
 import ListArrow from '../../../components/ListArrow';
+import { url_base_local } from '../../../services/url_base';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { useNavigate } from 'react-router-dom';
 
 const Diplomas = () => {
+    const aluno = '2471074';
+    const navigate = useNavigate();
+    const MySwal = withReactContent(Swal);
+
+    const handleSubmit = async () => {
+        MySwal.showLoading();
+
+        const dataToSend = {
+            aluno: aluno
+        };
+
+        console.log("Data to send:", JSON.stringify(dataToSend));
+
+        try {
+            const response = await axios.post(`${url_base_local}/SegundaVia`, dataToSend, {
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            });
+
+            if (response.status === 200) {
+                const responseData = response.data;
+                MySwal.close();
+                MySwal.fire({
+                    title: "Cadastrado com sucesso",
+                    icon: "success",
+                });
+                localStorage.setItem("numero-servico", JSON.stringify(responseData));
+                navigate("numero-servico");
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        } catch (error) {
+            MySwal.close();
+            console.log(error);
+            MySwal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Não foi possível realizar esse comando!",
+            });
+        }
+    };
 
     const list = [
         {
@@ -8,7 +55,7 @@ const Diplomas = () => {
             name: 'Diploma Impresso',
             detalhes: 'Serviço exclusivo para o(a) aluno(a) de GRADUAÇÃO que já recebeu o diploma digital e deseja ter a impressão da via física do documento, em papel especial, para fins de apresentação decorativa. A retirada deverá ser realizada exclusivamente pelo aluno (portanto documento oficial com foto), ou pelo procurador (mediante apresentação de Procuração Pública), no endereço do atendimento da Sede. A retirada deve ser feita imprescindivelmente em até 60 dias APÓS A NOTIFICAÇÃO da disponibilidade.',
             text_button: 'Solicitar',
-            route: "/academico/solicitacoes-academicas/diplomas/diploma-impresso"
+            onClick: handleSubmit,
         },
         {
             id: 2,
@@ -35,9 +82,7 @@ const Diplomas = () => {
                 </div>
             </main>
         </>
-
     );
-
 };
 
-export default Diplomas
+export default Diplomas;
