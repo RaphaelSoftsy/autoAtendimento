@@ -17,7 +17,7 @@ const CardServiceNumberPag = (props) => {
                 text="Realizar Pagamento"
                 backgroundColor="var(--primary-light-blue)"
                 color='#fff'
-                onClick={() => navegation('/realizar-pagamento')}
+                onClick={() => navegation('/financeiro/realizar-pagamento')}
             />
             <DefaultButton
                 text="Voltar para Serviço"
