@@ -17,10 +17,8 @@ const Diplomas = () => {
             aluno: aluno
         };
 
-        console.log("Data to send:", JSON.stringify(dataToSend));
-
         try {
-            const response = await axios.post(`${url_base_local}/SegundaVia`, dataToSend, {
+            const response = await axios.post(`${url_base_local}/diplomaImpresso`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
@@ -34,7 +32,7 @@ const Diplomas = () => {
                     icon: "success",
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navigate("numero-servico");
+                navigate("diploma-impresso/numero-servico");
             } else {
                 throw new Error('Network response was not ok.');
             }

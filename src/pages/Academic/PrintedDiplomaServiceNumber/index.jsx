@@ -1,4 +1,4 @@
-import CardServiceNumber from '../../../components/CardServiceNumber';
+import CardServiceNumberPag from '../../../components/CardServiceNumberPag';
 
 const PrintedDiplomaServiceNumber  = () => {
 
@@ -7,7 +7,7 @@ const PrintedDiplomaServiceNumber  = () => {
     return (
         <div className='main-perform-accord'>
             <div className="rescue-checks">
-                <CardServiceNumber
+                <CardServiceNumberPag
                     number= {numberService}
                 />
             </div>
