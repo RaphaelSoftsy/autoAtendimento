@@ -10,39 +10,26 @@ import axios from 'axios';
 const CourseCancellation = () => {
     const navegation = useNavigate();
     const [course, setCourse] = useState('');
-    const hasPendingFees = true; // Simulando a verificação de pendências
     const aluno = "2014554"
     const MySwal = withReactContent(Swal);
 
     const handleNext = () => {
-        navegation('/academico/cancelamento-do-curso/cobrancas');
+        if (course[0].inadimplente === 'S') {
+            navegation('/academico/cancelamento-do-curso/cobrancas');
+        } else {
+            MySwal.fire({
+                icon: 'question',
+                title: 'Deseja mesmo cancelar o curso?',
+                showCancelButton: true,
+                confirmButtonText: 'Sim',
+                cancelButtonText: 'Não'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navegation('/academico/cancelamento-do-curso/abrir-demanda');
+                }
+            });
+        }
     };
-
-    // const handleCancelCourse = () => {
-    //     if (hasPendingFees) {
-    //         MySwal.fire({
-    //             icon: 'error',
-    //             title: 'Erro',
-    //             text: 'Você possui mensalidades pendentes.',
-    //             confirmButtonText: 'Realizar Acordo'
-
-    //         }).then(() => {
-    //             navigate("/academico/cancelamento-do-curso/cobrancas");
-    //         });
-    //     } else {
-    //         MySwal.fire({
-    //             icon: 'question',
-    //             title: 'Deseja mesmo cancelar o curso?',
-    //             showCancelButton: true,
-    //             confirmButtonText: 'Sim',
-    //             cancelButtonText: 'Não'
-    //         }).then((result) => {
-    //             if (result.isConfirmed) {
-    //                 navigate("/teste");
-    //             }
-    //         });
-    //     }
-    // };
 
     async function getCourseCancellation() {
         try {
@@ -72,10 +59,6 @@ const CourseCancellation = () => {
                 ) : (
                     <p>Carregando dados do aluno...</p>
                 )}
-                {/* <span>Seu curso atual: <b>Administração</b></span>
-                <span>Seu semestre atual: <b>8 Semestre</b></span>
-                <span>Polo: Sumaré <b>Av Dr.Arnald</b></span>
-                <span>Situação Financeira <b>Inadimplente</b></span> */}
                 <DefaultButton
                     text="Cancelar Curso"
                     backgroundColor="var(--secondary-light-red)"
