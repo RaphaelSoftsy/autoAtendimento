@@ -19,11 +19,13 @@
     display: flex;
     gap: 10px;
     flex-direction: column;
-    border: 1px solid #fff;
-    width: 100%;
+    width: 85vw;
     margin-bottom: 2vh;
-    padding: 10px;
     text-align: start;
+    background-color: #fff;
+    color: #000;
+    border-radius: 16px;
+    padding: 32px;
 }
 
 .registration span{
