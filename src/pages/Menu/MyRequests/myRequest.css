@@ -1,0 +1,16 @@
+.my-request {
+    padding: 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    justify-items: center;
+}
+
+@media(max-width: 900px) {
+    .my-request{
+        display: flex;
+        flex-direction: column;
+        padding: 40px 30px;
+    }
+}

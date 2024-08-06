@@ -113,6 +113,7 @@ import CreateNewPassword from "../pages/Password/CreateNewPassword";
 import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
+import MyRequests from "../pages/Menu/MyRequests";
 
 
 const RoutesApp = () => {
@@ -127,6 +128,7 @@ const RoutesApp = () => {
                         <Route path="/verificacao" element={<Verification />} />
                         <Route path="/criar-nova-senha" element={<CreateNewPassword />} />
                         <Route path="/home" element={<Home />} />
+                        <Route path="/minhas-solicitacoes" element={<MyRequests />} />
                         <Route path="/financeiro/*" element={<FinanceiroRoutes />} />
                         <Route path="/academico/*" element={<AcademicRoutes />} />
                         <Route path="/ava/*" element={<AvaRoutes />} />

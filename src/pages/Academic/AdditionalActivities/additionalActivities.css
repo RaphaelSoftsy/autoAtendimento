@@ -59,3 +59,12 @@
     gap: 10px;
     text-align: start;
 }
+
+.carga-horaria-total{
+    width: auto;
+    padding: 32px;
+    background-color: #fff;
+    border-radius: 16px;
+    gap: 32px;
+    color: #000;
+}

@@ -65,7 +65,7 @@ const AdditionalActivities = () => {
         <>
             <main className='main-additional-activities'>
                 <div className='additional-activities'>
-                    <h3>Carga Horária Total: {reEnrollment ? `${reEnrollment.horasCurso} horas` : 'Carregando...'}</h3>
+                    <h3 className='carga-horaria-total'>Carga Horária Total: {reEnrollment ? `${reEnrollment.horasCurso} horas` : 'Carregando...'}</h3>
                     <div className='charge-student'>
                         <h3>Carga Horária Aluno:</h3>
                         <div className='card-charge-student'>
