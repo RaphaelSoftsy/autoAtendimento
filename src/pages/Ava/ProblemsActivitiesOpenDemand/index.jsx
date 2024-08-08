@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import CardCheckout from "../../../components/CardCheckout";
-import Footer from "../../../components/Footer";
 import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../../Academic/ProgramContent";
 
@@ -117,7 +116,7 @@ const ProblemsActivitiesOpenDemand = () => {
     };
 
     return (
-        <main className='main-perform-accord'>
+        <main>
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
@@ -126,13 +125,13 @@ const ProblemsActivitiesOpenDemand = () => {
                         selectedFile={selectedFile}
                         selectedFileName={selectedFile ? selectedFile.name : ""}
                         onClick={handleSubmit}
-                        textTextArea='Observação'
+                        textTextArea=''
                         observation={formData.obs}
                         onObservationChange={handleChangeObservation}
                     />
                 </div>
             </div>
-            <Footer text="Relatar Problema" style={style} />
+            {/* <Footer text="Relatar Problema" style={style} /> */}
         </main>
     );
 }
