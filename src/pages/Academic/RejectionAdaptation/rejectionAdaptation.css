@@ -1,13 +1,24 @@
 .discipline {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     gap: 15px;
     padding-right: 20px;
 }
 
+.discipline h3{
+    width: 85vw;
+    display: flex;
+    align-items: center;
+}
+
+.discipline h3 span{
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
 .rejection-adaptation{
-    padding: 10vh 3vw;
+    padding: 5vh 3vw;
     width: 100%;
     min-height: 61vh;
     display: flex;
@@ -19,13 +30,14 @@
     display: flex;
     gap: 10px;
     flex-direction: column;
-    width: 85vw;
+    width: auto;
     margin-bottom: 2vh;
     text-align: start;
     background-color: #fff;
     color: #000;
     border-radius: 16px;
     padding: 32px;
+    
 }
 
 .registration span{
@@ -36,6 +48,35 @@
     width: 100%;
     text-align: start;
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -110px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: start;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 @media(max-width:999px) {
     .discipline{

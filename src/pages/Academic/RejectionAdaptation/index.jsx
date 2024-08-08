@@ -6,6 +6,7 @@ import withReactContent from 'sweetalert2-react-content';
 import ListCheckButton from '../../../components/ListCheckButton';
 import { url_base_local } from '../../../services/url_base';
 import './rejectionAdaptation.css';
+import { FaExclamationCircle } from 'react-icons/fa';
 
 const RejectionAdaptation = () => {
     const list = [
@@ -19,15 +20,11 @@ const RejectionAdaptation = () => {
         }
     ];
 
-    // const style = {
-    //     backgroundColor: "var(--secondary-light-red)"
-    // };
-
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [reEnrollment, setReEnrollment] = useState({ disciplinas: 0 });
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
-    const aluno = '2471074';
+    const aluno = '2473474';
     const maxDisciplines = 4;
 
     async function getReEnrollment() {
@@ -86,22 +83,28 @@ const RejectionAdaptation = () => {
         <>
             <main className='rejection-adaptation'>
                 <div className='discipline'>
-                    <h3>Selecione a Disciplina que deseja realizar a Matrícula, lembrando que você pode ter 4 disciplinas simultaneamente</h3>
                     <div className='registration'>
-                        <span>Nº de Disciplinas já matrículadas {reEnrollment.disciplinas}</span>
-                        <span>Nº de Disciplinas que pode solicitar {maxDisciplines - reEnrollment.disciplinas}</span>
+                        <span>Número de Disciplinas matrículadas = {reEnrollment.disciplinas}</span>
+                        <span>Número de Disciplinas que podem ser solicitadas = {maxDisciplines - reEnrollment.disciplinas}</span>
                     </div>
-                    <h3 className='select-diploma'>Selecione a Disciplina</h3>
+
+                    <h3>
+                        Selecione a Disciplina que deseja realizar a Matrícula
+                        <span className="tooltip">
+                            <FaExclamationCircle />
+                            <p className="tooltiptext">Lembrando que você pode ter apenas 4 disciplinas simultaneamente na matrícula.</p>
+                        </span>
+                    </h3>
+
                     <ListCheckButton
                         items={list}
                         selectedSubjects={selectedSubjects}
                         onSelect={handleSubjectSelect}
                         text="Solicitar"
-                        onClickButton = {handleNext}
+                        onClickButton={handleNext}
                     />
                 </div>
             </main>
-            {/* <Footer text='Relatar um Problema' onClick={handleNext} style={style} /> */}
         </>
     );
 }
