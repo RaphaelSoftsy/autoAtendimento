@@ -1,20 +1,21 @@
-import { useNavigate } from "react-router-dom";
-import CardRequest from "../../../../components/CardRequest";
-import DefaultButton from "../../../../components/DefaultButton";
-import CardCheckout from "../../../../components/CardCheckout";
-import withReactContent from "sweetalert2-react-content";
-import Swal from "sweetalert2";
-import { useState } from "react";
-import { convertToBase64 } from "../../../Academic/ProgramContent";
 import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import CardCheckout from "../../../components/CardCheckout";
+import { url_base_local } from "../../../services/url_base";
+import { convertToBase64 } from "../../Academic/ProgramContent";
 
-const Sumare = () => {
+const ChargesOpenDemand = () => {
 
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
+    const cobrancaSelecionada = localStorage.getItem("cobranca-selecionada");
 
     const [formData, setFormData] = useState({
         aluno: '2471074',
+        cobranca: '',
         obs: '',
         nomeArq: '',
         tamanhoArq: '',
@@ -48,8 +49,7 @@ const Sumare = () => {
         }
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
 
         if (!formData.arquivo) {
             MySwal.fire({
@@ -59,11 +59,12 @@ const Sumare = () => {
             });
             return;
         }
-    
+
         MySwal.showLoading();
-    
+
         const dataToSend = {
             aluno: formData.aluno,
+            cobranca: cobrancaSelecionada,
             obs: formData.obs,
             nomeArq: formData.nomeArq,
             tamanhoArq: formData.tamanhoArq,
@@ -71,16 +72,14 @@ const Sumare = () => {
             tipoArq: formData.tipoArq,
             arquivo: formData.arquivo
         };
-    
-        console.log("Data to send:", JSON.stringify(dataToSend));
-    
+
         try {
-            const response = await axios.post('http://localhost:8080/solicitacaoFies', dataToSend, {
+            const response = await axios.post(`${url_base_local}/cobrancaIndevida`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
             });
-    
+
             if (response.status === 200) {
                 const responseData = response.data;
                 MySwal.close();
@@ -113,29 +112,27 @@ const Sumare = () => {
     };
 
     return (
-        <main className="repayment">
-            <div className='repayment-card'>
-                {/* <CardRequest text="Descreva o por que da sua solicitação:" />
-                <DefaultButton
-                    text="Enviar Solicitação"
-                    backgroundColor="var(--primary-light-blue)"
-                    color='#fff'
-                    onClick={() => navegation("/")}
-                /> */}
-                <CardCheckout
-                    text='Descreva o por que da sua solicitação:'
-                    onChangeInputFile={handleFileChanges}
-                    selectedFile={selectedFile}
-                    selectedFileName={selectedFile ? selectedFile.name : ""}
-                    onClick={handleSubmit}
-                    textTextArea=''
-                    observation={formData.obs}
-                    onObservationChange={handleChangeObservation}
-                />
+        <main className='main-perform-accord'>
+            <div className="rescue-checks">
+                <div className='list-subjects'>
+                    <CardCheckout
+                        text='Por favor, para análise nos explique seu problema'
+                        onChangeInputFile={handleFileChanges}
+                        selectedFile={selectedFile}
+                        selectedFileName={selectedFile ? selectedFile.name : ""}
+                        onClick={handleSubmit}
+                        textTextArea=''
+                        observation={formData.obs}
+                        onObservationChange={handleChangeObservation}
+                    />
+                </div>
             </div>
+            {/* <Footer text="Relatar Problema" style={style} /> */}
         </main>
     );
-    
+
+
+
 }
 
-export default Sumare;
+export default ChargesOpenDemand;

@@ -114,6 +114,9 @@ import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
 import MyRequests from "../pages/Menu/MyRequests";
+import RescueChecksServiceNumber from "../pages/Finance/RescueChecksServiceNumber";
+import ChargesOpenDemand from "../pages/Finance/ChargesOpenDemand";
+import ChargesServiceNumber from "../pages/Finance/ChargesServiceNumber";
 
 
 const RoutesApp = () => {
@@ -196,11 +199,14 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/cashback/servicos" element={<ServiceCashBack />} />
                 <Route path="/outros-assuntos/cashback/todos" element={<EveryCashBack />} /> */}
                 <Route path="/outros-assuntos/cobrança-indevida" element={<Charges />} />
+                <Route path="/outros-assuntos/cobrança-indevida/abrir-demanda" element={<ChargesOpenDemand />} />
+                <Route path="/outros-assuntos/cobrança-indevida/abrir-demanda/numero-servico" element={<ChargesServiceNumber />} />
                 {/* <Route path="/outros-assuntos/cobrança-indevida/mensalidades" element={<TuitionCharges />} />
                 <Route path="/outros-assuntos/cobrança-indevida/servicos" element={<ServiceCharges />} />
                 <Route path="/outros-assuntos/cobrança-indevida/acordo" element={<AccordCharges />} />
                 <Route path="/outros-assuntos/cobrança-indevida/todos" element={<EveryCharges />} /> */}
                 <Route path="/outros-assuntos/resgate-cheque" element={<RescueChecks />} />
+                <Route path="/outros-assuntos/resgate-cheque/numero-servico" element={<RescueChecksServiceNumber />} />
             </Routes>
         </>
     );

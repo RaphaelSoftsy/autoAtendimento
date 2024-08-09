@@ -44,7 +44,7 @@ const CashBack = () => {
         MySwal.showLoading();
         try {
             const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=S&aVencer=S`);
-            const data = response.data;
+            const data = response.data.cobrancas;
 
             console.log(data);
 

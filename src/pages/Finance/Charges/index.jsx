@@ -44,7 +44,7 @@ const Charges = () => {
         MySwal.showLoading();
         try {
             const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=S&aVencer=S`);
-            const data = response.data;
+            const data = response.data.cobrancas;
 
             console.log(data);
 
@@ -96,6 +96,8 @@ const Charges = () => {
     };
 
     const handleNext = () => {
+
+        // executar a api aqui e enviar para a outroa tela (numero servico)
         if (selectedSubjects.length === 0) {
             MySwal.fire({
                 icon: 'info',
@@ -104,7 +106,14 @@ const Charges = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            navegation('/');
+
+            const selectedItemId = selectedSubjects[0];
+
+            const selectedItem = items.find(item => item.id === selectedItemId);
+
+            localStorage.setItem('cobranca-selecionada', selectedItem.name);
+
+            navegation('abrir-demanda');
         }
     };
 
