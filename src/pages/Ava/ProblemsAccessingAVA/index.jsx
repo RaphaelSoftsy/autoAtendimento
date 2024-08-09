@@ -1,20 +1,22 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import CardCheckout from "../../../components/CardCheckout";
 import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../../Academic/ProgramContent";
+import { useRA } from '../../../contexts/RAContext';
 import './problemsAccessingAva.css';
 
 const ProblemsAccessingAVA = () => {
 
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
+    const { currentRA } = useRA();
 
     const [formData, setFormData] = useState({
-        aluno: '2471074',
+        aluno: currentRA.ra,
         obs: '',
         nomeArq: '',
         tamanhoArq: '',
@@ -22,6 +24,13 @@ const ProblemsAccessingAVA = () => {
         tipoArq: '',
         arquivo: ''
     });
+
+    useEffect(() => {
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          aluno: currentRA.ra
+        }));
+      }, [currentRA]);
 
     const handleChangeObservation = (e) => {
         const { name, value } = e.target;
@@ -70,6 +79,8 @@ const ProblemsAccessingAVA = () => {
             tipoArq: formData.tipoArq,
             arquivo: formData.arquivo
         };
+
+        console.log(dataToSend);
 
         try {
             const response = await axios.post(`${url_base_local}/problemaAcessoAva`, dataToSend, {
@@ -125,7 +136,6 @@ const ProblemsAccessingAVA = () => {
             </div>
         </main>
     );
-
 }
 
 export default ProblemsAccessingAVA;
