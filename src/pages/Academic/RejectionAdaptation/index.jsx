@@ -33,7 +33,6 @@ const RejectionAdaptation = () => {
         try {
             const response = await axios.get(`${url_base_local}/disciplinasMatriculadas/${aluno}`);
             const data = response.data[0];
-            console.log('Dados:', data);
 
             setReEnrollment(data);
         } catch (error) {
@@ -87,7 +86,6 @@ const RejectionAdaptation = () => {
                         <span>Número de Disciplinas matrículadas = {reEnrollment.disciplinas}</span>
                         <span>Número de Disciplinas que podem ser solicitadas = {maxDisciplines - reEnrollment.disciplinas}</span>
                     </div>
-
                     <h3>
                         Selecione a Disciplina que deseja realizar a Matrícula
                         <span className="tooltip">
@@ -95,7 +93,6 @@ const RejectionAdaptation = () => {
                             <p className="tooltiptext">Lembrando que você pode ter apenas 4 disciplinas simultaneamente na matrícula.</p>
                         </span>
                     </h3>
-
                     <ListCheckButton
                         items={list}
                         selectedSubjects={selectedSubjects}

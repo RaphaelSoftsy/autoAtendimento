@@ -1,4 +1,4 @@
-import CardServiceNumber from '../../../components/CardServiceNumber';
+import CardServiceNumberAva from '../../../components/CardServiceNumberAva';
 
 const ProblemsActivitiesServiceNumber = () => {
 
@@ -7,7 +7,7 @@ const ProblemsActivitiesServiceNumber = () => {
     return (
         <div className='main-perform-accord'>
             <div className="rescue-checks">
-                <CardServiceNumber
+                <CardServiceNumberAva
                     number={numberService}
                 />
             </div>

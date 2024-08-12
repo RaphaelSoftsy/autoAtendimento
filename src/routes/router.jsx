@@ -55,11 +55,11 @@ import TerminationInternshipContractServiceNumber from "../pages/Academic/Termin
 import UndergraduateCoverLetter from "../pages/Academic/UndergraduateCoverLetter";
 import UtilizationStudies from "../pages/Academic/UtilizationStudies";
 import UtilizationStudiesServiceNumber from "../pages/Academic/UtilizationStudiesServiceNumber";
-import DescribeRequest from "../pages/Ava/DescribeRequest";
-import DescribeRequestServiceNumber from "../pages/Ava/DescribeRequestServiceNumber";
 import ProblemsAccessingAVA from "../pages/Ava/ProblemsAccessingAVA";
 import ProblemsAccessingAVAServiceNumber from "../pages/Ava/ProblemsAccessingAVAServiceNumber";
 import ProblemsAccessingDiscipline from "../pages/Ava/ProblemsAccessingDiscipline";
+import ProblemsAccessingDisciplineOpenDemand from "../pages/Ava/ProblemsAccessingDisciplineOpenDemand";
+import ProblemsAccessingDisciplineServiceNumber from "../pages/Ava/ProblemsAccessingDisciplineServiceNumber";
 import ProblemsActivities from "../pages/Ava/ProblemsActivities";
 import ProblemsActivitiesOpenDemand from "../pages/Ava/ProblemsActivitiesOpenDemand";
 import ProblemsActivitiesServiceNumber from "../pages/Ava/ProblemsActivitiesServiceNumber";
@@ -307,11 +307,11 @@ const AvaRoutes = () => {
                 <Route path="/problemas-com-acesso-ao-ava" element={<ProblemsAccessingAVA />} />
                 <Route path="/problemas-com-acesso-ao-ava/numero-servico" element={<ProblemsAccessingAVAServiceNumber />} />
                 <Route path="/problemas-com-acesso-as-disciplinas" element={<ProblemsAccessingDiscipline />} />
-                <Route path="/problemas-com-acesso-as-disciplinas/descreva-solicitacao" element={<DescribeRequest />} />
-                <Route path="/problemas-com-acesso-as-disciplinas/descreva-solicitacao/numero-servico" element={<DescribeRequestServiceNumber />} />
+                <Route path="/problemas-com-acesso-as-disciplinas/abrir-demanda" element={<ProblemsAccessingDisciplineOpenDemand />} />
+                <Route path="/problemas-com-acesso-as-disciplinas/abrir-demanda/numero-servico" element={<ProblemsAccessingDisciplineServiceNumber />} />
                 <Route path="/problemas-na-atividade" element={<ProblemsActivities />} />
-                <Route path="/problemas-na-atividade/explicar-problema" element={<ProblemsActivitiesOpenDemand />} />
-                <Route path="/problemas-na-atividade/explicar-problema/numero-servico" element={<ProblemsActivitiesServiceNumber />} />
+                <Route path="/problemas-na-atividade/abrir-demanda" element={<ProblemsActivitiesOpenDemand />} />
+                <Route path="/problemas-na-atividade/abrir-demanda/numero-servico" element={<ProblemsActivitiesServiceNumber />} />
                 <Route path="/problemas-nas-avaliacoes" element={<ProblemsReviews />} />
                 <Route path="/problemas-nas-avaliacoes/escolha" element={<ProblemsReviewsSelect />} />
                 <Route path="/problemas-nas-avaliacoes/escolha/abrir-demanda" element={<ProblemsReviewsSelectOpenDemand />} />

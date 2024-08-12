@@ -20,7 +20,7 @@ const ProblemsAccessingDiscipline = () => {
 
     useEffect(() => {
         getProblemsAccessingDiscipline();
-    }, [currentRA]);
+    }, [currentRA.ra]);
 
     async function getProblemsAccessingDiscipline() {
         MySwal.showLoading();
@@ -70,14 +70,13 @@ const ProblemsAccessingDiscipline = () => {
             });
         } else {
             localStorage.setItem("disciplina-selecionada", selectedSubjectName);
-            navegation('/ava/problemas-com-acesso-as-disciplinas/descreva-solicitacao');
+            navegation('abrir-demanda');
         }
     };
 
     return (
         <main className='main-problems-reviews'>
             <div className="problems-reviews">
-                {/* <ModifyRA /> */}
                 <div className='list-subjects'>
                     <h1 className='title'>Em qual disciplina você está com problemas?</h1>
                     {problems.length > 0 ?
