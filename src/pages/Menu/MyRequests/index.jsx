@@ -21,8 +21,7 @@ const MyRequests = () => {
         try {
             const response = await axios.get(`${url_base_local}/minhasSolicitacoes/${aluno}`);
             const data = response.data;
-            console.log('Dados da declaração:', data);
-
+            
             setMyResquest(data.reverse());
         } catch (error) {
             console.error('Erro ao buscar declaração:', error);
@@ -43,7 +42,8 @@ const MyRequests = () => {
                         key={item.id} 
                         solicitacao={item.solicitacao} 
                         data={item.data} 
-                        descricao={item.descricao} 
+                        descricao={item.descricao}
+                        status={item.status} 
                     />
                 ))}
             </main>

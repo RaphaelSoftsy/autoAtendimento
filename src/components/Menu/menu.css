@@ -45,6 +45,7 @@
 .modal-content-menu {
     background: white;
     border-radius: 12px;
+    width: 600px;
 }
 
 .select-content{

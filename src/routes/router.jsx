@@ -18,12 +18,6 @@ import Enade from "../pages/Academic/Enade";
 import EnadeOpenDemand from "../pages/Academic/EnadeOpenDemand";
 import EnadeServiceNumber from "../pages/Academic/EnadeServiceNumber";
 import Expedition from "../pages/Academic/Expedition";
-import ExternalDisciplines from "../pages/Academic/ExternalDisciplines";
-import ExternalDisciplinesOpenDemand from "../pages/Academic/ExternalDisciplinesOpenDemand";
-import ExternalDisciplinesServiceNumber from "../pages/Academic/ExternalDisciplinesServiceNumber";
-import InternalDisciplines from "../pages/Academic/InternalDisciplines";
-import InternalDisciplinesOpenDemand from "../pages/Academic/InternalDisciplinesOpenDemand";
-import InternalDisciplinesServiceNumber from "../pages/Academic/InternalDisciplinesServiceNumber";
 import Internship from "../pages/Academic/Internship";
 import InternshipReportSubmission from "../pages/Academic/InternshipReportSubmission";
 import InternshipReportSubmissionServiceNumber from "../pages/Academic/InternshipReportSubmissionServiceNumber";
@@ -60,6 +54,7 @@ import TerminationInternshipContract from "../pages/Academic/TerminationInternsh
 import TerminationInternshipContractServiceNumber from "../pages/Academic/TerminationInternshipContractServiceNumber";
 import UndergraduateCoverLetter from "../pages/Academic/UndergraduateCoverLetter";
 import UtilizationStudies from "../pages/Academic/UtilizationStudies";
+import UtilizationStudiesServiceNumber from "../pages/Academic/UtilizationStudiesServiceNumber";
 import DescribeRequest from "../pages/Ava/DescribeRequest";
 import DescribeRequestServiceNumber from "../pages/Ava/DescribeRequestServiceNumber";
 import ProblemsAccessingAVA from "../pages/Ava/ProblemsAccessingAVA";
@@ -78,6 +73,8 @@ import AddSwapPayment from "../pages/Finance/AddSwapPayment";
 import CardChoice from "../pages/Finance/CardChoice";
 import CashBack from "../pages/Finance/CashBack";
 import Charges from "../pages/Finance/Charges";
+import ChargesOpenDemand from "../pages/Finance/ChargesOpenDemand";
+import ChargesServiceNumber from "../pages/Finance/ChargesServiceNumber";
 import ConsentLetter from "../pages/Finance/ConsentLetter";
 import DischargeDeclaration from "../pages/Finance/DischargeDeclaration";
 import FiesSumare from "../pages/Finance/FiesSumare";
@@ -104,19 +101,17 @@ import PerformPayment from "../pages/Finance/PerformPayment";
 import Repayment from "../pages/Finance/Repayment";
 import RequestDocument from "../pages/Finance/RequestDocument";
 import RescueChecks from "../pages/Finance/RescueChecks";
+import RescueChecksServiceNumber from "../pages/Finance/RescueChecksServiceNumber";
 import SendDeclarationFinancial from "../pages/Finance/SendDeclarationFinancial";
 import SpecificFinancialStatement from "../pages/Finance/SpecificFinancialStatement";
 import SubjectFinance from "../pages/Finance/SubjectFinance";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import MyRequests from "../pages/Menu/MyRequests";
 import CreateNewPassword from "../pages/Password/CreateNewPassword";
 import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
-import MyRequests from "../pages/Menu/MyRequests";
-import RescueChecksServiceNumber from "../pages/Finance/RescueChecksServiceNumber";
-import ChargesOpenDemand from "../pages/Finance/ChargesOpenDemand";
-import ChargesServiceNumber from "../pages/Finance/ChargesServiceNumber";
 
 
 const RoutesApp = () => {
@@ -234,12 +229,13 @@ const AcademicRoutes = () => {
                 <Route path="/matricula-em-reprovacao-adaptacao" element={<RejectionAdaptation />} />
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos" element={<UtilizationStudies />} />
-                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare" element={<InternalDisciplines />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/numero-servico" element={<UtilizationStudiesServiceNumber />} />
+                {/* <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare" element={<InternalDisciplines />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare/abrir-demanda" element={<InternalDisciplinesOpenDemand />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare/abrir-demanda/numero-servico" element={<InternalDisciplinesServiceNumber />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades" element={<ExternalDisciplines />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades/abrir-demanda" element={<ExternalDisciplinesOpenDemand />} />
-                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades/abrir-demanda/numero-servico" element={<ExternalDisciplinesServiceNumber />} />
+                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades/abrir-demanda/numero-servico" element={<ExternalDisciplinesServiceNumber />} /> */}
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} />
