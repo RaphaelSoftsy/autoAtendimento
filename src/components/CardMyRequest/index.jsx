@@ -11,6 +11,8 @@ const CardMyRequest = (props) => {
                 <p className='data'>Data: <strong>{dataFormatada}</strong></p>
             </div>
             <p>{props.descricao}</p>
+            <p>Status: {props.status}</p>
+
         </div>
     );
 };

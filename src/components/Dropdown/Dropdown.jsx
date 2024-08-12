@@ -3,8 +3,8 @@ import './dropdown.css'
 const Dropdown = (props) => {
 
     const handleChange = (e) => {
-        const selectedOption = props.itens.find(item => item.id === parseInt(e.target.value, 10));
-        props.onChange(selectedOption);
+        const selectedValue = e.target.value;
+        props.onChange(selectedValue);
     };
 
     return (
@@ -16,13 +16,13 @@ const Dropdown = (props) => {
                 onChange={handleChange}
                 className="custom-select"
             >
-                <option className="opt-drop" value="hide">Selecione</option>
+                <option className="opt-drop" value="">Selecione</option>
                 {props.itens.map(option => (
-                    <option className="opt-drop" key={option.id} value={option.id}>{option.name}</option>
+                    <option className="opt-drop" key={option.id} value={option.name}>{option.name}</option>
                 ))}
             </select>
         </div>
     )
 }
 
-export default Dropdown
+export default Dropdown;
