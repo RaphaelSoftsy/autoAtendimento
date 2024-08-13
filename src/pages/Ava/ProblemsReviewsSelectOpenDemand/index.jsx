@@ -84,9 +84,7 @@ const ProblemsReviewsSelectOpenDemand = () => {
             disciplina: disciplinaSelecionada,
             avaliacao: avaliacaoSelecionada
         };
-
-        console.log("Data to send:", JSON.stringify(dataToSend));
-
+        
         try {
             const response = await axios.post(`${url_base_local}/problemaAvaliacao`, dataToSend, {
                 headers: {

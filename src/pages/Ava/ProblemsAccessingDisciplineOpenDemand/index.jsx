@@ -8,7 +8,7 @@ import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../../Academic/ProgramContent";
 import { useRA } from '../../../contexts/RAContext';
 
-const DescribeRequest = () => {
+const ProblemsAccessingDisciplineOpenDemand = () => {
 
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
@@ -140,4 +140,4 @@ const DescribeRequest = () => {
     );
 }
 
-export default DescribeRequest;
+export default ProblemsAccessingDisciplineOpenDemand;

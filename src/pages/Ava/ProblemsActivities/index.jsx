@@ -20,7 +20,7 @@ const ProblemsActivities = () => {
 
     useEffect(() => {
         getProblemsAccessingDiscipline();
-    }, [currentRA]);
+    }, [currentRA.ra]);
 
     async function getProblemsAccessingDiscipline() {
         MySwal.showLoading();
@@ -70,7 +70,7 @@ const ProblemsActivities = () => {
             });
         } else {
             localStorage.setItem("disciplina-selecionada", selectedSubjectName);
-            navegation('/ava/problemas-na-atividade/explicar-problema');
+            navegation('abrir-demanda');
         }
     };
 

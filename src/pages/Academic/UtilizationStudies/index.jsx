@@ -22,10 +22,6 @@ const UtilizationStudies = () => {
         },
         {
             id: 2,
-            name: 'Aproveitar disciplinas cursadas em outra(s) faculdade(s) e na Sumaré'
-        },
-        {
-            id: 3,
             name: 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)'
         }
     ];
@@ -38,7 +34,7 @@ const UtilizationStudies = () => {
         extensaoArq: '',
         tipoArq: '',
         arquivo: '',
-        tipo: ''
+        apiEndpoint: ''
     });
 
     const handleChangeObservation = (e) => {
@@ -87,13 +83,12 @@ const UtilizationStudies = () => {
             extensaoArq: formData.extensaoArq,
             tipoArq: formData.tipoArq,
             arquivo: formData.arquivo,
-            tipo: formData.tipo
         };
 
         console.log(dataToSend);
 
         try {
-            const response = await axios.post(`${url_base_local}/aproveitamentoInterno`, dataToSend, {
+            const response = await axios.post(`${url_base_local}/${formData.apiEndpoint}`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
@@ -131,11 +126,18 @@ const UtilizationStudies = () => {
     };
 
     const handleDropdownChange = (selectedValue) => {
+        let apiEndpoint = '';
+        if (selectedValue === 'Aproveitar disciplinas cursadas na Sumaré') {
+            apiEndpoint = 'aproveitamentoInterno';
+        } else if (selectedValue === 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)') {
+            apiEndpoint = 'aproveitamentoExterno';
+        }
+
         setFormData(prevState => ({
             ...prevState,
-            tipo: selectedValue
+            apiEndpoint
         }));
-    };    
+    };
 
     return (
         <main>

@@ -80,8 +80,6 @@ const ProblemsAccessingAVA = () => {
             arquivo: formData.arquivo
         };
 
-        console.log(dataToSend);
-
         try {
             const response = await axios.post(`${url_base_local}/problemaAcessoAva`, dataToSend, {
                 headers: {

@@ -1,9 +1,27 @@
-.reviews-notes{
-    padding: 10vh 16px;
+.reviews-notes {
+    padding: 6vh 16px;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 20px;
+}
+
+.sub-topic {
+    display: flex;
+    gap: 20px;
+}
+
+.select-discipline{
+    width: 80vw;
+}
+
+.back-arrow {
+    width: 80vw;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+    cursor: pointer;
 }

@@ -1,6 +1,7 @@
 .card-my-request {
     background-color: #fff;
-    width: auto;
+    max-width: 600px;
+    max-width: 100%;
     border-radius: 16px;
     padding: 30px;
     box-shadow: 0px 7px 11px -1px var(--primary-dark-blue-alt);
@@ -11,6 +12,7 @@
     gap: 20px;
     color: #000;
     text-align: start;
+    box-sizing: border-box;
 }
 
 .card-my-request p {

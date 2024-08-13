@@ -23,7 +23,7 @@ const ProblemsReviewsSelect = () => {
         }
     ];
 
-    const [selectedSubjectName, setSelectedSubjectName] = useState(null);
+    const [setSelectedSubjectName] = useState(null);
 
     const handleSubjectClick = (name) => {
         setSelectedSubjectName(name);
