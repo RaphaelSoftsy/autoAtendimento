@@ -230,12 +230,6 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos" element={<UtilizationStudies />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/numero-servico" element={<UtilizationStudiesServiceNumber />} />
-                {/* <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare" element={<InternalDisciplines />} />
-                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare/abrir-demanda" element={<InternalDisciplinesOpenDemand />} />
-                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-na-sumare/abrir-demanda/numero-servico" element={<InternalDisciplinesServiceNumber />} />
-                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades" element={<ExternalDisciplines />} />
-                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades/abrir-demanda" element={<ExternalDisciplinesOpenDemand />} />
-                <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/aproveitamento-disciplinas-cursadas-em-outras-faculdades/abrir-demanda/numero-servico" element={<ExternalDisciplinesServiceNumber />} /> */}
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} />
