@@ -83,7 +83,7 @@ const RejectionAdaptation = () => {
             <main className='rejection-adaptation'>
                 <div className='discipline'>
                     <div className='registration'>
-                        <span>Número de Disciplinas matrículadas = {reEnrollment.disciplinas}</span>
+                        <span>Número de Disciplinas Matrículadas = {reEnrollment.disciplinas}</span>
                         <span>Número de Disciplinas que podem ser solicitadas = {maxDisciplines - reEnrollment.disciplinas}</span>
                     </div>
                     <h3>

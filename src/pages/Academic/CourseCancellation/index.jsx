@@ -1,11 +1,11 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useNavigate } from 'react-router-dom';
 import DefaultButton from "../../../components/DefaultButton";
-import "./courseCancellation.css";
 import { url_base_local } from '../../../services/url_base';
-import axios from 'axios';
+import "./courseCancellation.css";
 
 const CourseCancellation = () => {
     const navegation = useNavigate();
