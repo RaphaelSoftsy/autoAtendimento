@@ -112,6 +112,8 @@ import CreateNewPassword from "../pages/Password/CreateNewPassword";
 import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
+import Notes from "../pages/Academic/Notes";
+import NotesServiceNumber from "../pages/Academic/NotesServiceNumber";
 
 
 const RoutesApp = () => {
@@ -226,6 +228,8 @@ const AcademicRoutes = () => {
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
                 <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
+                <Route path="/avaliacoes-e-notas/notas" element={<Notes />} />
+                <Route path="/avaliacoes-e-notas/notas/numero-servico" element={<NotesServiceNumber />} />
                 <Route path="/matricula-em-reprovacao-adaptacao" element={<RejectionAdaptation />} />
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos" element={<UtilizationStudies />} />
@@ -234,8 +238,8 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} />
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
-                <Route path="/solicitacoes-academicas/diplomas/diploma-impresso" element={<PrintedDiploma />} />
-                <Route path="/solicitacoes-academicas/diplomas/diploma-impresso/numero-servico" element={<PrintedDiplomaServiceNumber />} />
+                {/* <Route path="/solicitacoes-academicas/diplomas/diploma-impresso" element={<PrintedDiploma />} /> */}
+                <Route path="/solicitacoes-academicas/diplomas/numero-servico" element={<PrintedDiplomaServiceNumber />} />
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial/numero-servico" element={<SpecialDegreeConferralServiceNumber />} />
                 <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma" element={<DuplicateDiploma />} />
