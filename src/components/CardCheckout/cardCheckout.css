@@ -71,3 +71,9 @@
     color: #000;
     text-align: start;
 }
+
+@media(max-width:600px) {
+    .card-checkout{
+        width: 100%;
+    }
+}

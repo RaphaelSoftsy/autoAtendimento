@@ -3,18 +3,17 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    padding-right: 20px;
 }
 
 .discipline h3{
     width: 85vw;
     display: flex;
     align-items: center;
+    line-height: 1.2rem
 }
 
 .discipline h3 span{
-    font-size: 1rem;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 .rejection-adaptation{
@@ -41,7 +40,8 @@
 }
 
 .registration span{
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1rem);
+    line-height: 1.2em
 }
 
 .select-diploma{

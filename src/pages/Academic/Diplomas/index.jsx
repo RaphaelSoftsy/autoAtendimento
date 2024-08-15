@@ -32,7 +32,7 @@ const Diplomas = () => {
                     icon: "success",
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navigate("diploma-impresso/numero-servico");
+                navigate("numero-servico");
             } else {
                 throw new Error('Network response was not ok.');
             }

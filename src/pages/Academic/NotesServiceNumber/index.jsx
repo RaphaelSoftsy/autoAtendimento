@@ -1,13 +1,13 @@
-import CardServiceNumberAva from '../../../components/CardServiceNumberAva';
+import CardServiceNumberPag from '../../../components/CardServiceNumberPag';
 
-const ProblemsAccessingAVAServiceNumber = () => {
+const NotesServiceNumber = () => {
 
     const numberService = localStorage.getItem('numero-servico')
 
     return (
-        <div>
+        <div className='main-perform-accord'>
             <div className="rescue-checks">
-                <CardServiceNumberAva
+                <CardServiceNumberPag
                     number={numberService}
                 />
             </div>
@@ -15,4 +15,4 @@ const ProblemsAccessingAVAServiceNumber = () => {
     );
 };
 
-export default ProblemsAccessingAVAServiceNumber;
+export default NotesServiceNumber;
