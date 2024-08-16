@@ -81,9 +81,7 @@ const ProblemsAccessingDisciplineOpenDemand = () => {
             arquivo: formData.arquivo,
             disciplina: disciplinaSelecionada
         };
-
-        console.log(dataToSend);
-
+        
         try {
             const response = await axios.post(`${url_base_local}/poblemasDisciplinasAva`, dataToSend, {
                 headers: {

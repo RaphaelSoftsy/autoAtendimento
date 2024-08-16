@@ -11,17 +11,10 @@ import { useState } from 'react';
 const Home = () => {
 
     const [menuVisible, setMenuVisible] = useState(false)
-
-    const aluno = '2470005';
-
-    localStorage.setItem("aluno-ra", aluno);
-
+    
     return (
         <div>
             <header>
-                {/* <span className='icon-bars'>
-                    <FaBars className='bars' />
-                </span> */}
                 <span className="icon-bars" onClick={() => setMenuVisible(!menuVisible)}>
                 <FaBars className='icon-header' />
             </span>
