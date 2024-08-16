@@ -29,6 +29,10 @@ const Login = () => {
             if(data === 'autenticado') {
                 setLogin(data);
                 localStorage.setItem("aluno-ra", ra);
+
+                console.log(ra);
+                
+
                 navegation('/home');
                 MySwal.fire({
                     icon:'success',
