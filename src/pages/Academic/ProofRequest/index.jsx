@@ -15,9 +15,8 @@ const ProofRequest = () => {
     const [selectedSubject, setSelectedSubject] = useState([]);
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
-
     const { currentRA } = useRA();
-    
+
     // const list = [
     //     {
     //         id: 1,
@@ -91,20 +90,23 @@ const ProofRequest = () => {
 
     return (
         <>
-            <main className="proof-request">
-                <div className='list-subjects'>
-                    <h1 className='title'>De qual disciplina?</h1>
-                    <h4 className='title'>Se já houver solicitação da disciplina aberta, levar para a tela de senha com a opção de abrir demanda</h4>
-                    <ListCheckButton
-                        items={selectedSubject}
-                        selectedSubjects={selectedSubjects}
-                        onSelect={handleSubjectSelect}
-                        multiple={false}
-                        text="Não achou a disciplina que está procurando?"
-                    />
+            <main className='main-problems-activities'>
+                <div className="proof-request">
+                    <div className='list-subjects'>
+                        <h1 className='title'>De qual disciplina?</h1>
+                        <h4 className='title'>Se já houver solicitação da disciplina aberta, levar para a tela de senha com a opção de abrir demanda</h4>
+                        <ListCheckButton
+                            items={selectedSubject}
+                            selectedSubjects={selectedSubjects}
+                            onSelect={handleSubjectSelect}
+                            multiple={false}
+                            text="Não achou a disciplina que está procurando?"
+                        />
+                    </div>
                 </div>
+                <Footer text='Avançar' onClick={handleNext} />
             </main>
-            <Footer text='Avançar' onClick={handleNext} />
+
         </>
     );
 };

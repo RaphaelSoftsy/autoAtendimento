@@ -7,6 +7,7 @@ import ListCheckButton from '../../../components/ListCheckButton';
 import { url_base_local } from '../../../services/url_base';
 import './rejectionAdaptation.css';
 import { FaExclamationCircle } from 'react-icons/fa';
+import { useRA } from '../../../contexts/RAContext';
 
 const RejectionAdaptation = () => {
     const list = [
@@ -24,15 +25,24 @@ const RejectionAdaptation = () => {
     const [reEnrollment, setReEnrollment] = useState({ disciplinas: 0 });
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
+    const { currentRA } = useRA();
+    console.log(currentRA.ra);
+    
     const aluno = '2473474';
     const maxDisciplines = 4;
+
+    useEffect(() => {
+        getReEnrollment();
+    }, [currentRA]);
 
     async function getReEnrollment() {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/disciplinasMatriculadas/${aluno}`);
+            const response = await axios.get(`${url_base_local}/disciplinasMatriculadas/${currentRA.ra}`);
             const data = response.data[0];
+
+            console.log(data);
 
             setReEnrollment(data);
         } catch (error) {

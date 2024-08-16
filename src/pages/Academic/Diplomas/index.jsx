@@ -4,17 +4,24 @@ import { url_base_local } from '../../../services/url_base';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useNavigate } from 'react-router-dom';
+import { useRA } from '../../../contexts/RAContext';
+import { useEffect } from 'react';
 
 const Diplomas = () => {
-    const aluno = '2471074';
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
+    const { currentRA } = useRA();
+
+    useEffect(() => {
+        console.log("currentRA mudou:", currentRA);
+    }, [currentRA]);
 
     const handleSubmit = async () => {
+
         MySwal.showLoading();
 
         const dataToSend = {
-            aluno: aluno
+            aluno: currentRA.ra
         };
 
         try {
