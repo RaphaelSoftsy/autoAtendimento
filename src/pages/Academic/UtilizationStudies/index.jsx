@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -9,11 +9,13 @@ import DefaultButton from "../../../components/DefaultButton";
 import InputUpload from "../../../components/InputUpload";
 import { convertToBase64 } from "../ProgramContent";
 import { url_base_local } from "../../../services/url_base";
+import { useRA } from "../../../contexts/RAContext";
 
 const UtilizationStudies = () => {
 
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
+    const { currentRA } = useRA();
 
     const list = [
         {
@@ -27,7 +29,7 @@ const UtilizationStudies = () => {
     ];
 
     const [formData, setFormData] = useState({
-        aluno: '2471074',
+        aluno: currentRA.ra,
         obs: '',
         nomeArq: '',
         tamanhoArq: '',
@@ -36,6 +38,14 @@ const UtilizationStudies = () => {
         arquivo: '',
         apiEndpoint: ''
     });
+
+    useEffect(() => {
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          aluno: currentRA.ra
+        }));
+      }, [currentRA]);
+    
 
     const handleChangeObservation = (e) => {
         const { name, value } = e.target;
@@ -84,9 +94,7 @@ const UtilizationStudies = () => {
             tipoArq: formData.tipoArq,
             arquivo: formData.arquivo,
         };
-
-        console.log(dataToSend);
-
+        
         try {
             const response = await axios.post(`${url_base_local}/${formData.apiEndpoint}`, dataToSend, {
                 headers: {

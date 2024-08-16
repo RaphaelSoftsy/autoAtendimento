@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import CardCheckout from "../../../components/CardCheckout";
 import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../ProgramContent";
+import { useRA } from "../../../contexts/RAContext";
 
 const SpecialDegreeConferral = () => {
 
@@ -15,9 +16,10 @@ const SpecialDegreeConferral = () => {
 
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
+    const { currentRA } = useRA();
 
     const [formData, setFormData] = useState({
-        aluno: '2471074',
+        aluno: currentRA.ra,
         obs: '',
         nomeArq: '',
         tamanhoArq: '',
@@ -25,6 +27,13 @@ const SpecialDegreeConferral = () => {
         tipoArq: '',
         arquivo: ''
     });
+
+    useEffect(() => {
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          aluno: currentRA.ra
+        }));
+      }, [currentRA]);
 
     const handleChangeObservation = (e) => {
         const { name, value } = e.target;
@@ -73,8 +82,6 @@ const SpecialDegreeConferral = () => {
             tipoArq: formData.tipoArq,
             arquivo: formData.arquivo
         };
-
-        console.log("Data to send:", JSON.stringify(dataToSend));
 
         try {
             const response = await axios.post(`${url_base_local}/grauEspecial`, dataToSend, {
