@@ -17,3 +17,10 @@
 .card-drop h2{
     width: 100%;
 }
+
+
+@media(max-width: 600px) {
+    .card-drop{
+        width: 100%;
+    }
+}
