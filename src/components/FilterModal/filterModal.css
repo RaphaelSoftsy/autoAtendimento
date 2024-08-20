@@ -49,3 +49,8 @@
     color: #fff;
 }
 
+.filter-list{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

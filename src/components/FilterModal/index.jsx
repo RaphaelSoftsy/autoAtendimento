@@ -42,7 +42,7 @@ const FilterModal = ({ isVisible, filters, onApply, onClose }) => {
                 <button className="close-button" onClick={onClose}><FaTimes /></button>
                 <h2>Filtrar por:</h2>
                 <div>
-                    <label>
+                    <label className="filter-list">
                         <input
                             type="checkbox"
                             checked={localFilters.MENSALIDADES}
@@ -51,7 +51,7 @@ const FilterModal = ({ isVisible, filters, onApply, onClose }) => {
                     </label>
                 </div>
                 <div>
-                    <label>
+                    <label className="filter-list">
                         <input
                             type="checkbox"
                             checked={localFilters.ACORDOS}
@@ -60,7 +60,7 @@ const FilterModal = ({ isVisible, filters, onApply, onClose }) => {
                     </label>
                 </div>
                 <div>
-                    <label>
+                    <label className="filter-list">
                         <input
                             type="checkbox"
                             checked={localFilters.SERVIÇOS}
@@ -69,7 +69,7 @@ const FilterModal = ({ isVisible, filters, onApply, onClose }) => {
                     </label>
                 </div>
                 <div>
-                    <label>
+                    <label className="filter-list">
                         <input
                             type="checkbox"
                             checked={localFilters.TODOS}
