@@ -16,15 +16,17 @@ const Enade = () => {
     return (
         <main className='main-perform-accord'>
             <div className="rescue-checks">
-            <div className="card-checkout-fill-max-width">
-                <span><b>O seu curso ainda não participa do ENADE (Exame Nacional de Desempenho dos Estudantes)</b></span>
-                <DefaultButton
-                    text="Abrir uma Demanda"
-                    backgroundColor="var(--primary-light-blue)"
-                    color='#fff'
-                    onClick={() => navegation("abrir-demanda")}
-                />
-            </div>
+                <div className="card-checkout-fill-max-width">
+                    <span><strong>O seu curso ainda não participa do ENADE (Exame Nacional de Desempenho dos Estudantes)</strong></span>
+                    <div className="button-group">
+                        <DefaultButton
+                            text="Abrir uma Demanda"
+                            backgroundColor="var(--primary-light-blue)"
+                            color='#fff'
+                            onClick={() => navegation("abrir-demanda")}
+                        />
+                    </div>
+                </div>
             </div>
             <div className='footer-container'>
                 <footer className='footer-double'>

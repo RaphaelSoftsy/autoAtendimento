@@ -40,7 +40,7 @@ const Notes = () => {
             };
 
             try {
-                const response = await axios.post(`${url_base_local}/problemaAvaliacao`, dataToSend);
+                const response = await axios.post(`${url_base_local}/reclamacaoNota`, dataToSend);
 
                 if (response.status === 200) {
                     const responseData = response.data;

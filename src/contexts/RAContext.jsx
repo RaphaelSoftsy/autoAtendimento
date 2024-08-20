@@ -21,7 +21,6 @@ export const RAProvider = ({ children }) => {
     const aluno = localStorage.getItem('aluno-ra');
     MySwal.showLoading();
 
-    // Chamada à API diretamente no useEffect
     axios.get(`${url_base_local}/dadosAluno/${aluno}`)
       .then(response => {
         const data = response.data;

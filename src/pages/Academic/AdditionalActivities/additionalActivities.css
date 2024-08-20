@@ -15,7 +15,7 @@
     gap: 30px;
 }
 
-.charge-student{
+.charge-student {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -23,7 +23,7 @@
     text-align: start;
 }
 
-.card-charge-student{
+.card-charge-student {
     background-color: var(--custom-green);
     display: flex;
     justify-content: space-between;
@@ -34,7 +34,7 @@
     box-shadow: 0px 7px 11px -1px var(--primary-dark-blue-alt);
 }
 
-.charge-student-missing{
+.charge-student-missing {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -42,7 +42,7 @@
     text-align: start;
 }
 
-.card-student-missing{
+.card-student-missing {
     background-color: var(--secondary-light-red);
     display: flex;
     justify-content: space-between;
@@ -53,18 +53,32 @@
     box-shadow: 0px 7px 11px -1px var(--primary-dark-blue-alt);
 }
 
-.access-subjects{
+.access-subjects {
     display: flex;
     flex-direction: column;
     gap: 10px;
     text-align: start;
 }
 
-.carga-horaria-total{
+.carga-horaria-total {
     width: auto;
     padding: 32px;
     background-color: #fff;
     border-radius: 16px;
-    gap: 32px;
     color: #000;
+}
+
+@media(max-width:600px) {
+    .carga-horaria-total{
+        width: 100%;
+    }
+    .charge-student {
+        width: 100%;
+    }
+    .charge-student-missing{
+        width: 100%;
+    }
+    .access-subjects{
+        width: 100%;
+    }
 }
