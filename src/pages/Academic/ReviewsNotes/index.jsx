@@ -78,7 +78,7 @@ const ReviewsNotes = () => {
         <main className='main-problems-reviews'>
             <div className="problems-reviews">
                 <div className='list-subjects'>
-                    <h1 className='title'>Em qual disciplina você está com problemas?</h1>
+                    <h1 className='title'>Em qual disciplina você deseja rever sua nota?</h1>
                     {discipline.length > 0 ?
                         <ListSubjectsCheck
                             items={discipline}

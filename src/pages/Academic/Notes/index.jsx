@@ -125,6 +125,8 @@ const Notes = () => {
             {/* <h1 className='title'>Notas e Revisões</h1> */}
 
             {!isSelecting && (
+
+                //colocar o selecionar "Selecionar Avaliação"
                 <div className='select-discipline'>
                     <select value={selectedOption} onChange={handleSelectChange} className="custom-select-medium">
                         {selectedSubjects.map(item => (
