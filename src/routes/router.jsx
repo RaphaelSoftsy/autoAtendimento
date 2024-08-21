@@ -21,8 +21,9 @@ import Expedition from "../pages/Academic/Expedition";
 import Internship from "../pages/Academic/Internship";
 import InternshipReportSubmission from "../pages/Academic/InternshipReportSubmission";
 import InternshipReportSubmissionServiceNumber from "../pages/Academic/InternshipReportSubmissionServiceNumber";
+import Notes from "../pages/Academic/Notes";
+import NotesServiceNumber from "../pages/Academic/NotesServiceNumber";
 import OpenCollection from "../pages/Academic/OpenCollection";
-import PrintedDiploma from "../pages/Academic/PrintedDiploma";
 import PrintedDiplomaServiceNumber from "../pages/Academic/PrintedDiplomaServiceNumber";
 import ProgramContent from "../pages/Academic/ProgramContent";
 import ProgramContentServiceNumber from "../pages/Academic/ProgramContentServiceNumber";
@@ -86,6 +87,8 @@ import FinancialStatement from "../pages/Finance/FinancialStatement";
 import Handbag from "../pages/Finance/Handbag";
 import HandbagServiceNumber from "../pages/Finance/HandbagServiceNumber";
 import MonthlyPayment from "../pages/Finance/MonthlyPayment";
+import MonthlyPaymentOpenDemand from "../pages/Finance/MonthlyPaymentOpenDemand";
+import MonthlyPaymentServiceNumber from "../pages/Finance/MonthlyPaymentServiceNumber";
 import OutherSubjects from "../pages/Finance/OutherSubjects";
 import Pay from "../pages/Finance/Pay";
 import PaymentDetails from "../pages/Finance/PaymentDetails";
@@ -99,6 +102,7 @@ import PixAccord from "../pages/Finance/PaymentDetailsAccord/Pix";
 import PerformAccord from "../pages/Finance/PerformAccord";
 import PerformPayment from "../pages/Finance/PerformPayment";
 import Repayment from "../pages/Finance/Repayment";
+import RepaymentServiceNumber from "../pages/Finance/RepaymentServiceNumber";
 import RequestDocument from "../pages/Finance/RequestDocument";
 import RescueChecks from "../pages/Finance/RescueChecks";
 import RescueChecksServiceNumber from "../pages/Finance/RescueChecksServiceNumber";
@@ -112,9 +116,7 @@ import CreateNewPassword from "../pages/Password/CreateNewPassword";
 import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
-import Notes from "../pages/Academic/Notes";
-import NotesServiceNumber from "../pages/Academic/NotesServiceNumber";
-import RepaymentServiceNumber from "../pages/Finance/RepaymentServiceNumber";
+import CashBackServiceNumber from "../pages/Finance/CashBackServiceNumber";
 
 
 const RoutesApp = () => {
@@ -183,8 +185,10 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/bolsa" element={<Handbag />} />
                 <Route path="/outros-assuntos/bolsa/numero-servico" element={<HandbagServiceNumber />} />
                 <Route path="/outros-assuntos/reembolso" element={<Repayment />} />
-                <Route path="/outros-assuntos/reembolso" element={<RepaymentServiceNumber />} />
+                <Route path="/outros-assuntos/reembolso/numero-servico" element={<RepaymentServiceNumber />} />
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
+                <Route path="/outros-assuntos/mensalidades-servicos/abrir-demanda" element={<MonthlyPaymentOpenDemand />} />
+                <Route path="/outros-assuntos/mensalidades-servicos/abrir-demanda/numero-servico" element={<MonthlyPaymentServiceNumber />} />
                 {/* <Route path="/outros-assuntos/mensalidades-servicos/mensalidade" element={<TuitionMonthlyService />} />
                 <Route path="/outros-assuntos/mensalidades-servicos/servicos" element={<ServiceMonthlyService />} />
                 <Route path="/outros-assuntos/mensalidades-servicos/acordo" element={<AccordMonthlyService />} /> */}
@@ -194,6 +198,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/fies-sumare/sumare" element={<Sumare />} />
                 <Route path="/outros-assuntos/fies-sumare/sumare/numero-servico" element={<SumareServiceNumber />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
+                <Route path="/outros-assuntos/cashback/numero-servico" element={<CashBackServiceNumber />} />
                 {/* <Route path="/outros-assuntos/cashback/mensalidades" element={<TuitionCashBack />} />
                 <Route path="/outros-assuntos/cashback/servicos" element={<ServiceCashBack />} />
                 <Route path="/outros-assuntos/cashback/todos" element={<EveryCashBack />} /> */}
@@ -229,9 +234,9 @@ const AcademicRoutes = () => {
             <Header txt={nameHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
-                <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} />
-                <Route path="/avaliacoes-e-notas/notas" element={<Notes />} />
-                <Route path="/avaliacoes-e-notas/notas/numero-servico" element={<NotesServiceNumber />} />
+                {/* <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} /> */}
+                <Route path="/avaliacoes-e-notas" element={<Notes />} />
+                <Route path="/avaliacoes-e-notas/numero-servico" element={<NotesServiceNumber />} />
                 <Route path="/matricula-em-reprovacao-adaptacao" element={<RejectionAdaptation />} />
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos" element={<UtilizationStudies />} />

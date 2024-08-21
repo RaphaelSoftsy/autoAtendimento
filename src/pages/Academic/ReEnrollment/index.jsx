@@ -6,6 +6,7 @@ import withReactContent from "sweetalert2-react-content";
 import { url_base_local } from "../../../services/url_base";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Footer from "../../../components/Footer";
 
 const ReEnrollment = () => {
 
@@ -79,12 +80,13 @@ const ReEnrollment = () => {
                     />
                 </div>
             </div>
-            <div className='footer-container'>
+            {/* <div className='footer-container'>
                 <footer className='footer-double'>
                     <Link className='title-footer' style={style} > Relatar Problema </Link>
                     <Link className='title-footer' style={style} > Finalizar Sessão </Link>
                 </footer>
-            </div>
+            </div> */}
+            <Footer text="Finalizar Sessão" onClick={() => navegation("/academico")} style={style}/>
         </main>
     );
 
