@@ -126,11 +126,10 @@ const Notes = () => {
 
             {!isSelecting && (
 
-                //colocar o selecionar "Selecionar Avaliação"
                 <div className='select-discipline'>
-                    <select value={selectedOption} onChange={handleSelectChange} className="custom-select-medium">
+                    <select value={selectedOption} onChange={handleSelectChange} className="custom-select">
                         {selectedSubjects.map(item => (
-                            <option key={item.id} value={item.name} className='option-medium'>{item.name}</option>
+                            <option key={item.id} value={item.name} className='option'>{item.name}</option>
                         ))}
                     </select>
                 </div>

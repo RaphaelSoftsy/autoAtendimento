@@ -29,6 +29,9 @@ const ReviewsNotes = () => {
             const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
             const data = response.data;
 
+            console.log(data);
+            
+
             const formattedData = data.map((item, index) => ({
                 id: index + 1,
                 aluno: item.aluno,

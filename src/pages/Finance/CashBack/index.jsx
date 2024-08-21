@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import FilterModal from '../../../components/FilterModal';
 import axios from 'axios';
 import { url_base_local } from '../../../services/url_base';
+import { useRA } from '../../../contexts/RAContext';
 
 const CashBack = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
@@ -22,8 +23,12 @@ const CashBack = () => {
     const [items, setItems] = useState([]);
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
-    // const aluno = localStorage.getItem("aluno-ra");
     const aluno = '2014111'
+    const { currentRA } = useRA();
+
+    useEffect(() => {
+        console.log(currentRA)
+    }, [currentRA]);
 
     const monthNames = {
         '1': 'Janeiro',
@@ -104,7 +109,12 @@ const CashBack = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            navegation('/');
+            const selectedItem = items.find(item => item.id === selectedSubjects[0]);
+
+            localStorage.setItem('cobranca-selecioanda', selectedItem.name);
+            console.log(selectedItem.name);
+
+            navegation('abrir-demanda');
         }
     };
 
@@ -148,12 +158,6 @@ const CashBack = () => {
     };
 
     return (
-        // <main className="cashback">
-        //     <div className='list-subjects'>
-        //         <h1 className='title'>Selecione qual as opções que deseja:</h1>
-        //         <ListSubjects itens={list} />
-        //     </div>
-        // </main>
         <main className='main-perform-accord'>
             <div className="perform-accord">
                 <div className='list-subjects'>
