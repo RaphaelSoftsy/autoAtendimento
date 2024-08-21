@@ -35,7 +35,6 @@ import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
 import RegistrationDeclarationOpenDemand from "../pages/Academic/RegistrationDeclarationOpenDemand";
 import RegistrationDeclarationServiceNumber from "../pages/Academic/RegistrationDeclarationServiceNumber";
 import RejectionAdaptation from "../pages/Academic/RejectionAdaptation";
-import ReviewsNotes from "../pages/Academic/ReviewsNotes";
 import SchoolBus from "../pages/Academic/SchoolBus";
 import SchoolBusServiceNumber from "../pages/Academic/SchoolBusServiceNumber";
 import SchoolRecords from "../pages/Academic/SchoolRecords";
@@ -73,6 +72,7 @@ import AddCreditCard from "../pages/Finance/AddCreditCard";
 import AddSwapPayment from "../pages/Finance/AddSwapPayment";
 import CardChoice from "../pages/Finance/CardChoice";
 import CashBack from "../pages/Finance/CashBack";
+import CashBackServiceNumber from "../pages/Finance/CashBackServiceNumber";
 import Charges from "../pages/Finance/Charges";
 import ChargesOpenDemand from "../pages/Finance/ChargesOpenDemand";
 import ChargesServiceNumber from "../pages/Finance/ChargesServiceNumber";
@@ -116,8 +116,6 @@ import CreateNewPassword from "../pages/Password/CreateNewPassword";
 import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
-import CashBackServiceNumber from "../pages/Finance/CashBackServiceNumber";
-
 
 const RoutesApp = () => {
     return (
@@ -234,10 +232,9 @@ const AcademicRoutes = () => {
             <Header txt={nameHeader} route={routeHeader} />
             <Routes>
                 <Route path="/" element={<SubjectAcd />} />
-                {/* <Route path="/avaliacoes-e-notas" element={<ReviewsNotes />} /> */}
                 <Route path="/avaliacoes-e-notas" element={<Notes />} />
                 <Route path="/avaliacoes-e-notas/numero-servico" element={<NotesServiceNumber />} />
-                <Route path="/matricula-em-reprovacao-adaptacao" element={<RejectionAdaptation />} />
+                <Route path="/matricula-em-reprovacao-adaptacao" element={<RejectionAdaptation />} />  {/*proxima tela é de carrinho*/}
                 <Route path="/solicitacoes-academicas" element={<AcademicRequests />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos" element={<UtilizationStudies />} />
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/numero-servico" element={<UtilizationStudiesServiceNumber />} />
@@ -245,7 +242,6 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} />
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
-                {/* <Route path="/solicitacoes-academicas/diplomas/diploma-impresso" element={<PrintedDiploma />} /> */}
                 <Route path="/solicitacoes-academicas/diplomas/numero-servico" element={<PrintedDiplomaServiceNumber />} />
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial/numero-servico" element={<SpecialDegreeConferralServiceNumber />} />
