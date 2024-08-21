@@ -63,3 +63,9 @@
 .details-diploma span{
     font-size: .8rem;
 }
+
+@media(max-width:600px) {
+    .list-card-arrow {
+        width: 100%;
+    }
+}

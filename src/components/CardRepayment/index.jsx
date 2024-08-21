@@ -1,25 +1,34 @@
-import './cardDrop.css';
 import Dropdown from '../Dropdown/Dropdown';
 import TextArea from '../TextArea';
 import DefaultButton from '../DefaultButton';
 import InputUpload from '../InputUpload';
 
-const CardDrop = (props) => {
+const CardRepayment = (props) => {
     const list = [
-        { id: 1, name: 'Prouni' },
-        { id: 2, name: 'Colaborador' },
-        { id: 3, name: 'Mantenedora' }
-    ];
+        { id: 1, name: 'janeiro a junho de 2024' },
+        { id: 2, name: 'julho a dezembro 2024' }
+    ]
+
+    const list2 = [
+        { id: 1, name: '123465 - cobrança do dia x' },
+        { id: 2, name: '123769 - cobrança do dia x' }
+    ]
 
     return (
         <div className="card-drop">
-            <h2>Selecione o Tipo da Bolsa:</h2>
             <Dropdown
                 id='dropdown-handbag'
                 name='dropdown-handbag'
                 itens={list}
-                label=''
+                label='Selecionar plano de pagamento'
                 onChange={props.setSelect}
+            />
+            <Dropdown
+                id='dropdown-handbag'
+                name='dropdown-handbag'
+                itens={list2}
+                label='Selecionar Cobrança'
+                onChange={props.setSelect2}
             />
             <TextArea
                 text={props.textTextArea}
@@ -44,4 +53,4 @@ const CardDrop = (props) => {
     );
 };
 
-export default CardDrop;
+export default CardRepayment;

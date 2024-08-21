@@ -55,7 +55,9 @@ const AdditionalActivities = () => {
         getReEnrollment();
     }, [aluno]);
 
-    console.log(reEnrollment);
+    const formatValue = (value) => {
+        return parseInt(value);
+    };
 
     const handleNext = () => {
         navigate('abrir-demanda');
@@ -65,18 +67,20 @@ const AdditionalActivities = () => {
         <>
             <main className='main-additional-activities'>
                 <div className='additional-activities'>
-                    <h3 className='carga-horaria-total'>Carga Horária Total: {reEnrollment ? `${reEnrollment.horasCurso} horas` : 'Carregando...'}</h3>
+                    <h3 className='carga-horaria-total'>
+                        Carga Horária Total: {reEnrollment ? `${formatValue(reEnrollment.horasCurso)} horas` : 'Carregando...'}
+                    </h3>
                     <div className='charge-student'>
                         <h3>Carga Horária Aluno:</h3>
                         <div className='card-charge-student'>
-                            <span>{reEnrollment ? `${reEnrollment.atividadeAluno} horas` : 'Carregando...'}</span>
+                            <span>{reEnrollment ? `${formatValue(reEnrollment.atividadeAluno)} horas` : 'Carregando...'}</span>
                             <FaRegHourglass />
                         </div>
                     </div>
                     <div className='charge-student-missing'>
                         <h3>Carga Horária Faltante:</h3>
                         <div className='card-student-missing'>
-                            <span>{reEnrollment ? `${reEnrollment.horasFaltantes} horas` : 'Carregando...'}</span>
+                            <span>{reEnrollment ? `${formatValue(reEnrollment.horasFaltantes)} horas` : 'Carregando...'}</span>
                             <FaRegHourglassHalf />
                         </div>
                     </div>

@@ -1,9 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ListSubjects from '../../../components/ListSubjects';
+import { useRA } from '../../../contexts/RAContext';
 
 const ProblemsReviewsSelect = () => {
 
     const baseRoute = '/ava/problemas-nas-avaliacoes/escolha/abrir-demanda';
+    const { currentRA } = useRA();
+
+    const [selectedSubjectName, setSelectedSubjectName] = useState(null);
+
+    useEffect(() => {
+        console.log(`RA Atual: ${currentRA.ra}`);
+    }, [currentRA]);
 
     const list = [
         {
@@ -23,8 +31,6 @@ const ProblemsReviewsSelect = () => {
         }
     ];
 
-    const [setSelectedSubjectName] = useState(null);
-
     const handleSubjectClick = (name) => {
         setSelectedSubjectName(name);
         localStorage.setItem('avaliacao-selecionada', name);
@@ -36,11 +42,11 @@ const ProblemsReviewsSelect = () => {
                 <h1 className='title'>Selecione qual das opções deseja:</h1>
                 <ListSubjects
                     itens={list}
-                    onClick={(name) => handleSubjectClick(name)}
+                    onClick={handleSubjectClick}
                 />
             </div>
         </main>
-    )
+    );
 }
 
-export default ProblemsReviewsSelect
+export default ProblemsReviewsSelect;

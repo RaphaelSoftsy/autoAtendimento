@@ -93,8 +93,8 @@ const ProofRequest = () => {
             <main className='main-problems-activities'>
                 <div className="proof-request">
                     <div className='list-subjects'>
-                        <h1 className='title'>De qual disciplina?</h1>
-                        <h4 className='title'>Se já houver solicitação da disciplina aberta, levar para a tela de senha com a opção de abrir demanda</h4>
+                        <h1 className='title'>Qual Disciplina deseja solicitar a prova?</h1>
+                        {/* <h4 className='title'>Se já houver solicitação da disciplina aberta, levar para a tela de senha com a opção de abrir demanda</h4> */}
                         <ListCheckButton
                             items={selectedSubject}
                             selectedSubjects={selectedSubjects}

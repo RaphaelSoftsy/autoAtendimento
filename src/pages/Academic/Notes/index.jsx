@@ -40,7 +40,7 @@ const Notes = () => {
             };
 
             try {
-                const response = await axios.post(`${url_base_local}/problemaAvaliacao`, dataToSend);
+                const response = await axios.post(`${url_base_local}/reclamacaoNota`, dataToSend);
 
                 if (response.status === 200) {
                     const responseData = response.data;
@@ -125,6 +125,8 @@ const Notes = () => {
             {/* <h1 className='title'>Notas e Revisões</h1> */}
 
             {!isSelecting && (
+
+                //colocar o selecionar "Selecionar Avaliação"
                 <div className='select-discipline'>
                     <select value={selectedOption} onChange={handleSelectChange} className="custom-select-medium">
                         {selectedSubjects.map(item => (

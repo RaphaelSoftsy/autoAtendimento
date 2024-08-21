@@ -57,3 +57,10 @@
 .react-datepicker-wrapper{
     width: 100%;
 }
+
+@media(max-width: 600px) {
+    .card-select-period{
+        width: 100%;
+        padding: 20px 30px;
+    }
+}

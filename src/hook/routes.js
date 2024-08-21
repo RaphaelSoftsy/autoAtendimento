@@ -475,6 +475,12 @@ export const listRoutesAva = [
     },
     {
         id: 8,
+        name: 'Escolha',
+        header: 'Problemas nas avaliações',
+        route: '/ava/problemas-nas-avaliacoes/escolha'
+    },
+    {
+        id: 9,
         name: 'Avaliação',
         header: 'Problemas nas avaliações',
         route: '/ava/problemas-nas-avaliacoes/escolha/abrir-demanda'

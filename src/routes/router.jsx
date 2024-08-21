@@ -114,6 +114,7 @@ import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
 import Notes from "../pages/Academic/Notes";
 import NotesServiceNumber from "../pages/Academic/NotesServiceNumber";
+import RepaymentServiceNumber from "../pages/Finance/RepaymentServiceNumber";
 
 
 const RoutesApp = () => {
@@ -182,6 +183,7 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/bolsa" element={<Handbag />} />
                 <Route path="/outros-assuntos/bolsa/numero-servico" element={<HandbagServiceNumber />} />
                 <Route path="/outros-assuntos/reembolso" element={<Repayment />} />
+                <Route path="/outros-assuntos/reembolso" element={<RepaymentServiceNumber />} />
                 <Route path="/outros-assuntos/mensalidades-servicos" element={<MonthlyPayment />} />
                 {/* <Route path="/outros-assuntos/mensalidades-servicos/mensalidade" element={<TuitionMonthlyService />} />
                 <Route path="/outros-assuntos/mensalidades-servicos/servicos" element={<ServiceMonthlyService />} />

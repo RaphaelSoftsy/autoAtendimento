@@ -37,7 +37,7 @@ const PerformPayment = () => {
 
         try {
             const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=N&aVencer=S`);
-            const data = response.data;
+            const data = response.data.cobrancas;
             console.log('Dados da declaração:', data);
 
             // Mapeando os objetos retornados pela API para o novo formato com IDs incrementais
