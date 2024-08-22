@@ -10,7 +10,7 @@ const ProblemsReviewsSelect = () => {
     const [selectedSubjectName, setSelectedSubjectName] = useState(null);
 
     useEffect(() => {
-        console.log(`RA Atual: ${currentRA.ra}`);
+        // console.log(`RA Atual: ${currentRA.ra}`);
     }, [currentRA]);
 
     const list = [
