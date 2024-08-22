@@ -14,7 +14,6 @@ const Notes = () => {
     const [selectedReviewNotes, setSelectedSubjectValor] = useState('');
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [selectedOption, setSelectedOption] = useState('');
-    const disciplinaSelecionada = localStorage.getItem("disciplina-selecionada");
     const MySwal = withReactContent(Swal);
     const navegation = useNavigate();
     const { currentRA } = useRA();
@@ -28,16 +27,18 @@ const Notes = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            console.log(disciplinaSelecionada);
             console.log("disciplina " + selectedOption);
             console.log("Nota" + `${selectedReview} - ${selectedReviewNotes}`);
             
             const dataToSend = {
                 aluno: currentRA.ra,
-                disciplina: disciplinaSelecionada,
-                avaliacao: selectedOption,
-                nota: `${selectedReview} - ${selectedReviewNotes}`
+                disciplina: selectedOption,
+                avaliacao: selectedReview,
+                nota: selectedReviewNotes
             };
+
+            console.log(dataToSend);
+            
 
             try {
                 const response = await axios.post(`${url_base_local}/reclamacaoNota`, dataToSend);
@@ -100,13 +101,10 @@ const Notes = () => {
             const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
             const data = response.data;
 
-            const formattedData = data.map((item, index) => ({
-                id: index + 1,
-                aluno: item.aluno,
-                name: item.nomeDisciplina
-            }));
+            console.log(data);
+            
 
-            setSelectedSubjects(formattedData);
+            setSelectedSubjects(data);
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);
         }
@@ -148,7 +146,6 @@ const Notes = () => {
                         selectedSubject={selectedReview}
                         onClick={() => {
                             setSelectedSubject(item.nome)
-                            setSelectedSubjectValor(item.valor)
                         }}
                         valor={item.valor}
                     />

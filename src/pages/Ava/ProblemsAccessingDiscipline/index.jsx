@@ -32,7 +32,8 @@ const ProblemsAccessingDiscipline = () => {
             const formattedData = data.map((item, index) => ({
                 id: index + 1,
                 aluno: item.aluno,
-                name: item.nomeDisciplina
+                name: item.nomeDisciplina,
+                codigo: item.disciplina
             }));
 
             setProblems(formattedData);
@@ -58,7 +59,7 @@ const ProblemsAccessingDiscipline = () => {
         }
     };
 
-    const selectedSubjectName = problems.find(problem => problem.id === selectedSubjects[0])?.name;
+    const selectedSubjectCodigo = problems.find(problem => problem.id === selectedSubjects[0])?.codigo;
 
     const handleNext = () => {
         if (selectedSubjects.length === 0) {
@@ -69,7 +70,7 @@ const ProblemsAccessingDiscipline = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            localStorage.setItem("disciplina-selecionada", selectedSubjectName);
+            localStorage.setItem("disciplina-selecionada", selectedSubjectCodigo);
             navegation('abrir-demanda');
         }
     };
