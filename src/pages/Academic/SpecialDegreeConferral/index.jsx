@@ -4,15 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import CardCheckout from "../../../components/CardCheckout";
+import { useRA } from "../../../contexts/RAContext";
 import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../ProgramContent";
-import { useRA } from "../../../contexts/RAContext";
 
 const SpecialDegreeConferral = () => {
-
-    const style = {
-        backgroundColor: "var(--primary-light-blue)"
-    }
 
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
@@ -30,10 +26,10 @@ const SpecialDegreeConferral = () => {
 
     useEffect(() => {
         setFormData(prevFormData => ({
-          ...prevFormData,
-          aluno: currentRA.ra
+            ...prevFormData,
+            aluno: currentRA.ra
         }));
-      }, [currentRA]);
+    }, [currentRA]);
 
     const handleChangeObservation = (e) => {
         const { name, value } = e.target;
@@ -104,7 +100,6 @@ const SpecialDegreeConferral = () => {
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -137,10 +132,8 @@ const SpecialDegreeConferral = () => {
                     />
                 </div>
             </div>
-            {/* <Footer text="Realizar Pagamento" route="" style={style} /> */}
         </main>
     );
-
 }
 
 export default SpecialDegreeConferral;

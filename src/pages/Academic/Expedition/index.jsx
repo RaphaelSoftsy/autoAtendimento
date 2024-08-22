@@ -1,8 +1,8 @@
-import './expedition.css'
 import ListSubjects from '../../../components/ListSubjects';
+import './expedition.css';
 
 const Expedition = () => {
-    
+
     const list = [
         {
             id: 1,

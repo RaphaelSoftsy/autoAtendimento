@@ -1,5 +1,5 @@
-import './internship.css'
 import ListSubjects from '../../../components/ListSubjects';
+import './internship.css';
 
 const Internship = () => {
     const list = [

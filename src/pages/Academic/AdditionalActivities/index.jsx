@@ -1,14 +1,14 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { FaRegHourglass } from 'react-icons/fa';
-import Footer from '../../../components/Footer';
-import ListSubjects from '../../../components/ListSubjects';
-import './additionalActivities.css';
 import { FaRegHourglassHalf } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import Footer from '../../../components/Footer';
+import ListSubjects from '../../../components/ListSubjects';
 import { url_base_local } from '../../../services/url_base';
+import './additionalActivities.css';
 
 const AdditionalActivities = () => {
 
@@ -41,7 +41,6 @@ const AdditionalActivities = () => {
         try {
             const response = await axios.get(`${url_base_local}/atividade/${aluno}`);
             const data = response.data[0];
-            console.log('Dados da declaração:', data);
 
             setReEnrollment(data);
         } catch (error) {

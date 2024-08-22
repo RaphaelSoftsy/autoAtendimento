@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardDeclaration from '../../../components/CardDeclaration';
-import { url_base_hospedada, url_base_local } from '../../../services/url_base';
+import { url_base_hospedada } from '../../../services/url_base';
 
 const RegistrationDeclaration = () => {
     const navigate = useNavigate();
     const [declaration, setDeclaration] = useState('');
-    //const aluno = localStorage.getItem("aluno-ra");
     const aluno = "2471074"
 
     async function getDeclaration() {
         try {
             const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/matricula?aluno=${aluno}`);
             const data = response.data[0];
-            console.log('Dados da declaração:', data);
+
             setDeclaration(data);
         } catch (error) {
             console.error('Erro ao buscar declaração:', error);

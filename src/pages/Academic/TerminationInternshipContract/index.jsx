@@ -9,10 +9,6 @@ import { convertToBase64 } from "../ProgramContent";
 
 const TerminationInternshipContract = () => {
 
-    const style = {
-        backgroundColor: "var(--primary-dark-blue)"
-    }
-
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
 
@@ -74,8 +70,6 @@ const TerminationInternshipContract = () => {
             arquivo: formData.arquivo
         };
 
-        console.log("Data to send:", JSON.stringify(dataToSend));
-
         try {
             const response = await axios.post(`${url_base_local}/convalidacaoHoras`, dataToSend, {
                 headers: {
@@ -97,7 +91,6 @@ const TerminationInternshipContract = () => {
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -130,10 +123,8 @@ const TerminationInternshipContract = () => {
                     />
                 </div>
             </div>
-            {/* <Footer text="Enviar Solicitação" style={style} /> */}
         </main>
     );
-
 }
 
 export default TerminationInternshipContract;
