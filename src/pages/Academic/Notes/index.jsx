@@ -36,10 +36,7 @@ const Notes = () => {
                 avaliacao: selectedReview,
                 nota: selectedReviewNotes
             };
-
-            console.log(dataToSend);
             
-
             try {
                 const response = await axios.post(`${url_base_local}/reclamacaoNota`, dataToSend);
 
@@ -57,7 +54,6 @@ const Notes = () => {
                 }
             } catch (error) {
                 MySwal.close();
-                console.log(error);
                 MySwal.fire({
                     icon: "error",
                     title: "Oops...",
@@ -90,10 +86,6 @@ const Notes = () => {
         { nome: "Presenças", valor: "100%" }
     ];
 
-    useEffect(() => {
-        getDiscipline();
-    }, [currentRA]);
-
     async function getDiscipline() {
         MySwal.showLoading();
 
@@ -103,7 +95,6 @@ const Notes = () => {
 
             console.log(data);
             
-
             setSelectedSubjects(data);
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);
@@ -111,6 +102,29 @@ const Notes = () => {
 
         MySwal.close();
     }
+
+    async function getDisciplineHistory() {
+        MySwal.showLoading();
+
+        try {
+            const response = await axios.get(`${url_base_local}/notaHistorico/busca?aluno=${currentRA.ra}&disciplina=${codigoDisciplina}`);
+            const data = response.data;
+
+            console.log(data);
+            
+            setSelectedSubjects(data);
+        } catch (error) {
+            console.error('Erro ao buscar disciplinas:', error);
+        }
+
+        MySwal.close();
+    }
+
+    useEffect(() => {
+        getDiscipline();
+    }, [currentRA]);
+
+
 
     const handleSelectChange = (e) => {
         const selectedValue = e.target.value;
