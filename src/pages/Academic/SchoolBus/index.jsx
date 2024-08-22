@@ -1,14 +1,14 @@
 import { useState } from "react";
-import ListSubjectsCheck from "../../../components/ListSubjectsCheck";
-import Footer from "../../../components/Footer";
-import './schoolBus.css'
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useNavigate } from 'react-router-dom';
+import Footer from "../../../components/Footer";
+import ListSubjectsCheck from "../../../components/ListSubjectsCheck";
+import './schoolBus.css';
 
 
 const SchoolBus = () => {
-    
+
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);

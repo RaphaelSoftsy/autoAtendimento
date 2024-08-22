@@ -1,18 +1,13 @@
-import Swal from "sweetalert2";
-import CardCheckout from "../../../components/CardCheckout";
-import Footer from "../../../components/Footer";
-import withReactContent from "sweetalert2-react-content";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { convertToBase64 } from "../ProgramContent";
 import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import CardCheckout from "../../../components/CardCheckout";
 import { url_base_local } from "../../../services/url_base";
+import { convertToBase64 } from "../ProgramContent";
 
 const RegistrationDeclarationOpenDemand = () => {
-
-    const style = {
-        backgroundColor: "var(--secondary-light-red)"
-    }
 
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
@@ -98,7 +93,6 @@ const RegistrationDeclarationOpenDemand = () => {
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -131,10 +125,8 @@ const RegistrationDeclarationOpenDemand = () => {
                     />
                 </div>
             </div>
-            {/* <Footer text="Relatar Problema" style={style} /> */}
         </main>
     );
-
 }
 
 export default RegistrationDeclarationOpenDemand;

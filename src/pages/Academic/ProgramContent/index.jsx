@@ -1,15 +1,11 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
-import Footer from '../../../components/Footer';
-import CardCheckout from '../../../components/CardCheckout';
 import withReactContent from 'sweetalert2-react-content';
-import axios from 'axios';
+import CardCheckout from '../../../components/CardCheckout';
 
 const ProgramContent = () => {
-    const style = {
-        backgroundColor: "var(--secondary-light-red)"
-    };
 
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
@@ -96,7 +92,6 @@ const ProgramContent = () => {
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -129,7 +124,6 @@ const ProgramContent = () => {
                     />
                 </div>
             </div>
-            {/* <Footer text="Relatar Problema" style={style} onClick={() => navegation('/')} /> */}
         </main>
     );
 };

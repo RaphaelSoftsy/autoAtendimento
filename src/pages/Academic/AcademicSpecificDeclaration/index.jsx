@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import DefaultButton from "../../../components/DefaultButton";
-import "./academicSpecificDeclaration.css"
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import DefaultButton from "../../../components/DefaultButton";
 import { url_base_local } from "../../../services/url_base";
+import "./academicSpecificDeclaration.css";
 
 const AcademicSpecificDeclaration = () => {
 

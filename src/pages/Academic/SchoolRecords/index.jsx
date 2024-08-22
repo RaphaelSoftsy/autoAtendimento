@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ReactToPrint from 'react-to-print';
 import logo from '../../../assets/logo-sumare-azul.png';
 import DefaultButton from '../../../components/DefaultButton';
@@ -16,7 +16,7 @@ const SchoolRecords = () => {
         try {
             const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/historico?aluno=${aluno}`);
             const data = response.data;
-            console.log('Dados da declaração:', data);
+            
             setDeclaration(data);
         } catch (error) {
             console.error('Erro ao buscar declaração:', error);

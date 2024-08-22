@@ -9,10 +9,6 @@ import { convertToBase64 } from "../ProgramContent";
 
 const EnadeOpenDemand = () => {
 
-    const style = {
-        backgroundColor: "var(--secondary-light-red)"
-    }
-
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
 
@@ -74,8 +70,6 @@ const EnadeOpenDemand = () => {
             arquivo: formData.arquivo
         };
 
-        console.log("Data to send:", JSON.stringify(dataToSend));
-
         try {
             const response = await axios.post(`${url_base_local}/solicitacaoFies`, dataToSend, {
                 headers: {
@@ -97,7 +91,6 @@ const EnadeOpenDemand = () => {
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -130,10 +123,8 @@ const EnadeOpenDemand = () => {
                     />
                 </div>
             </div>
-            {/* <Footer text="Relatar Problema" style={style} /> */}
         </main>
     );
-
 }
 
 export default EnadeOpenDemand;

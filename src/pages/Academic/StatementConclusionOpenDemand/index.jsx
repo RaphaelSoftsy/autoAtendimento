@@ -1,12 +1,12 @@
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import CardCheckout from "../../../components/CardCheckout";
 import Footer from "../../../components/Footer";
-import withReactContent from "sweetalert2-react-content";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { convertToBase64 } from "../ProgramContent";
-import axios from "axios";
 import { url_base_local } from "../../../services/url_base";
+import { convertToBase64 } from "../ProgramContent";
 
 const StatementConclusionOpenDemand = () => {
 
@@ -98,7 +98,6 @@ const StatementConclusionOpenDemand = () => {
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -116,7 +115,7 @@ const StatementConclusionOpenDemand = () => {
     };
 
     return (
-        <main className='main-perform-accord'>
+        <main>
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
@@ -131,10 +130,8 @@ const StatementConclusionOpenDemand = () => {
                     />
                 </div>
             </div>
-            <Footer text="Relatar Problema" style={style} />
         </main>
     );
-
 }
 
 export default StatementConclusionOpenDemand;

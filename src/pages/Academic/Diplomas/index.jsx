@@ -1,11 +1,11 @@
 import axios from 'axios';
-import ListArrow from '../../../components/ListArrow';
-import { url_base_local } from '../../../services/url_base';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useNavigate } from 'react-router-dom';
+import ListArrow from '../../../components/ListArrow';
 import { useRA } from '../../../contexts/RAContext';
-import { useEffect } from 'react';
+import { url_base_local } from '../../../services/url_base';
 
 const Diplomas = () => {
     const navigate = useNavigate();
@@ -13,7 +13,6 @@ const Diplomas = () => {
     const { currentRA } = useRA();
 
     useEffect(() => {
-        console.log("currentRA mudou:", currentRA);
     }, [currentRA]);
 
     const handleSubmit = async () => {
@@ -45,7 +44,6 @@ const Diplomas = () => {
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",

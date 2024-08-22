@@ -1,10 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import logo from '../../../assets/logo-sumare-azul.png'
-import DefaultButton from '../../../components/DefaultButton';
-import { url_base_hospedada, url_base_local } from '../../../services/url_base';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ReactToPrint from 'react-to-print';
+import logo from '../../../assets/logo-sumare-azul.png';
+import DefaultButton from '../../../components/DefaultButton';
+import { url_base_hospedada } from '../../../services/url_base';
 
 const StatementConclusion = () => {
 
@@ -18,7 +18,7 @@ const StatementConclusion = () => {
         try {
             const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/conclusao?aluno=${aluno}`);
             const data = response.data;
-            console.log('Dados da declaração:', data);
+
             setDeclaration(data);
         } catch (error) {
             // alert("Não foi encontrado Aluno com esse RA em situação de Conclusão");
@@ -95,30 +95,7 @@ const StatementConclusion = () => {
                         <DefaultButton key={index} {...props} />
                     ))}
                 </div>
-                {/* <div style={{ display: 'none' }}>
-                    <div ref={printRef} className='print-area-school-records'>
-                        <img src={logo} alt="logo da sumare" className='logo-sumare-azul' />
-                        {declaration.length > 0 && declaration.map((item, index) => (
-                            <div className="declaration-content-conclusion-print" key={index}>
-                                <h2>Histórico Escolar</h2>
-                                <p><strong>Nome:</strong> {item.nome}</p>
-                                <p><strong>Matrícula:</strong> {item.aluno}</p>
-                                <p><strong>Data de Nascimento:</strong> {item.dtNasc}</p>
-                                <p><strong>RG/RNE Nº:</strong> {item.rg}</p>
-
-                                <h2>Dados do Processo Seletivo</h2>
-                                <p><strong>Instituição:</strong> {item.ufAluno}</p>
-                                <p><strong>Data:</strong> {item.dtConc}</p>
-                                <p><strong>Classificação:</strong> {item.curso}</p>
-
-                                <h2>Semestre Atual</h2>
-                                <p><strong>Portaria:</strong> {item.portaria}</p>
-                                <p><strong>Situação:</strong> {item.situacao}</p>
-                                <p><strong>Data de Conclusão:</strong> {`${item.dia} de ${item.mes} de ${item.ano}`}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div> */}
+                
                 <div style={{ display: 'none' }}>
                     <div ref={printRef} className='print-area-statement-conclusion'>
                         {declaration.length > 0 && declaration.map((item, index) => (

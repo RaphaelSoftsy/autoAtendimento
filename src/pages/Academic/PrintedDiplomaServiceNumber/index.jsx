@@ -1,6 +1,6 @@
 import CardServiceNumberPag from '../../../components/CardServiceNumberPag';
 
-const PrintedDiplomaServiceNumber  = () => {
+const PrintedDiplomaServiceNumber = () => {
 
     const numberService = localStorage.getItem('numero-servico')
 
@@ -8,11 +8,11 @@ const PrintedDiplomaServiceNumber  = () => {
         <div className='main-perform-accord'>
             <div className="rescue-checks">
                 <CardServiceNumberPag
-                    number= {numberService}
+                    number={numberService}
                 />
             </div>
         </div>
     );
 };
 
-export default PrintedDiplomaServiceNumber ;
+export default PrintedDiplomaServiceNumber;

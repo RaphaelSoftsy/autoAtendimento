@@ -1,6 +1,6 @@
 import CardServiceNumber from '../../../components/CardServiceNumber';
 
-const AcademicSpecificDeclarationServiceNumber  = () => {
+const AcademicSpecificDeclarationServiceNumber = () => {
 
     const numberService = localStorage.getItem('numero-servico')
 
@@ -8,11 +8,11 @@ const AcademicSpecificDeclarationServiceNumber  = () => {
         <div className='main-perform-accord'>
             <div className="rescue-checks">
                 <CardServiceNumber
-                    number= {numberService}
+                    number={numberService}
                 />
             </div>
         </div>
     );
 };
 
-export default AcademicSpecificDeclarationServiceNumber ;
+export default AcademicSpecificDeclarationServiceNumber;

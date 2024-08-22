@@ -1,6 +1,6 @@
 import CardServiceNumber from '../../../components/CardServiceNumber';
 
-const StatementConclusionServiceNumber  = () => {
+const StatementConclusionServiceNumber = () => {
 
     const numberService = localStorage.getItem('numero-servico')
 
@@ -8,11 +8,11 @@ const StatementConclusionServiceNumber  = () => {
         <div className='main-perform-accord'>
             <div className="rescue-checks">
                 <CardServiceNumber
-                    number= {numberService}
+                    number={numberService}
                 />
             </div>
         </div>
     );
 };
 
-export default StatementConclusionServiceNumber ;
+export default StatementConclusionServiceNumber;

@@ -14,7 +14,6 @@ const Notes = () => {
     const [selectedReviewNotes, setSelectedSubjectValor] = useState('');
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [selectedOption, setSelectedOption] = useState('');
-    const disciplinaSelecionada = localStorage.getItem("disciplina-selecionada");
     const MySwal = withReactContent(Swal);
     const navegation = useNavigate();
     const { currentRA } = useRA();
@@ -28,17 +27,16 @@ const Notes = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            console.log(disciplinaSelecionada);
             console.log("disciplina " + selectedOption);
             console.log("Nota" + `${selectedReview} - ${selectedReviewNotes}`);
             
             const dataToSend = {
                 aluno: currentRA.ra,
-                disciplina: disciplinaSelecionada,
-                avaliacao: selectedOption,
-                nota: `${selectedReview} - ${selectedReviewNotes}`
+                disciplina: selectedOption,
+                avaliacao: selectedReview,
+                nota: selectedReviewNotes
             };
-
+            
             try {
                 const response = await axios.post(`${url_base_local}/reclamacaoNota`, dataToSend);
 
@@ -56,7 +54,6 @@ const Notes = () => {
                 }
             } catch (error) {
                 MySwal.close();
-                console.log(error);
                 MySwal.fire({
                     icon: "error",
                     title: "Oops...",
@@ -89,10 +86,6 @@ const Notes = () => {
         { nome: "Presenças", valor: "100%" }
     ];
 
-    useEffect(() => {
-        getDiscipline();
-    }, [currentRA]);
-
     async function getDiscipline() {
         MySwal.showLoading();
 
@@ -100,19 +93,38 @@ const Notes = () => {
             const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
             const data = response.data;
 
-            const formattedData = data.map((item, index) => ({
-                id: index + 1,
-                aluno: item.aluno,
-                name: item.nomeDisciplina
-            }));
-
-            setSelectedSubjects(formattedData);
+            console.log(data);
+            
+            setSelectedSubjects(data);
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);
         }
 
         MySwal.close();
     }
+
+    async function getDisciplineHistory() {
+        MySwal.showLoading();
+
+        try {
+            const response = await axios.get(`${url_base_local}/notaHistorico/busca?aluno=${currentRA.ra}&disciplina=${codigoDisciplina}`);
+            const data = response.data;
+
+            console.log(data);
+            
+            setSelectedSubjects(data);
+        } catch (error) {
+            console.error('Erro ao buscar disciplinas:', error);
+        }
+
+        MySwal.close();
+    }
+
+    useEffect(() => {
+        getDiscipline();
+    }, [currentRA]);
+
+
 
     const handleSelectChange = (e) => {
         const selectedValue = e.target.value;
@@ -148,7 +160,6 @@ const Notes = () => {
                         selectedSubject={selectedReview}
                         onClick={() => {
                             setSelectedSubject(item.nome)
-                            setSelectedSubjectValor(item.valor)
                         }}
                         valor={item.valor}
                     />

@@ -1,12 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
-import DefaultButton from "../../../components/DefaultButton";
-import "./reEnrollment.css"
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import { url_base_local } from "../../../services/url_base";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import DefaultButton from "../../../components/DefaultButton";
 import Footer from "../../../components/Footer";
+import { url_base_local } from "../../../services/url_base";
+import "./reEnrollment.css";
 
 const ReEnrollment = () => {
 
@@ -47,7 +47,6 @@ const ReEnrollment = () => {
         try {
             const response = await axios.get(`${url_base_local}/dataRematricula/2470559`);
             const data = response.data[0];
-            console.log('Dados da data de rematricula:', data);
 
             setReEnrollment2(data);
         } catch (error) {
@@ -86,7 +85,7 @@ const ReEnrollment = () => {
                     <Link className='title-footer' style={style} > Finalizar Sessão </Link>
                 </footer>
             </div> */}
-            <Footer text="Finalizar Sessão" onClick={() => navegation("/academico")} style={style}/>
+            <Footer text="Finalizar Sessão" onClick={() => navegation("/academico")} style={style} />
         </main>
     );
 

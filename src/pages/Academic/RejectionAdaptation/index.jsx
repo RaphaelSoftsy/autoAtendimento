@@ -22,17 +22,17 @@ const RejectionAdaptation = () => {
     ];
 
     const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const [disciplineList, setDisciplineList] = useState([]);
     const [reEnrollment, setReEnrollment] = useState({ disciplinas: 0 });
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
-    console.log(currentRA.ra);
-    
-    const aluno = '2473474';
+
     const maxDisciplines = 4;
 
     useEffect(() => {
         getReEnrollment();
+        getDiscipline();
     }, [currentRA]);
 
     async function getReEnrollment() {
@@ -52,9 +52,27 @@ const RejectionAdaptation = () => {
         }
     }
 
-    useEffect(() => {
-        getReEnrollment();
-    }, []);
+    async function getDiscipline() {
+        MySwal.showLoading();
+
+        try {
+            const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
+            const data = response.data;
+
+            const formattedData = data.map((item, index) => ({
+                id: index + 1,
+                aluno: item.aluno,
+                name: item.nomeDisciplina,
+                codigo: item.disciplina
+            }));
+            
+            setDisciplineList(formattedData);
+        } catch (error) {
+            console.error('Erro ao buscar disciplinas:', error);
+        }
+
+        MySwal.close();
+    }
 
     const handleSubjectSelect = (id) => {
         setSelectedSubjects(prevSelected => {
@@ -84,7 +102,7 @@ const RejectionAdaptation = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            navegation('numero-servico');
+            navegation('pagamento');
         }
     };
 
@@ -104,7 +122,7 @@ const RejectionAdaptation = () => {
                         </span>
                     </h3>
                     <ListCheckButton
-                        items={list}
+                        items={disciplineList}
                         selectedSubjects={selectedSubjects}
                         onSelect={handleSubjectSelect}
                         text="Solicitar"

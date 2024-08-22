@@ -8,7 +8,7 @@ const ProgramContentServiceNumber = () => {
         <div className='main-perform-accord'>
             <div className="rescue-checks">
                 <CardServiceNumber
-                    number= {numberService}
+                    number={numberService}
                 />
             </div>
         </div>
