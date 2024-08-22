@@ -15,8 +15,6 @@ const ProblemsReviewsSelectOpenDemand = () => {
     const disciplinaSelecionada = localStorage.getItem("disciplina-selecionada");
     const avaliacaoSelecionada = localStorage.getItem("avaliacao-selecionada");
     const { currentRA } = useRA();
-
-    console.log(currentRA);
     
     const [formData, setFormData] = useState({
         aluno: currentRA.ra,
