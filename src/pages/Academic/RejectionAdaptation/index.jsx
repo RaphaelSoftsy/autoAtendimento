@@ -1,25 +1,15 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { FaExclamationCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import ListCheckButton from '../../../components/ListCheckButton';
+import { useRA } from '../../../contexts/RAContext';
 import { url_base_local } from '../../../services/url_base';
 import './rejectionAdaptation.css';
-import { FaExclamationCircle } from 'react-icons/fa';
-import { useRA } from '../../../contexts/RAContext';
 
 const RejectionAdaptation = () => {
-    const list = [
-        {
-            id: 1,
-            name: 'Disciplina 1 (Adaptação)'
-        },
-        {
-            id: 2,
-            name: 'Disciplina 2 (Reprovação-DP)'
-        }
-    ];
 
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [disciplineList, setDisciplineList] = useState([]);
@@ -65,7 +55,7 @@ const RejectionAdaptation = () => {
                 name: `${item.nomeDisciplina} (${item.status})`,
                 codigo: item.codDisciplina
             }));
-            
+
             setDisciplineList(formattedData);
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);

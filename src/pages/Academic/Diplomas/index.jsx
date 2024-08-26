@@ -26,7 +26,7 @@ const Diplomas = () => {
                 navigate("/academico/solicitacoes-academicas");
             }, 3000);
         }
-    }, [currentRA, MySwal, navigate]);
+    }, [currentRA]);
 
     const handleSubmit = async () => {
         MySwal.showLoading();
