@@ -20,6 +20,7 @@ const Notes = () => {
     const MySwal = withReactContent(Swal);
     const navegation = useNavigate();
     const { currentRA } = useRA();
+    const [noData, setNoData] = useState(false);
 
     const handleNext = async () => {
         if (!selectedReview) {
@@ -98,9 +99,6 @@ const Notes = () => {
         MySwal.close();
     }
 
-    console.log(codigoDisciplina);
-
-
     async function getDisciplineHistory() {
         MySwal.showLoading();
 
@@ -108,15 +106,28 @@ const Notes = () => {
             const response = await axios.get(`${url_base_local}/notaHistorico/busca?aluno=1412454&disciplina=${codigoDisciplina}`);
             const data = response.data;
 
-            const formattedItems = data.map((item) => ({
-                nome: item.avaliacao,
-                valor: item.nota,
-            }));
+            console.log(data);
 
-            console.log(formattedItems);
+            const hasValidData = data.some((item) => {
+                const nome = item.avaliacao?.trim();
+                const valor = item.nota?.toString().trim();
+                return nome && valor;
+            });
+
+            if (!hasValidData) {
+                setNoData(true);
+            } else {
+                setNoData(false);
+                const formattedItems = data.map((item) => ({
+                    nome: item.avaliacao,
+                    valor: item.nota,
+                }));
+
+                console.log(formattedItems);
+                setItems(formattedItems);
+            }
 
 
-            setItems(formattedItems);
         } catch (error) {
             console.error('Erro ao buscar o histórico de notas:', error);
         }
@@ -154,33 +165,38 @@ const Notes = () => {
                     </select>
                 </div>
             )}
+            {noData ? (
+                <p>Não existem dados disponíveis para a disciplina selecionada.</p>
+            ) : (
+                <>
+                    {isSelecting && (
+                        <span className="back-arrow" onClick={handleBackClick}>&larr; Voltar</span>
+                    )}
 
-            {isSelecting && (
-                <span className="back-arrow" onClick={handleBackClick}>&larr; Voltar</span>
-            )}
+                    <ul className='list'>
+                        {items.map((item, index) => (
+                            <ReviewItem
+                                key={index}
+                                isSelecting={isSelecting}
+                                subject={item.nome}
+                                selectedSubject={selectedReview}
+                                onClick={() => {
+                                    setSelectedReview(item.nome);
+                                    setSelectedReviewNotes(item.valor);
+                                }}
+                                valor={item.valor}
+                            />
+                        ))}
+                    </ul>
 
-            <ul className='list'>
-                {items.map((item, index) => (
-                    <ReviewItem
-                        key={index}
-                        isSelecting={isSelecting}
-                        subject={item.nome}
-                        selectedSubject={selectedReview}
-                        onClick={() => {
-                            setSelectedReview(item.nome);
-                            setSelectedReviewNotes(item.valor);
-                        }}
-                        valor={item.valor}
+                    <DefaultButton
+                        text={isSelecting ? "Avançar" : "Solicitar Revisão de Nota"}
+                        backgroundColor="var(--primary-light-blue)"
+                        color='#fff'
+                        onClick={handleButtonClick}
                     />
-                ))}
-            </ul>
-
-            <DefaultButton
-                text={isSelecting ? "Avançar" : "Solicitar Revisão de Nota"}
-                backgroundColor="var(--primary-light-blue)"
-                color='#fff'
-                onClick={handleButtonClick}
-            />
+                </>
+            )}
         </main>
     );
 };

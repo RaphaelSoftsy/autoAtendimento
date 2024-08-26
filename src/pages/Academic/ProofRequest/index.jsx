@@ -16,21 +16,7 @@ const ProofRequest = () => {
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
-
-    // const list = [
-    //     {
-    //         id: 1,
-    //         name: 'Disciplina 1',
-    //         provasub: true,
-    //         provahb: true
-    //     },
-    //     {
-    //         id: 2,
-    //         name: 'Disciplina 2',
-    //         provasub: false,
-    //         provahb: true
-    //     }
-    // ];
+    const [noData, setNoData] = useState(false);
 
     useEffect(() => {
         getDiscipline();
@@ -39,17 +25,43 @@ const ProofRequest = () => {
     async function getDiscipline() {
         MySwal.showLoading();
 
+        let apiEndpoint = '';
+
+        if (currentRA.curso.toLowerCase().includes('ead')) {
+            apiEndpoint = 'provasDisponiveisEad';
+        } else {
+            apiEndpoint = 'provasDisponiveisPres';
+        }
+
         try {
-            const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
+
+            console.log(apiEndpoint);
+
+
+            const response = await axios.get(`${url_base_local}/${apiEndpoint}/${currentRA.ra}`);
             const data = response.data;
 
-            const formattedData = data.map((item, index) => ({
-                id: index + 1,
-                aluno: item.aluno,
-                name: item.nomeDisciplina
-            }));
+            console.log(data);
 
-            setSelectedSubject(formattedData);
+            const hasValidData = data.some((item) => {
+                const aluno = item.aluno?.trim();
+                const discipina = item.disciplina?.trim();
+                const nome = item.nome?.trim();
+                return aluno && discipina && nome;
+            });
+
+            if (!hasValidData) {
+                setNoData(true);
+            } else {
+                setNoData(false);
+                const formattedData = data.map((item, index) => ({
+                    id: index + 1,
+                    aluno: item.aluno,
+                    name: item.nomeDisciplina
+                }));
+                setSelectedSubject(formattedData);
+            }
+
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);
         }
@@ -92,21 +104,25 @@ const ProofRequest = () => {
         <>
             <main className='main-problems-activities'>
                 <div className="proof-request">
-                    <div className='list-subjects'>
-                        <h1 className='title'>Qual Disciplina deseja solicitar a prova?</h1>
-                        {/* <h4 className='title'>Se já houver solicitação da disciplina aberta, levar para a tela de senha com a opção de abrir demanda</h4> */}
-                        <ListCheckButton
-                            items={selectedSubject}
-                            selectedSubjects={selectedSubjects}
-                            onSelect={handleSubjectSelect}
-                            multiple={false}
-                            text="Não achou a disciplina que está procurando?"
-                        />
-                    </div>
+                    {noData ? (
+                        <p>Não existem dados disponíveis para a solicitação da prova.</p>
+                    ) : (
+                        <div className='list-subjects'>
+                            <h1 className='title'>Qual Disciplina deseja solicitar a prova?</h1>
+                            {/* <h4 className='title'>Se já houver solicitação da disciplina aberta, levar para a tela de senha com a opção de abrir demanda</h4> */}
+                            <ListCheckButton
+                                items={selectedSubject}
+                                selectedSubjects={selectedSubjects}
+                                onSelect={handleSubjectSelect}
+                                multiple={false}
+                                text="Não achou a disciplina que está procurando?"
+                            />
+
+                        </div>
+                    )}
                 </div>
                 <Footer text='Avançar' onClick={handleNext} />
             </main>
-
         </>
     );
 };
