@@ -1,11 +1,11 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import DefaultButton from '../../../components/DefaultButton';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useNavigate } from 'react-router-dom';
+import DefaultButton from '../../../components/DefaultButton';
 import ReviewItem from '../../../components/ReviewItem';
 import { useRA } from '../../../contexts/RAContext';
-import axios from 'axios';
 import { url_base_local } from '../../../services/url_base';
 import './notes.css';
 
@@ -98,7 +98,7 @@ const Notes = () => {
         MySwal.close();
     }
 
-console.log(codigoDisciplina);
+    console.log(codigoDisciplina);
 
 
     async function getDisciplineHistory() {
@@ -114,7 +114,7 @@ console.log(codigoDisciplina);
             }));
 
             console.log(formattedItems);
-            
+
 
             setItems(formattedItems);
         } catch (error) {
