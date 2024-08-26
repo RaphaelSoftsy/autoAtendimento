@@ -56,14 +56,14 @@ const RejectionAdaptation = () => {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
+            const response = await axios.get(`${url_base_local}/statusDisciplina/${currentRA.ra}`);
             const data = response.data;
 
             const formattedData = data.map((item, index) => ({
                 id: index + 1,
                 aluno: item.aluno,
-                name: item.nomeDisciplina,
-                codigo: item.disciplina
+                name: `${item.nomeDisciplina} (${item.status})`,
+                codigo: item.codDisciplina
             }));
             
             setDisciplineList(formattedData);
