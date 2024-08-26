@@ -7,13 +7,16 @@ import ReviewItem from '../../../components/ReviewItem';
 import { useRA } from '../../../contexts/RAContext';
 import axios from 'axios';
 import { url_base_local } from '../../../services/url_base';
+import './notes.css';
 
 const Notes = () => {
     const [isSelecting, setIsSelecting] = useState(false);
-    const [selectedReview, setSelectedSubject] = useState('');
-    const [selectedReviewNotes, setSelectedSubjectValor] = useState('');
+    const [selectedReview, setSelectedReview] = useState('');
+    const [selectedReviewNotes, setSelectedReviewNotes] = useState('');
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [selectedOption, setSelectedOption] = useState('');
+    const [codigoDisciplina, setCodigoDisciplina] = useState('');
+    const [items, setItems] = useState([]);
     const MySwal = withReactContent(Swal);
     const navegation = useNavigate();
     const { currentRA } = useRA();
@@ -27,16 +30,13 @@ const Notes = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            console.log("disciplina " + selectedOption);
-            console.log("Nota" + `${selectedReview} - ${selectedReviewNotes}`);
-            
             const dataToSend = {
                 aluno: currentRA.ra,
                 disciplina: selectedOption,
                 avaliacao: selectedReview,
                 nota: selectedReviewNotes
             };
-            
+
             try {
                 const response = await axios.post(`${url_base_local}/reclamacaoNota`, dataToSend);
 
@@ -73,29 +73,24 @@ const Notes = () => {
 
     const handleBackClick = () => {
         setIsSelecting(false);
-        setSelectedSubject('');
+        setSelectedReview('');
         setSelectedOption('');
     };
-
-    const items = [
-        { nome: "Média", valor: "-" },
-        { nome: "Aulas previstas", valor: "24" },
-        { nome: "Aulas ministradas", valor: "0" },
-        { nome: "Limites de faltas", valor: "24" },
-        { nome: "Faltas acumuladas", valor: "0" },
-        { nome: "Presenças", valor: "100%" }
-    ];
 
     async function getDiscipline() {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
+            const response = await axios.get(`${url_base_local}/DisciplinasHistorico/1412454`);
             const data = response.data;
 
-            console.log(data);
-            
-            setSelectedSubjects(data);
+            const formattedData = data.map((item, index) => ({
+                id: index + 1,
+                name: item.nomeCompleto,
+                codigo: item.disciplina
+            }));
+
+            setSelectedSubjects(formattedData);
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);
         }
@@ -103,18 +98,27 @@ const Notes = () => {
         MySwal.close();
     }
 
+console.log(codigoDisciplina);
+
+
     async function getDisciplineHistory() {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/notaHistorico/busca?aluno=${currentRA.ra}&disciplina=${codigoDisciplina}`);
+            const response = await axios.get(`${url_base_local}/notaHistorico/busca?aluno=1412454&disciplina=${codigoDisciplina}`);
             const data = response.data;
 
-            console.log(data);
+            const formattedItems = data.map((item) => ({
+                nome: item.avaliacao,
+                valor: item.nota,
+            }));
+
+            console.log(formattedItems);
             
-            setSelectedSubjects(data);
+
+            setItems(formattedItems);
         } catch (error) {
-            console.error('Erro ao buscar disciplinas:', error);
+            console.error('Erro ao buscar o histórico de notas:', error);
         }
 
         MySwal.close();
@@ -124,24 +128,28 @@ const Notes = () => {
         getDiscipline();
     }, [currentRA]);
 
-
+    useEffect(() => {
+        if (codigoDisciplina) {
+            getDisciplineHistory();
+        }
+    }, [codigoDisciplina]);
 
     const handleSelectChange = (e) => {
-        const selectedValue = e.target.value;
-        setSelectedOption(selectedValue);
-        setSelectedSubject(selectedValue);
+        const selectedCodigo = e.target.value;
+        const selectedItem = selectedSubjects.find(item => item.codigo === selectedCodigo);
+
+        setSelectedOption(selectedCodigo);
+        setCodigoDisciplina(selectedCodigo);
+        setSelectedReview(selectedItem ? selectedItem.name : '');
     };
 
     return (
         <main className="reviews-notes">
-            {/* <h1 className='title'>Notas e Revisões</h1> */}
-
             {!isSelecting && (
-
                 <div className='select-discipline'>
                     <select value={selectedOption} onChange={handleSelectChange} className="custom-select">
                         {selectedSubjects.map(item => (
-                            <option key={item.id} value={item.name} className='option'>{item.name}</option>
+                            <option key={item.id} value={item.codigo} className='option'>{item.name}</option>
                         ))}
                     </select>
                 </div>
@@ -159,7 +167,8 @@ const Notes = () => {
                         subject={item.nome}
                         selectedSubject={selectedReview}
                         onClick={() => {
-                            setSelectedSubject(item.nome)
+                            setSelectedReview(item.nome);
+                            setSelectedReviewNotes(item.valor);
                         }}
                         valor={item.valor}
                     />

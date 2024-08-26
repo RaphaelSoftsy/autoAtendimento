@@ -13,10 +13,22 @@ const Diplomas = () => {
     const { currentRA } = useRA();
 
     useEffect(() => {
-    }, [currentRA]);
+        if (currentRA.ativo === 'S') {
+            MySwal.fire({
+                icon: 'warning',
+                title: 'Atenção!',
+                text: 'É preciso concluir o curso antes de acessar esta tela.',
+                showConfirmButton: false,
+                timer: 3000,
+            });
+
+            setTimeout(() => {
+                navigate("/academico/solicitacoes-academicas");
+            }, 3000);
+        }
+    }, [currentRA, MySwal, navigate]);
 
     const handleSubmit = async () => {
-
         MySwal.showLoading();
 
         const dataToSend = {
@@ -77,14 +89,12 @@ const Diplomas = () => {
     ];
 
     return (
-        <>
-            <main className="perform-payment">
-                <div className='list-subjects'>
-                    <h1 className='title'>Selecione 1 das opção abaixo:</h1>
-                    <ListArrow items={list} />
-                </div>
-            </main>
-        </>
+        <main className="perform-payment">
+            <div className='list-subjects'>
+                <h1 className='title'>Selecione 1 das opções abaixo:</h1>
+                <ListArrow items={list} />
+            </div>
+        </main>
     );
 };
 
