@@ -15,6 +15,9 @@ const Menu = () => {
 
     const { raList, currentRA, selectRA } = useContext(RAContext);
 
+    console.log('RA List:', raList);
+    console.log('Current RA:', currentRA);
+
     const handleSelectChange = (e) => {
         const selectedRA = raList.find(ra => ra.ra === e.target.value);
         selectRA(selectedRA);
@@ -41,11 +44,11 @@ const Menu = () => {
                     <select
                         value={currentRA?.ra || ''}
                         onChange={handleSelectChange}
-                        className="custom-select-medium"
+                        className="custom-select"
                     >
                         {raList.map(item => (
-                            <option key={item.id} value={item.ra} className='option-medium'>
-                                {item.name}
+                            <option key={item.ra} value={item.ra} className='option'>
+                                {`${item.ra} - ${item.curso}`}
                             </option>
                         ))}
                     </select>
