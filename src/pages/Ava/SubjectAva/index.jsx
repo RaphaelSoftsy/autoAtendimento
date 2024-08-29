@@ -22,12 +22,7 @@ const SubjectFinance = () => {
             id: 4,
             name: 'Problemas nas avaliações',
             route: '/ava/problemas-nas-avaliacoes'
-        },
-        // {
-        //     id: 5,
-        //     name: 'Tutoria',
-        //     route: ''
-        // }
+        }
     ]
 
     return (

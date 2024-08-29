@@ -10,12 +10,10 @@ import { url_base_local } from '../../../services/url_base';
 import './problemsAccessingDiscipline.css';
 
 const ProblemsAccessingDiscipline = () => {
-
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [problems, setProblems] = useState([]);
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
-
     const { currentRA } = useRA();
 
     useEffect(() => {
@@ -28,8 +26,6 @@ const ProblemsAccessingDiscipline = () => {
             const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
             const data = response.data;
 
-            console.log(data);
-
             if (data.length > 0) {
                 const formattedData = data.map((item, index) => ({
                     id: index + 1,
@@ -37,13 +33,10 @@ const ProblemsAccessingDiscipline = () => {
                     name: item.nomeDisciplina,
                     codigo: item.disciplina
                 }));
-
                 setProblems(formattedData);
             } else {
                 setProblems([])
             }
-
-
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);
             MySwal.fire({
@@ -81,7 +74,7 @@ const ProblemsAccessingDiscipline = () => {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Você não selecionou nenhuma disciplina.',
+                text: 'Você ainda não selecionou uma disciplina. Escolha uma para continuar.',
                 confirmButtonText: 'OK'
             });
         } else {
@@ -104,7 +97,7 @@ const ProblemsAccessingDiscipline = () => {
                             />
                         </>
                     ) : (
-                        <p>Desculpe, não foram encontrados dados correspondentes.</p>
+                        <span>Desculpe, não foram encontrados dados correspondentes.</span>
                     )}
                 </div>
             </div>

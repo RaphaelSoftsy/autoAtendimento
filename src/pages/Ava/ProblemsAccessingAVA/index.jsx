@@ -10,8 +10,7 @@ import { useRA } from '../../../contexts/RAContext';
 import './problemsAccessingAva.css';
 
 const ProblemsAccessingAVA = () => {
-
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
 
@@ -27,10 +26,10 @@ const ProblemsAccessingAVA = () => {
 
     useEffect(() => {
         setFormData(prevFormData => ({
-          ...prevFormData,
-          aluno: currentRA.ra
+            ...prevFormData,
+            aluno: currentRA.ra
         }));
-      }, [currentRA]);
+    }, [currentRA]);
 
     const handleChangeObservation = (e) => {
         const { name, value } = e.target;
@@ -71,13 +70,7 @@ const ProblemsAccessingAVA = () => {
         MySwal.showLoading();
 
         const dataToSend = {
-            aluno: formData.aluno,
-            obs: formData.obs,
-            nomeArq: formData.nomeArq,
-            tamanhoArq: formData.tamanhoArq,
-            extensaoArq: formData.extensaoArq,
-            tipoArq: formData.tipoArq,
-            arquivo: formData.arquivo
+            ...formData
         };
 
         try {
@@ -91,31 +84,24 @@ const ProblemsAccessingAVA = () => {
                 const responseData = response.data;
                 MySwal.close();
                 MySwal.fire({
-                    title: "Cadastrado com sucesso",
+                    title: "Solicitação Enviada com Sucessso!",
                     icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navegation("numero-servico");
-            } else {
-                throw new Error('Network response was not ok.');
+                navigate("numero-servico");
             }
+
         } catch (error) {
             MySwal.close();
             console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Não foi possível realizar esse comando!",
+                text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
             });
         }
-    };
-
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    const handleFileChanges = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-        handleFileChange(event);
     };
 
     return (
@@ -123,9 +109,8 @@ const ProblemsAccessingAVA = () => {
             <div className='problems-accessing-ava-card'>
                 <CardCheckout
                     text='Descreva o problema encontrado ao acessar o AVA, incluindo detalhes do erro e quando ocorreu. Anexe uma captura de tela ou documento relevante (obrigatório).'
-                    onChangeInputFile={handleFileChanges}
-                    selectedFile={selectedFile}
-                    selectedFileName={selectedFile ? selectedFile.name : ""}
+                    onChangeInputFile={handleFileChange}
+                    selectedFileName={formData.nomeArq}
                     onClick={handleSubmit}
                     textTextArea=''
                     observation={formData.obs}

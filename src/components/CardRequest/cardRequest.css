@@ -18,7 +18,7 @@
 }
 
 .explain-problem {
-    font-size: clamp(0.9rem, 0.725rem + 0.7vw, 1.25rem);
+    font-size: clamp(0.9rem, 0.725rem + 0.7vw, 1rem);
     width: 100%;
     line-height: 1.5rem;
 }

@@ -10,35 +10,44 @@ import { url_base_local } from '../../../services/url_base';
 import './problemsReviews.css';
 
 const ProblemsReviews = () => {
-
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [problems, setProblems] = useState([]);
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
-
     const { currentRA } = useRA();
 
     useEffect(() => {
-        getProblemsAccessingDiscipline();
+        getProblemsReviews();
     }, [currentRA]);
 
-    async function getProblemsAccessingDiscipline() {
+    async function getProblemsReviews() {
         MySwal.showLoading();
 
         try {
             const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
             const data = response.data;
 
-            const formattedData = data.map((item, index) => ({
-                id: index + 1,
-                aluno: item.aluno,
-                name: item.nomeDisciplina,
-                codigo: item.disciplina
-            }));
-
-            setProblems(formattedData);
+            if (data.length > 0) {
+                const formattedData = data.map((item, index) => ({
+                    id: index + 1,
+                    aluno: item.aluno,
+                    name: item.nomeDisciplina,
+                    codigo: item.disciplina
+                }));
+                setProblems(formattedData);
+            } else {
+                setProblems([])
+            }
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar as disciplinas. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            MySwal.close();
         }
 
         MySwal.close();
@@ -62,16 +71,18 @@ const ProblemsReviews = () => {
     const selectedSubjectCodigo = problems.find(problem => problem.id === selectedSubjects[0])?.codigo;
 
     const handleNext = () => {
-        if (selectedSubjects.length === 0) {
+        if (problems.length === 0) {
+            navigate('/ava');
+        } else if (selectedSubjects.length === 0) {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Você não selecionou nenhuma disciplina.',
+                text: 'Você ainda não selecionou uma disciplina. Escolha uma para continuar.',
                 confirmButtonText: 'OK'
             });
         } else {
             localStorage.setItem("disciplina-selecionada", selectedSubjectCodigo);
-            navegation('/ava/problemas-nas-avaliacoes/escolha');
+            navigate('/ava/problemas-nas-avaliacoes/escolha');
         }
     };
 
@@ -79,18 +90,21 @@ const ProblemsReviews = () => {
         <main className='main-problems-activities'>
             <div className="problems-activities">
                 <div className='list-subjects'>
-                    <h1 className='title'>Em qual disciplina você está com problemas?</h1>
-                    {problems.length > 0 ?
-                        <ListSubjectsCheck
-                            items={problems}
-                            selectedSubjects={selectedSubjects}
-                            onSelect={handleSubjectSelect}
-                        />
-                        : 'Carregando disciplinas...'
-                    }
+                    {problems.length > 0 ? (
+                        <>
+                            <h1 className='title'>Selecione a disciplina em que você está enfrentando problemas de acesso:</h1>
+                            <ListSubjectsCheck
+                                items={problems}
+                                selectedSubjects={selectedSubjects}
+                                onSelect={handleSubjectSelect}
+                            />
+                        </>
+                    ) : (
+                        <span>Desculpe, não foram encontrados dados correspondentes.</span>
+                    )}
                 </div>
             </div>
-            <Footer text="Avançar" onClick={handleNext} />
+            <Footer text={problems.length === 0 ? "Voltar" : "Avançar"} onClick={handleNext} />
         </main>
     )
 }

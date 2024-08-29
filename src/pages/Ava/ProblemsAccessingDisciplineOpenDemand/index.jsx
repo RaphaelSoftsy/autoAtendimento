@@ -9,29 +9,28 @@ import { convertToBase64 } from "../../Academic/ProgramContent";
 import { useRA } from '../../../contexts/RAContext';
 
 const ProblemsAccessingDisciplineOpenDemand = () => {
-
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const disciplinaSelecionada = localStorage.getItem("disciplina-selecionada");
     const { currentRA } = useRA();
 
     const [formData, setFormData] = useState({
-        aluno: currentRA.ra,
+        aluno: currentRA.ra || '',
         obs: '',
         nomeArq: '',
         tamanhoArq: '',
         extensaoArq: '',
         tipoArq: '',
         arquivo: '',
-        disciplina: ''
+        disciplina: disciplinaSelecionada || ''
     });
 
     useEffect(() => {
         setFormData(prevFormData => ({
-          ...prevFormData,
-          aluno: currentRA.ra
+            ...prevFormData,
+            aluno: currentRA.ra
         }));
-      }, [currentRA]);
+    }, [currentRA]);
 
     const handleChangeObservation = (e) => {
         const { name, value } = e.target;
@@ -72,16 +71,9 @@ const ProblemsAccessingDisciplineOpenDemand = () => {
         MySwal.showLoading();
 
         const dataToSend = {
-            aluno: formData.aluno,
-            obs: formData.obs,
-            nomeArq: formData.nomeArq,
-            tamanhoArq: formData.tamanhoArq,
-            extensaoArq: formData.extensaoArq,
-            tipoArq: formData.tipoArq,
-            arquivo: formData.arquivo,
-            disciplina: disciplinaSelecionada
+            ...formData
         };
-        
+
         try {
             const response = await axios.post(`${url_base_local}/poblemasDisciplinasAva`, dataToSend, {
                 headers: {
@@ -93,41 +85,33 @@ const ProblemsAccessingDisciplineOpenDemand = () => {
                 const responseData = response.data;
                 MySwal.close();
                 MySwal.fire({
-                    title: "Cadastrado com sucesso",
+                    title: "Solicitação Enviada com Sucessso!",
                     icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navegation("numero-servico");
-            } else {
-                throw new Error('Network response was not ok.');
+                navigate("numero-servico");
             }
+
         } catch (error) {
             MySwal.close();
             console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Não foi possível realizar esse comando!",
+                text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
             });
         }
-    };
-
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    const handleFileChanges = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-        handleFileChange(event);
     };
 
     return (
         <main className="problems-accessing-ava">
             <div className='problems-accessing-ava-card'>
                 <CardCheckout
-                    text='Descreva sua solicitação:'
-                    onChangeInputFile={handleFileChanges}
-                    selectedFile={selectedFile}
-                    selectedFileName={selectedFile ? selectedFile.name : ""}
+                    text='Descreva o problema encontrado ao acessar as Diciplinas na plataforma AVA, incluindo detalhes do erro e quando ocorreu. Anexe uma captura de tela ou documento relevante (obrigatório).'
+                    onChangeInputFile={handleFileChange}
+                    selectedFileName={formData.nomeArq}
                     onClick={handleSubmit}
                     textTextArea=''
                     observation={formData.obs}
