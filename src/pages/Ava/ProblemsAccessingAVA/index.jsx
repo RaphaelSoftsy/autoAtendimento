@@ -122,7 +122,7 @@ const ProblemsAccessingAVA = () => {
         <main className="problems-accessing-ava">
             <div className='problems-accessing-ava-card'>
                 <CardCheckout
-                    text='Descreva sua solicitação:'
+                    text='Descreva o problema encontrado ao acessar o AVA, incluindo detalhes do erro e quando ocorreu. Anexe uma captura de tela ou documento relevante (obrigatório).'
                     onChangeInputFile={handleFileChanges}
                     selectedFile={selectedFile}
                     selectedFileName={selectedFile ? selectedFile.name : ""}

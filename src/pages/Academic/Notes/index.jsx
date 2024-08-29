@@ -20,7 +20,6 @@ const Notes = () => {
     const MySwal = withReactContent(Swal);
     const navegation = useNavigate();
     const { currentRA } = useRA();
-    const [noData, setNoData] = useState(false);
 
     const handleNext = async () => {
         if (!selectedReview) {
@@ -108,16 +107,8 @@ const Notes = () => {
 
             console.log(data);
 
-            const hasValidData = data.some((item) => {
-                const nome = item.avaliacao?.trim();
-                const valor = item.nota?.toString().trim();
-                return nome && valor;
-            });
+            if (data.length > 0) {
 
-            if (!hasValidData) {
-                setNoData(true);
-            } else {
-                setNoData(false);
                 const formattedItems = data.map((item) => ({
                     nome: item.avaliacao,
                     valor: item.nota,
@@ -125,8 +116,9 @@ const Notes = () => {
 
                 console.log(formattedItems);
                 setItems(formattedItems);
+            }else{
+                setItems([]);
             }
-
 
         } catch (error) {
             console.error('Erro ao buscar o histórico de notas:', error);
@@ -165,9 +157,7 @@ const Notes = () => {
                     </select>
                 </div>
             )}
-            {noData ? (
-                <p>Não existem dados disponíveis para a disciplina selecionada.</p>
-            ) : (
+            {items.length > 0 ? (
                 <>
                     {isSelecting && (
                         <span className="back-arrow" onClick={handleBackClick}>&larr; Voltar</span>
@@ -188,7 +178,6 @@ const Notes = () => {
                             />
                         ))}
                     </ul>
-
                     <DefaultButton
                         text={isSelecting ? "Avançar" : "Solicitar Revisão de Nota"}
                         backgroundColor="var(--primary-light-blue)"
@@ -196,6 +185,8 @@ const Notes = () => {
                         onClick={handleButtonClick}
                     />
                 </>
+            ) : (
+                <p>Não existem notas disponíveis para a disciplina selecionada.</p>
             )}
         </main>
     );

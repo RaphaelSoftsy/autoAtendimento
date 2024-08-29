@@ -14,7 +14,7 @@ const Diplomas = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     useEffect(() => {
-        if (currentRA.ativo === 'S') {
+        if (currentRA.sitAluno === 'CONCLUIDO') {
             MySwal.fire({
                 icon: 'warning',
                 title: 'Atenção!',
@@ -77,7 +77,6 @@ const Diplomas = () => {
             const data = response.data;
 
             console.log(data);
-            
 
             setSelectedSubjects(data);
         } catch (error) {

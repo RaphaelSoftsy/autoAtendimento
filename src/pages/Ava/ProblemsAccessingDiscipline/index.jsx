@@ -24,24 +24,37 @@ const ProblemsAccessingDiscipline = () => {
 
     async function getProblemsAccessingDiscipline() {
         MySwal.showLoading();
-
         try {
             const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
             const data = response.data;
 
-            const formattedData = data.map((item, index) => ({
-                id: index + 1,
-                aluno: item.aluno,
-                name: item.nomeDisciplina,
-                codigo: item.disciplina
-            }));
+            console.log(data);
 
-            setProblems(formattedData);
+            if (data.length > 0) {
+                const formattedData = data.map((item, index) => ({
+                    id: index + 1,
+                    aluno: item.aluno,
+                    name: item.nomeDisciplina,
+                    codigo: item.disciplina
+                }));
+
+                setProblems(formattedData);
+            } else {
+                setProblems([])
+            }
+
+
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar as disciplinas. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            MySwal.close();
         }
-
-        MySwal.close();
     }
 
     const handleSubjectSelect = (id, multiple) => {
@@ -62,7 +75,9 @@ const ProblemsAccessingDiscipline = () => {
     const selectedSubjectCodigo = problems.find(problem => problem.id === selectedSubjects[0])?.codigo;
 
     const handleNext = () => {
-        if (selectedSubjects.length === 0) {
+        if (problems.length === 0) {
+            navegation('/ava');
+        } else if (selectedSubjects.length === 0) {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
@@ -79,18 +94,21 @@ const ProblemsAccessingDiscipline = () => {
         <main className='main-problems-reviews'>
             <div className="problems-reviews">
                 <div className='list-subjects'>
-                    <h1 className='title'>Em qual disciplina você está com problemas?</h1>
-                    {problems.length > 0 ?
-                        <ListSubjectsCheck
-                            items={problems}
-                            selectedSubjects={selectedSubjects}
-                            onSelect={handleSubjectSelect}
-                        />
-                        : 'Carregando disciplinas...'
-                    }
+                    {problems.length > 0 ? (
+                        <>
+                            <h1 className='title'>Selecione a disciplina em que você está enfrentando problemas de acesso:</h1>
+                            <ListSubjectsCheck
+                                items={problems}
+                                selectedSubjects={selectedSubjects}
+                                onSelect={handleSubjectSelect}
+                            />
+                        </>
+                    ) : (
+                        <p>Desculpe, não foram encontrados dados correspondentes.</p>
+                    )}
                 </div>
             </div>
-            <Footer text="Avançar" onClick={handleNext} />
+            <Footer text={problems.length === 0 ? "Voltar" : "Avançar"} onClick={handleNext} />
         </main>
     );
 };
