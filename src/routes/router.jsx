@@ -240,7 +240,8 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/numero-servico" element={<UtilizationStudiesServiceNumber />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
-                <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} />
+                <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/numero-servico" element={<ProofRequestSelect />} />
+                {/* <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} /> */}
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
                 <Route path="/solicitacoes-academicas/diplomas/numero-servico" element={<PrintedDiplomaServiceNumber />} />
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />

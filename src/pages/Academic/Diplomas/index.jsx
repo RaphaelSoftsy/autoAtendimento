@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -11,6 +11,7 @@ const Diplomas = () => {
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
+    const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     useEffect(() => {
         if (currentRA.ativo === 'S') {
@@ -26,6 +27,10 @@ const Diplomas = () => {
                 navigate("/academico/solicitacoes-academicas");
             }, 3000);
         }
+    }, [currentRA]);
+
+    useEffect(() => {
+        getDiploma();
     }, [currentRA]);
 
     const handleSubmit = async () => {
@@ -64,6 +69,24 @@ const Diplomas = () => {
         }
     };
 
+    async function getDiploma() {
+        MySwal.showLoading();
+
+        try {
+            const response = await axios.get(`${url_base_local}/solicitaDiploma/${currentRA.ra}`);
+            const data = response.data;
+
+            console.log(data);
+            
+
+            setSelectedSubjects(data);
+        } catch (error) {
+            console.error('Erro ao buscar disciplinas:', error);
+        }
+
+        MySwal.close();
+    }
+
     const list = [
         {
             id: 1,
@@ -78,15 +101,18 @@ const Diplomas = () => {
             detalhes: 'Anexar em 1 único PDF: RG, Cert. Nascimento ou Casamento, *Histórico Escolar do Ensino Médio com Certificado de Conclusão; *Boletim de Ocorrência (Referente a perda ou roubo do Diploma); * Caso tenha solicitado "Aproveitamento de Estudos", também deverá ser anexado o Histórico Escolar da outra Instituição de Ensino Superior. É de total responsabilidade do(a) aluno(a), os dados pessoais que constarão no Diploma, pois estarão de acordo com os documentos anexados.',
             text_button: 'Solicitar',
             route: "/academico/solicitacoes-academicas/diplomas/colacao-de-grau-especial"
-        },
-        {
+        }
+    ];
+
+    if (selectedSubjects.length > 0) {
+        list.push({
             id: 3,
             name: 'Segunda via de Diploma',
             detalhes: 'O Diploma em pele da Sumaré é confeccionado em pele de carneiro de forma artesanal seguindo os modelos de certificado mais tradicionais e sofisticados.',
             text_button: 'Solicitar',
             route: "/academico/solicitacoes-academicas/diplomas/segunda-via-de-diploma"
-        }
-    ];
+        });
+    }
 
     return (
         <main className="perform-payment">

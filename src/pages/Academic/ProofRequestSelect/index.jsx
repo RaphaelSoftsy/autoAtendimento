@@ -1,58 +1,74 @@
 import { useNavigate } from 'react-router-dom';
 import ListSubjects from '../../../components/ListSubjects';
+import { url_base_local } from '../../../services/url_base';
+import { useRA } from '../../../contexts/RAContext';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const ProofRequestSelect = () => {
-
     const navegation = useNavigate();
+    const { currentRA } = useRA();
+    const MySwal = withReactContent(Swal);
+    const [selectedSubjects, setSelectedSubjects] = useState([]);
 
-    const selectedProof = JSON.parse(localStorage.getItem("selectedProof") || "[]");
+    useEffect(() => {
+        getProva();
+    }, [currentRA]);
 
-    console.log(selectedProof);
+    async function getProva() {
+        MySwal.showLoading();
 
-    const prova = [
-        {
-            id: 1,
-            nome: 'prova-recuperação',
-            descricao: 'teste',
-            valor: '60.00'
-        },
-    ];
+        try {
+            const response = await axios.get(`${url_base_local}/provasDisponiveis/ead?aluno=2480263&disciplina=00124_80`);
+            const data = response.data;
 
-    const validate = () => {
-        if (prova.valor === '0.00') {
-            return '/realizar-pagamento'
-        } else if (prova.valor == '') {
-        } else {
-            return '/academico/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-solicitacao'
+            console.log(data);
+
+            const formattedData = data.map((item, index) => {
+                let route = '';
+
+                if (item.valor === 0) {
+                    route = '/numero-servico';  // Se o valor for 0, vá para a tela de número de serviço
+                } else {
+                    route = '/pagamento';  // Se o valor for maior que 0, vá para a tela de pagamento
+                }
+
+                return {
+                    id: index + 1,
+                    aluno: item.aluno,
+                    name: item.prova,
+                    valor: item.valor,
+                    route: route
+                };
+            });
+
+            console.log(formattedData);
+
+            setSelectedSubjects(formattedData);
+        } catch (error) {
+            console.error('Erro ao buscar disciplinas:', error);
         }
+
+        MySwal.close();
     }
 
-    const list = [
-        {
-            id: 1,
-            name: 'Prova Substitutiva',
-            route: validate(),
-            key: 'provasub'
-        },
-        {
-            id: 2,
-            name: 'Prova de Recuperação(SOMENTE HB)',
-            route: validate(),
-            key: 'provahb'
-        }
-    ]
-
-    // Filtrar a lista com base nos valores armazenados no localStorage
-    const filteredList = list.filter(item => selectedProof.some(proof => proof[item.key]));
+    const handleNext = (selectedName) => {
+        localStorage.setItem('selectedSubject', selectedName);
+    };
 
     return (
         <main className="proof-request">
             <div className='list-subjects'>
                 <h1 className='title'>Sobre qual assunto deseja falar?</h1>
-                <ListSubjects itens={filteredList} />
+                <ListSubjects
+                    itens={selectedSubjects}
+                    onClick={handleNext}
+                />
             </div>
         </main>
     )
 }
 
-export default ProofRequestSelect
+export default ProofRequestSelect;
