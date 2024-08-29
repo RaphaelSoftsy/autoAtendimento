@@ -28,8 +28,8 @@ import PrintedDiplomaServiceNumber from "../pages/Academic/PrintedDiplomaService
 import ProgramContent from "../pages/Academic/ProgramContent";
 import ProgramContentServiceNumber from "../pages/Academic/ProgramContentServiceNumber";
 import ProofRequest from "../pages/Academic/ProofRequest";
-import ProofRequestOpenDemand from "../pages/Academic/ProofRequestOpenDemand";
 import ProofRequestSelect from "../pages/Academic/ProofRequestSelect";
+import ProofRequestSelectServiceNumber from "../pages/Academic/ProofRequestSelectServiceNumber";
 import ReEnrollment from "../pages/Academic/ReEnrollment";
 import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
 import RegistrationDeclarationOpenDemand from "../pages/Academic/RegistrationDeclarationOpenDemand";
