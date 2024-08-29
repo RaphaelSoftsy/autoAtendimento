@@ -7,11 +7,6 @@ import withReactContent from 'sweetalert2-react-content';
 export const RAContext = createContext();
 
 export const RAProvider = ({ children }) => {
-  // const raList = [
-  //   { id: 1, ra: '2471074', nomeCompleto: 'Raphael de Santana Lopes', name: '2471074 - ADS - Análise de Desenvolvimento de Sistemas - Semestre 2' },
-  //   { id: 2, ra: '2471074', nomeCompleto: 'Raphael de Santana Lopes', name: '2471074 - Análise de Desenvolvimento de Sistemas - Semestre 3' },
-  //   { id: 3, ra: '2471074', nomeCompleto: 'Raphael de Santana Lopes', name: '2471074 - Análise de Desenvolvimento de Sistemas - Semestre 4' }
-  // ];
 
   const [raList, setRaList] = useState([]);
   const [currentRA, setCurrentRA] = useState(null);
@@ -31,12 +26,14 @@ export const RAProvider = ({ children }) => {
           ra: aluno,
         }));
 
-        console.log(updatedData);
+        const sortedData = updatedData.sort((a) => (a.ra === aluno ? -1 : 1));
 
-        setRaList(updatedData);
+        console.log('Dados recebidos da API:', sortedData);
 
-        if (updatedData.length > 0) {
-          setCurrentRA(updatedData[0]);
+        setRaList(sortedData);
+
+        if (sortedData.length > 0) {
+          setCurrentRA(sortedData[0]);
         }
       })
       .catch(error => {

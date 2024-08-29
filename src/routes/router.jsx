@@ -28,8 +28,8 @@ import PrintedDiplomaServiceNumber from "../pages/Academic/PrintedDiplomaService
 import ProgramContent from "../pages/Academic/ProgramContent";
 import ProgramContentServiceNumber from "../pages/Academic/ProgramContentServiceNumber";
 import ProofRequest from "../pages/Academic/ProofRequest";
-import ProofRequestOpenDemand from "../pages/Academic/ProofRequestOpenDemand";
 import ProofRequestSelect from "../pages/Academic/ProofRequestSelect";
+import ProofRequestSelectServiceNumber from "../pages/Academic/ProofRequestSelectServiceNumber";
 import ReEnrollment from "../pages/Academic/ReEnrollment";
 import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
 import RegistrationDeclarationOpenDemand from "../pages/Academic/RegistrationDeclarationOpenDemand";
@@ -240,7 +240,8 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/aproveitamento-de-estudos/numero-servico" element={<UtilizationStudiesServiceNumber />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
-                <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} />
+                <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/numero-servico" element={<ProofRequestSelectServiceNumber />} />
+                {/* <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} /> */}
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
                 <Route path="/solicitacoes-academicas/diplomas/numero-servico" element={<PrintedDiplomaServiceNumber />} />
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />
