@@ -77,6 +77,9 @@ const ProblemsReviewsSelectOpenDemand = () => {
             ...formData
         };
 
+        console.log(dataToSend);
+        
+
         try {
             const response = await axios.post(`${url_base_local}/problemaAvaliacao`, dataToSend, {
                 headers: {

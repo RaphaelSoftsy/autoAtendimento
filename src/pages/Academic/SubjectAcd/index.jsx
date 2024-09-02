@@ -1,5 +1,5 @@
-import './subjectAcd.css'
 import ListSubjects from '../../../components/ListSubjects';
+import './subjectAcd.css';
 
 const SubjectAcd = () => {
 

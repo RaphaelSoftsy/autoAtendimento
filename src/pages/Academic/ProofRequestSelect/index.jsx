@@ -30,9 +30,9 @@ const ProofRequestSelect = () => {
                 let route = '';
 
                 if (item.valor === 0) {
-                    route = '/numero-servico';  // Se o valor for 0, vá para a tela de número de serviço
+                    route = '/numero-servico';
                 } else {
-                    route = '/pagamento';  // Se o valor for maior que 0, vá para a tela de pagamento
+                    route = '/pagamento';
                 }
 
                 return {
