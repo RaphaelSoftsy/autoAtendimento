@@ -10,14 +10,12 @@ import { url_base_local } from '../../../services/url_base';
 import './rejectionAdaptation.css';
 
 const RejectionAdaptation = () => {
-
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [disciplineList, setDisciplineList] = useState([]);
-    const [reEnrollment, setReEnrollment] = useState({ disciplinas: 0 });
-    const navegation = useNavigate();
+    const [reEnrollment, setReEnrollment] = useState({});
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
-
     const maxDisciplines = 4;
 
     useEffect(() => {
@@ -32,11 +30,14 @@ const RejectionAdaptation = () => {
             const response = await axios.get(`${url_base_local}/disciplinasMatriculadas/${currentRA.ra}`);
             const data = response.data[0];
 
-            console.log(data);
-
             setReEnrollment(data);
         } catch (error) {
             console.error('Erro ao buscar declaração:', error);
+            MySwal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Não foi possível fazer a busca por disciplina. Tente novamente mais tarde.",
+            });
         } finally {
             MySwal.close();
         }
@@ -59,9 +60,14 @@ const RejectionAdaptation = () => {
             setDisciplineList(formattedData);
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);
+            MySwal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Não foi possível fazer a busca por disciplina. Tente novamente mais tarde.",
+            });
+        } finally {
+            MySwal.close();
         }
-
-        MySwal.close();
     }
 
     const handleSubjectSelect = (id) => {
@@ -88,11 +94,11 @@ const RejectionAdaptation = () => {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Selecione uma Disciplina para seguir.',
+                text: 'Você ainda não selecionou uma disciplina. Escolha uma para continuar.',
                 confirmButtonText: 'OK'
             });
         } else {
-            navegation('pagamento');
+            navigate('pagamento');
         }
     };
 
@@ -111,13 +117,17 @@ const RejectionAdaptation = () => {
                             <p className="tooltiptext">Lembrando que você pode ter apenas 4 disciplinas simultaneamente na matrícula.</p>
                         </span>
                     </h3>
-                    <ListCheckButton
-                        items={disciplineList}
-                        selectedSubjects={selectedSubjects}
-                        onSelect={handleSubjectSelect}
-                        text="Solicitar"
-                        onClickButton={handleNext}
-                    />
+                    {disciplineList.length > 0 ? (
+                        <ListCheckButton
+                            items={disciplineList}
+                            selectedSubjects={selectedSubjects}
+                            onSelect={handleSubjectSelect}
+                            text="Solicitar"
+                            onClickButton={handleNext}
+                        />
+                    ) : (
+                        <p>Carregando disciplinas...</p>
+                    )}
                 </div>
             </main>
         </>

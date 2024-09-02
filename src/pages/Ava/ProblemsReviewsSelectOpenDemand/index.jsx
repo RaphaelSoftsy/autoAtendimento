@@ -95,7 +95,6 @@ const ProblemsReviewsSelectOpenDemand = () => {
 
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",

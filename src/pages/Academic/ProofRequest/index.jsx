@@ -1,16 +1,15 @@
-import './proofRequest.css';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import Footer from '../../../components/Footer';
 import ListCheckButton from '../../../components/ListCheckButton';
-import axios from 'axios';
-import { url_base_local } from '../../../services/url_base';
 import { useRA } from '../../../contexts/RAContext';
+import { url_base_local } from '../../../services/url_base';
+import './proofRequest.css';
 
 const ProofRequest = () => {
-
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [selectedSubject, setSelectedSubject] = useState([]);
     const navigate = useNavigate();
@@ -34,14 +33,8 @@ const ProofRequest = () => {
         }
 
         try {
-
-            console.log(apiEndpoint);
-
-
             const response = await axios.get(`${url_base_local}/${apiEndpoint}/${currentRA.ra}`);
             const data = response.data;
-
-            console.log(data);
 
             const hasValidData = data.some((item) => {
                 const aluno = item.aluno?.trim();
@@ -65,7 +58,6 @@ const ProofRequest = () => {
         } catch (error) {
             console.error('Erro ao buscar disciplinas:', error);
         }
-
         MySwal.close();
     }
 
@@ -108,8 +100,7 @@ const ProofRequest = () => {
                         <p>Não existem dados disponíveis para a solicitação da prova.</p>
                     ) : (
                         <div className='list-subjects'>
-                            <h1 className='title'>Qual Disciplina deseja solicitar a prova?</h1>
-                            {/* <h4 className='title'>Se já houver solicitação da disciplina aberta, levar para a tela de senha com a opção de abrir demanda</h4> */}
+                            <h1 className='title'>Informe a disciplina para a qual deseja solicitar a prova.</h1>
                             <ListCheckButton
                                 items={selectedSubject}
                                 selectedSubjects={selectedSubjects}

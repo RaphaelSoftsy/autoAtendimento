@@ -3,7 +3,7 @@ import './textArea.css';
 const TextArea = (props) => {
     return (
         <div className="describe">
-            <span>{props.text}</span>
+            <p><strong>{props.text}</strong></p>
             <textarea
                 name="obs"
                 id={props.id}

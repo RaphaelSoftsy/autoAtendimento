@@ -12,7 +12,6 @@ import { url_base_local } from "../../../services/url_base";
 import { useRA } from "../../../contexts/RAContext";
 
 const UtilizationStudies = () => {
-
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
@@ -41,11 +40,11 @@ const UtilizationStudies = () => {
 
     useEffect(() => {
         setFormData(prevFormData => ({
-          ...prevFormData,
-          aluno: currentRA.ra
+            ...prevFormData,
+            aluno: currentRA.ra
         }));
-      }, [currentRA]);
-    
+    }, [currentRA]);
+
 
     const handleChangeObservation = (e) => {
         const { name, value } = e.target;
@@ -86,21 +85,11 @@ const UtilizationStudies = () => {
         MySwal.showLoading();
 
         const dataToSend = {
-            aluno: formData.aluno,
-            obs: formData.obs,
-            nomeArq: formData.nomeArq,
-            tamanhoArq: formData.tamanhoArq,
-            extensaoArq: formData.extensaoArq,
-            tipoArq: formData.tipoArq,
-            arquivo: formData.arquivo,
+            ...formData
         };
-        
+
         try {
-            const response = await axios.post(`${url_base_local}/${formData.apiEndpoint}`, dataToSend, {
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            });
+            const response = await axios.post(`${url_base_local}/${formData.apiEndpoint}`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
@@ -111,16 +100,13 @@ const UtilizationStudies = () => {
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
                 navegation("numero-servico");
-            } else {
-                throw new Error('Network response was not ok.');
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Não foi possível realizar esse comando!",
+                text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
             });
         }
     };
@@ -158,9 +144,10 @@ const UtilizationStudies = () => {
                             itens={list}
                             label='Selecione um Aproveitamento de Estudos'
                             onChange={handleDropdownChange}
+                            text="Selecione um Aproveitamento de Estudos"
                         />
                         <TextArea
-                            text='Descreva o por que da sua solicitação:'
+                            text='Descreva o motivo da sua solicitação, incluindo detalhes relevantes e quando ocorreu. Anexe uma captura de tela ou documento relevante (obrigatório).'
                             id="observation"
                             value={formData.obs}
                             onChange={handleChangeObservation}
@@ -180,7 +167,6 @@ const UtilizationStudies = () => {
                     </div>
                 </div>
             </div>
-            {/* <Footer text="Relatar Problema" style={style} /> */}
         </main>
     );
 }

@@ -1,5 +1,5 @@
-import './academicRequests.css'
 import ListSubjects from '../../../components/ListSubjects';
+import './academicRequests.css';
 
 const AcademicRequests = () => {
     const list = [
@@ -48,7 +48,6 @@ const AcademicRequests = () => {
             name: 'Transporte Escolar',
             route: '/academico/solicitacoes-academicas/transporte-escolar'
         }
-        
     ]
 
     return (
