@@ -18,7 +18,7 @@ const Notes = () => {
     const [codigoDisciplina, setCodigoDisciplina] = useState('');
     const [items, setItems] = useState([]);
     const MySwal = withReactContent(Swal);
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const { currentRA } = useRA();
 
     const handleNext = async () => {
@@ -26,7 +26,7 @@ const Notes = () => {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Você não selecionou nenhuma disciplina.',
+                text: 'Você ainda não selecionou uma disciplina. Escolha uma para continuar.',
                 confirmButtonText: 'OK'
             });
         } else {
@@ -41,23 +41,21 @@ const Notes = () => {
                 const response = await axios.post(`${url_base_local}/reclamacaoNota`, dataToSend);
 
                 if (response.status === 200) {
-                    const responseData = response.data;
-                    MySwal.close();
                     MySwal.fire({
                         title: "Cadastrado com sucesso",
                         icon: "success",
+                        timer: 1500,
+                        showConfirmButton: false
                     });
-                    localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                    navegation("numero-servico");
-                } else {
-                    throw new Error('Network response was not ok.');
+                    localStorage.setItem("numero-servico", JSON.stringify(response.data));
+                    navigate("numero-servico");
                 }
+
             } catch (error) {
-                MySwal.close();
                 MySwal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "Não foi possível realizar esse comando!",
+                    text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
                 });
             }
         }
@@ -84,18 +82,27 @@ const Notes = () => {
             const response = await axios.get(`${url_base_local}/DisciplinasHistorico/1412454`);
             const data = response.data;
 
-            const formattedData = data.map((item, index) => ({
-                id: index + 1,
-                name: item.nomeCompleto,
-                codigo: item.disciplina
-            }));
+            if (data.length > 0) {
+                const formattedData = data.map((item, index) => ({
+                    id: index + 1,
+                    name: item.nomeCompleto,
+                    codigo: item.disciplina
+                }));
 
-            setSelectedSubjects(formattedData);
+                setSelectedSubjects(formattedData);
+            } else {
+                setSelectedSubjects([]);
+            }
         } catch (error) {
-            console.error('Erro ao buscar disciplinas:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar as disciplinas. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            MySwal.close();
         }
-
-        MySwal.close();
     }
 
     async function getDisciplineHistory() {
@@ -105,26 +112,26 @@ const Notes = () => {
             const response = await axios.get(`${url_base_local}/notaHistorico/busca?aluno=1412454&disciplina=${codigoDisciplina}`);
             const data = response.data;
 
-            console.log(data);
-
             if (data.length > 0) {
-
                 const formattedItems = data.map((item) => ({
                     nome: item.avaliacao,
                     valor: item.nota,
                 }));
 
-                console.log(formattedItems);
                 setItems(formattedItems);
-            }else{
+            } else {
                 setItems([]);
             }
-
         } catch (error) {
-            console.error('Erro ao buscar o histórico de notas:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar as notas desta disciplina. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            MySwal.close();
         }
-
-        MySwal.close();
     }
 
     useEffect(() => {
@@ -151,6 +158,7 @@ const Notes = () => {
             {!isSelecting && (
                 <div className='select-discipline'>
                     <select value={selectedOption} onChange={handleSelectChange} className="custom-select">
+                        <option value="" disabled hidden>Selecione uma disciplina</option>
                         {selectedSubjects.map(item => (
                             <option key={item.id} value={item.codigo} className='option'>{item.name}</option>
                         ))}
