@@ -1,16 +1,15 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import ListSubjects from '../../../components/ListSubjects';
 import { useRA } from '../../../contexts/RAContext';
 import { url_base_local } from '../../../services/url_base';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import axios from 'axios';
 
 const ProblemsReviewsSelect = () => {
 
     const baseRoute = '/ava/problemas-nas-avaliacoes/escolha/abrir-demanda';
     const { currentRA } = useRA();
-
     const [selectedSubjectName, setSelectedSubjectName] = useState(null);
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const MySwal = withReactContent(Swal);
