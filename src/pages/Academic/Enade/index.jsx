@@ -3,7 +3,7 @@ import DefaultButton from "../../../components/DefaultButton";
 
 const Enade = () => {
 
-    const navegation = useNavigate()
+    const navigate = useNavigate()
 
     const style1 = {
         backgroundColor: "var(--secondary-light-yellow)"
@@ -17,13 +17,13 @@ const Enade = () => {
         <main className='main-perform-accord'>
             <div className="rescue-checks">
                 <div className="card-checkout-fill-max-width">
-                    <span><strong>O seu curso ainda não participa do ENADE (Exame Nacional de Desempenho dos Estudantes)</strong></span>
+                    <p><strong>O seu curso ainda não participa do ENADE (Exame Nacional de Desempenho dos Estudantes)</strong></p>
                     <div className="button-group">
                         <DefaultButton
                             text="Abrir uma Demanda"
                             backgroundColor="var(--primary-light-blue)"
                             color='#fff'
-                            onClick={() => navegation("abrir-demanda")}
+                            onClick={() => navigate("abrir-demanda")}
                         />
                     </div>
                 </div>

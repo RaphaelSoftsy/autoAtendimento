@@ -231,15 +231,12 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova" element={<ProofRequest />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha" element={<ProofRequestSelect />} />
                 <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/numero-servico" element={<ProofRequestSelectServiceNumber />} />
-                {/* <Route path="/solicitacoes-academicas/solicitacao-de-prova/escolha/abrir-demanda" element={<ProofRequestOpenDemand />} /> */}
                 <Route path="/solicitacoes-academicas/diplomas" element={<Diplomas />} />
                 <Route path="/solicitacoes-academicas/diplomas/numero-servico" element={<PrintedDiplomaServiceNumber />} />
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial" element={<SpecialDegreeConferral />} />
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial/numero-servico" element={<SpecialDegreeConferralServiceNumber />} />
                 <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma" element={<DuplicateDiploma />} />
                 <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma/numero-servico" element={<DuplicateDiplomaServiceNumber />} />
-
-
                 
                 <Route path="/solicitacoes-academicas/estagio" element={<Internship />} />
                 <Route path="/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio" element={<SigningInternshipContract />} />
@@ -251,6 +248,7 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/estagio/convalidacao-de-horas" element={<TerminationInternshipContract />} />
                 <Route path="/solicitacoes-academicas/estagio/convalidacao-de-horas/numero-servico" element={<TerminationInternshipContractServiceNumber />} />
                 <Route path="/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura" element={<UndergraduateCoverLetter />} />
+
                 <Route path="/solicitacoes-academicas/atividades-complementares" element={<AdditionalActivities />} />
                 <Route path="/solicitacoes-academicas/atividades-complementares/abrir-demanda" element={<AdditionalActivitiesOpenDemand />} />
                 <Route path="/solicitacoes-academicas/atividades-complementares/abrir-demanda/numero-servico" element={<AdditionalActivitiesServiceNumber />} />
@@ -260,6 +258,7 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/rematricula" element={<ReEnrollment />} />
                 <Route path="/solicitacoes-academicas/transporte-escolar" element={<SchoolBus />} />
                 <Route path="/solicitacoes-academicas/transporte-escolar/numero-servico" element={<SchoolBusServiceNumber />} />
+
                 <Route path="/expedicao-de-documentos" element={<Expedition />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-matricula" element={<RegistrationDeclaration />} />
                 <Route path="/expedicao-de-documentos/declaracao-de-matricula/abrir-demanda" element={<RegistrationDeclarationOpenDemand />} />

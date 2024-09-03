@@ -10,7 +10,7 @@ import './schoolBus.css';
 const SchoolBus = () => {
 
     const [selectedSubjects, setSelectedSubjects] = useState([]);
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
 
     const list = [
@@ -40,7 +40,7 @@ const SchoolBus = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            navegation('/academico/solicitacoes-academicas/transporte-escolar/numero-servico');
+            navigate('numero-servico');
         }
     };
 
