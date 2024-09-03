@@ -41,11 +41,7 @@ const Diplomas = () => {
         };
 
         try {
-            const response = await axios.post(`${url_base_local}/diplomaImpresso`, dataToSend, {
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            });
+            const response = await axios.post(`${url_base_local}/diplomaImpresso`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
@@ -53,18 +49,19 @@ const Diplomas = () => {
                 MySwal.fire({
                     title: "Cadastrado com sucesso",
                     icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
                 navigate("numero-servico");
-            } else {
-                throw new Error('Network response was not ok.');
             }
         } catch (error) {
             MySwal.close();
             MySwal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Não foi possível realizar esse comando!",
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível solicitar o diploma impresso. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
             });
         }
     };
@@ -76,14 +73,16 @@ const Diplomas = () => {
             const response = await axios.get(`${url_base_local}/solicitaDiploma/${currentRA.ra}`);
             const data = response.data;
 
-            console.log(data);
-
             setSelectedSubjects(data);
         } catch (error) {
-            console.error('Erro ao buscar disciplinas:', error);
+            MySwal.close();
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível solicitação. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
         }
-
-        MySwal.close();
     }
 
     const list = [
@@ -116,7 +115,7 @@ const Diplomas = () => {
     return (
         <main className="perform-payment">
             <div className='list-subjects'>
-                <h1 className='title'>Selecione 1 das opções abaixo:</h1>
+                <h1 className='title'>Escolha uma das opções de diploma abaixo.</h1>
                 <ListArrow items={list} />
             </div>
         </main>

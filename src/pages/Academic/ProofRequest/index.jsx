@@ -1,22 +1,20 @@
-import './proofRequest.css';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import Footer from '../../../components/Footer';
 import ListCheckButton from '../../../components/ListCheckButton';
-import axios from 'axios';
-import { url_base_local } from '../../../services/url_base';
 import { useRA } from '../../../contexts/RAContext';
+import { url_base_local } from '../../../services/url_base';
+import './proofRequest.css';
 
 const ProofRequest = () => {
-
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [selectedSubject, setSelectedSubject] = useState([]);
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
-    const [noData, setNoData] = useState(false);
 
     useEffect(() => {
         getDiscipline();
@@ -34,39 +32,30 @@ const ProofRequest = () => {
         }
 
         try {
-
-            console.log(apiEndpoint);
-
-
             const response = await axios.get(`${url_base_local}/${apiEndpoint}/${currentRA.ra}`);
             const data = response.data;
 
-            console.log(data);
-
-            const hasValidData = data.some((item) => {
-                const aluno = item.aluno?.trim();
-                const discipina = item.disciplina?.trim();
-                const nome = item.nome?.trim();
-                return aluno && discipina && nome;
-            });
-
-            if (!hasValidData) {
-                setNoData(true);
-            } else {
-                setNoData(false);
+            if (data.length > 0) {
                 const formattedData = data.map((item, index) => ({
                     id: index + 1,
                     aluno: item.aluno,
                     name: item.nomeDisciplina
                 }));
+
                 setSelectedSubject(formattedData);
+            } else {
+                setSelectedSubject([]);
             }
-
         } catch (error) {
-            console.error('Erro ao buscar disciplinas:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar as provas disponíveis no sistema. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            MySwal.close();
         }
-
-        MySwal.close();
     }
 
     const handleSubjectSelect = (id, multiple) => {
@@ -85,7 +74,9 @@ const ProofRequest = () => {
     };
 
     const handleNext = () => {
-        if (selectedSubjects.length === 0) {
+        if (selectedSubject.length === 0) {
+            navigate('/academico/solicitacoes-academicas');
+        }else if (selectedSubjects.length === 0) {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
@@ -104,12 +95,9 @@ const ProofRequest = () => {
         <>
             <main className='main-problems-activities'>
                 <div className="proof-request">
-                    {noData ? (
-                        <p>Não existem dados disponíveis para a solicitação da prova.</p>
-                    ) : (
+                    {selectedSubject.length > 0 ? (
                         <div className='list-subjects'>
-                            <h1 className='title'>Qual Disciplina deseja solicitar a prova?</h1>
-                            {/* <h4 className='title'>Se já houver solicitação da disciplina aberta, levar para a tela de senha com a opção de abrir demanda</h4> */}
+                            <h1 className='title'>Informe a disciplina para a qual deseja solicitar a prova.</h1>
                             <ListCheckButton
                                 items={selectedSubject}
                                 selectedSubjects={selectedSubjects}
@@ -117,11 +105,12 @@ const ProofRequest = () => {
                                 multiple={false}
                                 text="Não achou a disciplina que está procurando?"
                             />
-
                         </div>
+                    ) : (
+                        <p>Não existem dados disponíveis para a solicitação da prova.</p>
                     )}
                 </div>
-                <Footer text='Avançar' onClick={handleNext} />
+                <Footer text={selectedSubject.length === 0 ? "Voltar" : "Avançar"} onClick={handleNext} />
             </main>
         </>
     );

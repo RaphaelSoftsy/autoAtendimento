@@ -11,7 +11,6 @@ import { url_base_local } from '../../../services/url_base';
 import './additionalActivities.css';
 
 const AdditionalActivities = () => {
-
     const list = [
         {
             id: 1,

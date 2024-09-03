@@ -12,7 +12,7 @@ import './problemsActivities.css';
 const ProblemsActivities = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [problems, setProblems] = useState([]);
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
 
@@ -70,7 +70,7 @@ const ProblemsActivities = () => {
 
     const handleNext = () => {
         if (problems.length === 0) {
-            navegation('/ava');
+            navigate('/ava');
         } else if (selectedSubjects.length === 0) {
             MySwal.fire({
                 icon: 'info',
@@ -80,7 +80,7 @@ const ProblemsActivities = () => {
             });
         } else {
             localStorage.setItem("disciplina-selecionada", selectedSubjectCodigo);
-            navegation('abrir-demanda');
+            navigate('abrir-demanda');
         }
     };
 

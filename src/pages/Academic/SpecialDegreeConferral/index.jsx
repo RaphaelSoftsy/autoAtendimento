@@ -9,8 +9,7 @@ import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../ProgramContent";
 
 const SpecialDegreeConferral = () => {
-
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
 
@@ -70,50 +69,33 @@ const SpecialDegreeConferral = () => {
         MySwal.showLoading();
 
         const dataToSend = {
-            aluno: formData.aluno,
-            obs: formData.obs,
-            nomeArq: formData.nomeArq,
-            tamanhoArq: formData.tamanhoArq,
-            extensaoArq: formData.extensaoArq,
-            tipoArq: formData.tipoArq,
-            arquivo: formData.arquivo
+            ...formData
         };
 
         try {
-            const response = await axios.post(`${url_base_local}/grauEspecial`, dataToSend, {
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            });
+            const response = await axios.post(`${url_base_local}/grauEspecial`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
                 MySwal.close();
                 MySwal.fire({
-                    title: "Cadastrado com sucesso",
+                    title: "Solicitação Enviada com Sucessso!",
                     icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navegation("numero-servico");
-            } else {
-                throw new Error('Network response was not ok.');
+                navigate("numero-servico");
             }
         } catch (error) {
             MySwal.close();
             MySwal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Não foi possível realizar esse comando!",
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível solicitar o colação de grau especial. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
             });
         }
-    };
-
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    const handleFileChanges = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-        handleFileChange(event);
     };
 
     return (
@@ -121,10 +103,9 @@ const SpecialDegreeConferral = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, envie os documentos'
-                        onChangeInputFile={handleFileChanges}
-                        selectedFile={selectedFile}
-                        selectedFileName={selectedFile ? selectedFile.name : ""}
+                        text='Por favor, envie os documentos.'
+                        onChangeInputFile={handleFileChange}
+                        selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}
                         textTextArea=''
                         observation={formData.obs}

@@ -7,13 +7,15 @@ import DefaultButton from "../../../components/DefaultButton";
 import Footer from "../../../components/Footer";
 import { url_base_local } from "../../../services/url_base";
 import "./reEnrollment.css";
+import { useRA } from "../../../contexts/RAContext";
 
 const ReEnrollment = () => {
 
-    const navegation = useNavigate()
+    const navigate = useNavigate()
     const [reEnrollment, setReEnrollment] = useState([]);
     const [reEnrollment2, setReEnrollment2] = useState([]);
     const MySwal = withReactContent(Swal);
+    const { currentRA } = useRA();
     const aluno = '2473773'
 
     const style = {
@@ -75,7 +77,7 @@ const ReEnrollment = () => {
                         text="Regularizar Financeiro"
                         backgroundColor="var(--primary-light-blue)"
                         color='#fff'
-                        onClick={() => navegation("/")}
+                        onClick={() => navigate("/")}
                     />
                 </div>
             </div>
@@ -85,7 +87,7 @@ const ReEnrollment = () => {
                     <Link className='title-footer' style={style} > Finalizar Sessão </Link>
                 </footer>
             </div> */}
-            <Footer text="Finalizar Sessão" onClick={() => navegation("/academico")} style={style} />
+            <Footer text="Finalizar Sessão" onClick={() => navigate("/academico")} style={style} />
         </main>
     );
 

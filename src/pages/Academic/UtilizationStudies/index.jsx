@@ -12,20 +12,13 @@ import { url_base_local } from "../../../services/url_base";
 import { useRA } from "../../../contexts/RAContext";
 
 const UtilizationStudies = () => {
-
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
 
     const list = [
-        {
-            id: 1,
-            name: 'Aproveitar disciplinas cursadas na Sumaré'
-        },
-        {
-            id: 2,
-            name: 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)'
-        }
+        { id: 1, name: 'Aproveitar disciplinas cursadas na Sumaré' },
+        { id: 2, name: 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)' }
     ];
 
     const [formData, setFormData] = useState({
@@ -35,17 +28,18 @@ const UtilizationStudies = () => {
         tamanhoArq: '',
         extensaoArq: '',
         tipoArq: '',
-        arquivo: '',
-        apiEndpoint: ''
+        arquivo: ''
     });
+
+    const [apiEndpoint, setApiEndpoint] = useState('');
 
     useEffect(() => {
         setFormData(prevFormData => ({
-          ...prevFormData,
-          aluno: currentRA.ra
+            ...prevFormData,
+            aluno: currentRA.ra
         }));
-      }, [currentRA]);
-    
+    }, [currentRA]);
+
 
     const handleChangeObservation = (e) => {
         const { name, value } = e.target;
@@ -74,6 +68,15 @@ const UtilizationStudies = () => {
 
     const handleSubmit = async () => {
 
+        if (!apiEndpoint) {
+            MySwal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Por favor, selecione um tipo de aproveitamento!",
+            });
+            return;
+        }
+
         if (!formData.arquivo) {
             MySwal.fire({
                 icon: "error",
@@ -86,21 +89,14 @@ const UtilizationStudies = () => {
         MySwal.showLoading();
 
         const dataToSend = {
-            aluno: formData.aluno,
-            obs: formData.obs,
-            nomeArq: formData.nomeArq,
-            tamanhoArq: formData.tamanhoArq,
-            extensaoArq: formData.extensaoArq,
-            tipoArq: formData.tipoArq,
-            arquivo: formData.arquivo,
+            ...formData
         };
+
+        console.log(dataToSend);
+        console.log(apiEndpoint);
         
         try {
-            const response = await axios.post(`${url_base_local}/${formData.apiEndpoint}`, dataToSend, {
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            });
+            const response = await axios.post(`${url_base_local}/${apiEndpoint}`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
@@ -108,43 +104,28 @@ const UtilizationStudies = () => {
                 MySwal.fire({
                     title: "Cadastrado com sucesso",
                     icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navegation("numero-servico");
-            } else {
-                throw new Error('Network response was not ok.');
+                navigate("numero-servico");
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Não foi possível realizar esse comando!",
+                text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
             });
         }
     };
 
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    const handleFileChanges = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-        handleFileChange(event);
-    };
-
     const handleDropdownChange = (selectedValue) => {
-        let apiEndpoint = '';
-        if (selectedValue === 'Aproveitar disciplinas cursadas na Sumaré') {
-            apiEndpoint = 'aproveitamentoInterno';
-        } else if (selectedValue === 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)') {
-            apiEndpoint = 'aproveitamentoExterno';
-        }
-
-        setFormData(prevState => ({
-            ...prevState,
-            apiEndpoint
-        }));
+        const endpoints = {
+            'Aproveitar disciplinas cursadas na Sumaré': 'aproveitamentoInterno',
+            'Aproveitar disciplinas cursadas em outra(s) faculdade(s)': 'aproveitamentoExterno'
+        };
+        setApiEndpoint(endpoints[selectedValue] || '');
     };
 
     return (
@@ -158,16 +139,17 @@ const UtilizationStudies = () => {
                             itens={list}
                             label='Selecione um Aproveitamento de Estudos'
                             onChange={handleDropdownChange}
+                            text="Selecione um Aproveitamento de Estudos"
                         />
                         <TextArea
-                            text='Descreva o por que da sua solicitação:'
+                            text='Descreva o motivo da sua solicitação, incluindo detalhes relevantes e quando ocorreu. Anexe uma captura de tela ou documento relevante (obrigatório).'
                             id="observation"
                             value={formData.obs}
                             onChange={handleChangeObservation}
                         />
                         <InputUpload
-                            onChangeInputFile={handleFileChanges}
-                            selectedFileName={selectedFile ? selectedFile.name : ""}
+                            onChangeInputFile={handleFileChange}
+                            selectedFileName={formData.nomeArq}
                         />
                         <div className="button-group">
                             <DefaultButton
@@ -180,7 +162,6 @@ const UtilizationStudies = () => {
                     </div>
                 </div>
             </div>
-            {/* <Footer text="Relatar Problema" style={style} /> */}
         </main>
     );
 }
