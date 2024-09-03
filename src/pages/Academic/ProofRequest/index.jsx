@@ -15,7 +15,6 @@ const ProofRequest = () => {
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
-    const [noData, setNoData] = useState(false);
 
     useEffect(() => {
         getDiscipline();
@@ -76,7 +75,7 @@ const ProofRequest = () => {
 
     const handleNext = () => {
         if (selectedSubject.length === 0) {
-            navigate('/academico');
+            navigate('/academico/solicitacoes-academicas');
         }else if (selectedSubjects.length === 0) {
             MySwal.fire({
                 icon: 'info',
