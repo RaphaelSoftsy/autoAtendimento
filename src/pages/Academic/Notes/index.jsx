@@ -50,7 +50,6 @@ const Notes = () => {
                     localStorage.setItem("numero-servico", JSON.stringify(response.data));
                     navigate("numero-servico");
                 }
-
             } catch (error) {
                 MySwal.fire({
                     icon: "error",
@@ -75,7 +74,7 @@ const Notes = () => {
         setSelectedOption('');
     };
 
-    async function getDiscipline() {
+    const getDiscipline = async () => {
         MySwal.showLoading();
 
         try {
@@ -105,7 +104,7 @@ const Notes = () => {
         }
     }
 
-    async function getDisciplineHistory() {
+    const getDisciplineHistory = async () => {
         MySwal.showLoading();
 
         try {
@@ -117,7 +116,6 @@ const Notes = () => {
                     nome: item.avaliacao,
                     valor: item.nota,
                 }));
-
                 setItems(formattedItems);
             } else {
                 setItems([]);
@@ -170,7 +168,6 @@ const Notes = () => {
                     {isSelecting && (
                         <span className="back-arrow" onClick={handleBackClick}>&larr; Voltar</span>
                     )}
-
                     <ul className='list'>
                         {items.map((item, index) => (
                             <ReviewItem

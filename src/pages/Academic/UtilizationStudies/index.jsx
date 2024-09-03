@@ -12,19 +12,13 @@ import { url_base_local } from "../../../services/url_base";
 import { useRA } from "../../../contexts/RAContext";
 
 const UtilizationStudies = () => {
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
 
     const list = [
-        {
-            id: 1,
-            name: 'Aproveitar disciplinas cursadas na Sumaré'
-        },
-        {
-            id: 2,
-            name: 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)'
-        }
+        { id: 1, name: 'Aproveitar disciplinas cursadas na Sumaré' },
+        { id: 2, name: 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)' }
     ];
 
     const [formData, setFormData] = useState({
@@ -34,9 +28,10 @@ const UtilizationStudies = () => {
         tamanhoArq: '',
         extensaoArq: '',
         tipoArq: '',
-        arquivo: '',
-        apiEndpoint: ''
+        arquivo: ''
     });
+
+    const [apiEndpoint, setApiEndpoint] = useState('');
 
     useEffect(() => {
         setFormData(prevFormData => ({
@@ -73,6 +68,15 @@ const UtilizationStudies = () => {
 
     const handleSubmit = async () => {
 
+        if (!apiEndpoint) {
+            MySwal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Por favor, selecione um tipo de aproveitamento!",
+            });
+            return;
+        }
+
         if (!formData.arquivo) {
             MySwal.fire({
                 icon: "error",
@@ -88,8 +92,11 @@ const UtilizationStudies = () => {
             ...formData
         };
 
+        console.log(dataToSend);
+        console.log(apiEndpoint);
+        
         try {
-            const response = await axios.post(`${url_base_local}/${formData.apiEndpoint}`, dataToSend);
+            const response = await axios.post(`${url_base_local}/${apiEndpoint}`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
@@ -97,9 +104,11 @@ const UtilizationStudies = () => {
                 MySwal.fire({
                     title: "Cadastrado com sucesso",
                     icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navegation("numero-servico");
+                navigate("numero-servico");
             }
         } catch (error) {
             MySwal.close();
@@ -111,26 +120,12 @@ const UtilizationStudies = () => {
         }
     };
 
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    const handleFileChanges = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-        handleFileChange(event);
-    };
-
     const handleDropdownChange = (selectedValue) => {
-        let apiEndpoint = '';
-        if (selectedValue === 'Aproveitar disciplinas cursadas na Sumaré') {
-            apiEndpoint = 'aproveitamentoInterno';
-        } else if (selectedValue === 'Aproveitar disciplinas cursadas em outra(s) faculdade(s)') {
-            apiEndpoint = 'aproveitamentoExterno';
-        }
-
-        setFormData(prevState => ({
-            ...prevState,
-            apiEndpoint
-        }));
+        const endpoints = {
+            'Aproveitar disciplinas cursadas na Sumaré': 'aproveitamentoInterno',
+            'Aproveitar disciplinas cursadas em outra(s) faculdade(s)': 'aproveitamentoExterno'
+        };
+        setApiEndpoint(endpoints[selectedValue] || '');
     };
 
     return (
@@ -153,8 +148,8 @@ const UtilizationStudies = () => {
                             onChange={handleChangeObservation}
                         />
                         <InputUpload
-                            onChangeInputFile={handleFileChanges}
-                            selectedFileName={selectedFile ? selectedFile.name : ""}
+                            onChangeInputFile={handleFileChange}
+                            selectedFileName={formData.nomeArq}
                         />
                         <div className="button-group">
                             <DefaultButton

@@ -20,10 +20,10 @@ const RejectionAdaptation = () => {
 
     useEffect(() => {
         getReEnrollment();
-        getDiscipline();
+        getStatusDiscipline();
     }, [currentRA]);
 
-    async function getReEnrollment() {
+    const getReEnrollment = async () => {
         MySwal.showLoading();
 
         try {
@@ -32,7 +32,6 @@ const RejectionAdaptation = () => {
 
             setReEnrollment(data);
         } catch (error) {
-            console.error('Erro ao buscar declaração:', error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -43,27 +42,30 @@ const RejectionAdaptation = () => {
         }
     }
 
-    async function getDiscipline() {
+    const getStatusDiscipline = async () => {
         MySwal.showLoading();
 
         try {
             const response = await axios.get(`${url_base_local}/statusDisciplina/${currentRA.ra}`);
             const data = response.data;
 
-            const formattedData = data.map((item, index) => ({
-                id: index + 1,
-                aluno: item.aluno,
-                name: `${item.nomeDisciplina} (${item.status})`,
-                codigo: item.codDisciplina
-            }));
-
-            setDisciplineList(formattedData);
+            if (data.length > 0) {
+                const formattedData = data.map((item, index) => ({
+                    id: index + 1,
+                    aluno: item.aluno,
+                    name: `${item.nomeDisciplina} (${item.status})`,
+                    codigo: item.codDisciplina
+                }));
+    
+                setDisciplineList(formattedData);
+            }else{
+                setDisciplineList([]);
+            }
         } catch (error) {
-            console.error('Erro ao buscar disciplinas:', error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Não foi possível fazer a busca por disciplina. Tente novamente mais tarde.",
+                text: "Não foi possível fazer a busca status disciplina. Tente novamente mais tarde.",
             });
         } finally {
             MySwal.close();
@@ -98,7 +100,7 @@ const RejectionAdaptation = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            navigate('pagamento');
+            navigate('/financeiro/realizar-pagamento');
         }
     };
 

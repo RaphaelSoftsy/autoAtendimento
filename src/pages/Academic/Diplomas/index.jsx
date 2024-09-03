@@ -79,7 +79,7 @@ const Diplomas = () => {
             MySwal.fire({
                 icon: 'error',
                 title: 'Erro',
-                text: 'Não foi possível solicitar o diploma impresso. Tente novamente mais tarde.',
+                text: 'Não foi possível solicitação. Tente novamente mais tarde.',
                 confirmButtonText: 'OK'
             });
         }

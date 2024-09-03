@@ -79,7 +79,7 @@ const SpecialDegreeConferral = () => {
                 const responseData = response.data;
                 MySwal.close();
                 MySwal.fire({
-                    title: "Cadastrado com sucesso",
+                    title: "Solicitação Enviada com Sucessso!",
                     icon: "success",
                     timer: 1500,
                     showConfirmButton: false
@@ -103,7 +103,7 @@ const SpecialDegreeConferral = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, envie os documentos'
+                        text='Por favor, envie os documentos.'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}
