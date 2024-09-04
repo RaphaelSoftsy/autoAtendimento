@@ -14,7 +14,9 @@ const Diplomas = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
 
     useEffect(() => {
-        if (currentRA.sitAluno === 'CONCLUIDO') {
+        if (!currentRA) return;
+
+        if (currentRA.sitAluno.toLowerCase() !== 'concluido') {
             MySwal.fire({
                 icon: 'warning',
                 title: 'Atenção!',
@@ -22,15 +24,12 @@ const Diplomas = () => {
                 showConfirmButton: false,
                 timer: 3000,
             });
-
             setTimeout(() => {
                 navigate("/academico/solicitacoes-academicas");
             }, 3000);
+        } else {
+            getDiploma();
         }
-    }, [currentRA]);
-
-    useEffect(() => {
-        getDiploma();
     }, [currentRA]);
 
     const handleSubmit = async () => {
@@ -74,12 +73,13 @@ const Diplomas = () => {
             const data = response.data;
 
             setSelectedSubjects(data);
+            MySwal.close();
         } catch (error) {
             MySwal.close();
             MySwal.fire({
                 icon: 'error',
                 title: 'Erro',
-                text: 'Não foi possível solicitação. Tente novamente mais tarde.',
+                text: 'Não foi possível realizar a solicitação. Tente novamente mais tarde.',
                 confirmButtonText: 'OK'
             });
         }

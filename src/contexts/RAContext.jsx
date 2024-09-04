@@ -12,26 +12,23 @@ export const RAProvider = ({ children }) => {
   const [currentRA, setCurrentRA] = useState(null);
   const MySwal = withReactContent(Swal);
 
-  useEffect(() => {
+  const updateRAContext = () => {
     const aluno = localStorage.getItem('aluno-ra');
     MySwal.showLoading();
-
+  
     axios.get(`${url_base_local}/dadosAluno/${aluno}`)
       .then(response => {
         const data = response.data;
-
-        // Substitui "aluno" por "ra" e remove completamente o campo "aluno"
+  
         const updatedData = data.map(({ aluno, ...rest }) => ({
           ...rest,
           ra: aluno,
         }));
-
+  
         const sortedData = updatedData.sort((a) => (a.ra === aluno ? -1 : 1));
-
-        console.log('Dados recebidos da API:', sortedData);
-
+  
         setRaList(sortedData);
-
+  
         if (sortedData.length > 0) {
           setCurrentRA(sortedData[0]);
         }
@@ -43,14 +40,19 @@ export const RAProvider = ({ children }) => {
       .finally(() => {
         MySwal.close();
       });
+  };
+  
+  useEffect(() => {
+    updateRAContext();
   }, []);
+  
 
   const selectRA = (ra) => {
     setCurrentRA(ra);
   };
 
   return (
-    <RAContext.Provider value={{ raList, currentRA, selectRA }}>
+    <RAContext.Provider value={{ raList, currentRA, selectRA, updateRAContext}}>
       {children}
     </RAContext.Provider>
   );

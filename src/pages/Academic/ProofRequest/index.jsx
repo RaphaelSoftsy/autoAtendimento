@@ -32,14 +32,15 @@ const ProofRequest = () => {
         }
 
         try {
-            const response = await axios.get(`${url_base_local}/${apiEndpoint}/${currentRA.ra}`);
+            const response = await axios.get(`${url_base_local}/${apiEndpoint}/2480263`);
             const data = response.data;
 
             if (data.length > 0) {
                 const formattedData = data.map((item, index) => ({
                     id: index + 1,
                     aluno: item.aluno,
-                    name: item.nomeDisciplina
+                    name: item.nome,
+                    codigo: item.disciplina
                 }));
 
                 setSelectedSubject(formattedData);
@@ -76,7 +77,7 @@ const ProofRequest = () => {
     const handleNext = () => {
         if (selectedSubject.length === 0) {
             navigate('/academico/solicitacoes-academicas');
-        }else if (selectedSubjects.length === 0) {
+        } else if (selectedSubjects.length === 0) {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
@@ -84,8 +85,10 @@ const ProofRequest = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            const selectedProof = selectedSubject.filter(item => selectedSubjects.includes(item.id));
-            localStorage.setItem("selectedProof", JSON.stringify(selectedProof));
+            const selectedProof = selectedSubject
+                .filter(item => selectedSubjects.includes(item.id))
+                .map(item => item.codigo);
+            localStorage.setItem("selectedProof", selectedProof);
 
             navigate('/academico/solicitacoes-academicas/solicitacao-de-prova/escolha');
         }
