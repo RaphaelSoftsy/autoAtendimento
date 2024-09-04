@@ -1,11 +1,12 @@
-import { Link, useNavigate } from "react-router-dom"
-import './login.css'
-import { useEffect, useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Logo from '../../assets/logo-sumare.svg';
+import { useRA } from "../../contexts/RAContext";
+import './login.css';
 
 const Login = () => {
 
@@ -15,6 +16,7 @@ const Login = () => {
     const [login, setLogin] = useState([]);
     const navegation = useNavigate();
     const MySwal = withReactContent(Swal);
+    const { updateRAContext } = useRA();
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -26,27 +28,25 @@ const Login = () => {
             const data = response.data;
             console.log('Dados Login:', data);
 
-            if(data === 'autenticado') {
+            if (data === 'autenticado') {
                 setLogin(data);
                 localStorage.setItem("aluno-ra", ra);
-
-                console.log(ra);
-                
-
+                updateRAContext();
                 navegation('/home');
                 MySwal.fire({
-                    icon:'success',
+                    icon: 'success',
                     title: 'Login efetuado com sucesso!',
-                    confirmButtonText: 'OK'
+                    showConfirmButton: false,
+                    timer: 3000,
                 });
-            }else if(data === 'N'){
+            } else if (data === 'N') {
                 MySwal.fire({
                     icon: 'info',
                     title: 'Erro',
                     text: 'Login ou senha inválidos',
                     confirmButtonText: 'OK'
                 });
-            }else{
+            } else {
                 MySwal.fire({
                     icon: 'error',
                     title: 'Erro de Login',
@@ -83,7 +83,7 @@ const Login = () => {
     return (
         <main className="auto-atendimento">
             <div className="login">
-            <img src={Logo} alt="logo sumaré" className="logo-sumare-password"/>
+                <img src={Logo} alt="logo sumaré" className="logo-sumare-password" />
                 <h1>Auto Atendimento</h1>
                 <input
                     type="tel"
@@ -109,7 +109,6 @@ const Login = () => {
                 <button className="button-login" onClick={handleNext}>Login</button>
             </div>
             <div className="white"></div>
-
         </main>
     )
 }

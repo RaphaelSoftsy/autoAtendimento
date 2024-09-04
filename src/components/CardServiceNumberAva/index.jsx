@@ -3,7 +3,7 @@ import DefaultButton from '../DefaultButton';
 
 const CardServiceNumberAva = (props) => {
 
-    const navegation = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <div className='card-service-number'>
@@ -17,13 +17,13 @@ const CardServiceNumberAva = (props) => {
                 text="Voltar para Serviço"
                 backgroundColor="var(--secondary-light-yellow)"
                 color='#fff'
-                onClick={() => navegation('/ava')}
+                onClick={() => navigate('/ava')}
             />
             <DefaultButton
                 text="Finalizar Sessão"
                 backgroundColor="var(--secondary-light-red)"
                 color='#fff'
-                onClick={() => navegation('/home')}
+                onClick={() => navigate('/home')}
             />
         </div>
     );

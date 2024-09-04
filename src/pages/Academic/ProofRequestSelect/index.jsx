@@ -10,6 +10,7 @@ const ProofRequestSelect = () => {
     const { currentRA } = useRA();
     const MySwal = withReactContent(Swal);
     const [selectedSubjects, setSelectedSubjects] = useState([]);
+    const disciplinaSelecionada = localStorage.getItem('selectedProof')
 
     useEffect(() => {
         getProva();
@@ -19,7 +20,7 @@ const ProofRequestSelect = () => {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/provasDisponiveis/ead?aluno=2480263&disciplina=00124_80`);
+            const response = await axios.get(`${url_base_local}/provasDisponiveis/ead?aluno=2480263&disciplina=${disciplinaSelecionada}`);
             const data = response.data;
 
             const formattedData = data.map((item, index) => {
@@ -28,7 +29,7 @@ const ProofRequestSelect = () => {
                 if (item.valor === 0) {
                     route = '/numero-servico';
                 } else {
-                    route = '/pagamento';
+                    route = '/financeiro/realizar-pagamento';
                 }
 
                 return {
