@@ -72,8 +72,6 @@ const ProblemsAccessingAVA = () => {
         const dataToSend = {
             ...formData
         };
-
-        console.log(dataToSend);
         
         try {
             const response = await axios.post(`${url_base_local}/problemaAcessoAva`, dataToSend);
@@ -93,7 +91,6 @@ const ProblemsAccessingAVA = () => {
 
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",

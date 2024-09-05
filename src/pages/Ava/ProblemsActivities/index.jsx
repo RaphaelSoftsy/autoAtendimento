@@ -24,9 +24,9 @@ const ProblemsActivities = () => {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
+            const response = await axios.get(`${url_base_local}/disciplina/matriculada/?aluno=${currentRA.ra}&obrigatoria=S`);
             const data = response.data;
-
+            
             if (data.length > 0) {
                 const formattedData = data.map((item, index) => ({
                     id: index + 1,
