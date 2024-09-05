@@ -25,8 +25,6 @@ const ProblemsAccessingDiscipline = () => {
         try {
             const response = await axios.get(`${url_base_local}/disciplina/grade?aluno=${currentRA.ra}&obrigatoria=S`);
             const data = response.data;
-
-            console.log(data);
             
             if (data.length > 0) {
                 const formattedData = data.map((item, index) => ({
