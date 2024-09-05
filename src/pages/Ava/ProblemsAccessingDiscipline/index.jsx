@@ -23,14 +23,16 @@ const ProblemsAccessingDiscipline = () => {
     async function getProblemsAccessingDiscipline() {
         MySwal.showLoading();
         try {
-            const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
+            const response = await axios.get(`${url_base_local}/disciplina/grade?aluno=${currentRA.ra}&obrigatoria=S`);
             const data = response.data;
 
+            console.log(data);
+            
             if (data.length > 0) {
                 const formattedData = data.map((item, index) => ({
                     id: index + 1,
                     aluno: item.aluno,
-                    name: item.nomeDisciplina,
+                    name: item.nomeCompleto,
                     codigo: item.disciplina
                 }));
                 setProblems(formattedData);
@@ -38,7 +40,6 @@ const ProblemsAccessingDiscipline = () => {
                 setProblems([])
             }
         } catch (error) {
-            console.error('Erro ao buscar disciplinas:', error);
             MySwal.fire({
                 icon: 'error',
                 title: 'Erro',
