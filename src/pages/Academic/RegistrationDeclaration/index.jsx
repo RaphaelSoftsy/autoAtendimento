@@ -2,27 +2,39 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardDeclaration from '../../../components/CardDeclaration';
+import { useRA } from '../../../contexts/RAContext';
 import { url_base_hospedada } from '../../../services/url_base';
 
 const RegistrationDeclaration = () => {
     const navigate = useNavigate();
     const [declaration, setDeclaration] = useState('');
-    const aluno = "2471074"
+    const { currentRA } = useRA();
 
     async function getDeclaration() {
         try {
-            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/matricula?aluno=${aluno}`);
-            const data = response.data[0];
+            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/matricula?aluno=${currentRA.ra}`);
+            const data = response.data;
 
-            setDeclaration(data);
+            if (data.length > 0) {
+                setDeclaration(data[0]);
+            }else{
+                setDeclaration([])
+            }
         } catch (error) {
-            console.error('Erro ao buscar declaração:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar as documentos da matrícula. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            MySwal.close();
         }
     }
 
     useEffect(() => {
         getDeclaration();
-    }, [aluno]);
+    }, [currentRA.ra]);
 
     const generateDeclarationHTML = (data) => {
         return `

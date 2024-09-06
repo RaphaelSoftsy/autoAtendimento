@@ -4,50 +4,59 @@ import { useNavigate } from 'react-router-dom';
 import ReactToPrint from 'react-to-print';
 import logo from '../../../assets/logo-sumare-azul.png';
 import DefaultButton from '../../../components/DefaultButton';
+import { useRA } from '../../../contexts/RAContext';
 import { url_base_hospedada } from '../../../services/url_base';
 
 const StatementConclusion = () => {
-
-    const navegation = useNavigate();
-    const [declaration, setDeclaration] = useState('');
-    // const aluno = localStorage.getItem("aluno-ra");
-    const aluno = "1412454";
+    const navigate = useNavigate();
+    const [statementConclusion, setStatementConclusion] = useState('');
+    const { currentRA } = useRA();
     const printRef = useRef();
 
-    async function getDeclaration() {
+    async function getStatementConclusion() {
         try {
-            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/conclusao?aluno=${aluno}`);
+            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/conclusao?aluno=${currentRA.ra}`);
             const data = response.data;
 
-            setDeclaration(data);
+            if (data.length > 0) {
+                setStatementConclusion(data);
+            } else {
+                setStatementConclusion([])
+            }
         } catch (error) {
-            // alert("Não foi encontrado Aluno com esse RA em situação de Conclusão");
-            setDeclaration('');
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar os documentos de conclusão. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            MySwal.close();
         }
     }
 
     useEffect(() => {
-        getDeclaration();
-    }, [aluno]);
+        getStatementConclusion();
+    }, [currentRA.ra]);
 
     const buttons = [
         {
             text: "Voltar para Serviços",
             backgroundColor: "var(--secondary-light-yellow)",
             color: '#fff',
-            onClick: () => navegation("/academico")
+            onClick: () => navigate("/academico")
         },
         {
             text: "Relatar Problema",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
-            onClick: () => navegation("abrir-demanda")
+            onClick: () => navigate("abrir-demanda")
         },
         {
             text: "Finalizar Sessão",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
-            onClick: () => navegation("/home")
+            onClick: () => navigate("/home")
         }
     ];
 
@@ -56,8 +65,8 @@ const StatementConclusion = () => {
             <main className='send-declaration-financial'>
                 <div className='card-declaration'>
                     <img src={logo} alt="logo da sumare" className='logo-sumare-azul' />
-                    {declaration.length > 0 ? (
-                        declaration.map((item, index) => (
+                    {statementConclusion.length > 0 ? (
+                        statementConclusion.map((item, index) => (
                             <div className="declaration-content-conclusion" key={index}>
                                 <h2>Histórico Escolar</h2>
                                 <p><strong>Nome:</strong> {item.nome}</p>
@@ -76,7 +85,7 @@ const StatementConclusion = () => {
                                 <p><strong>Data de Conclusão:</strong> {`${item.dia} de ${item.mes} de ${item.ano}`}</p>
                             </div>
                         ))
-                    ) : declaration.length === 0 ? (
+                    ) : statementConclusion.length === 0 ? (
                         <p>Não há Declaração de Conclusão.</p>
                     ) : (
                         <p>Carregando...</p>
@@ -95,10 +104,10 @@ const StatementConclusion = () => {
                         <DefaultButton key={index} {...props} />
                     ))}
                 </div>
-                
+
                 <div style={{ display: 'none' }}>
                     <div ref={printRef} className='print-area-statement-conclusion'>
-                        {declaration.length > 0 && declaration.map((item, index) => (
+                        {statementConclusion.length > 0 && statementConclusion.map((item, index) => (
                             <div className="declaration-content-conclusion-print" key={index}>
                                 <img src={logo} alt="logo da sumare" className='logo-sumare-azul' />
                                 <div className='declaration-conclusion'>

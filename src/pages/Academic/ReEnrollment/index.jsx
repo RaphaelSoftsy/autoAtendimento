@@ -5,18 +5,20 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import DefaultButton from "../../../components/DefaultButton";
 import Footer from "../../../components/Footer";
+import { useRA } from "../../../contexts/RAContext";
 import { url_base_local } from "../../../services/url_base";
 import "./reEnrollment.css";
-import { useRA } from "../../../contexts/RAContext";
 
 const ReEnrollment = () => {
 
     const navigate = useNavigate()
-    const [reEnrollment, setReEnrollment] = useState([]);
+    const [reEnrollment, setValidateReEnrollment] = useState([]);
     const [reEnrollment2, setReEnrollment2] = useState([]);
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
     const aluno = '2473773'
+    const aluno2 = '2470559'
+
 
     const style = {
         backgroundColor: "var(--secondary-light-red)"
@@ -28,40 +30,52 @@ const ReEnrollment = () => {
         return `${day}/${month}/${year}`;
     };
 
-    async function getReEnrollment() {
+    async function getValidateReEnrollment() {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/validaRematricula/aluno/${aluno}`);
+            const response = await axios.get(`${url_base_local}/validaRematricula/aluno/${currentRA.ra}`);
             const data = response.data;
 
-            setReEnrollment(data);
+            setValidateReEnrollment(data);
         } catch (error) {
-            console.error('Erro ao buscar declaração:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível fazer validação da rematrícula. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
         } finally {
             MySwal.close();
         }
     }
 
-    async function getReEnrollment2() {
+    async function getReEnrollment() {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/dataRematricula/2470559`);
+            const response = await axios.get(`${url_base_local}/dataRematricula/${currentRA.ra}`);
             const data = response.data[0];
+
+            console.log(data);
 
             setReEnrollment2(data);
         } catch (error) {
-            console.error('Erro ao buscar declaração:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar as data da rematrícula. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
         } finally {
             MySwal.close();
         }
     }
 
     useEffect(() => {
+        getValidateReEnrollment();
         getReEnrollment();
-        getReEnrollment2();
-    }, [aluno]);
+    }, [currentRA.ra]);
 
     return (
         <main className='main-perform-accord'>
@@ -77,7 +91,7 @@ const ReEnrollment = () => {
                         text="Regularizar Financeiro"
                         backgroundColor="var(--primary-light-blue)"
                         color='#fff'
-                        onClick={() => navigate("/")}
+                        onClick={() => navigate("/financeiro/realizar-pagamento")}
                     />
                 </div>
             </div>

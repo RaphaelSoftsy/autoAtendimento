@@ -8,8 +8,7 @@ import { url_base_local } from "../../../services/url_base";
 import "./academicSpecificDeclaration.css";
 
 const AcademicSpecificDeclaration = () => {
-
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const [obs, setObs] = useState("");
     const ra = localStorage.getItem('aluno-ra');
     const MySwal = withReactContent(Swal);
@@ -35,7 +34,7 @@ const AcademicSpecificDeclaration = () => {
                     const closedByTimer = result.dismiss === 'timer';
 
                     if (result.isConfirmed || closedByTimer) {
-                        navegation('numero-servico');
+                        navigate('numero-servico');
                     }
                 });
             } else {
@@ -69,11 +68,10 @@ const AcademicSpecificDeclaration = () => {
         }
     };
 
-
     return (
         <main className="academic-specific-declaration">
             <div className='card-request'>
-                <h3>Descrever todas as informações que devem constar na declaração e especificar o período a que se refere.</h3>
+                <span>Descrever todas as informações que devem constar na declaração e especificar o período a que se refere.</span>
                 <textarea
                     name="request"
                     id="request"

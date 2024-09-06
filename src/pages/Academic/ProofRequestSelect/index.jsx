@@ -23,11 +23,14 @@ const ProofRequestSelect = () => {
             const response = await axios.get(`${url_base_local}/provasDisponiveis/ead?aluno=2480263&disciplina=${disciplinaSelecionada}`);
             const data = response.data;
 
+            console.log(data);
+
+
             const formattedData = data.map((item, index) => {
                 let route = '';
 
-                if (item.valor === 0) {
-                    route = '/numero-servico';
+                if (item.valor === '0') {
+                    route = 'numero-servico';
                 } else {
                     route = '/financeiro/realizar-pagamento';
                 }
