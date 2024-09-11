@@ -22,7 +22,7 @@ const Subject = (props) => {
             }}
         >
             <span>{props.name}</span>
-            <FaChevronRight />
+            {!props.seta && <FaChevronRight />}
         </Link>
     )
 }
@@ -36,6 +36,7 @@ const ListSubjects = (props) => {
                     onClick={props.onClick}
                     route={subject.route}
                     name={subject.name}
+                    seta={props.seta}
                 />
             ))}
         </ul>

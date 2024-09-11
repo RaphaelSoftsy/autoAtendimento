@@ -7,10 +7,12 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Footer from '../../../components/Footer';
 import ListSubjects from '../../../components/ListSubjects';
+import { useRA } from '../../../contexts/RAContext';
 import { url_base_local } from '../../../services/url_base';
 import './additionalActivities.css';
 
 const AdditionalActivities = () => {
+
     const list = [
         {
             id: 1,
@@ -27,38 +29,49 @@ const AdditionalActivities = () => {
     const [reEnrollment, setReEnrollment] = useState(null);
     const MySwal = withReactContent(Swal);
     const aluno = '2012791';
+    const navigate = useNavigate();
+    const { currentRA } = useRA();
 
     const style = {
         backgroundColor: "var(--secondary-light-red)"
     };
 
-    const navigate = useNavigate();
-
-    async function getReEnrollment() {
+    async function getAdditionalActivities() {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/atividade/${aluno}`);
-            const data = response.data[0];
+            const response = await axios.get(`${url_base_local}/atividade/${currentRA.ra}`);
+            const data = response.data;
 
-            setReEnrollment(data);
+            console.log(data);
+
+            if (data.length > 0) {
+                setReEnrollment(data[0]);
+            } else {
+                setReEnrollment([])
+            }
+
         } catch (error) {
-            console.error('Erro ao buscar declaração:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar as atividades complementares. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
         } finally {
             MySwal.close();
         }
     }
 
     useEffect(() => {
-        getReEnrollment();
-    }, [aluno]);
+        getAdditionalActivities();
+    }, [currentRA.ra]);
 
     const formatValue = (value) => {
-        return parseInt(value);
-    };
-
-    const handleNext = () => {
-        navigate('abrir-demanda');
+        if (value && !isNaN(value)) {
+            return Math.round(parseFloat(value));
+        }
+        return 0;
     };
 
     return (
@@ -87,7 +100,7 @@ const AdditionalActivities = () => {
                         <ListSubjects itens={list} />
                     </div>
                 </div>
-                <Footer text='Abrir Demanda' onClick={handleNext} style={style} />
+                <Footer text='Abrir Demanda' onClick={() => navigate("abrir-demanda")} style={style} />
             </main>
         </>
     );

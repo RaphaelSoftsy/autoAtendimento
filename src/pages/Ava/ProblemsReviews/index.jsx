@@ -24,7 +24,7 @@ const ProblemsReviews = () => {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/disciplinaMatriculada/${currentRA.ra}`);
+            const response = await axios.get(`${url_base_local}/disciplina/matriculada/?aluno=${currentRA.ra}&obrigatoria=S`);
             const data = response.data;
 
             if (data.length > 0) {
@@ -69,6 +69,7 @@ const ProblemsReviews = () => {
     };
 
     const selectedSubjectCodigo = problems.find(problem => problem.id === selectedSubjects[0])?.codigo;
+    const selectedSubjectName = problems.find(problem => problem.id === selectedSubjects[0])?.name;
 
     const handleNext = () => {
         if (problems.length === 0) {
@@ -82,6 +83,7 @@ const ProblemsReviews = () => {
             });
         } else {
             localStorage.setItem("disciplina-selecionada", selectedSubjectCodigo);
+            localStorage.setItem("disciplina-selecionada-name", selectedSubjectName);
             navigate('/ava/problemas-nas-avaliacoes/escolha');
         }
     };

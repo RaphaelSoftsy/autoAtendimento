@@ -2,30 +2,45 @@ import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactToPrint from 'react-to-print';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import logo from '../../../assets/logo-sumare-azul.png';
 import DefaultButton from '../../../components/DefaultButton';
+import { useRA } from '../../../contexts/RAContext';
 import { url_base_hospedada } from '../../../services/url_base';
 
 const SchoolRecords = () => {
     const navigate = useNavigate();
     const [declaration, setDeclaration] = useState('');
-    const aluno = localStorage.getItem("aluno-ra");
+    const { currentRA } = useRA();
+    const MySwal = withReactContent(Swal);
     const printRef = useRef();
 
-    async function getDeclaration() {
+    async function getSchoolRecords() {
         try {
-            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/historico?aluno=${aluno}`);
+            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/historico?aluno=${currentRA.ra}`);
             const data = response.data;
-            
-            setDeclaration(data);
+
+            if (data.length > 0) {
+                setDeclaration(data);
+            } else {
+                setDeclaration([])
+            }
         } catch (error) {
-            console.error('Erro ao buscar declaração:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar o histórico escolar. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            MySwal.close();
         }
     }
 
     useEffect(() => {
-        getDeclaration();
-    }, [aluno]);
+        getSchoolRecords();
+    }, [currentRA.ra]);
 
     const buttons = [
         {

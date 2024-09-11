@@ -5,7 +5,7 @@ const ProblemsAccessingDisciplineServiceNumber = () => {
     const numberService = localStorage.getItem('numero-servico')
 
     return (
-        <div className='main-perform-accord'>
+        <div>
             <div className="rescue-checks">
                 <CardServiceNumberAva
                     number={numberService}

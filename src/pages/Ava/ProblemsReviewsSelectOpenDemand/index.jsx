@@ -14,6 +14,7 @@ const ProblemsReviewsSelectOpenDemand = () => {
     const MySwal = withReactContent(Swal);
     const disciplinaSelecionada = localStorage.getItem("disciplina-selecionada");
     const avaliacaoSelecionada = localStorage.getItem("avaliacao-selecionada");
+    
     const { currentRA } = useRA();
 
     const [formData, setFormData] = useState({
