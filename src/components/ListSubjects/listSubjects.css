@@ -22,6 +22,7 @@
 .topic span {
     text-align: start;
     transition: ease .6s;
+    line-height: 1.2rem;
 }
 
 .topic span:hover {

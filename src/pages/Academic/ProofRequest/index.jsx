@@ -8,6 +8,7 @@ import ListCheckButton from '../../../components/ListCheckButton';
 import { useRA } from '../../../contexts/RAContext';
 import { url_base_local } from '../../../services/url_base';
 import './proofRequest.css';
+import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
 
 const ProofRequest = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
@@ -32,21 +33,34 @@ const ProofRequest = () => {
         }
 
         try {
-            const response = await axios.get(`${url_base_local}/${apiEndpoint}/2480263`);
+            // const response = await axios.get(`${url_base_local}/${apiEndpoint}/2480263`);
+            const response = await axios.get(`${url_base_local}/disciplina/matriculada/?aluno=${currentRA.ra}&obrigatoria=S`);
             const data = response.data;
 
             if (data.length > 0) {
                 const formattedData = data.map((item, index) => ({
                     id: index + 1,
                     aluno: item.aluno,
-                    name: item.nome,
+                    name: item.nomeDisciplina,
                     codigo: item.disciplina
                 }));
-
                 setSelectedSubject(formattedData);
             } else {
-                setSelectedSubject([]);
+                setSelectedSubject([])
             }
+
+            // if (data.length > 0) {
+            //     const formattedData = data.map((item, index) => ({
+            //         id: index + 1,
+            //         aluno: item.aluno,
+            //         name: item.nome,
+            //         codigo: item.disciplina
+            //     }));
+
+            //     setSelectedSubject(formattedData);
+            // } else {
+            //     setSelectedSubject([]);
+            // }
         } catch (error) {
             MySwal.fire({
                 icon: 'error',
@@ -101,12 +115,11 @@ const ProofRequest = () => {
                     {selectedSubject.length > 0 ? (
                         <div className='list-subjects'>
                             <h1 className='title'>Informe a disciplina para a qual deseja solicitar a prova.</h1>
-                            <ListCheckButton
+                            <ListSubjectsCheck
                                 items={selectedSubject}
                                 selectedSubjects={selectedSubjects}
                                 onSelect={handleSubjectSelect}
                                 multiple={false}
-                                text="Não achou a disciplina que está procurando?"
                             />
                         </div>
                     ) : (
