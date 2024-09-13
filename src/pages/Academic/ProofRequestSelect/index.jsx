@@ -27,27 +27,22 @@ const ProofRequestSelect = () => {
 
             const data = response.data;
 
-            console.log(data);
-
-            // Filtrando para remover os itens cujo nomeAvaliacao contenha "atividade"
             const filteredData = data.filter(item => !item.nomeAvaliacao.toLowerCase().includes('atividade'));
 
             const formattedData = filteredData.map((item, index) => {
                 const nomeAvaliacaoSemPresencial = item.nomeAvaliacao.replace(/presencial/i, '').trim();
 
-                // Verificando se item.valor é maior que 0.00 e adicionando ao nome
                 const valorExibido = parseFloat(item.valor) > 0 ? ` - Valor: R$ ${item.valor}` : '';
 
                 return {
                     id: index + 1,
                     name: `${item.avaliacao} - ${nomeAvaliacaoSemPresencial} - ${item.mensagem}${valorExibido}`,
                     codigo: item.disciplina,
-                    solicitaProva: item.solicProva,
+                    solicProva: item.solicProva,
+                    servico: item.servico,
                     valor: item.valor
                 };
             });
-
-            console.log(formattedData);
 
             setSelectedSubjects(formattedData);
         } catch (error) {
@@ -62,22 +57,41 @@ const ProofRequestSelect = () => {
         }
     }
 
-    const handleNext = async (item) => {
-        if (item.solicitaProva === 'S') {
-            localStorage.setItem('selectedSubject', item.name);
+    const handleNext = async (name) => {
+        const selectedItem = selectedSubjects.find(item => item.name === name);
+    
+        if (!selectedItem) {
+            console.error('Item não encontrado.');
+            return;
+        }
+    
+        selectedItem.solicProva = 'S';
+        selectedItem.valor = 0;
+    
+        console.log('Item após modificações:', selectedItem);
 
-            if (parseFloat(item.valor) > 0) {
+        if (selectedItem.solicProva === 'S') {
+            if (parseFloat(selectedItem.valor) === 0) {
+                console.log('Navegando para realizar pagamento...');
                 navigate("/financeiro/realizar-pagamento");
             } else {
+                
+                const servicoSelecionado = selectedItem.servico;
+                const dataAtual = new Date().toLocaleDateString('pt-BR');
+    
                 const dataToSend = {
                     aluno: currentRA.ra,
-                    disciplina: item.codigo,
-                    avaliacao: item.name,
+                    servico: servicoSelecionado,
+                    data: dataAtual,
+                    disciplina: disciplinaSelecionada
                 };
-
+    
+                console.log('Dados a serem enviados:', dataToSend);
+    
                 try {
-                    const response = await axios.post(`${url_base_local}/problemaAvaliacao`, dataToSend);
-
+                    const response = await axios.post(`${url_base_local}/SolicitacaoAgendamento`, dataToSend);
+                    console.log('Resposta da solicitação:', response);
+    
                     if (response.status === 200) {
                         const responseData = response.data;
                         MySwal.close();
@@ -90,8 +104,8 @@ const ProofRequestSelect = () => {
                         localStorage.setItem("numero-servico", JSON.stringify(responseData));
                         navigate("numero-servico");
                     }
-
                 } catch (error) {
+                    console.error('Erro ao enviar solicitação:', error);
                     MySwal.close();
                     MySwal.fire({
                         icon: "error",
@@ -109,6 +123,8 @@ const ProofRequestSelect = () => {
             });
         }
     };
+    
+    
 
     return (
         <main className="proof-request">
