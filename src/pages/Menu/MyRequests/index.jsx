@@ -43,7 +43,7 @@ const MyRequests = () => {
                         solicitacao={item.solicitacao} 
                         data={item.data} 
                         descricao={item.descricao}
-                        status={item.status} 
+                        status={item.andamento} 
                     />
                 ))}
             </main>
