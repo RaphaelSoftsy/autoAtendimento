@@ -111,10 +111,13 @@ const Notes = () => {
             const response = await axios.get(`${url_base_local}/notaHistorico/busca?aluno=1412454&disciplina=${codigoDisciplina}`);
             const data = response.data;
 
+            console.log(data);
+
+
             if (data.length > 0) {
                 const formattedItems = data.map((item) => ({
-                    nome: item.avaliacao,
-                    valor: item.nota,
+                    nome: `${item.avaliacao} - ${item.descricaoProva}`,
+                    valor: item.nota
                 }));
                 setItems(formattedItems);
             } else {

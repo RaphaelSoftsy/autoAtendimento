@@ -3,14 +3,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import DefaultButton from "../../../components/DefaultButton";
-import { url_base_local } from "../../../services/url_base";
-import "./academicSpecificDeclaration.css";
-import { useRA } from "../../../contexts/RAContext";
 import CardCheckout from "../../../components/CardCheckout";
+import { useRA } from "../../../contexts/RAContext";
+import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../ProgramContent";
 
-const AcademicSpecificDeclaration = () => {
+const ReEnrollmentOpenDemand = () => {
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
@@ -75,7 +73,7 @@ const AcademicSpecificDeclaration = () => {
         };
 
         try {
-            const response = await axios.post(`${url_base_local}/declaracaoEspecifica`, dataToSend);
+            const response = await axios.post(`${url_base_local}/reclamacaoRematricula`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
@@ -92,35 +90,20 @@ const AcademicSpecificDeclaration = () => {
         } catch (error) {
             MySwal.close();
             MySwal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível fazer a solicitação. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
             });
         }
     };
-
-    //         if (response.status === 200) {
-    //             MySwal.fire({
-    //                 icon: 'success',
-    //                 title: 'Enviado com sucesso!',
-    //                 timer: 3000,
-    //                 timerProgressBar: true,
-    //                 showConfirmButton: true
-    //             }).then((result) => {
-    //                 // Verifica se o modal foi fechado pelo timer
-    //                 const closedByTimer = result.dismiss === 'timer';
-
-    //                 if (result.isConfirmed || closedByTimer) {
-    //                     navigate('numero-servico');
-    //                 }
-    //             });
 
     return (
         <main>
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise nos explique seu problema'
+                        text='Por favor, para análise inserir todos os Documentos'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}
@@ -132,7 +115,6 @@ const AcademicSpecificDeclaration = () => {
             </div>
         </main>
     );
-
 }
 
-export default AcademicSpecificDeclaration;
+export default ReEnrollmentOpenDemand;

@@ -1,6 +1,6 @@
 import CardServiceNumber from '../../../components/CardServiceNumber';
 
-const NotesServiceNumber = () => {
+const ReEnrollmentServiceNumber = () => {
 
     const numberService = localStorage.getItem('numero-servico')
 
@@ -15,4 +15,4 @@ const NotesServiceNumber = () => {
     );
 };
 
-export default NotesServiceNumber;
+export default ReEnrollmentServiceNumber;

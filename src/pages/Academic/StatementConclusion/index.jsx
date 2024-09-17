@@ -15,7 +15,7 @@ const StatementConclusion = () => {
 
     async function getStatementConclusion() {
         try {
-            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/conclusao?aluno=${currentRA.ra}`);
+            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/conclusao?aluno=1412454`);
             const data = response.data;
 
             if (data.length > 0) {
@@ -51,12 +51,6 @@ const StatementConclusion = () => {
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
             onClick: () => navigate("abrir-demanda")
-        },
-        {
-            text: "Finalizar Sessão",
-            backgroundColor: "var(--secondary-light-red)",
-            color: '#fff',
-            onClick: () => navigate("/home")
         }
     ];
 

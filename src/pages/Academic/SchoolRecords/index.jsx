@@ -21,6 +21,9 @@ const SchoolRecords = () => {
             const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/historico?aluno=${currentRA.ra}`);
             const data = response.data;
 
+            console.log(data);
+            
+
             if (data.length > 0) {
                 setDeclaration(data);
             } else {
@@ -54,12 +57,6 @@ const SchoolRecords = () => {
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
             onClick: () => navigate("abrir-demanda")
-        },
-        {
-            text: "Finalizar Sessão",
-            backgroundColor: "var(--secondary-light-red)",
-            color: '#fff',
-            onClick: () => navigate("/home")
         }
     ];
 

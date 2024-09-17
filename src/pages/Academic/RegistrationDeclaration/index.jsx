@@ -59,12 +59,6 @@ const RegistrationDeclaration = () => {
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
             onClick: () => navigate("abrir-demanda")
-        },
-        {
-            text: "Finalizar Sessão",
-            backgroundColor: "var(--secondary-light-red)",
-            color: '#fff',
-            onClick: () => navigate("/home")
         }
     ];
 

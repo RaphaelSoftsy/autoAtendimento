@@ -52,8 +52,6 @@ const CourseCancellation = () => {
                 text: 'Não foi possível buscar os dados de cancelamento. Tente novamente mais tarde.',
                 confirmButtonText: 'OK'
             });
-        } finally {
-            MySwal.close();
         }
     }
 
