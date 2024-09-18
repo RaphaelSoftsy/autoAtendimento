@@ -31,6 +31,7 @@ import ProofRequest from "../pages/Academic/ProofRequest";
 import ProofRequestSelect from "../pages/Academic/ProofRequestSelect";
 import ProofRequestSelectServiceNumber from "../pages/Academic/ProofRequestSelectServiceNumber";
 import ReEnrollment from "../pages/Academic/ReEnrollment";
+import ReEnrollmentOpenDemand from "../pages/Academic/ReEnrollmentOpenDemand";
 import RegistrationDeclaration from "../pages/Academic/RegistrationDeclaration";
 import RegistrationDeclarationOpenDemand from "../pages/Academic/RegistrationDeclarationOpenDemand";
 import RegistrationDeclarationServiceNumber from "../pages/Academic/RegistrationDeclarationServiceNumber";
@@ -116,6 +117,7 @@ import CreateNewPassword from "../pages/Password/CreateNewPassword";
 import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
+import ReEnrollmentServiceNumber from "../pages/Academic/ReEnrollmentServiceNumber";
 
 const RoutesApp = () => {
     return (
@@ -237,7 +239,7 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/diplomas/colacao-de-grau-especial/numero-servico" element={<SpecialDegreeConferralServiceNumber />} />
                 <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma" element={<DuplicateDiploma />} />
                 <Route path="/solicitacoes-academicas/diplomas/segunda-via-de-diploma/numero-servico" element={<DuplicateDiplomaServiceNumber />} />
-                
+
                 <Route path="/solicitacoes-academicas/estagio" element={<Internship />} />
                 <Route path="/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio" element={<SigningInternshipContract />} />
                 <Route path="/solicitacoes-academicas/estagio/assinatura-de-contrato-de-estagio/numero-servico" element={<SigningInternshipContractServiceNumber />} />
@@ -256,6 +258,8 @@ const AcademicRoutes = () => {
                 <Route path="/solicitacoes-academicas/enade/abrir-demanda" element={<EnadeOpenDemand />} />
                 <Route path="/solicitacoes-academicas/enade/abrir-demanda/numero-servico" element={<EnadeServiceNumber />} />
                 <Route path="/solicitacoes-academicas/rematricula" element={<ReEnrollment />} />
+                <Route path="/solicitacoes-academicas/rematricula/abrir-demanda" element={<ReEnrollmentOpenDemand />} />
+                <Route path="/solicitacoes-academicas/rematricula/abrir-demanda/numero-servico" element={<ReEnrollmentServiceNumber />} />
                 <Route path="/solicitacoes-academicas/transporte-escolar" element={<SchoolBus />} />
                 <Route path="/solicitacoes-academicas/transporte-escolar/numero-servico" element={<SchoolBusServiceNumber />} />
 

@@ -1,21 +1,23 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import DefaultButton from "../../../components/DefaultButton";
 import { url_base_local } from '../../../services/url_base';
 import "./courseCancellation.css";
+import { useRA } from '../../../contexts/RAContext';
 
 const CourseCancellation = () => {
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const [course, setCourse] = useState('');
     const aluno = "2014554"
     const MySwal = withReactContent(Swal);
+    const { currentRA } = useRA();
 
     const handleNext = () => {
         if (course[0].inadimplente === 'S') {
-            navegation('/academico/cancelamento-do-curso/cobrancas');
+            navigate('/academico/cancelamento-do-curso/cobrancas');
         } else {
             MySwal.fire({
                 icon: 'question',
@@ -25,7 +27,7 @@ const CourseCancellation = () => {
                 cancelButtonText: 'Não'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navegation('/academico/cancelamento-do-curso/abrir-demanda');
+                    navigate('/academico/cancelamento-do-curso/abrir-demanda');
                 }
             });
         }
@@ -33,28 +35,39 @@ const CourseCancellation = () => {
 
     async function getCourseCancellation() {
         try {
-            const response = await axios.get(`${url_base_local}/dadosCancelamento/${aluno}`);
+            const response = await axios.get(`${url_base_local}/dadosCancelamento/${currentRA.ra}`);
             const data = response.data;
-            console.log('Dados da declaração:', data);
-            setCourse(data);
+
+            if (data.length > 0) {
+                setCourse(data[0]);
+            }
+            else{
+                setCourse([])
+            }
+            
         } catch (error) {
-            console.error('Erro ao buscar declaração:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar os dados de cancelamento. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
         }
     }
 
     useEffect(() => {
         getCourseCancellation();
-    }, [aluno]);
+    }, [currentRA.ra]);
 
     return (
         <main className="course-cancellation">
             <div className='card-cancellation'>
                 {course ? (
                     <>
-                        <span>Seu curso atual: <b>{course[0].nomeCurso}</b></span>
-                        <span>Seu semestre atual: <b>{course[0].serie} Semestre</b></span>
-                        <span>Polo: Sumaré <b>{course[0].nomePolo}</b></span>
-                        <span>Situação Financeira <b>{course[0].inadimplente === 'S' ? 'Inadimplente' : 'Adimplente'}</b></span>
+                        <span>Seu curso atual: <b>{course.nomeCurso}</b></span>
+                        <span>Seu semestre atual: <b>{course.serie} Semestre</b></span>
+                        <span>Polo: Sumaré <b>{course.nomePolo}</b></span>
+                        <span>Situação Financeira <b>{course.inadimplente === 'S' ? 'Inadimplente' : 'Adimplente'}</b></span>
                     </>
                 ) : (
                     <p>Carregando dados do aluno...</p>

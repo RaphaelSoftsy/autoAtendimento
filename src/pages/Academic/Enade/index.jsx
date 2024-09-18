@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import DefaultButton from "../../../components/DefaultButton";
 
 const Enade = () => {
-
     const navigate = useNavigate()
 
     const style1 = {
@@ -36,7 +35,6 @@ const Enade = () => {
             </div>
         </main>
     );
-
 }
 
 export default Enade;

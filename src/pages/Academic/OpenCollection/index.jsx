@@ -3,7 +3,7 @@ import DefaultButton from "../../../components/DefaultButton";
 
 const OpenCollection = () => {
 
-    const navegation = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <main className="course-cancellation">
@@ -13,13 +13,13 @@ const OpenCollection = () => {
                     text="Sim"
                     backgroundColor="var(--primary-light-blue)"
                     color='#fff'
-                    onClick={() => navegation("/")}
+                    onClick={() => navigate("/")}
                 />
                 <DefaultButton
                     text="Não"
                     backgroundColor="var(--secondary-light-red)"
                     color='#fff'
-                    onClick={() => navegation("/")}
+                    onClick={() => navigate("/")}
                 />
             </div>
         </main>

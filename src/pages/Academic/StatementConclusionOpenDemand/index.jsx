@@ -1,32 +1,35 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import CardCheckout from "../../../components/CardCheckout";
-import Footer from "../../../components/Footer";
+import { useRA } from "../../../contexts/RAContext";
 import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../ProgramContent";
 
 const StatementConclusionOpenDemand = () => {
-
-    const style = {
-        backgroundColor: "var(--secondary-light-red)"
-    }
-
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
+    const { currentRA } = useRA();
 
     const [formData, setFormData] = useState({
-        aluno: '2471074',
+        aluno: currentRA.ra,
         obs: '',
         nomeArq: '',
         tamanhoArq: '',
         extensaoArq: '',
         tipoArq: '',
         arquivo: '',
-        declaracao: ''
+        declaracao: 'Declaração de Conclusão:'
     });
+
+    useEffect(() => {
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            aluno: currentRA.ra
+        }));
+    }, [currentRA]);
 
     const handleChangeObservation = (e) => {
         const { name, value } = e.target;
@@ -67,51 +70,32 @@ const StatementConclusionOpenDemand = () => {
         MySwal.showLoading();
 
         const dataToSend = {
-            aluno: formData.aluno,
-            obs: formData.obs,
-            nomeArq: formData.nomeArq,
-            tamanhoArq: formData.tamanhoArq,
-            extensaoArq: formData.extensaoArq,
-            tipoArq: formData.tipoArq,
-            arquivo: formData.arquivo,
-            declaracao: "Declaração de Conclusão:"
+            ...formData
         };
 
         try {
-            const response = await axios.post(`${url_base_local}/aproveitamentoInterno`, dataToSend, {
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            });
+            const response = await axios.post(`${url_base_local}/aproveitamentoInterno`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
                 MySwal.close();
                 MySwal.fire({
-                    title: "Cadastrado com sucesso",
+                    title: "Solicitação Enviada com Sucessso!",
                     icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navegation("numero-servico");
-            } else {
-                throw new Error('Network response was not ok.');
+                navigate("numero-servico");
             }
         } catch (error) {
             MySwal.close();
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Não foi possível realizar esse comando!",
+                text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
             });
         }
-    };
-
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    const handleFileChanges = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-        handleFileChange(event);
     };
 
     return (
@@ -120,9 +104,8 @@ const StatementConclusionOpenDemand = () => {
                 <div className='list-subjects'>
                     <CardCheckout
                         text='Por favor, para análise nos explique seu problema'
-                        onChangeInputFile={handleFileChanges}
-                        selectedFile={selectedFile}
-                        selectedFileName={selectedFile ? selectedFile.name : ""}
+                        onChangeInputFile={handleFileChange}
+                        selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}
                         textTextArea=''
                         observation={formData.obs}

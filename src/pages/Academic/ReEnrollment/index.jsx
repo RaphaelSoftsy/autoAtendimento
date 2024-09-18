@@ -10,19 +10,15 @@ import { url_base_local } from "../../../services/url_base";
 import "./reEnrollment.css";
 
 const ReEnrollment = () => {
-
     const navigate = useNavigate()
-    const [reEnrollment, setValidateReEnrollment] = useState([]);
-    const [reEnrollment2, setReEnrollment2] = useState([]);
+    const [validateReEnrollment, setValidateReEnrollment] = useState([]);
+    const [reEnrollment, setReEnrollment] = useState([]);
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
-    const aluno = '2473773'
-    const aluno2 = '2470559'
 
-
-    const style = {
+    const footerStyle = {
         backgroundColor: "var(--secondary-light-red)"
-    }
+    };
 
     const formatDateBR = (dateString) => {
         if (!dateString) return '';
@@ -37,7 +33,11 @@ const ReEnrollment = () => {
             const response = await axios.get(`${url_base_local}/validaRematricula/aluno/${currentRA.ra}`);
             const data = response.data;
 
-            setValidateReEnrollment(data);
+            if (data.length > 0) {
+                setValidateReEnrollment(data);
+            } else {
+                setValidateReEnrollment([])
+            }
         } catch (error) {
             MySwal.fire({
                 icon: 'error',
@@ -55,11 +55,14 @@ const ReEnrollment = () => {
 
         try {
             const response = await axios.get(`${url_base_local}/dataRematricula/${currentRA.ra}`);
-            const data = response.data[0];
+            const data = response.data;
 
-            console.log(data);
-
-            setReEnrollment2(data);
+            if (data.length > 0) {
+                setReEnrollment(data[0]);
+            }
+            else {
+                setReEnrollment([])
+            }
         } catch (error) {
             MySwal.fire({
                 icon: 'error',
@@ -81,11 +84,13 @@ const ReEnrollment = () => {
         <main className='main-perform-accord'>
             <div className="rescue-checks">
                 <div className="card-checkout-re">
-                    {reEnrollment2 && (
+                    {reEnrollment ? (
                         <>
-                            <span>Sua Rematrícula será efetuada de forma automática em: <b>{formatDateBR(reEnrollment2.dataRema)}</b></span>
+                            <span>Sua Rematrícula será efetuada de forma automática em: <b>{formatDateBR(reEnrollment.dataRema)}</b></span>
                             <span>Para tanto basta estar em dia com suas mensalidades.</span>
                         </>
+                    ) : (
+                        <span>Não há informações de rematrícula disponíveis.</span>
                     )}
                     <DefaultButton
                         text="Regularizar Financeiro"
@@ -95,16 +100,9 @@ const ReEnrollment = () => {
                     />
                 </div>
             </div>
-            {/* <div className='footer-container'>
-                <footer className='footer-double'>
-                    <Link className='title-footer' style={style} > Relatar Problema </Link>
-                    <Link className='title-footer' style={style} > Finalizar Sessão </Link>
-                </footer>
-            </div> */}
-            <Footer text="Finalizar Sessão" onClick={() => navigate("/academico")} style={style} />
+            <Footer text="Relatar Problema" onClick={() => navigate("abrir-demanda")} style={footerStyle} />
         </main>
     );
-
 }
 
 export default ReEnrollment;

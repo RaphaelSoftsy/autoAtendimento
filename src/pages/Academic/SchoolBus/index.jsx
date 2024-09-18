@@ -1,17 +1,19 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Footer from "../../../components/Footer";
 import ListSubjectsCheck from "../../../components/ListSubjectsCheck";
+import { useRA } from "../../../contexts/RAContext";
+import { url_base_local } from "../../../services/url_base";
 import './schoolBus.css';
 
-
 const SchoolBus = () => {
-
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
+    const { currentRA } = useRA();
 
     const list = [
         {
@@ -31,7 +33,7 @@ const SchoolBus = () => {
         });
     };
 
-    const handleNext = () => {
+    const handleNext = async () => {
         if (selectedSubjects.length === 0) {
             MySwal.fire({
                 icon: 'info',
@@ -40,7 +42,37 @@ const SchoolBus = () => {
                 confirmButtonText: 'OK'
             });
         } else {
-            navigate('numero-servico');
+            try {
+                const selectedSubject = list.find(item => item.id === selectedSubjects[0]);
+
+                const dataToSend = {
+                    aluno: currentRA.ra,
+                    valeTransporte: selectedSubject.name
+                };
+
+                const response = await axios.post(`${url_base_local}/transporteEscolar`, dataToSend);
+
+                if (response.status === 200) {
+                    const responseData = response.data;
+                    MySwal.close();
+                    MySwal.fire({
+                        title: "Cadastrado com sucesso",
+                        icon: "success",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                    localStorage.setItem("numero-servico", JSON.stringify(responseData));
+                    navigate("numero-servico");
+                }
+            } catch (error) {
+                MySwal.close();
+                MySwal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Não foi possível fazer a solicitação. Tente novamente mais tarde.',
+                    confirmButtonText: 'OK'
+                });
+            }
         }
     };
 

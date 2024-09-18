@@ -6,6 +6,7 @@ import withReactContent from "sweetalert2-react-content";
 import CardCheckout from "../../../components/CardCheckout";
 import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../ProgramContent";
+import { useRA } from "../../../contexts/RAContext";
 
 const EnadeOpenDemand = () => {
     const navigate = useNavigate();
@@ -72,7 +73,7 @@ const EnadeOpenDemand = () => {
         };
 
         try {
-            const response = await axios.post(`${url_base_local}/solicitacaoFies`, dataToSend);
+            const response = await axios.post(`${url_base_local}/reclamacaoEnade`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;

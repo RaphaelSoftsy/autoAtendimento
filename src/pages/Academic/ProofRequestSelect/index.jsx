@@ -71,7 +71,7 @@ const ProofRequestSelect = () => {
         console.log('Item após modificações:', selectedItem);
 
         if (selectedItem.solicProva === 'S') {
-            if (parseFloat(selectedItem.valor) === 0) {
+            if (parseFloat(selectedItem.valor) > 0) {
                 console.log('Navegando para realizar pagamento...');
                 navigate("/financeiro/realizar-pagamento");
             } else {

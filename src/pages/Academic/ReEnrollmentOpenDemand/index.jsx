@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import CardCheckout from "../../../components/CardCheckout";
-import { useRA } from '../../../contexts/RAContext';
+import { useRA } from "../../../contexts/RAContext";
 import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../ProgramContent";
 
-const SchoolRecordsOpenDemand = () => {
+const ReEnrollmentOpenDemand = () => {
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
@@ -20,8 +20,7 @@ const SchoolRecordsOpenDemand = () => {
         tamanhoArq: '',
         extensaoArq: '',
         tipoArq: '',
-        arquivo: '',
-        declaracao: 'Histórico Escolar:'
+        arquivo: ''
     });
 
     useEffect(() => {
@@ -74,7 +73,7 @@ const SchoolRecordsOpenDemand = () => {
         };
 
         try {
-            const response = await axios.post(`${url_base_local}/problemaDeclaracoes`, dataToSend);
+            const response = await axios.post(`${url_base_local}/reclamacaoRematricula`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
@@ -91,9 +90,10 @@ const SchoolRecordsOpenDemand = () => {
         } catch (error) {
             MySwal.close();
             MySwal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível fazer a solicitação. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
             });
         }
     };
@@ -103,7 +103,7 @@ const SchoolRecordsOpenDemand = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise nos explique seu problema'
+                        text='Por favor, para análise inserir todos os Documentos'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}
@@ -117,4 +117,4 @@ const SchoolRecordsOpenDemand = () => {
     );
 }
 
-export default SchoolRecordsOpenDemand;
+export default ReEnrollmentOpenDemand;
