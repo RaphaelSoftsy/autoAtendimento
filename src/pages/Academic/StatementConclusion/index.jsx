@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReactToPrint from 'react-to-print';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import logo from '../../../assets/logo-sumare-azul.png';
 import DefaultButton from '../../../components/DefaultButton';
 import { useRA } from '../../../contexts/RAContext';
@@ -11,7 +12,8 @@ const StatementConclusion = () => {
     const navigate = useNavigate();
     const [statementConclusion, setStatementConclusion] = useState('');
     const { currentRA } = useRA();
-    const printRef = useRef();
+    const MySwal = withReactContent(Swal);
+    const encodedRa = btoa(currentRA.ra);
 
     async function getStatementConclusion() {
         try {
@@ -41,17 +43,25 @@ const StatementConclusion = () => {
 
     const buttons = [
         {
-            text: "Voltar para Serviços",
-            backgroundColor: "var(--secondary-light-yellow)",
+            text: "Imprimir Declaração",
+            backgroundColor: "var(--primary-light-blue)",
             color: '#fff',
-            onClick: () => navigate("/academico")
+            onClick: () => {
+                window.location.href = `https://sumare.edu.br/declaracao-conclusao.html?id=${encodedRa}`;
+            }
         },
         {
             text: "Relatar Problema",
             backgroundColor: "var(--secondary-light-red)",
             color: '#fff',
             onClick: () => navigate("abrir-demanda")
-        }
+        },
+        {
+            text: "Voltar para Serviços",
+            backgroundColor: "var(--secondary-light-yellow)",
+            color: '#fff',
+            onClick: () => navigate("/academico")
+        },
     ];
 
     return (
@@ -84,47 +94,13 @@ const StatementConclusion = () => {
                     ) : (
                         <p>Carregando...</p>
                     )}
-                    <ReactToPrint
-                        trigger={() => (
-                            <DefaultButton
-                                text="Imprimir Declaração"
-                                backgroundColor="var(--primary-light-blue)"
-                                color='#fff'
-                            />
-                        )}
-                        content={() => printRef.current}
-                    />
                     {buttons.map((props, index) => (
                         <DefaultButton key={index} {...props} />
                     ))}
                 </div>
-
-                <div style={{ display: 'none' }}>
-                    <div ref={printRef} className='print-area-statement-conclusion'>
-                        {statementConclusion.length > 0 && statementConclusion.map((item, index) => (
-                            <div className="declaration-content-conclusion-print" key={index}>
-                                <img src={logo} alt="logo da sumare" className='logo-sumare-azul' />
-                                <div className='declaration-conclusion'>
-                                    <h2>DECLARAÇÃO DE CONCLUSÃO DE CURSO</h2>
-                                    <p>Declaro para os devidos fins que o (a) discente <strong>{item.nome}, CPF: {item.cpf}</strong> cursou o <strong>{item.curso}</strong> modalidade <strong>{item.modalidade}</strong> ofertado pela <strong>{item.instituicao}</strong> com início das disciplinas do eixo básico e específico em <strong>{item.dataInicio}</strong> e fim em <strong>{item.dataFim}</strong>, mais o Trabalho de Conclusão de Curso (TCC). A situação do (a) discente no curso está detalhada na página seguinte desta declaração. O (a) discente integralizou a carga horária obrigatória exigida pelo Projeto Pedagógico do Curso, no total de <strong>{item.cargaHoraria}</strong>, tendo sido aprovado (a) nas disciplinas e no Trabalho de Conclusão de Curso.</p>
-                                </div>
-                                <p>Portanto, o status acadêmico do (a) discente no curso é: <strong>Concluído</strong>.</p>
-                                <div className='declaration-conclusion-ass'>
-                                    <p>Uberlândia, {item.dataDeclaracao}</p>
-                                    <img src='https://sites.unipampa.edu.br/certificadosdigitais/files/2011/06/assinatura.gif' alt="assinatura" className='logo-sumare-azul' />
-                                    <p>Prof. Dr. Antonio Sérgio Torres Penedo</p>
-                                    <p>Coordenador do curso de Especialização em Gestão Pública em Saúde PNAP – EaD</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
             </main>
-
         </>
-
     )
 }
-
 
 export default StatementConclusion

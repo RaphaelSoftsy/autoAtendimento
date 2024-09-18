@@ -22,13 +22,12 @@ const AdditionalActivities = () => {
         {
             id: 2,
             name: 'Sumaré Qualifica',
-            route: ''
+            route: 'https://www.sumarequalifica.com.br'
         }
     ];
 
     const [reEnrollment, setReEnrollment] = useState(null);
     const MySwal = withReactContent(Swal);
-    const aluno = '2012791';
     const navigate = useNavigate();
     const { currentRA } = useRA();
 
@@ -43,14 +42,11 @@ const AdditionalActivities = () => {
             const response = await axios.get(`${url_base_local}/atividade/${currentRA.ra}`);
             const data = response.data;
 
-            console.log(data);
-
             if (data.length > 0) {
                 setReEnrollment(data[0]);
             } else {
                 setReEnrollment([])
             }
-
         } catch (error) {
             MySwal.fire({
                 icon: 'error',

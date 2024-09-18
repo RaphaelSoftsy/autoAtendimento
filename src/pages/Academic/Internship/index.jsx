@@ -1,7 +1,12 @@
 import ListSubjects from '../../../components/ListSubjects';
+import { useRA } from '../../../contexts/RAContext';
 import './internship.css';
 
 const Internship = () => {
+
+    const { currentRA } = useRA();
+    const encodedRa = btoa(currentRA.ra);
+
     const list = [
         {
             id: 1,
@@ -26,7 +31,7 @@ const Internship = () => {
         {
             id: 5,
             name: 'Carta de Apresentação – Licenciatura',
-            route: '/academico/solicitacoes-academicas/estagio/carta-de-apresentacao-licenciatura'
+            route: `https://sumare.edu.br/cartaDeTermoDoEstagio.html?id=${encodedRa}`
         },
         {
             id: 6,

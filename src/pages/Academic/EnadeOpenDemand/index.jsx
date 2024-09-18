@@ -73,7 +73,7 @@ const EnadeOpenDemand = () => {
         };
 
         try {
-            const response = await axios.post(`${url_base_local}/solicitacaoFies`, dataToSend);
+            const response = await axios.post(`${url_base_local}/reclamacaoEnade`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
