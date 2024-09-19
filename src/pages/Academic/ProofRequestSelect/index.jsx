@@ -22,9 +22,7 @@ const ProofRequestSelect = () => {
         MySwal.showLoading();
 
         try {
-            // const response = await axios.get(`${url_base_local}/provasDisponiveis/ead?aluno=2480263&disciplina=${disciplinaSelecionada}`);
             const response = await axios.get(`${url_base_local}/solicitacao/provas?aluno=${currentRA.ra}&disciplina=${disciplinaSelecionada}`);
-
             const data = response.data;
 
             const filteredData = data.filter(item => !item.nomeAvaliacao.toLowerCase().includes('atividade'));
@@ -59,39 +57,34 @@ const ProofRequestSelect = () => {
 
     const handleNext = async (name) => {
         const selectedItem = selectedSubjects.find(item => item.name === name);
-    
+
         if (!selectedItem) {
             console.error('Item não encontrado.');
             return;
         }
-    
+
         selectedItem.solicProva = 'S';
-        selectedItem.valor = 0;
-    
-        console.log('Item após modificações:', selectedItem);
+        selectedItem.valor = 5;
 
         if (selectedItem.solicProva === 'S') {
             if (parseFloat(selectedItem.valor) > 0) {
-                console.log('Navegando para realizar pagamento...');
+                console.log('Navegando para realizar pagamento...', selectedItem.valor);
                 navigate("/financeiro/realizar-pagamento");
             } else {
-                
+
                 const servicoSelecionado = selectedItem.servico;
                 const dataAtual = new Date().toLocaleDateString('pt-BR');
-    
+
                 const dataToSend = {
                     aluno: currentRA.ra,
                     servico: servicoSelecionado,
                     data: dataAtual,
                     disciplina: disciplinaSelecionada
                 };
-    
-                console.log('Dados a serem enviados:', dataToSend);
-    
+
                 try {
                     const response = await axios.post(`${url_base_local}/SolicitacaoAgendamento`, dataToSend);
-                    console.log('Resposta da solicitação:', response);
-    
+
                     if (response.status === 200) {
                         const responseData = response.data;
                         MySwal.close();
@@ -105,7 +98,6 @@ const ProofRequestSelect = () => {
                         navigate("numero-servico");
                     }
                 } catch (error) {
-                    console.error('Erro ao enviar solicitação:', error);
                     MySwal.close();
                     MySwal.fire({
                         icon: "error",
@@ -123,8 +115,8 @@ const ProofRequestSelect = () => {
             });
         }
     };
-    
-    
+
+
 
     return (
         <main className="proof-request">

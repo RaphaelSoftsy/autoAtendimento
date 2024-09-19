@@ -11,7 +11,6 @@ import { useRA } from '../../../contexts/RAContext';
 const CourseCancellation = () => {
     const navigate = useNavigate();
     const [course, setCourse] = useState('');
-    const aluno = "2014554"
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
 
