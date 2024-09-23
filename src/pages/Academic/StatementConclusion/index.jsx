@@ -13,13 +13,14 @@ const StatementConclusion = () => {
     const [statementConclusion, setStatementConclusion] = useState('');
     const { currentRA } = useRA();
     const MySwal = withReactContent(Swal);
-    const encodedRa = btoa(currentRA.ra);
+    const ra = localStorage.getItem('aluno-ra')
+    const encodedRa = btoa(ra);
 
     async function getStatementConclusion() {
         try {
-            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/conclusao?aluno=1412454`);
+            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/conclusao?aluno=${ra}`);
             const data = response.data;
-
+            
             if (data.length > 0) {
                 setStatementConclusion(data);
             } else {
@@ -39,7 +40,22 @@ const StatementConclusion = () => {
 
     useEffect(() => {
         getStatementConclusion();
-    }, [currentRA.ra]);
+    }, [ra]);
+
+    useEffect(() => {
+        if (statementConclusion.length === 0) {
+            MySwal.fire({
+                icon: 'warning',
+                title: 'Atenção!',
+                text: 'Nenhuma declaração de conclusão foi encontrada. Você será redirecionado.',
+                showConfirmButton: false,
+                timer: 3500,
+            });
+            setTimeout(() => {
+                navigate("/academico/expedicao-de-documentos");
+            }, 3500);
+        }
+    }, [statementConclusion]);
 
     const buttons = [
         {

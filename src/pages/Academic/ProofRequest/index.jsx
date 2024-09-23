@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import Footer from '../../../components/Footer';
-import ListCheckButton from '../../../components/ListCheckButton';
+import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
 import { useRA } from '../../../contexts/RAContext';
 import { url_base_local } from '../../../services/url_base';
 import './proofRequest.css';
-import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
 
 const ProofRequest = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
@@ -24,16 +23,7 @@ const ProofRequest = () => {
     async function getDiscipline() {
         MySwal.showLoading();
 
-        let apiEndpoint = '';
-
-        if (currentRA.curso.toLowerCase().includes('ead')) {
-            apiEndpoint = 'provasDisponiveisEad';
-        } else {
-            apiEndpoint = 'provasDisponiveisPres';
-        }
-
         try {
-            // const response = await axios.get(`${url_base_local}/${apiEndpoint}/2480263`);
             const response = await axios.get(`${url_base_local}/disciplina/matriculada/?aluno=${currentRA.ra}&obrigatoria=S`);
             const data = response.data;
 
@@ -48,19 +38,6 @@ const ProofRequest = () => {
             } else {
                 setSelectedSubject([])
             }
-
-            // if (data.length > 0) {
-            //     const formattedData = data.map((item, index) => ({
-            //         id: index + 1,
-            //         aluno: item.aluno,
-            //         name: item.nome,
-            //         codigo: item.disciplina
-            //     }));
-
-            //     setSelectedSubject(formattedData);
-            // } else {
-            //     setSelectedSubject([]);
-            // }
         } catch (error) {
             MySwal.fire({
                 icon: 'error',
@@ -95,7 +72,7 @@ const ProofRequest = () => {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Você não selecionou nada',
+                text: 'Você ainda não selecionou uma disciplina. Escolha uma para continuar.',
                 confirmButtonText: 'OK'
             });
         } else {

@@ -3,7 +3,6 @@ import { useRA } from '../../../contexts/RAContext';
 import './internship.css';
 
 const Internship = () => {
-
     const { currentRA } = useRA();
     const encodedRa = btoa(currentRA.ra);
 

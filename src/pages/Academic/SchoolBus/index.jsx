@@ -56,7 +56,7 @@ const SchoolBus = () => {
                     const responseData = response.data;
                     MySwal.close();
                     MySwal.fire({
-                        title: "Cadastrado com sucesso",
+                        title: "Solicitação Enviada com Sucessso!",
                         icon: "success",
                         timer: 1500,
                         showConfirmButton: false

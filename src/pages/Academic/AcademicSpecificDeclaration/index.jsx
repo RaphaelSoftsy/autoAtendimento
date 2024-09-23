@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import DefaultButton from "../../../components/DefaultButton";
-import { url_base_local } from "../../../services/url_base";
-import "./academicSpecificDeclaration.css";
-import { useRA } from "../../../contexts/RAContext";
 import CardCheckout from "../../../components/CardCheckout";
+import { useRA } from "../../../contexts/RAContext";
+import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../ProgramContent";
+import "./academicSpecificDeclaration.css";
 
 const AcademicSpecificDeclaration = () => {
     const navigate = useNavigate();
@@ -98,22 +97,6 @@ const AcademicSpecificDeclaration = () => {
             });
         }
     };
-
-    //         if (response.status === 200) {
-    //             MySwal.fire({
-    //                 icon: 'success',
-    //                 title: 'Enviado com sucesso!',
-    //                 timer: 3000,
-    //                 timerProgressBar: true,
-    //                 showConfirmButton: true
-    //             }).then((result) => {
-    //                 // Verifica se o modal foi fechado pelo timer
-    //                 const closedByTimer = result.dismiss === 'timer';
-
-    //                 if (result.isConfirmed || closedByTimer) {
-    //                     navigate('numero-servico');
-    //                 }
-    //             });
 
     return (
         <main>

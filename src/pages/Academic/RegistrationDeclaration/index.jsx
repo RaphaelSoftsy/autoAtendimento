@@ -13,11 +13,12 @@ const RegistrationDeclaration = () => {
     const [registrationDeclaration, setRegistrationDeclaration] = useState('');
     const { currentRA } = useRA();
     const MySwal = withReactContent(Swal);
-    const encodedRa = btoa(currentRA.ra);
+    const ra = localStorage.getItem('aluno-ra')
+    const encodedRa = btoa(ra);
 
     async function getDeclaration() {
         try {
-            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/matricula?aluno=${currentRA.ra}`);
+            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/matricula?aluno=${ra}`);
             const data = response.data;
 
             if (data.length > 0) {
@@ -39,7 +40,7 @@ const RegistrationDeclaration = () => {
 
     useEffect(() => {
         getDeclaration();
-    }, [currentRA.ra]);
+    }, [ra]);
 
     const generateDeclarationHTML = (data) => {
         return (
