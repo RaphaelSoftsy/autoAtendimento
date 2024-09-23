@@ -64,16 +64,16 @@ const ProofRequestSelect = () => {
         }
 
         selectedItem.solicProva = 'S';
-        selectedItem.valor = 5;
+        selectedItem.valor = 0;
 
         if (selectedItem.solicProva === 'S') {
             if (parseFloat(selectedItem.valor) > 0) {
-                console.log('Navegando para realizar pagamento...', selectedItem.valor);
+                console.log('Navegando para realizar pagamento...');
                 navigate("/financeiro/realizar-pagamento");
             } else {
 
                 const servicoSelecionado = selectedItem.servico;
-                const dataAtual = new Date().toLocaleDateString('pt-BR');
+                const dataAtual = new Date()
 
                 const dataToSend = {
                     aluno: currentRA.ra,
@@ -115,8 +115,6 @@ const ProofRequestSelect = () => {
             });
         }
     };
-
-
 
     return (
         <main className="proof-request">

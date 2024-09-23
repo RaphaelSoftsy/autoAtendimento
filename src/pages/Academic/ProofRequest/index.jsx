@@ -72,7 +72,7 @@ const ProofRequest = () => {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Você não selecionou nada',
+                text: 'Você ainda não selecionou uma disciplina. Escolha uma para continuar.',
                 confirmButtonText: 'OK'
             });
         } else {
