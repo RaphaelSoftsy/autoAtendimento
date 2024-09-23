@@ -103,7 +103,7 @@ const DuplicateDiploma = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, envie os documentos.'
+                        text='Descreva o motivo da solicitação da segunda via do diploma, incluindo detalhes sobre o motivo da solicitação. Anexe uma captura de tela ou documento relevante (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

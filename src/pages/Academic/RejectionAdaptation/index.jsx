@@ -28,9 +28,13 @@ const RejectionAdaptation = () => {
 
         try {
             const response = await axios.get(`${url_base_local}/disciplinasMatriculadas/${currentRA.ra}`);
-            const data = response.data[0];
-
-            setReEnrollment(data);
+            const data = response.data;
+            
+            if (data.length > 0) {
+                setReEnrollment(data[0]);
+            }else{
+                setReEnrollment({})
+            }
         } catch (error) {
             MySwal.fire({
                 icon: "error",
@@ -56,7 +60,6 @@ const RejectionAdaptation = () => {
                     name: `${item.nomeDisciplina} (${item.status})`,
                     codigo: item.codDisciplina
                 }));
-    
                 setDisciplineList(formattedData);
             }else{
                 setDisciplineList([]);
@@ -127,6 +130,8 @@ const RejectionAdaptation = () => {
                             text="Solicitar"
                             onClickButton={handleNext}
                         />
+                    ) : disciplineList.length === 0 ? (
+                        <p>Não há Disciplinas para a reprovação e adaptação.</p>
                     ) : (
                         <p>Carregando disciplinas...</p>
                     )}

@@ -42,7 +42,7 @@ const Internship = () => {
     return (
         <div className="internship">
             <div className='list-subjects'>
-                <h1 className='title'>Sobre qual assunto deseja falar?</h1>
+                <h1 className='title'>Sobre qual assunto você deseja falar?</h1>
                 <ListSubjects itens={list} />
             </div>
         </div>

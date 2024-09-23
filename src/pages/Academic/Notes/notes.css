@@ -14,7 +14,7 @@
     gap: 20px;
 }
 
-.select-discipline{
+.select-discipline {
     width: 80vw;
 }
 
@@ -24,4 +24,13 @@
     justify-content: flex-start;
     margin-left: 20px;
     cursor: pointer;
+}
+
+@media(max-width:600px) {
+    .select-discipline {
+        width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 }

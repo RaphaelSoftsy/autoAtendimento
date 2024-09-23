@@ -103,7 +103,7 @@ const SubmissionInternshipReport = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise inserir todos os Documentos'
+                        text='Descreva o motivo da rescisão do contrato de estágio, incluindo detalhes sobre as circunstâncias que levaram à decisão. Anexe uma cópia do contrato e qualquer documento relevante (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

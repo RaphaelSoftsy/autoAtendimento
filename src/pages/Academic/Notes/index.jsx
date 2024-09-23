@@ -42,7 +42,7 @@ const Notes = () => {
 
                 if (response.status === 200) {
                     MySwal.fire({
-                        title: "Cadastrado com sucesso",
+                        title: "Solicitação Enviada com Sucessso!",
                         icon: "success",
                         timer: 1500,
                         showConfirmButton: false
@@ -78,7 +78,7 @@ const Notes = () => {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/DisciplinasHistorico/1412454`);
+            const response = await axios.get(`${url_base_local}/DisciplinasHistorico/${currentRA.ra}`);
             const data = response.data;
 
             if (data.length > 0) {
@@ -108,11 +108,8 @@ const Notes = () => {
         MySwal.showLoading();
 
         try {
-            const response = await axios.get(`${url_base_local}/notaHistorico/busca?aluno=1412454&disciplina=${codigoDisciplina}`);
+            const response = await axios.get(`${url_base_local}/notaHistorico/busca?aluno=${currentRA.ra}&disciplina=${codigoDisciplina}`);
             const data = response.data;
-
-            console.log(data);
-
 
             if (data.length > 0) {
                 const formattedItems = data.map((item) => ({
@@ -187,14 +184,14 @@ const Notes = () => {
                         ))}
                     </ul>
                     <DefaultButton
-                        text={isSelecting ? "Avançar" : "Solicitar Revisão de Nota"}
+                        text={isSelecting ? "Solicitar" : "Solicitar Revisão de Nota"}
                         backgroundColor="var(--primary-light-blue)"
                         color='#fff'
                         onClick={handleButtonClick}
                     />
                 </>
             ) : (
-                <p>Não existem notas disponíveis para a disciplina selecionada.</p>
+                <p className='is-no-data'>Não existem notas disponíveis para a disciplina selecionada.</p>
             )}
         </main>
     );

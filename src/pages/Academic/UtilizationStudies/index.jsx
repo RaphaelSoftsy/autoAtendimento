@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import Dropdown from "../../../components/Dropdown/Dropdown";
-import TextArea from "../../../components/TextArea";
 import DefaultButton from "../../../components/DefaultButton";
+import Dropdown from "../../../components/Dropdown/Dropdown";
 import InputUpload from "../../../components/InputUpload";
-import { convertToBase64 } from "../ProgramContent";
-import { url_base_local } from "../../../services/url_base";
+import TextArea from "../../../components/TextArea";
 import { useRA } from "../../../contexts/RAContext";
+import { url_base_local } from "../../../services/url_base";
+import { convertToBase64 } from "../ProgramContent";
 
 const UtilizationStudies = () => {
     const navigate = useNavigate();
@@ -68,20 +68,16 @@ const UtilizationStudies = () => {
 
     const handleSubmit = async () => {
 
-        if (!apiEndpoint) {
-            MySwal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Por favor, selecione um tipo de aproveitamento!",
-            });
-            return;
-        }
+        const errorMessage =
+            !apiEndpoint && "Por favor, selecione um tipo de aproveitamento!" ||
+            !formData.obs.trim() && "Por favor, preencha a observação!" ||
+            !formData.arquivo && "Por favor, selecione um arquivo antes de enviar!";
 
-        if (!formData.arquivo) {
+        if (errorMessage) {
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Por favor, selecione um arquivo antes de enviar!",
+                text: errorMessage,
             });
             return;
         }
@@ -92,9 +88,6 @@ const UtilizationStudies = () => {
             ...formData
         };
 
-        console.log(dataToSend);
-        console.log(apiEndpoint);
-        
         try {
             const response = await axios.post(`${url_base_local}/${apiEndpoint}`, dataToSend);
 
@@ -102,7 +95,7 @@ const UtilizationStudies = () => {
                 const responseData = response.data;
                 MySwal.close();
                 MySwal.fire({
-                    title: "Cadastrado com sucesso",
+                    title: "Solicitação Enviada com Sucessso!",
                     icon: "success",
                     timer: 1500,
                     showConfirmButton: false
@@ -139,7 +132,7 @@ const UtilizationStudies = () => {
                             itens={list}
                             label='Selecione um Aproveitamento de Estudos'
                             onChange={handleDropdownChange}
-                            text="Selecione um Aproveitamento de Estudos"
+                            text="Escolha um Aproveitamento de Estudos"
                         />
                         <TextArea
                             text='Descreva o motivo da sua solicitação, incluindo detalhes relevantes e quando ocorreu. Anexe uma captura de tela ou documento relevante (obrigatório).'

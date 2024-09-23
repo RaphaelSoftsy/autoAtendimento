@@ -103,7 +103,7 @@ const SpecialDegreeConferral = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, envie os documentos.'
+                        text='Descreva o motivo da solicitação de colação de grau, incluindo detalhes do problema encontrado e quando ocorreu. Anexe uma captura de tela ou documento relevante (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

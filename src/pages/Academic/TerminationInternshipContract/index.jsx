@@ -103,7 +103,7 @@ const TerminationInternshipContract = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise inserir todos os Documentos'
+                        text='Descreva o processo de convalidação de horas, incluindo informações sobre os critérios necessários, prazos e documentos exigidos. Anexe qualquer documento relevante que comprove as horas a serem convalidadas (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}
