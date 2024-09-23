@@ -13,11 +13,12 @@ const StatementConclusion = () => {
     const [statementConclusion, setStatementConclusion] = useState('');
     const { currentRA } = useRA();
     const MySwal = withReactContent(Swal);
-    const encodedRa = btoa(currentRA.ra);
+    const ra = localStorage.getItem('aluno-ra')
+    const encodedRa = btoa(ra);
 
     async function getStatementConclusion() {
         try {
-            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/conclusao?aluno=${currentRA.ra}`);
+            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/conclusao?aluno=${ra}`);
             const data = response.data;
             
             if (data.length > 0) {
@@ -39,7 +40,7 @@ const StatementConclusion = () => {
 
     useEffect(() => {
         getStatementConclusion();
-    }, [currentRA.ra]);
+    }, [ra]);
 
     useEffect(() => {
         if (statementConclusion.length === 0) {

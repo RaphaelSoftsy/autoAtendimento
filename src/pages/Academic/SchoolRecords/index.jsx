@@ -13,11 +13,12 @@ const SchoolRecords = () => {
     const [schoolRecords, setSchoolRecords] = useState([]);
     const { currentRA } = useRA();
     const MySwal = withReactContent(Swal);
-    const encodedRa = btoa(currentRA.ra);
+    const ra = localStorage.getItem('aluno-ra')
+    const encodedRa = btoa(ra);
 
     async function getSchoolRecords() {
         try {
-            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/historico?aluno=${currentRA.ra}`);
+            const response = await axios.get(`${url_base_hospedada}/api-documento/documentos/historico?aluno=${ra}`);
             const data = response.data;
 
             if (data && typeof data === 'object' && Object.keys(data).length > 0) {
@@ -39,7 +40,7 @@ const SchoolRecords = () => {
 
     useEffect(() => {
         getSchoolRecords();
-    }, [currentRA.ra]);
+    }, [ra]);
 
     const buttons = [
         {
