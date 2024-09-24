@@ -103,7 +103,7 @@ const AdditionalActivitiesOpenDemand = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Descreva as atividades complementares realizadas, incluindo detalhes sobre cada atividade, carga horária, e como elas se relacionam com sua formação. Anexe certificados ou comprovantes das atividades realizadas (obrigatório).'
+                        text='Descreva as atividades complementares realizadas, incluindo carga horária e sua relação com a formação. Anexe certificados ou comprovantes (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

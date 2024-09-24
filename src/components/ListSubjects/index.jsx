@@ -5,7 +5,6 @@ import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataProvider';
 
 const Subject = (props) => {
-    console.log(props);
     const {setRouteHeader, routeHeader } = useContext(DataContext)
     const location = useLocation()
 
