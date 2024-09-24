@@ -103,7 +103,7 @@ const SigningInternshipContract = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Descreva o processo de assinatura do contrato de estágio, incluindo informações sobre os documentos necessários, as partes envolvidas e o cronograma. Anexe uma cópia do contrato assinado ou qualquer documento relevante (obrigatório).'
+                        text='Descreva o processo de assinatura do contrato de estágio, incluindo documentos necessários, partes envolvidas e cronograma. Anexe o contrato assinado ou documento relevante (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

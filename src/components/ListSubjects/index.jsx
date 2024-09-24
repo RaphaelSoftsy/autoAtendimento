@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { DataContext } from '../../contexts/DataProvider';
 
 const Subject = (props) => {
+    console.log(props);
     const {setRouteHeader, routeHeader } = useContext(DataContext)
     const location = useLocation()
 
@@ -36,7 +37,7 @@ const ListSubjects = (props) => {
                     onClick={props.onClick}
                     route={subject.route}
                     name={subject.name}
-                    seta={props.seta}
+                    seta={subject.seta}
                 />
             ))}
         </ul>
