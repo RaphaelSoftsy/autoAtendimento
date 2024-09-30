@@ -10,8 +10,7 @@ import { convertToBase64 } from "../../Academic/ProgramContent";
 import './handbag.css';
 
 const Handbag = () => {
-
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
     const [selectedOptionHandbag, setSelectedOptionHandbag] = useState(null);
@@ -24,7 +23,7 @@ const Handbag = () => {
         extensaoArq: '',
         tipoArq: '',
         arquivo: '',
-        tipoBolsa: ''
+        tipoBolsa: null
     });
 
     useEffect(() => {
@@ -33,6 +32,13 @@ const Handbag = () => {
             aluno: currentRA.ra
         }));
     }, [currentRA]);
+
+    useEffect(() => {
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            tipoBolsa: selectedOptionHandbag
+        }));
+    }, [selectedOptionHandbag]);
 
     const handleChangeObservation = (e) => {
         const { name, value } = e.target;
@@ -60,79 +66,57 @@ const Handbag = () => {
     };
 
     const handleSubmit = async () => {
+        const errorMessage =
+            !formData.tipoBolsa && "Por favor, selecione um tipo de bolsa!" ||
+            !formData.obs.trim() && "Por favor, preencha a observação!" ||
+            !formData.arquivo && "Por favor, selecione um arquivo antes de enviar!";
 
-        if (!formData.arquivo) {
+        if (errorMessage) {
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Por favor, selecione um arquivo antes de enviar!",
+                text: errorMessage,
             });
             return;
         }
 
         MySwal.showLoading();
 
-        const dataToSend = {
-            aluno: formData.aluno,
-            obs: formData.obs,
-            nomeArq: formData.nomeArq,
-            tamanhoArq: formData.tamanhoArq,
-            extensaoArq: formData.extensaoArq,
-            tipoArq: formData.tipoArq,
-            arquivo: formData.arquivo,
-            tipoBolsa: selectedOptionHandbag
-        };
-
         try {
-            const response = await axios.post(`${url_base_local}/solicitacaoBolsa`, dataToSend, {
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            });
+            const response = await axios.post(`${url_base_local}/solicitacaoBolsa`, formData);
 
             if (response.status === 200) {
                 const responseData = response.data;
                 MySwal.close();
                 MySwal.fire({
-                    title: "Cadastrado com sucesso",
+                    title: "Solicitação Enviada com Sucesso!",
                     icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navegation("numero-servico");
-            } else {
-                throw new Error('Network response was not ok.');
+                navigate("numero-servico");
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Não foi possível realizar esse comando!",
+                text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
             });
         }
-    };
-
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    const handleFileChanges = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-        handleFileChange(event);
     };
 
     return (
         <main className="handbag">
             <CardDrop
-                text='Descreva sua solicitação:'
                 setSelect={setSelectedOptionHandbag}
-                onChangeInputFile={handleFileChanges}
-                selectedFile={selectedFile}
-                selectedFileName={selectedFile ? selectedFile.name : ""}
+                onChangeInputFile={handleFileChange}
                 onClick={handleSubmit}
-                textTextArea='Descreva o que está acontecendo:'
+                textTextArea='Descreva o problema relacionado à bolsa de estudos, incluindo detalhes sobre valores, prazos ou informações incorretas. Anexe documentos relevantes, como comprovantes ou contratos (obrigatório).'
                 observation={formData.obs}
                 onObservationChange={handleChangeObservation}
+                selectedFileName={formData.nomeArq}
             />
         </main>
     );

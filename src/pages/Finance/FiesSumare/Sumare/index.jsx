@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { convertToBase64 } from "../../../Academic/ProgramContent";
 import axios from "axios";
+import { url_base_local } from "../../../../services/url_base";
 
 const Sumare = () => {
 
@@ -75,7 +76,7 @@ const Sumare = () => {
         console.log("Data to send:", JSON.stringify(dataToSend));
     
         try {
-            const response = await axios.post('http://localhost:8080/solicitacaoFies', dataToSend, {
+            const response = await axios.post(`${url_base_local}/superSumare`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }

@@ -1,8 +1,8 @@
-import './cardDrop.css';
-import Dropdown from '../Dropdown/Dropdown';
-import TextArea from '../TextArea';
 import DefaultButton from '../DefaultButton';
+import Dropdown from '../Dropdown/Dropdown';
 import InputUpload from '../InputUpload';
+import TextArea from '../TextArea';
+import './cardDrop.css';
 
 const CardDrop = (props) => {
     const list = [
@@ -13,12 +13,12 @@ const CardDrop = (props) => {
 
     return (
         <div className="card-drop">
-            <h2>Selecione o Tipo da Bolsa:</h2>
             <Dropdown
                 id='dropdown-handbag'
                 name='dropdown-handbag'
+                text='Escolha o tipo de Bolsa'
                 itens={list}
-                label=''
+                label='Selecione o Tipo da Bolsa:'
                 onChange={props.setSelect}
             />
             <TextArea
@@ -31,7 +31,6 @@ const CardDrop = (props) => {
                 onChangeInputFile={props.onChangeInputFile}
                 selectedFileName={props.selectedFileName}
             />
-
             <div className="button-group">
                 <DefaultButton
                     text="Enviar Solicitação"

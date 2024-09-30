@@ -1,15 +1,15 @@
-import './monthlyPayment.css'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
-import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
-import Footer from '../../../components/Footer';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import FilterModal from '../../../components/FilterModal';
-import axios from 'axios';
-import { url_base_local } from '../../../services/url_base';
+import Footer from '../../../components/Footer';
+import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
 import { useRA } from '../../../contexts/RAContext';
+import { url_base_local } from '../../../services/url_base';
+import './monthlyPayment.css';
 
 const MonthlyPayment = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
@@ -21,7 +21,7 @@ const MonthlyPayment = () => {
         TODOS: true,
     });
     const [items, setItems] = useState([]);
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const aluno = '2014111'
     const { currentRA } = useRA();
@@ -115,7 +115,7 @@ const MonthlyPayment = () => {
             localStorage.setItem('cobranca-selecioanda', selectedItem.name);
             console.log(selectedItem.name);
 
-            navegation('abrir-demanda');
+            navigate('abrir-demanda');
         }
     };
 

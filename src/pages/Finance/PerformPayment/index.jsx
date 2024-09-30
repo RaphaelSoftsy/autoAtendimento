@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import axios from 'axios';
 import { url_base_local } from '../../../services/url_base';
+import { useRA } from '../../../contexts/RAContext';
 
 const PerformPayment = () => {
 
@@ -13,68 +14,63 @@ const PerformPayment = () => {
     const [payment, setPayment] = useState([]);
     const navigate = useNavigate();
     // const aluno = localStorage.getItem("aluno-ra");
-    const aluno = '2473773'
+    // const aluno = '2473773'
     const MySwal = withReactContent(Swal);
-
-    const monthNames = {
-        '1': 'Janeiro',
-        '2': 'Fevereiro',
-        '3': 'Março',
-        '4': 'Abril',
-        '5': 'Maio',
-        '6': 'Junho',
-        '7': 'Julho',
-        '8': 'Agosto',
-        '9': 'Setembro',
-        '10': 'Outubro',
-        '11': 'Novembro',
-        '12': 'Dezembro'
-    };
+    const { currentRA } = useRA();
 
     async function getPerformPayment() {
 
         MySwal.showLoading()
 
         try {
-            const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=N&aVencer=S`);
+            const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${currentRA.ra}&cpf=&vencidas=N&aVencer=S`);
             const data = response.data.cobrancas;
             console.log('Dados da declaração:', data);
 
-            // Mapeando os objetos retornados pela API para o novo formato com IDs incrementais
-            const formattedData = data
-                .filter(item => parseFloat(item.valorPagar) !== 0)
-                .map((item, index) => ({
-                    id: index + 1,
-                    aluno: item.aluno,
-                    resp: item.resp,
-                    statusCobranca: item.statusCobranca,
-                    cobranca: item.cobranca,
-                    tipoCobranca: item.tipoCobranca,
-                    descricao: item.descricao,
-                    curso: item.curso,
-                    turno: item.turno,
-                    serie: item.serie,
-                    mes: item.mes,
-                    mesName: monthNames[item.mes],
-                    ano: item.ano,
-                    dataDeVencimento: item.dataDeVencimento,
-                    dataDescontoAtual: item.dataDescontoAtual,
-                    valorDescontoAtual: item.valorDescontoAtual,
-                    valorFaturado: item.valorFaturado,
-                    valorPagar: item.valorPagar,
-                    jurosMulta: item.jurosMulta
-                }));
+            if (data.length > 0) {
+                const formattedData = data
+                    .filter(item => parseFloat(item.valorPagar) !== 0)
+                    .map((item, index) => ({
+                        id: index + 1,
+                        aluno: item.aluno,
+                        resp: item.resp,
+                        statusCobranca: item.statusCobranca,
+                        cobranca: item.cobranca,
+                        tipoCobranca: item.tipoCobranca,
+                        descricao: item.descricao,
+                        curso: item.curso,
+                        turno: item.turno,
+                        serie: item.serie,
+                        mes: item.mes,
+                        mesName: monthNames[item.mes],
+                        ano: item.ano,
+                        dataDeVencimento: item.dataDeVencimento,
+                        dataDescontoAtual: item.dataDescontoAtual,
+                        valorDescontoAtual: item.valorDescontoAtual,
+                        valorFaturado: item.valorFaturado,
+                        valorPagar: item.valorPagar,
+                        jurosMulta: item.jurosMulta
+                    }));
 
-            setPayment(formattedData);
+                setPayment(formattedData);
+            } else {
+                setPayment([])
+            }
         } catch (error) {
-            console.error('Erro ao buscar declaração:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar as avaliações. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            MySwal.close();
         }
-        MySwal.close()
     }
 
     useEffect(() => {
         getPerformPayment();
-    }, [aluno]);
+    }, [currentRA.ra]);
 
     console.log(payment);
 
@@ -112,20 +108,19 @@ const PerformPayment = () => {
 
     const handleNext = () => {
         if (selectedSubjects.length === 0) {
-            MySwal.fire({
+            return MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
                 text: 'Você não selecionou nada',
                 confirmButtonText: 'OK'
             });
-        } else {
-            const selectedItems = formattedList.filter(item => selectedSubjects.includes(item.id));
-            localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-
-            localStorage.setItem("total", formatValue(total));
-
-            navigate('/financeiro/realizar-pagamento/detalhes-pagamento');
         }
+
+        const selectedItems = formattedList.filter(item => selectedSubjects.includes(item.id));
+        localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+        localStorage.setItem("total", formatValue(total));
+
+        navigate('/financeiro/realizar-pagamento/detalhes-pagamento');
     };
 
     return (
@@ -158,3 +153,19 @@ const PerformPayment = () => {
 };
 
 export default PerformPayment
+
+
+export const monthNames = {
+    '1': 'Janeiro',
+    '2': 'Fevereiro',
+    '3': 'Março',
+    '4': 'Abril',
+    '5': 'Maio',
+    '6': 'Junho',
+    '7': 'Julho',
+    '8': 'Agosto',
+    '9': 'Setembro',
+    '10': 'Outubro',
+    '11': 'Novembro',
+    '12': 'Dezembro'
+};

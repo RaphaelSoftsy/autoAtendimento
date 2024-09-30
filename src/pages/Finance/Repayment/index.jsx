@@ -85,47 +85,31 @@ const Repayment = () => {
             cobranca: selectedOption2
         };
 
-        console.log(dataToSend);
-        
 
         try {
-            const response = await axios.post(`${url_base_local}/`, dataToSend, {
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            });
+            const response = await axios.post(`${url_base_local}/`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
                 MySwal.close();
                 MySwal.fire({
-                    title: "Cadastrado com sucesso",
+                    title: "Solicitação Enviada com Sucesso!",
                     icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navegation("numero-servico");
-            } else {
-                throw new Error('Network response was not ok.');
+                navigate("numero-servico");
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Não foi possível realizar esse comando!",
+                text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
             });
         }
     };
-
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    const handleFileChanges = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-        handleFileChange(event);
-    };
-
 
     return (
         <main className="repayment">
@@ -133,9 +117,7 @@ const Repayment = () => {
                 text='Descreva sua solicitação:'
                 setSelect={setSelectedOption}
                 setSelect2={setSelectedOption2}
-                onChangeInputFile={handleFileChanges}
-                selectedFile={selectedFile}
-                selectedFileName={selectedFile ? selectedFile.name : ""}
+                onChangeInputFile={handleFileChange}
                 onClick={handleSubmit}
                 textTextArea='Descreva o que está acontecendo:'
                 observation={formData.obs}

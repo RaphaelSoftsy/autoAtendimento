@@ -18,10 +18,7 @@ const ProblemsReviewsSelect = () => {
 
     useEffect(() => {
         getAssessment();
-    }, [currentRA]);
-
-    console.log(disciplinaSelecionada);
-    
+    }, [currentRA]);  
 
     async function getAssessment() {
         MySwal.showLoading();
@@ -30,9 +27,6 @@ const ProblemsReviewsSelect = () => {
             const response = await axios.get(`${url_base_local}/lista/avaliacao?aluno=${currentRA.ra}&disciplina=${disciplinaSelecionada}`);
             const data = response.data;
             
-            console.log(data);
-            
-
             if (data.length > 0) {
                 const formattedData = data.map((item, index) => ({
                     id: index + 1,

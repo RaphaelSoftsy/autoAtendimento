@@ -1,4 +1,4 @@
-import CardServiceNumber from "../../../components/CardServiceNumber";
+import CardServiceNumberAcad from "../../../components/CardServiceNumber";
 
 const ChargesServiceNumber = () => {
 
@@ -7,7 +7,7 @@ const ChargesServiceNumber = () => {
     return (
         <div>
             <div className="rescue-checks">
-                <CardServiceNumber
+                <CardServiceNumberAcad
                     number={numberService}
                 />
             </div>

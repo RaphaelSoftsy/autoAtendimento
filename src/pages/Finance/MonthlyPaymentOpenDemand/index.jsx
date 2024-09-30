@@ -80,7 +80,7 @@ const MonthlyPaymentOpenDemand = () => {
         };
 
         try {
-            const response = await axios.post(`${url_base_local}/problemaAcessoAva`, dataToSend, {
+            const response = await axios.post(`${url_base_local}/valorDivergentes`, dataToSend, {
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8'
                 }

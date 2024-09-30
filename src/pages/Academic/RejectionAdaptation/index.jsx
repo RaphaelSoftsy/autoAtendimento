@@ -21,7 +21,7 @@ const RejectionAdaptation = () => {
     useEffect(() => {
         getReEnrollment();
         getStatusDiscipline();
-    }, [currentRA]);
+    }, [currentRA.ra]);
 
     const getReEnrollment = async () => {
         MySwal.showLoading();
@@ -29,10 +29,10 @@ const RejectionAdaptation = () => {
         try {
             const response = await axios.get(`${url_base_local}/disciplinasMatriculadas/${currentRA.ra}`);
             const data = response.data;
-            
-            if (data.length > 0) {
-                setReEnrollment(data[0]);
-            }else{
+
+            if (data) {
+                setReEnrollment(data);
+            } else {
                 setReEnrollment({})
             }
         } catch (error) {
@@ -61,7 +61,7 @@ const RejectionAdaptation = () => {
                     codigo: item.codDisciplina
                 }));
                 setDisciplineList(formattedData);
-            }else{
+            } else {
                 setDisciplineList([]);
             }
         } catch (error) {
@@ -80,13 +80,13 @@ const RejectionAdaptation = () => {
             const index = prevSelected.indexOf(id);
             if (index !== -1) {
                 return prevSelected.filter(subjectId => subjectId !== id);
-            } else if (prevSelected.length < maxDisciplines - reEnrollment.disciplinas) {
+            } else if (prevSelected.length < maxDisciplines - reEnrollment.disciplina) {
                 return [...prevSelected, id];
             } else {
                 MySwal.fire({
                     icon: 'info',
                     title: 'Limite atingido',
-                    text: `Você já selecionou o máximo de ${maxDisciplines - reEnrollment.disciplinas} disciplinas.`,
+                    text: `Você já selecionou o máximo de ${maxDisciplines - reEnrollment.disciplina} disciplinas.`,
                     confirmButtonText: 'OK'
                 });
                 return prevSelected;
@@ -112,8 +112,8 @@ const RejectionAdaptation = () => {
             <main className='rejection-adaptation'>
                 <div className='discipline'>
                     <div className='registration'>
-                        <span>Número de Disciplinas Matrículadas = {reEnrollment.disciplinas}</span>
-                        <span>Número de Disciplinas que podem ser solicitadas = {maxDisciplines - reEnrollment.disciplinas}</span>
+                        <span>Número de Disciplinas Matrículadas = {reEnrollment.disciplina}</span>
+                        <span>Número de Disciplinas que podem ser solicitadas = {maxDisciplines - reEnrollment.disciplina}</span>
                     </div>
                     <h3>
                         Selecione a Disciplina que deseja realizar a Matrícula
