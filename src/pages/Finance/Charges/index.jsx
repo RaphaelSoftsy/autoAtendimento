@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import FilterModal from '../../../components/FilterModal';
 import axios from 'axios';
 import { url_base_local } from '../../../services/url_base';
+import { monthNames } from '../PerformPayment';
 
 const Charges = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
@@ -24,21 +25,6 @@ const Charges = () => {
     const MySwal = withReactContent(Swal);
     // const aluno = localStorage.getItem("aluno-ra");
     const aluno = '2014111'
-
-    const monthNames = {
-        '1': 'Janeiro',
-        '2': 'Fevereiro',
-        '3': 'Março',
-        '4': 'Abril',
-        '5': 'Maio',
-        '6': 'Junho',
-        '7': 'Julho',
-        '8': 'Agosto',
-        '9': 'Setembro',
-        '10': 'Outubro',
-        '11': 'Novembro',
-        '12': 'Dezembro'
-    };
 
     const getPerformPayment = async () => {
         MySwal.showLoading();

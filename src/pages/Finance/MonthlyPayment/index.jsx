@@ -10,6 +10,7 @@ import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
 import { useRA } from '../../../contexts/RAContext';
 import { url_base_local } from '../../../services/url_base';
 import './monthlyPayment.css';
+import { monthNames } from '../PerformPayment';
 
 const MonthlyPayment = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
@@ -23,52 +24,44 @@ const MonthlyPayment = () => {
     const [items, setItems] = useState([]);
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
-    const aluno = '2014111'
+    // const aluno = '2014111'
     const { currentRA } = useRA();
-
-    useEffect(() => {
-        console.log(currentRA)
-    }, [currentRA]);
-
-    const monthNames = {
-        '1': 'Janeiro',
-        '2': 'Fevereiro',
-        '3': 'Março',
-        '4': 'Abril',
-        '5': 'Maio',
-        '6': 'Junho',
-        '7': 'Julho',
-        '8': 'Agosto',
-        '9': 'Setembro',
-        '10': 'Outubro',
-        '11': 'Novembro',
-        '12': 'Dezembro'
-    };
 
     const getPerformPayment = async () => {
         MySwal.showLoading();
         try {
-            const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${aluno}&cpf=&vencidas=S&aVencer=S`);
+            const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${currentRA.ra}&cpf=&vencidas=S&aVencer=S`);
             const data = response.data.cobrancas;
 
             console.log(data);
+            
 
-            const formattedData = data.map((item, index) => ({
-                id: index + 1,
-                name: `${item.tipoCobranca} ${monthNames[item.mes]}/${item.ano}`,
-                status: item.tipoCobranca
-            }));
+            if (data.length > 0) {
+                const formattedData = data.map((item, index) => ({
+                    id: index + 1,
+                    name: `${item.tipoCobranca} ${monthNames[item.mes]}/${item.ano}`,
+                    status: item.tipoCobranca
+                }));
 
-            setItems(formattedData);
+                setItems(formattedData);
+            } else {
+                setItems([])
+            }
         } catch (error) {
-            console.error('Erro ao buscar dados:', error);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Não foi possível buscar as cobranças do aluno. Tente novamente mais tarde.',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            MySwal.close();
         }
-        MySwal.close();
     };
 
     useEffect(() => {
         getPerformPayment();
-    }, []);
+    }, [currentRA]);
 
     const containsAcordo = (text) => {
         return text.toLowerCase().includes('acordo');
@@ -125,17 +118,16 @@ const MonthlyPayment = () => {
             toggleFilter();
             return;
         }
-
-        // Verifica se algum filtro específico está selecionado
-        const selectedFilter = Object.entries(newFilters).find(([key, value]) => value);
-
+    
+        const selectedFilter = Object.entries(newFilters).find(([_, value]) => value);
+    
         if (!selectedFilter) {
             toggleFilter();
             return;
         }
-
+    
         const filterName = selectedFilter[0];
-
+    
         const filteredList = items.filter(item => {
             if (filters.TODOS) return true;
             if (filterName === 'ACORDOS') {
@@ -143,8 +135,8 @@ const MonthlyPayment = () => {
             }
             return item.status === filterName;
         });
-
-        if (filterName === 'ACORDOS' && filteredList.length === 0) {
+    
+        if (filteredList.length === 0) {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
@@ -156,6 +148,7 @@ const MonthlyPayment = () => {
             toggleFilter();
         }
     };
+    
 
     return (
         <main className='main-perform-accord'>

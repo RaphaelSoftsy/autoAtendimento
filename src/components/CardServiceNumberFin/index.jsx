@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import DefaultButton from '../DefaultButton';
-import './cardServiceNumber.css';
 
 const CardServiceNumberFin = (props) => {
     const navigate = useNavigate();
