@@ -103,7 +103,7 @@ const EnadeOpenDemand = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise inserir todos os Documentos'
+                        text='Descreva sua experiência com o Enade, incluindo preparação, dia da prova e resultados. Anexe comprovantes de inscrição e resultados (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

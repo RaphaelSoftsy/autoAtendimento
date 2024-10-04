@@ -9,10 +9,10 @@ import { convertToBase64 } from "../../Academic/ProgramContent";
 import { useRA } from '../../../contexts/RAContext';
 
 const MonthlyPaymentOpenDemand = () => {
-
-    const navegation = useNavigate();
+    const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
+    const cobrancaSelecionada = localStorage.getItem("disciplina-selecionada");
 
     const [formData, setFormData] = useState({
         aluno: currentRA.ra,
@@ -21,7 +21,8 @@ const MonthlyPaymentOpenDemand = () => {
         tamanhoArq: '',
         extensaoArq: '',
         tipoArq: '',
-        arquivo: ''
+        arquivo: '',
+        cobranca: cobrancaSelecionada || ''
     });
 
     useEffect(() => {
@@ -70,66 +71,48 @@ const MonthlyPaymentOpenDemand = () => {
         MySwal.showLoading();
 
         const dataToSend = {
-            aluno: formData.aluno,
-            obs: formData.obs,
-            nomeArq: formData.nomeArq,
-            tamanhoArq: formData.tamanhoArq,
-            extensaoArq: formData.extensaoArq,
-            tipoArq: formData.tipoArq,
-            arquivo: formData.arquivo
+            ...formData
         };
 
         try {
-            const response = await axios.post(`${url_base_local}/problemaAcessoAva`, dataToSend, {
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            });
+            const response = await axios.post(`${url_base_local}/valorDivergentes`, dataToSend);
 
             if (response.status === 200) {
                 const responseData = response.data;
                 MySwal.close();
                 MySwal.fire({
-                    title: "Cadastrado com sucesso",
+                    title: "Solicitação Enviada com Sucessso!",
                     icon: "success",
+                    timer: 1500,
+                    showConfirmButton: false
                 });
                 localStorage.setItem("numero-servico", JSON.stringify(responseData));
-                navegation("numero-servico");
-            } else {
-                throw new Error('Network response was not ok.');
+                navigate("numero-servico");
             }
         } catch (error) {
             MySwal.close();
-            console.log(error);
             MySwal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Não foi possível realizar esse comando!",
+                text: "Não foi possível fazer a solicitação. Tente novamente mais tarde.",
             });
         }
     };
 
-    const [selectedFile, setSelectedFile] = useState(null);
-
-    const handleFileChanges = (event) => {
-        const file = event.target.files[0];
-        setSelectedFile(file);
-        handleFileChange(event);
-    };
-
     return (
-        <main className="problems-accessing-ava">
-            <div className='problems-accessing-ava-card'>
-                <CardCheckout
-                    text='Descreva sua solicitação:'
-                    onChangeInputFile={handleFileChanges}
-                    selectedFile={selectedFile}
-                    selectedFileName={selectedFile ? selectedFile.name : ""}
-                    onClick={handleSubmit}
-                    textTextArea=''
-                    observation={formData.obs}
-                    onObservationChange={handleChangeObservation}
-                />
+        <main>
+            <div className="rescue-checks">
+                <div className='list-subjects'>
+                    <CardCheckout
+                        text='Descreva o problema relacionado a mensalidades, serviços ou acordos com valores divergentes, incluindo detalhes sobre as discrepâncias e a correção necessária. Anexe comprovantes ou documentos relevantes (obrigatório).'
+                        onChangeInputFile={handleFileChange}
+                        selectedFileName={formData.nomeArq}
+                        onClick={handleSubmit}
+                        textTextArea=''
+                        observation={formData.obs}
+                        onObservationChange={handleChangeObservation}
+                    />
+                </div>
             </div>
         </main>
     );

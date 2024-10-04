@@ -103,7 +103,7 @@ const InternshipReportSubmission = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise inserir todos os Documentos'
+                        text='Descreva o processo de entrega do relatório de estágio, incluindo informações sobre o formato exigido, prazos e requisitos específicos. Anexe uma cópia do relatório ou qualquer documento relevante (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

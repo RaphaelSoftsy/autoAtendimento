@@ -10,12 +10,13 @@ import { useRA } from '../../../contexts/RAContext';
 
 const CourseCancellation = () => {
     const navigate = useNavigate();
-    const [course, setCourse] = useState('');
+    const [course, setCourse] = useState(null);
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
 
     const handleNext = () => {
-        if (course[0].inadimplente === 'S') {
+
+        if (course && course.inadimplente == 'S') {
             navigate('/academico/cancelamento-do-curso/cobrancas');
         } else {
             MySwal.fire({
@@ -37,13 +38,11 @@ const CourseCancellation = () => {
             const response = await axios.get(`${url_base_local}/dadosCancelamento/${currentRA.ra}`);
             const data = response.data;
 
-            if (data.length > 0) {
-                setCourse(data[0]);
+            if (data) {
+                setCourse(data);
+            } else {
+                setCourse(null);
             }
-            else{
-                setCourse([])
-            }
-            
         } catch (error) {
             MySwal.fire({
                 icon: 'error',

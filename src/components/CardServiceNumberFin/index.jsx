@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import DefaultButton from '../DefaultButton';
-import './cardServiceNumber.css';
 
-const CardServiceNumberAcad = (props) => {
+const CardServiceNumberFin = (props) => {
     const navigate = useNavigate();
 
     return (
@@ -17,7 +16,7 @@ const CardServiceNumberAcad = (props) => {
                 text="Voltar para Serviço"
                 backgroundColor="var(--secondary-light-yellow)"
                 color='#fff'
-                onClick={() => navigate('/academico')}
+                onClick={() => navigate('/financeiro')}
             />
             <DefaultButton
                 text="Finalizar Sessão"
@@ -29,4 +28,4 @@ const CardServiceNumberAcad = (props) => {
     );
 };
 
-export default CardServiceNumberAcad;
+export default CardServiceNumberFin;

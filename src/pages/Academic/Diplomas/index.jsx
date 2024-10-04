@@ -72,8 +72,14 @@ const Diplomas = () => {
             const response = await axios.get(`${url_base_local}/solicitaDiploma/${currentRA.ra}`);
             const data = response.data;
 
-            setSelectedSubjects(data);
-            MySwal.close();
+            if (data.length > 0) {
+                setSelectedSubjects(data);
+                MySwal.close();
+            }else{
+                setSelectedSubjects([]);
+                MySwal.close();
+            }
+            
         } catch (error) {
             MySwal.close();
             MySwal.fire({

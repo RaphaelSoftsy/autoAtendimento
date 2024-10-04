@@ -103,7 +103,7 @@ const SchoolRecordsOpenDemand = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise nos explique seu problema'
+                        text='Descreva o problema encontrado no histórico escolar, incluindo detalhes sobre os dados ou notas incorretas e as correções necessárias. Anexe uma cópia do histórico escolar e qualquer documento relevante (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

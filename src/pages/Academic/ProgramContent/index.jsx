@@ -101,7 +101,7 @@ const ProgramContent = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise nos explique seu problema'
+                        text='Descreva o problema encontrado no conteúdo programático, incluindo detalhes sobre os dados incorretos e as correções necessárias. Anexe uma cópia do conteúdo programático e qualquer documento relevante (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

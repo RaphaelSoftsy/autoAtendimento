@@ -103,7 +103,7 @@ const StatementConclusionOpenDemand = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise nos explique seu problema'
+                        text='Descreva o problema encontrado na declaração de conclusão, incluindo detalhes sobre os dados incorretos e as correções necessárias. Anexe uma cópia da declaração e qualquer documento relevante (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

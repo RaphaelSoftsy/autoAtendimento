@@ -25,24 +25,27 @@ const ProofRequestSelect = () => {
             const response = await axios.get(`${url_base_local}/solicitacao/provas?aluno=${currentRA.ra}&disciplina=${disciplinaSelecionada}`);
             const data = response.data;
 
-            const filteredData = data.filter(item => !item.nomeAvaliacao.toLowerCase().includes('atividade'));
+            if (data.length > 0) {
+                const filteredData = data.filter(item => !item.nomeAvaliacao.toLowerCase().includes('atividade'));
 
-            const formattedData = filteredData.map((item, index) => {
-                const nomeAvaliacaoSemPresencial = item.nomeAvaliacao.replace(/presencial/i, '').trim();
+                const formattedData = filteredData.map((item, index) => {
+                    const nomeAvaliacaoSemPresencial = item.nomeAvaliacao.replace(/presencial/i, '').trim();
+                    const valorExibido = parseFloat(item.valor) > 0 ? ` - Valor: R$ ${item.valor}` : '';
 
-                const valorExibido = parseFloat(item.valor) > 0 ? ` - Valor: R$ ${item.valor}` : '';
+                    return {
+                        id: index + 1,
+                        name: `${item.avaliacao} - ${nomeAvaliacaoSemPresencial} - ${item.mensagem}${valorExibido}`,
+                        codigo: item.disciplina,
+                        solicProva: item.solicProva,
+                        servico: item.servico,
+                        valor: item.valor
+                    };
+                });
 
-                return {
-                    id: index + 1,
-                    name: `${item.avaliacao} - ${nomeAvaliacaoSemPresencial} - ${item.mensagem}${valorExibido}`,
-                    codigo: item.disciplina,
-                    solicProva: item.solicProva,
-                    servico: item.servico,
-                    valor: item.valor
-                };
-            });
-
-            setSelectedSubjects(formattedData);
+                setSelectedSubjects(formattedData);
+            } else {
+                setSelectedSubjects([]);
+            }
         } catch (error) {
             MySwal.fire({
                 icon: 'error',

@@ -96,7 +96,7 @@ const RegistrationDeclarationOpenDemand = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise nos explique seu problema'
+                        text='Descreva o problema encontrado na declaração de matrícula, incluindo detalhes sobre os dados incorretos e a correção necessária. Anexe uma cópia da declaração e qualquer documento relevante (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}

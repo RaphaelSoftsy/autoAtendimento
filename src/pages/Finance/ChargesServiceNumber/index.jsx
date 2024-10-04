@@ -1,13 +1,11 @@
-import CardServiceNumber from "../../../components/CardServiceNumber";
+import CardServiceNumberFin from "../../../components/CardServiceNumberFin";
 
 const ChargesServiceNumber = () => {
-
     const numberService = localStorage.getItem('numero-servico')
-
     return (
         <div>
             <div className="rescue-checks">
-                <CardServiceNumber
+                <CardServiceNumberFin
                     number={numberService}
                 />
             </div>

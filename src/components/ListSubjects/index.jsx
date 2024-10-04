@@ -36,7 +36,7 @@ const ListSubjects = (props) => {
                     onClick={props.onClick}
                     route={subject.route}
                     name={subject.name}
-                    seta={props.seta}
+                    seta={subject.seta}
                 />
             ))}
         </ul>

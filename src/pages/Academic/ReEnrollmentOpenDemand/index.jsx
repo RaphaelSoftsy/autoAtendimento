@@ -103,7 +103,7 @@ const ReEnrollmentOpenDemand = () => {
             <div className="rescue-checks">
                 <div className='list-subjects'>
                     <CardCheckout
-                        text='Por favor, para análise inserir todos os Documentos'
+                        text='Descreva o processo de rematrícula, incluindo prazos, documentos necessários e requisitos específicos. Anexe comprovantes ou documentos relevantes (obrigatório).'
                         onChangeInputFile={handleFileChange}
                         selectedFileName={formData.nomeArq}
                         onClick={handleSubmit}
