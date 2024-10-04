@@ -9,8 +9,8 @@ import Footer from '../../../components/Footer';
 import ListSubjectsCheck from '../../../components/ListSubjectsCheck';
 import { useRA } from '../../../contexts/RAContext';
 import { url_base_local } from '../../../services/url_base';
-import './monthlyPayment.css';
 import { monthNames } from '../PerformPayment';
+import './monthlyPayment.css';
 
 const MonthlyPayment = () => {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
@@ -24,17 +24,13 @@ const MonthlyPayment = () => {
     const [items, setItems] = useState([]);
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
-    // const aluno = '2014111'
     const { currentRA } = useRA();
 
-    const getPerformPayment = async () => {
+    const getMonthlyPayment = async () => {
         MySwal.showLoading();
         try {
             const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${currentRA.ra}&cpf=&vencidas=S&aVencer=S`);
             const data = response.data.cobrancas;
-
-            console.log(data);
-            
 
             if (data.length > 0) {
                 const formattedData = data.map((item, index) => ({
@@ -45,7 +41,7 @@ const MonthlyPayment = () => {
 
                 setItems(formattedData);
             } else {
-                setItems([])
+                setItems([]);
             }
         } catch (error) {
             MySwal.fire({
@@ -60,7 +56,7 @@ const MonthlyPayment = () => {
     };
 
     useEffect(() => {
-        getPerformPayment();
+        getMonthlyPayment();
     }, [currentRA]);
 
     const containsAcordo = (text) => {
@@ -98,15 +94,12 @@ const MonthlyPayment = () => {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Você não selecionou nada',
+                text: 'Você ainda não selecionou uma disciplina. Escolha uma para continuar.',
                 confirmButtonText: 'OK'
             });
         } else {
-
             const selectedItem = items.find(item => item.id === selectedSubjects[0]);
-
             localStorage.setItem('cobranca-selecioanda', selectedItem.name);
-            console.log(selectedItem.name);
 
             navigate('abrir-demanda');
         }
@@ -114,41 +107,49 @@ const MonthlyPayment = () => {
 
     const applyFilters = (newFilters) => {
         if (newFilters.TODOS) {
-            setFilters(newFilters);
+            setFilters({
+                TODOS: true,
+                MENSALIDADES: false,
+                SERVIÇOS: false,
+                ACORDOS: false
+            });
             toggleFilter();
             return;
         }
-    
+
         const selectedFilter = Object.entries(newFilters).find(([_, value]) => value);
-    
+
         if (!selectedFilter) {
-            toggleFilter();
+            MySwal.fire({
+                icon: 'info',
+                title: 'Erro',
+                text: 'Nenhum filtro foi selecionado.',
+                confirmButtonText: 'OK'
+            });
             return;
         }
-    
+
         const filterName = selectedFilter[0];
-    
+
         const filteredList = items.filter(item => {
-            if (filters.TODOS) return true;
             if (filterName === 'ACORDOS') {
                 return containsAcordo(item.status);
             }
             return item.status === filterName;
         });
-    
+
         if (filteredList.length === 0) {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: `Não há ${filterName.toLowerCase()} nesta lista`,
+                text: `Não há ${filterName.toLowerCase()} nesta lista.`,
                 confirmButtonText: 'OK'
             });
         } else {
             setFilters(newFilters);
-            toggleFilter();
         }
+        toggleFilter();
     };
-    
 
     return (
         <main className='main-perform-accord'>
@@ -177,4 +178,4 @@ const MonthlyPayment = () => {
     )
 }
 
-export default MonthlyPayment
+export default MonthlyPayment;

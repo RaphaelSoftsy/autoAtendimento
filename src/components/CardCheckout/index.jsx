@@ -6,9 +6,9 @@ import InputUpload from '../InputUpload';
 const CardCheckout = (props) => {
     return (
         <div className="card-checkout">
-            <h2 className='explain-problem'>{props.text}</h2>
+            {/* <h2 className='explain-problem'>{props.text}</h2> */}
             <TextArea
-                text={props.textTextArea}
+                text={props.text}
                 id="observation"
                 value={props.observation}
                 onChange={props.onObservationChange}
