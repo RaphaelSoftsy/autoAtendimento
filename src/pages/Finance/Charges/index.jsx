@@ -96,14 +96,12 @@ const Charges = () => {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Você não selecionou nada',
+                text: 'Você ainda não selecionou nenhuma cobrança ainda. Escolha uma para continuar.',
                 confirmButtonText: 'OK'
             });
         } else {
             const selectedItem = items.find(item => item.id === selectedSubjects[0]);
-
-            localStorage.setItem('cobranca-selecioanda', selectedItem.name);
-            console.log(selectedItem.name);
+            localStorage.setItem('cobranca-selecionada', selectedItem.name);
 
             navigate('abrir-demanda');
         }

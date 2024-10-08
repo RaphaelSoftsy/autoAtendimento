@@ -26,11 +26,7 @@ const CashBack = () => {
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
 
-    useEffect(() => {
-        console.log(currentRA)
-    }, [currentRA]);
-
-    const getPerformPayment = async () => {
+    const getCashBack = async () => {
         MySwal.showLoading();
         try {
             const response = await axios.get(`${url_base_local}/cobrancaAluno/busca?aluno=${currentRA.ra}&cpf=&vencidas=S&aVencer=S`);
@@ -60,7 +56,7 @@ const CashBack = () => {
     };
 
     useEffect(() => {
-        getPerformPayment();
+        getCashBack();
     }, [currentRA]);
 
     const containsAcordo = (text) => {
@@ -98,14 +94,12 @@ const CashBack = () => {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Você não selecionou nada',
+                text: 'Você ainda não selecionou nenhuma cobrança ainda. Escolha uma para continuar.',
                 confirmButtonText: 'OK'
             });
         } else {
             const selectedItem = items.find(item => item.id === selectedSubjects[0]);
-
-            localStorage.setItem('cobranca-selecioanda', selectedItem.name);
-            console.log(selectedItem.name);
+            localStorage.setItem('cobranca-selecionada', selectedItem.name);
 
             navigate('abrir-demanda');
         }
