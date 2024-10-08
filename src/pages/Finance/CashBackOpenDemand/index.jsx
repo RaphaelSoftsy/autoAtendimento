@@ -8,7 +8,7 @@ import { useRA } from "../../../contexts/RAContext";
 import { url_base_local } from "../../../services/url_base";
 import { convertToBase64 } from "../../Academic/ProgramContent";
 
-const ChargesOpenDemand = () => {
+const CashBackOpenDemand = () => {
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal);
     const { currentRA } = useRA();
@@ -105,7 +105,7 @@ const ChargesOpenDemand = () => {
         <main className="repayment">
             <div className='repayment-card'>
                 <CardCheckout
-                    text='Descreva o problema de cobrança indevida, incluindo detalhes sobre o valor, serviço e justificativa. Anexe comprovantes ou documentos relevantes (obrigatório).'
+                    text='Descreva o problema relacionado ao cashback, incluindo detalhes sobre o valor, prazo ou cálculo incorreto. Anexe comprovantes ou documentos relevantes (obrigatório).'
                     onChangeInputFile={handleFileChange}
                     selectedFileName={formData.nomeArq}
                     onClick={handleSubmit}
@@ -116,6 +116,7 @@ const ChargesOpenDemand = () => {
             </div>
         </main>
     );
+
 }
 
-export default ChargesOpenDemand;
+export default CashBackOpenDemand;

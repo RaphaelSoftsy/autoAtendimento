@@ -118,6 +118,7 @@ import ForgetPassword from "../pages/Password/ForgetPassword";
 import PasswordRecovery from "../pages/Password/PasswordRecovery";
 import Verification from "../pages/Password/Verification";
 import ReEnrollmentServiceNumber from "../pages/Academic/ReEnrollmentServiceNumber";
+import CashBackOpenDemand from "../pages/Finance/CashBackOpenDemand";
 
 const RoutesApp = () => {
     return (
@@ -195,7 +196,8 @@ const FinanceiroRoutes = () => {
                 <Route path="/outros-assuntos/fies-sumare/sumare" element={<Sumare />} />
                 <Route path="/outros-assuntos/fies-sumare/sumare/numero-servico" element={<SumareServiceNumber />} />
                 <Route path="/outros-assuntos/cashback" element={<CashBack />} />
-                <Route path="/outros-assuntos/cashback/numero-servico" element={<CashBackServiceNumber />} />
+                <Route path="/outros-assuntos/cashback/abrir-demanda" element={<CashBackOpenDemand />} />
+                <Route path="/outros-assuntos/cashback/abrir-demanda/numero-servico" element={<CashBackServiceNumber />} />
                 <Route path="/outros-assuntos/cobrança-indevida" element={<Charges />} />
                 <Route path="/outros-assuntos/cobrança-indevida/abrir-demanda" element={<ChargesOpenDemand />} />
                 <Route path="/outros-assuntos/cobrança-indevida/abrir-demanda/numero-servico" element={<ChargesServiceNumber />} />

@@ -94,12 +94,12 @@ const MonthlyPayment = () => {
             MySwal.fire({
                 icon: 'info',
                 title: 'Erro',
-                text: 'Você ainda não selecionou uma disciplina. Escolha uma para continuar.',
+                text: 'Você ainda não selecionou nenhuma cobrança ainda. Escolha uma para continuar.',
                 confirmButtonText: 'OK'
             });
         } else {
             const selectedItem = items.find(item => item.id === selectedSubjects[0]);
-            localStorage.setItem('cobranca-selecioanda', selectedItem.name);
+            localStorage.setItem('cobranca-selecionada', selectedItem.name);
 
             navigate('abrir-demanda');
         }
